@@ -1,0 +1,98 @@
+package modules;
+
+import java.sql.Date;
+
+public class User {
+
+	protected String cni;
+	String nom;
+	String prenom;
+	String image;
+	String role;
+	String password;
+	String tel;
+	String email;
+	Date dateNaissance;
+	
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Date getDateNaissance() {
+		return dateNaissance;
+	}
+
+	public void setDateNaissance(Date dateNaissance) {
+		this.dateNaissance = dateNaissance;
+	}
+
+	public User() {}
+	
+	public User(String cni,String nom,String prenom,String image,String role, String password,String tel,String email) {
+		this.cni=cni;
+		this.nom=nom;
+		this.prenom=prenom;
+		this.role=role;
+		this.password=password;
+		this.tel=tel;
+		this.email=email;
+	}
+	
+	public String toString() {
+		return "Nom Complete"+nom+" "+prenom;
+	}
+	
+	
+	public String getCni() {
+		return cni;
+	}
+	
+	public void setCni(String cni) {
+		this.cni=cni;
+	}
+	
+	
+	public String getNom() {
+		return nom;
+	}
+	
+	public String getPrenom() {
+		return prenom;
+	}
+	
+	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password=password;
+	}
+}
