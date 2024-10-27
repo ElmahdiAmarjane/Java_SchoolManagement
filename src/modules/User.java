@@ -12,7 +12,7 @@ public class User {
 	String password;
 	String tel;
 	String email;
-	Date dateNaissance;
+	String dateNaissance;
 	
 	public String getImage() {
 		return image;
@@ -46,11 +46,11 @@ public class User {
 		this.email = email;
 	}
 
-	public Date getDateNaissance() {
+	public String getDateNaissance() {
 		return dateNaissance;
 	}
 
-	public void setDateNaissance(Date dateNaissance) {
+	public void setDateNaissance(String dateNaissance) {
 		this.dateNaissance = dateNaissance;
 	}
 
@@ -69,30 +69,39 @@ public class User {
 	public String toString() {
 		return "Nom Complete"+nom+" "+prenom;
 	}
-	
-	
+
 	public String getCni() {
 		return cni;
 	}
-	
+
 	public void setCni(String cni) {
-		this.cni=cni;
+		this.cni = cni;
 	}
-	
-	
+
 	public String getNom() {
 		return nom;
 	}
-	
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
 	public String getPrenom() {
 		return prenom;
 	}
-	
-	
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
-		this.password=password;
+		this.password = password;
 	}
+	
+	
+	
 }
