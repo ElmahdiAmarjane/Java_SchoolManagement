@@ -13,7 +13,7 @@ public class Main extends Application {
 	private void showMainApplication() throws Exception {
 		
         // Load your main application FXML and show the main window
-        FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("/views/gestion_etudiant_admin.fxml"));
+        FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("/views/login.fxml"));
         Parent mainRoot = mainLoader.load();
         Scene mainScene = new Scene(mainRoot,800,500);
 

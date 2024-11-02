@@ -56,7 +56,7 @@ public class User {
 
 	public User() {}
 	
-	public User(String cni,String nom,String prenom,String image,String role, String password,String tel,String email) {
+	public User(String cni,String nom,String prenom,String image,String role, String password,String tel,String email,String dateNaissance) {
 		this.cni=cni;
 		this.nom=nom;
 		this.prenom=prenom;
@@ -64,6 +64,7 @@ public class User {
 		this.password=password;
 		this.tel=tel;
 		this.email=email;
+		this.dateNaissance=dateNaissance;
 	}
 	
 	public String toString() {

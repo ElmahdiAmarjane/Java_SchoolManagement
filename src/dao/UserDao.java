@@ -4,87 +4,104 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import com.mysql.cj.Query;
 
 import db_connect.JDBC;
-import modules.Etudiante;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 import modules.User;
 import services.IUserServices;
 
-public class UserDao implements IUserServices{
+public class UserDao implements IUserServices {
 
-	@Override 
-	public User login(User user) {
-	        //User user = null;
-	        String query = "SELECT * FROM user WHERE cni = ? AND password = ?";
+    // Method to navigate to the Add User page
+    private void navigateToAddUserPage(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/src/views/addUser.fxml"));
+            Parent homeRoot = loader.load();
 
-	        try (Connection connection = JDBC.getConnection();
-	             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            // Get the current stage and set the new scene
+            Stage stage = (Stage) ((Window) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(homeRoot));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-	            // Set parameters for the query
-	            preparedStatement.setString(1, user.getCni());
-	            preparedStatement.setString(2, user.getPassword());
+    @Override
+    public User login(User user) {
+        String query = "SELECT * FROM user WHERE cni = ? AND password = ?";
 
-	            // Execute the query
-	            ResultSet resultSet = preparedStatement.executeQuery();
+        try (Connection connection = JDBC.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-	            // If user found, initialize the User object
-	            if (resultSet.next()) {
-	                //user = new User("D136110674","MOHAMED","BOUKOUCH","aa");
-	            	
-	            	String role = resultSet.getString("role");
-	            	
-	            	if("etudiant".equalsIgnoreCase(role))
-	            		System.out.println("Etudiant");
-	            	else if("professeur".equalsIgnoreCase(role))
-	            		System.out.println("Professeur");
-	            	else if("admin".equalsIgnoreCase(role))
-	            		System.out.println("Admin");
-	            	else
-	            		System.out.println("Error 404");
-	                
-	            }else {
-	            	System.out.println("USER IS NOOOOT FOUNDED");
-	            }
+            
+            preparedStatement.setString(1, user.getCni());
+            preparedStatement.setString(2, user.getPassword());
 
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	        }
-	        return user;
-	    }
-	
-	public boolean insertUser(User user) {
-	    String query = "INSERT INTO user (cni, nom, prenom, image, role, tele, email, dateNaissance, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            ResultSet resultSet = preparedStatement.executeQuery();
 
-	    try (Connection connection = JDBC.getConnection();
-	         PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            if (resultSet.next()) {
+                String role = resultSet.getString("role");
 
-	        // Set parameters for the query
-	        preparedStatement.setString(1, user.getCni());
-	        preparedStatement.setString(2, user.getNom());
-	        preparedStatement.setString(3, user.getPrenom());
-	        preparedStatement.setString(4, user.getImage());
-	        preparedStatement.setString(5, user.getRole());
-	        preparedStatement.setString(6, user.getTel());
-	        preparedStatement.setString(7, user.getEmail());
-	        preparedStatement.setString(8, user.getDateNaissance());  // assuming this is a String, change to Date if needed
-	        preparedStatement.setString(9, user.getPassword());
+                switch (role.toLowerCase()) {
+                    case "etudiant":
+                        System.out.println("Etudiant");
+                        break;
+                    case "professeur":
+                        System.out.println("Professeur");
+                        break;
+                    case "admin":
+                        System.out.println("Admin");
+                        break;
+                    default:
+                        System.out.println("Role not recognized.");
+                        break;
+                }
+            } else {
+                user=null;
+            }
 
-	        // Execute the update
-	        int rowsAffected = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return user;
+    }
 
-	        if (rowsAffected > 0) {
-	            System.out.println("User inserted successfully.");
-	            return true;
-	        } else {
-	            System.out.println("Failed to insert User.");
-	        }
+    public boolean insertUser(User user) {
+        String query = "INSERT INTO user (cni, nom, prenom, image, role, tele, email, dateNaissance, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
-	    return false;
-	}
+        try (Connection connection = JDBC.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-	
+            // Set parameters for the query
+            preparedStatement.setString(1, user.getCni());
+            preparedStatement.setString(2, user.getNom());
+            preparedStatement.setString(3, user.getPrenom());
+            preparedStatement.setString(4, user.getImage());
+            preparedStatement.setString(5, user.getRole());
+            preparedStatement.setString(6, user.getTel());
+            preparedStatement.setString(7, user.getEmail());
+            preparedStatement.setString(8, user.getDateNaissance());
+            preparedStatement.setString(9, user.getPassword());
+
+            // Execute the update
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("User inserted successfully.");
+                return true;
+            } else {
+                System.out.println("Failed to insert user.");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
