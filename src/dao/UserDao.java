@@ -12,25 +12,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import modules.Etudiant;
 import modules.User;
 import services.IUserServices;
 
 public class UserDao implements IUserServices {
 
-    // Method to navigate to the Add User page
-    private void navigateToAddUserPage(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/src/views/addUser.fxml"));
-            Parent homeRoot = loader.load();
-
-            // Get the current stage and set the new scene
-            Stage stage = (Stage) ((Window) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(homeRoot));
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     @Override
     public User login(User user) {
@@ -104,4 +91,6 @@ public class UserDao implements IUserServices {
         }
         return false;
     }
+    
+    
 }

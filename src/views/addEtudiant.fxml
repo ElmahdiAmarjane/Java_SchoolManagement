@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
@@ -8,31 +9,179 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="981.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddUser">
+<Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="1359.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddEtudiant">
 
    <children>
-      <Pane layoutX="-8.0" layoutY="-8.0" prefHeight="598.0" prefWidth="54.0" style="-fx-background-color: #7d7876;" />
-      <Pane layoutX="69.0" layoutY="28.0" prefHeight="495.0" prefWidth="677.0" style="-fx-background-color: #f1ebea;">
-         <children>
-            <Text layoutX="21.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom :" />
-            <Text layoutX="21.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom :" />
-            <TextField layoutX="83.0" layoutY="233.0" style="-fx-background-color: bl; -fx-background-color: ;">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </TextField>
-         </children>
-      </Pane>
-      <VBox alignment="CENTER" layoutX="170.0" layoutY="31.0" prefHeight="150.0" prefWidth="119.0" spacing="10">
+      <Pane layoutY="-87.0" prefHeight="791.0" prefWidth="57.0" style="-fx-background-color: #7d7876;" />
+      <VBox alignment="CENTER" layoutX="431.0" layoutY="14.0" prefHeight="128.0" prefWidth="119.0" spacing="10">
          <children>
             <ImageView fx:id="userImageView" fitHeight="79.0" fitWidth="107.0" preserveRatio="true" />
             <Button onAction="#handleSelectImage" text="Select Image" />
          </children>
       </VBox>
-      <TextField layoutX="154.0" layoutY="208.0" style="-fx-background-color: bl; -fx-background-color: ;">
+      <Text layoutX="569.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Pane layoutX="55.0" layoutY="142.0" prefHeight="30.0" prefWidth="1306.0" style="-fx-background-color: #559ef5;" />
+      <Text layoutX="87.0" layoutY="203.0" text="Nom :" />
+      <Text layoutX="84.0" layoutY="240.0" text="Prenom" />
+      <TextField fx:id="prenom" layoutX="188.0" layoutY="214.0" prefHeight="30.0" prefWidth="250.0">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
+      <TextField fx:id="nom" layoutX="185.0" layoutY="176.0" prefHeight="18.0" prefWidth="256.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <Text layoutX="485.0" layoutY="249.0" text="Email" />
+      <Text layoutX="66.0" layoutY="285.0" text="Date De Naissance" />
+      <TextField fx:id="email" layoutX="589.0" layoutY="220.0" prefHeight="30.0" prefWidth="285.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="date_naissance" layoutX="185.0" layoutY="258.0" prefHeight="30.0" prefWidth="256.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <ComboBox fx:id="sexe" layoutX="192.0" layoutY="337.0" prefHeight="26.0" prefWidth="256.0" />
+      <Text layoutX="80.0" layoutY="354.0" text="Sexe " />
+      <Pane layoutX="56.0" layoutY="378.0" prefHeight="30.0" prefWidth="1306.0" style="-fx-background-color: #559ef5;" />
+      <Text layoutX="73.0" layoutY="448.0" text="Bac" />
+      <Text layoutX="73.0" layoutY="486.0" text="Note Bac" />
+      <TextField fx:id="bac_note" layoutX="181.0" layoutY="457.0" prefHeight="30.0" prefWidth="250.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="bac_type" layoutX="175.0" layoutY="419.0" prefHeight="30.0" prefWidth="256.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <Text layoutX="73.0" layoutY="528.0" text="BAC+2" />
+      <Text layoutX="73.0" layoutY="573.0" text="Ecole" />
+      <TextField fx:id="bac2_type" layoutX="175.0" layoutY="508.0" prefHeight="30.0" prefWidth="256.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="ecole" layoutX="175.0" layoutY="544.0" prefHeight="30.0" prefWidth="256.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <Text layoutX="72.0" layoutY="613.0" text="Filiére" />
+      <TextField fx:id="filier" layoutX="175.0" layoutY="593.0" prefHeight="30.0" prefWidth="256.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <Text layoutX="480.0" layoutY="454.0" text="Note Bac+2" />
+      <Text layoutX="483.0" layoutY="501.0" text="S1" />
+      <TextField fx:id="s1" layoutX="619.0" layoutY="481.0" prefHeight="30.0" prefWidth="250.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="bac2_note" layoutX="616.0" layoutY="434.0" prefHeight="30.0" prefWidth="256.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <Text layoutX="483.0" layoutY="543.0" text="S2" />
+      <Text layoutX="483.0" layoutY="582.0" text="S3" />
+      <TextField fx:id="s2" layoutX="616.0" layoutY="523.0" prefHeight="30.0" prefWidth="256.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="s3" layoutX="616.0" layoutY="562.0" prefHeight="30.0" prefWidth="256.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <Text layoutX="483.0" layoutY="628.0" text="S4" />
+      <TextField fx:id="s4" layoutX="608.0" layoutY="608.0" prefHeight="30.0" prefWidth="256.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <Button fx:id="btn_suiver" layoutX="1167.0" layoutY="649.0" mnemonicParsing="false" onAction="#btn_aaddEtd" prefHeight="30.0" prefWidth="159.0" text="Suivant" />
+      <Text layoutX="489.0" layoutY="210.0" text="CNE" />
+      <TextField fx:id="cne" layoutX="589.0" layoutY="190.0" prefHeight="26.0" prefWidth="256.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <Text layoutX="480.0" layoutY="354.0" text="Nationaliter" />
+      <ComboBox fx:id="nationaliter" layoutX="608.0" layoutY="329.0" prefHeight="26.0" prefWidth="256.0" />
+      <VBox alignment="CENTER" layoutX="967.0" layoutY="199.0" prefHeight="128.0" prefWidth="119.0" spacing="10">
+         <children>
+            <ImageView fx:id="imageCartNational" fitHeight="79.0" fitWidth="107.0" preserveRatio="true" />
+            <Button onAction="#selectCartNationl" text="Carte Nationalle" />
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" layoutX="1157.0" layoutY="199.0" prefHeight="128.0" prefWidth="119.0" spacing="10">
+         <children>
+            <ImageView fx:id="imageExtrai" fitHeight="79.0" fitWidth="107.0" preserveRatio="true" />
+            <Button onAction="#selectExtrai" prefHeight="30.0" prefWidth="85.0" text="Extrais" />
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" layoutX="947.0" layoutY="432.0" prefHeight="99.0" prefWidth="91.0" spacing="10">
+         <children>
+            <ImageView fx:id="imageBac" fitHeight="52.0" fitWidth="83.0" preserveRatio="true" />
+            <Button onAction="#selectBac" text="Bac" />
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" layoutX="1059.0" layoutY="522.0" prefHeight="105.0" prefWidth="91.0" spacing="10">
+         <children>
+            <ImageView fx:id="imageS3" fitHeight="52.0" fitWidth="83.0" preserveRatio="true" />
+            <Button minWidth="46.0" onAction="#selectS3" prefHeight="29.0" prefWidth="46.0" text="S3" />
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" layoutX="1179.0" layoutY="521.0" prefHeight="105.0" prefWidth="91.0" spacing="10">
+         <children>
+            <ImageView fx:id="imageS4" fitHeight="52.0" fitWidth="83.0" preserveRatio="true" />
+            <Button onAction="#selectS4" text="S4" />
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" layoutX="954.0" layoutY="522.0" prefHeight="105.0" prefWidth="91.0" spacing="10">
+         <children>
+            <ImageView fx:id="imageS2" fitHeight="52.0" fitWidth="83.0" preserveRatio="true" />
+            <Button onAction="#selectS2" text="S2" />
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" layoutX="1059.0" layoutY="431.0" prefHeight="99.0" prefWidth="91.0" spacing="10">
+         <children>
+            <ImageView fx:id="imageBac2" fitHeight="52.0" fitWidth="83.0" preserveRatio="true" />
+            <Button onAction="#selectBac2" text="Bac+2" />
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" layoutX="1179.0" layoutY="431.0" prefHeight="99.0" prefWidth="91.0" spacing="10">
+         <children>
+            <ImageView fx:id="imageS1" fitHeight="52.0" fitWidth="83.0" preserveRatio="true" />
+            <Button onAction="#selectS1" text="S1" />
+         </children>
+      </VBox>
+      <TextField fx:id="cni" layoutX="192.0" layoutY="298.0" prefHeight="30.0" prefWidth="256.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <Text layoutX="83.0" layoutY="325.0" text="CNI" />
+      <TextField fx:id="tele" layoutX="589.0" layoutY="258.0" prefHeight="30.0" prefWidth="285.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <Text layoutX="494.0" layoutY="285.0" text="Tel" />
+      <TextField fx:id="password" layoutX="589.0" layoutY="298.0" prefHeight="30.0" prefWidth="285.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <Text layoutX="485.0" layoutY="325.0" text="Password" />
    </children>
 </Pane>

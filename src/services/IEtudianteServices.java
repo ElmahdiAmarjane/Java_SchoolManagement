@@ -1,10 +1,10 @@
 package services;
 
-import modules.Etudiante;
+import modules.Etudiant;
 
 public interface IEtudianteServices {
 
-	boolean insertEtudiant(Etudiante etudiante);
+	boolean insertEtudiant(Etudiant etudiante);
 	boolean deleteEtudiant(String cni);
-	boolean updateEtudiant(Etudiante etudiante);
+	boolean updateEtudiant(Etudiant etudiante);
 }

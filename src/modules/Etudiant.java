@@ -1,6 +1,6 @@
 package modules;
 
-public class Etudiante extends User{
+public class Etudiant extends User{
 
 	String cne;
 	String type_bac;
@@ -9,10 +9,16 @@ public class Etudiante extends User{
 	Double note_bac2;
 	int id_filier;
 	String cni_user;
+	String imageBac;
+	String imageBac2;
+	String imageS1;
+	String imageS2;
+	String imageS3;
+	String imageS4;
 	
-	public Etudiante() {}
+	public Etudiant() {}
 	
-	public Etudiante(
+	public Etudiant(
 			//String cni,
 			//String nom,
 			//String prenom,
@@ -27,7 +33,14 @@ public class Etudiante extends User{
 			String type_bac2,
 			Double note_bac2,
 			int id_filier,
-			String cni_user) {
+			String cni_user,
+			String imageBac,
+			String imageBac2,
+			String imageS1,
+			String imageS2,
+			String imageS3,
+			String imageS4
+			) {
 		
 		//super(cni,nom,prenom,image,role,password,tel,email);
 		this.cne=cne;
@@ -37,6 +50,60 @@ public class Etudiante extends User{
 		this.note_bac2=note_bac2;
 		this.id_filier=id_filier;
 		this.cni_user=cni_user;
+		this.imageBac=imageBac;
+		this.imageBac=imageBac2;
+		this.imageBac=imageS1;
+		this.imageBac=imageS2;
+		this.imageBac=imageS3;
+		this.imageBac=imageS4;
+	}
+
+	public String getImageBac() {
+		return imageBac;
+	}
+
+	public void setImageBac(String imageBac) {
+		this.imageBac = imageBac;
+	}
+
+	public String getImageBac2() {
+		return imageBac2;
+	}
+
+	public void setImageBac2(String imageBac2) {
+		this.imageBac2 = imageBac2;
+	}
+
+	public String getImageS1() {
+		return imageS1;
+	}
+
+	public void setImageS1(String imageS1) {
+		this.imageS1 = imageS1;
+	}
+
+	public String getImageS2() {
+		return imageS2;
+	}
+
+	public void setImageS2(String imageS2) {
+		this.imageS2 = imageS2;
+	}
+
+	public String getImageS3() {
+		return imageS3;
+	}
+
+	public void setImageS3(String imageS3) {
+		this.imageS3 = imageS3;
+	}
+
+	public String getImageS4() {
+		return imageS4;
+	}
+
+	public void setImageS4(String imageS4) {
+		this.imageS4 = imageS4;
 	}
 
 	public String getCne() {
