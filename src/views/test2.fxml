@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="1371.0" style="-fx-background-color: #334422;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.adminController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="1221.0" style="-fx-background-color: #334422;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.adminController">
    <children>
       <VBox layoutY="76.0" prefHeight="441.0" prefWidth="236.0" style="-fx-background-color: #9865eb;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="74.0">
          <children>
@@ -253,59 +253,32 @@
                   <Button layoutX="433.0" layoutY="312.0" mnemonicParsing="false" text="Suivant" AnchorPane.bottomAnchor="52.0" AnchorPane.rightAnchor="29.0" />
                   <AnchorPane layoutX="9.0" layoutY="47.0" prefHeight="260.0" prefWidth="498.0" style="-fx-border-color: #FFDDEE; -fx-background-color: #DDFFAA;" AnchorPane.bottomAnchor="82.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="47.0">
                      <children>
-                        <TextField layoutX="878.0" layoutY="146.0" prefHeight="40.0" prefWidth="209.0" />
-                        <TextField layoutX="878.0" layoutY="213.0" prefHeight="40.0" prefWidth="209.0" />
-                        <Text layoutX="816.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nationalité" />
-                        <Text layoutX="818.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
-                        <TextField layoutX="557.0" layoutY="149.0" prefHeight="40.0" prefWidth="200.0" />
-                        <TextField layoutX="557.0" layoutY="216.0" prefHeight="40.0" prefWidth="200.0" />
-                        <TextField layoutX="557.0" layoutY="279.0" prefHeight="40.0" prefWidth="200.0" />
-                        <TextField layoutX="557.0" layoutY="341.0" prefHeight="40.0" prefWidth="200.0" />
-                        <Text layoutX="472.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Naissance" />
-                        <Text layoutX="497.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
-                        <Text layoutX="493.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CNI" />
-                        <Text layoutX="497.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tel" />
-                        <TextField layoutX="244.0" layoutY="149.0" prefHeight="40.0" prefWidth="200.0" />
-                        <TextField layoutX="244.0" layoutY="216.0" prefHeight="40.0" prefWidth="200.0" />
-                        <TextField layoutX="244.0" layoutY="279.0" prefHeight="40.0" prefWidth="200.0" />
-                        <TextField layoutX="244.0" layoutY="341.0" prefHeight="40.0" prefWidth="200.0" />
-                        <Text layoutX="178.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" />
-                        <Text layoutX="178.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom" />
-                        <Text layoutX="178.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sexe" />
-                        <Text layoutX="178.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CNE" />
-                        <ImageView fitHeight="101.0" fitWidth="121.0" layoutX="23.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="95.0" fitWidth="96.0" layoutX="24.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../assets/me2.jpeg" />
+                              <Image url="@../../assets/profile.jpg" />
                            </image>
                         </ImageView>
-                        <Button layoutX="25.0" layoutY="261.0" mnemonicParsing="false" text="Choisir Image" />
-                        <AnchorPane layoutX="55.0" layoutY="12.0" prefHeight="66.0" prefWidth="1007.0" style="-fx-background-color: #e3e2e1;" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="54.0" AnchorPane.topAnchor="11.0">
-                           <children>
-                              <Text layoutX="204.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations personnelles">
-                                 <font>
-                                    <Font name="System Bold" size="12.0" />
-                                 </font>
-                              </Text>
-                              <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="359.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../assets/arrow.png" />
-                                 </image>
-                              </ImageView>
-                              <Text fill="#656363" layoutX="406.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations acadimiques" />
-                              <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="556.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../assets/arrow.png" />
-                                 </image>
-                              </ImageView>
-                              <Text fill="#656363" layoutX="603.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="documents fournies" />
-                              <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="725.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../assets/arrow.png" />
-                                 </image>
-                              </ImageView>
-                              <Text fill="#656363" layoutX="778.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fin" />
-                           </children>
-                        </AnchorPane>
+                        <Button layoutX="27.0" layoutY="108.0" mnemonicParsing="false" text="Choisir Image" />
+                        <TextField layoutX="248.0" layoutY="17.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.leftAnchor="248.0" />
+                        <TextField layoutX="248.0" layoutY="84.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.leftAnchor="248.0" />
+                        <TextField layoutX="248.0" layoutY="147.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.leftAnchor="248.0" />
+                        <TextField layoutX="248.0" layoutY="209.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.leftAnchor="248.0" />
+                        <TextField layoutX="499.0" layoutY="17.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="400.0" />
+                        <TextField layoutX="499.0" layoutY="84.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="400.0" />
+                        <TextField layoutX="499.0" layoutY="147.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="400.0" />
+                        <TextField layoutX="499.0" layoutY="209.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="400.0" />
+                        <Text layoutX="182.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom" />
+                        <Text layoutX="182.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom" />
+                        <Text layoutX="182.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom" />
+                        <Text layoutX="182.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom" />
+                        <Text layoutX="455.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom" />
+                        <Text layoutX="455.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom" />
+                        <Text layoutX="455.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom" />
+                        <Text layoutX="455.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom" />
+                        <Text layoutX="714.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom" AnchorPane.rightAnchor="209.673828125" />
+                        <Text layoutX="714.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom" AnchorPane.rightAnchor="209.673828125" />
+                        <TextField layoutX="765.0" layoutY="17.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.rightAnchor="5.0" />
+                        <TextField layoutX="765.0" layoutY="84.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.rightAnchor="5.0" />
                      </children>
                   </AnchorPane>
                </children>
