@@ -2,7 +2,7 @@ package services;
 
 import modules.Etudiant;
 
-public interface IEtudianteServices {
+public interface IEtudiantServices {
 
 	boolean insertEtudiant(Etudiant etudiante);
 	boolean deleteEtudiant(String cni);

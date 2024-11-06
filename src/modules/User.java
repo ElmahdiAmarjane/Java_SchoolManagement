@@ -5,14 +5,28 @@ import java.sql.Date;
 public class User {
 
 	protected String cni;
-	String nom;
-	String prenom;
-	String image;
-	String role;
-	String password;
-	String tel;
-	String email;
-	String dateNaissance;
+	protected String nom;
+	protected String prenom;
+	protected String image;
+	protected String role;
+	protected String password;
+	protected String tel;
+	protected String email;
+	protected String dateNaissance;
+	
+	
+	public User() {}
+	
+	public User(String cni,String nom,String prenom,String image,String role, String password,String tel,String email,String dateNaissance) {
+		this.cni=cni;
+		this.nom=nom;
+		this.prenom=prenom;
+		this.role=role;
+		this.password=password;
+		this.tel=tel;
+		this.email=email;
+		this.dateNaissance=dateNaissance;
+	}
 	
 	public String getImage() {
 		return image;
@@ -37,7 +51,7 @@ public class User {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-
+	
 	public String getEmail() {
 		return email;
 	}
@@ -52,19 +66,6 @@ public class User {
 
 	public void setDateNaissance(String dateNaissance) {
 		this.dateNaissance = dateNaissance;
-	}
-
-	public User() {}
-	
-	public User(String cni,String nom,String prenom,String image,String role, String password,String tel,String email,String dateNaissance) {
-		this.cni=cni;
-		this.nom=nom;
-		this.prenom=prenom;
-		this.role=role;
-		this.password=password;
-		this.tel=tel;
-		this.email=email;
-		this.dateNaissance=dateNaissance;
 	}
 	
 	public String toString() {

@@ -191,7 +191,10 @@ public class AddEtudiant {
 
         if (userDao.insertUser(user)) {
             etudiantDao.insertEtudiant(etudiant);
+        	
         }
+    	
+    	
     }
 
     private void showAlert(String title, String message) {
@@ -200,6 +203,12 @@ public class AddEtudiant {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+    
+    
+  //DELET ETUDIANT
+    public boolean deleteEtudiant(){
+    	return etudiantDao.deleteEtudiant("med");
     }
     
     

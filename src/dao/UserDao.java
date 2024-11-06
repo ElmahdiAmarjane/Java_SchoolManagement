@@ -92,5 +92,35 @@ public class UserDao implements IUserServices {
         return false;
     }
     
+    //UPDATE USER
+	
+    /*public boolean updateEtudiant(Etudiant etudiant) {
+        String query = "UPDATE etudiant SET nom = ?, prenom = ?, image = ?, password = ?, tel = ?, email = ?, dateNaissance = ?";
+
+        try (Connection connection = JDBC.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            // Set the parameters for the update
+            preparedStatement.setString(1, etudiant.getNom());
+            preparedStatement.setString(2, etudiant.getPrenom());
+            preparedStatement.setInt(3, etudiant.getAge());
+            preparedStatement.setString(4, etudiant.getAdresse());
+            preparedStatement.setString(5, etudiant.getCni());
+
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("Etudiant updated successfully.");
+                return true;
+            } else {
+                System.out.println("Failed to update Etudiant.");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }*/
+    
     
 }

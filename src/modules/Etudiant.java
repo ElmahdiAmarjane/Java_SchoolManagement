@@ -19,14 +19,15 @@ public class Etudiant extends User{
 	public Etudiant() {}
 	
 	public Etudiant(
-			//String cni,
-			//String nom,
-			//String prenom,
-			//String image,
-			//String role,
-			//String password,
-			//String tel,
-			//String email,
+			String cni,
+			String nom,
+			String prenom,
+			String image,
+			String role,
+			String password,
+			String tel,
+			String email,
+			String dateNaissance,
 			String cne,
 			String type_bac,
 			Double note_bac,
@@ -42,7 +43,7 @@ public class Etudiant extends User{
 			String imageS4
 			) {
 		
-		//super(cni,nom,prenom,image,role,password,tel,email);
+		super(cni,nom,prenom,image,role,password,tel,email, dateNaissance);
 		this.cne=cne;
 		this.type_bac=type_bac;
 		this.note_bac=note_bac;
