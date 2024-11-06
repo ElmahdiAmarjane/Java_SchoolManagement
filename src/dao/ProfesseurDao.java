@@ -67,10 +67,35 @@ public class ProfesseurDao implements IProfesseurServices{
         return false;
     }
 
+	
 	@Override
-	public boolean updateProfesseur(Professeur professeur) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean updateProfesseur(Professeur prof) {
+	    String query = "UPDATE professeur SET rip = ?, doctorant_type = ?, doctorant_mention = ?, faculter = ?, cv = ? WHERE cni_user = ?";
+
+	    try (Connection connection = JDBC.getConnection();
+	         PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+	        // Set the parameters for the update
+	        preparedStatement.setInt(1, prof.getRip());
+	        preparedStatement.setString(2, prof.getDoctorant_type());
+	        preparedStatement.setString(3, prof.getDoctorant_mention());
+	        preparedStatement.setString(4, prof.getFaculter());
+	        preparedStatement.setString(5, prof.getCv());
+	        preparedStatement.setString(6, prof.getCni_user());
+
+	        int rowsAffected = preparedStatement.executeUpdate();
+
+	        if (rowsAffected > 0) {
+	            System.out.println("Professeur updated successfully.");
+	            return true;
+	        } else {
+	            System.out.println("Failed to update Professeur.");
+	        }
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return false;
 	}
 
 	
