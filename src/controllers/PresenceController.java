@@ -6,8 +6,12 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+import modules.Absence;
 import modules.Etudiant;
+import modules.Professeur;
 import dao.EtudiantDao;
+import dao.ProfesseurDao;
+import dao.UserDao;
 
 import java.util.List;
 
@@ -22,6 +26,10 @@ public class PresenceController {
     private TableColumn<Etudiant, String> attendanceColumn;
 
     private EtudiantDao etudiantDao = new EtudiantDao();
+	Professeur professeur = new Professeur();
+	Absence absence=new Absence();
+	ProfesseurDao professeurDao = new ProfesseurDao();
+	UserDao userDao = new UserDao();
 
     @FXML
     public void initialize() {
@@ -70,11 +78,16 @@ public class PresenceController {
 
     @FXML
     private void handleSaveAttendance() {
-        ObservableList<Etudiant> students = tableView.getItems();
+    	
+    /*    ObservableList<Etudiant> students = tableView.getItems();
         for (Etudiant etudiant : students) {
             System.out.println("Etudiant CNE: " + etudiant.getCne() + ", Name: " + etudiant.getNom() + " " + etudiant.getPrenom() +
                     ", Attendance: ");
         }
+        */
+    	
+    	absence.setCne_etudiants(null);
+    	professeurDao.absence(absence);
     }
 
     private ObservableList<Etudiant> getStudentData() {

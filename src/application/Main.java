@@ -1,11 +1,15 @@
 package application;
 	
+import java.util.ArrayList;
+import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
-
 import dao.EtudiantDao;
+import dao.ProfesseurDao;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import modules.Absence;
 import modules.Etudiant;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -40,20 +44,38 @@ public class Main extends Application {
 			
 			showMainApplication();
 			
-			/* try {
-		            EtudiantDao etudiantDao = new EtudiantDao();
+			/*try {
+		        ProfesseurDao professeurDao = new ProfesseurDao();
 
-		            // Fetch all students for id_filier = 1
-		            List<Etudiant> etudiants = etudiantDao.selectAllEtudiants(1);
+		        // Initialize the list of CNEs with sample values
+		        List<String> cne_etudiants = new ArrayList<>();
+		        cne_etudiants.add("a");
+		        cne_etudiants.add("dd");
 
-		            // Print each student's details
-		            for (Etudiant etd : etudiants) {
-		                System.out.println(etd.toString());
-		            }
+		        // Define other parameters for testing
+		        Date date_jour = Date.valueOf("2024-11-09"); // Use java.sql.Date for date_jour
+		        Time heure_debut = Time.valueOf("08:00:00"); // Use java.sql.Time for heure_debut
+		        Time heure_fin = Time.valueOf("10:00:00"); 
+		        int id_filiere = 2;
+		        int element_id = 1;
 
-		        } catch (Exception e) {
-		            e.printStackTrace();
-		        }*/
+		        Absence abs = new Absence();
+		        abs.setCne_etudiants(cne_etudiants);
+		        abs.setDate(date_jour);
+		        abs.setHeure_debut(heure_debut);
+		        abs.setHeure_fine(heure_fin);
+		        abs.setFilier_id(id_filiere);
+		        abs.setElement_id(element_id);
+
+		        // Call the absence method
+		        boolean result = professeurDao.absence(abs);
+
+		        // Output result for testing
+		        System.out.println("Absence recorded: " + result);
+
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		    }*/
 			
 		} catch(Exception e) {
 			e.printStackTrace();
