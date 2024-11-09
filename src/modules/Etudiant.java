@@ -163,6 +163,9 @@ public class Etudiant extends User{
 		this.cni_user = cni_user;
 	}
 	
+	public String toString() {
+		return cne+" "+nom+" "+prenom;
+	}
 	
 	
 }

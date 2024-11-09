@@ -68,9 +68,9 @@ public class User {
 		this.dateNaissance = dateNaissance;
 	}
 	
-	public String toString() {
-		return "Nom Complete"+nom+" "+prenom;
-	}
+	/*public String toString() {
+		return " "+nom+" "+prenom;
+	}*/
 
 	public String getCni() {
 		return cni;

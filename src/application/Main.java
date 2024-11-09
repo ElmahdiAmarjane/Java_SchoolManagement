@@ -1,8 +1,12 @@
 package application;
 	
+import java.util.List;
+
+import dao.EtudiantDao;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import modules.Etudiant;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -13,7 +17,7 @@ public class Main extends Application {
 	private void showMainApplication() throws Exception {
 		
         // Load your main application FXML and show the main window
-        FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("/views/addFilier.fxml"));
+        FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("/views/presence.fxml"));
         Parent mainRoot = mainLoader.load();
         Scene mainScene = new Scene(mainRoot,800,500);
         Stage mainStage = new Stage();
@@ -35,6 +39,21 @@ public class Main extends Application {
 			primaryStage.show();*/
 			
 			showMainApplication();
+			
+			/* try {
+		            EtudiantDao etudiantDao = new EtudiantDao();
+
+		            // Fetch all students for id_filier = 1
+		            List<Etudiant> etudiants = etudiantDao.selectAllEtudiants(1);
+
+		            // Print each student's details
+		            for (Etudiant etd : etudiants) {
+		                System.out.println(etd.toString());
+		            }
+
+		        } catch (Exception e) {
+		            e.printStackTrace();
+		        }*/
 			
 		} catch(Exception e) {
 			e.printStackTrace();
