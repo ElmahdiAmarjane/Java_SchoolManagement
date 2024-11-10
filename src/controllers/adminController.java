@@ -1,20 +1,29 @@
 package controllers;
 
+import java.io.File;
 import java.util.function.Predicate;
 
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 public class adminController {
 	
+	
+	@FXML
+	private AnchorPane mainPane;
 	
 	@FXML
 	 private HBox chatMenuBtn ;
@@ -79,8 +88,45 @@ public class adminController {
 	@FXML
 	private AnchorPane studentNavMenu ;
 	//FIN TABLE STUDENT
-	private Line line1;
 	
+	
+	///////////
+	 @FXML
+	 private AnchorPane addStudentFin;
+	 @FXML
+	 private AnchorPane addStudentDocs;
+	 @FXML
+	 private AnchorPane addStudentInfoAcad;
+	 @FXML
+	 private AnchorPane addStudentInfoPers;
+	 @FXML
+	 private Button btnNext;
+	 @FXML
+	 private Button btnBack;
+	///////////
+	 
+	 @FXML
+	 private ImageView profileViewImage;
+	///////////
+	 @FXML
+	 private Button btnChooseFileCIN;
+	 @FXML
+	 private Button btnChooseFileBac;
+	 @FXML
+	 private Button btnChooseFileNoteBac;
+	 @FXML
+	 private Button btnChooseFileBac2;
+	 @FXML
+	 private Button btnChooseFileNoteBac2;
+	 
+	 
+	 //////////
+	 @FXML
+	 private AnchorPane studentNavMenu1;
+	 @FXML
+	 private AnchorPane studentNavMenu2;
+	 
+	 //////////
 	@FXML
 	public void professorPaneToFront() {
 		professorPane.toFront();
@@ -102,12 +148,14 @@ public class adminController {
 	@FXML
 	public void addStudentPaneToFront() {
 		addStudentPane.toFront();	
-		updateLinePosition(addStudentPane);
+		studentNavMenu2.toFront();
+		//updateLinePosition(addStudentPane);
 	}
 	@FXML
 	public void listStudentPaneToFront() {
 		listStudentPane.toFront();
-		updateLinePosition(listStudentPane);
+		studentNavMenu1.toFront();
+		//updateLinePosition(listStudentPane);
 	}
 	
 	@FXML
@@ -131,34 +179,152 @@ public class adminController {
 	    colPrenom.prefWidthProperty().bind(studentsTable.widthProperty().multiply(0.2));
 	    colFilliere.prefWidthProperty().bind(studentsTable.widthProperty().multiply(0.15));
 	    colCNE.prefWidthProperty().bind(studentsTable.widthProperty().multiply(0.15));
-	    
-	    line1 = new Line();
-	    // Set line color and width
-	    line1.setStroke(Color.WHITE); // Set line color
-	    line1.setStrokeWidth(3);     // Set line width
-	    studentNavMenu.getChildren().add(line1);
-	    
-//just to initialize the line for first time
-	    updateLinePosition(listStudentPane);
+	  
 	}
 	
-	public void updateLinePosition(AnchorPane activePane) {
-		if(activePane == addStudentPane) {
-			 line1.setStartX(190); // Starting X position of the line
-			    line1.setStartY(40); // Starting Y position of the line
-			    line1.setEndX(305);  // Ending X position of the line
-			    line1.setEndY(40);   // Ending Y position of the line (same as start to make it horizontal)  
-			
+	
+	
+	
+	public void switchToFrontBetweenAddStudentsPane() {
+		
+		System.out.println("LASTPANE : "+addStudentPane.getChildren().getLast().getId());
+		if("addStudentInfoPers".equals(addStudentPane.getChildren().getLast().getId())  ) {
+			addStudentInfoAcad.toFront();
 		}
-		else if(activePane == listStudentPane) {
-			 // Set line properties
-		    line1.setStartX(50); // Starting X position of the line
-		    line1.setStartY(40); // Starting Y position of the line
-		    line1.setEndX(150);  // Ending X position of the line
-		    line1.setEndY(40);   // Ending Y position of the line (same as start to make it horizontal)  
-			
+		else if("addStudentInfoAcad".equals(addStudentPane.getChildren().getLast().getId())) {
+			addStudentDocs.toFront();
+		}else if("addStudentDocs".equals(addStudentPane.getChildren().getLast().getId()) ) {
+			addStudentFin.toFront();
+		}else if("addStudentFin".equals(addStudentPane.getChildren().getLast().getId())) {
+			System.out.println("NO NEXT!");
 		}
+		   
 	}
+	public void switchToBackBetweenAddStudentsPane() {
+		
+		System.out.println("LASTPANE : "+addStudentPane.getChildren().getLast().getId());
+		if("addStudentInfoPers".equals(addStudentPane.getChildren().getLast().getId()) ) {
+			System.out.println("NO BACK!");
+		}
+		else if("addStudentInfoAcad".equals(addStudentPane.getChildren().getLast().getId())) {
+			addStudentInfoPers.toFront();
+		}else if("addStudentDocs".equals(addStudentPane.getChildren().getLast().getId())) {
+			addStudentInfoAcad.toFront();
+		}else if("addStudentFin".equals(addStudentPane.getChildren().getLast().getId())) {
+			addStudentDocs.toFront();
+		}
+		   
+	}
+	
+	public void chooseProfileImage() {
+		 FileChooser fileChooser = new FileChooser();
+		    fileChooser.getExtensionFilters().addAll(
+		        new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg")
+		    );
+
+		    File selectedFile = fileChooser.showOpenDialog(mainPane.getScene().getWindow());
+
+		    if (selectedFile != null) {
+		        System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+		        Image image = new Image(selectedFile.toURI().toString());
+		        profileViewImage.setImage(image);
+		    } else {
+		        System.out.println("No file selected.");
+		    }
+		    
+
+	}
+	
+	public void chooseFileCIN() {
+		 FileChooser fileChooser = new FileChooser();
+		    fileChooser.getExtensionFilters().addAll(
+		        new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg","*.pdf")
+		    );
+
+		    File selectedFile = fileChooser.showOpenDialog(mainPane.getScene().getWindow());
+
+		    if (selectedFile != null) {
+		        System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+		        btnChooseFileCIN.setText(selectedFile.getName());
+		        btnChooseFileCIN.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+		    } else {
+		        System.out.println("No file selected.");
+		        btnChooseFileCIN.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+		    }
+	}
+	public void chooseFileBac() {
+		 FileChooser fileChooser = new FileChooser();
+		    fileChooser.getExtensionFilters().addAll(
+		        new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg","*.pdf")
+		    );
+
+		    File selectedFile = fileChooser.showOpenDialog(mainPane.getScene().getWindow());
+
+		    if (selectedFile != null) {
+		        System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+		        btnChooseFileBac.setText(selectedFile.getName());
+		        btnChooseFileBac.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+		    } else {
+		        System.out.println("No file selected.");
+		        btnChooseFileBac.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+		    }
+	}
+	public void chooseFileNoteBac() {
+		 FileChooser fileChooser = new FileChooser();
+		    fileChooser.getExtensionFilters().addAll(
+		        new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg","*.pdf")
+		    );
+
+		    File selectedFile = fileChooser.showOpenDialog(mainPane.getScene().getWindow());
+
+		    if (selectedFile != null) {
+		        System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+		        btnChooseFileNoteBac.setText(selectedFile.getName());
+		        btnChooseFileNoteBac.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+		    } else {
+		        System.out.println("No file selected.");
+		        btnChooseFileNoteBac.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+		    }
+	}
+	public void chooseFileBac2() {
+		 FileChooser fileChooser = new FileChooser();
+		    fileChooser.getExtensionFilters().addAll(
+		        new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg","*.pdf")
+		    );
+
+		    File selectedFile = fileChooser.showOpenDialog(mainPane.getScene().getWindow());
+
+		    if (selectedFile != null) {
+		        System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+		        btnChooseFileBac2.setText(selectedFile.getName());
+		        btnChooseFileBac2.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+		    } else {
+		        System.out.println("No file selected.");
+		        btnChooseFileBac2.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+		    }
+	}
+	public void chooseFileNoteBac2() {
+		 FileChooser fileChooser = new FileChooser();
+		    fileChooser.getExtensionFilters().addAll(
+		        new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg","*.pdf")
+		    );
+
+		    File selectedFile = fileChooser.showOpenDialog(mainPane.getScene().getWindow());
+
+		    if (selectedFile != null) {
+		        System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+		        btnChooseFileNoteBac2.setText(selectedFile.getName());
+		        btnChooseFileNoteBac2.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+		    } else {
+		        System.out.println("No file selected.");
+		        btnChooseFileNoteBac2.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+		    }
+	}
+	
+	
+	
+	
+	
 	
 	
 	
