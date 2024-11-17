@@ -14,6 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
@@ -127,6 +128,11 @@ public class adminController {
 	 private AnchorPane studentNavMenu2;
 	 
 	 //////////
+	 @FXML
+	 private ImageView viewImageProfile;
+	 
+	 
+	 ///////////
 	@FXML
 	public void professorPaneToFront() {
 		professorPane.toFront();
@@ -179,6 +185,20 @@ public class adminController {
 	    colPrenom.prefWidthProperty().bind(studentsTable.widthProperty().multiply(0.2));
 	    colFilliere.prefWidthProperty().bind(studentsTable.widthProperty().multiply(0.15));
 	    colCNE.prefWidthProperty().bind(studentsTable.widthProperty().multiply(0.15));
+	    
+	    /// set imageprofile rounded 
+	    // Load the image
+        Image image = new Image("https://img.freepik.com/vecteurs-libre/cercle-bleu-utilisateur-blanc_78370-4707.jpg?semt=ais_hybrid");
+        viewImageProfile.setImage(image);
+
+        // Set the size of the ImageView
+        viewImageProfile.setFitWidth(40);
+        viewImageProfile.setFitHeight(40);
+        viewImageProfile.setPreserveRatio(true);
+
+        // Apply a circular clip
+        Circle clip = new Circle(20,20,20); // Adjust radius as needed
+        viewImageProfile.setClip(clip);
 	  
 	}
 	
