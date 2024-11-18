@@ -317,8 +317,8 @@
                         <Text layoutX="770.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S2" />
                         <TextField fx:id="typeBac2" layoutX="527.0" layoutY="149.0" prefHeight="40.0" prefWidth="200.0" />
                         <TextField fx:id="university" layoutX="527.0" layoutY="216.0" prefHeight="40.0" prefWidth="200.0" />
-                        <TextField fx:id="moyenneBac2" layoutX="527.0" layoutY="279.0" prefHeight="40.0" prefWidth="200.0" />
-                        <TextField fx:id="etablissment" layoutX="527.0" layoutY="341.0" prefHeight="40.0" prefWidth="200.0" />
+                        <TextField fx:id="etablisment" layoutX="527.0" layoutY="279.0" prefHeight="40.0" prefWidth="200.0" />
+                        <TextField fx:id="moyenneBac2" layoutX="527.0" layoutY="341.0" prefHeight="40.0" prefWidth="200.0" />
                         <Text layoutX="454.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type Bac+2" />
                         <Text layoutX="461.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="University " />
                         <Text layoutX="463.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Moyenne" />
@@ -378,8 +378,8 @@
                         <Text layoutX="818.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
                         <DatePicker fx:id="date_naissance" layoutX="557.0" layoutY="149.0" onAction="#selectDateNaissance" />
                         <TextField fx:id="email" layoutX="557.0" layoutY="216.0" prefHeight="40.0" prefWidth="200.0" />
-                        <TextField fx:id="cni" layoutX="557.0" layoutY="279.0" prefHeight="40.0" prefWidth="200.0" />
-                        <TextField fx:id="tel" layoutX="557.0" layoutY="341.0" prefHeight="40.0" prefWidth="200.0" />
+                        <TextField fx:id="tel" layoutX="557.0" layoutY="279.0" prefHeight="40.0" prefWidth="200.0" />
+                        <TextField fx:id="cni" layoutX="557.0" layoutY="341.0" prefHeight="40.0" prefWidth="200.0" />
                         <Text layoutX="472.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Naissance" />
                         <Text layoutX="497.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
                         <Text layoutX="493.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CNI" />
@@ -425,6 +425,8 @@
                               <Text fill="#656363" layoutX="778.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fin" />
                            </children>
                         </AnchorPane>
+                        <ComboBox fx:id="filier" layoutX="878.0" layoutY="280.0" prefHeight="40.0" prefWidth="209.0" />
+      					<Text layoutX="813.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filière" />
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="addStudentDocs" layoutX="11.0" layoutY="49.0" prefHeight="452.0" prefWidth="1115.0" style="-fx-border-color: #FFDDEE; -fx-background-color: #DDFFAA;">

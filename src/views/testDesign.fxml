@@ -1,10 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
 
-<Pane fx:id="loginview" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.authController">
+<Pane fx:id="loginview" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('@../../assets/background.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.authController">
    <children>
-      <DatePicker fx:id="date_chose" layoutX="158.0" layoutY="133.0" onAction="#selectDateNaissance" />
+      <ComboBox fx:id="nationalite" layoutX="878.0" layoutY="146.0" prefHeight="40.0" prefWidth="209.0" />
+      <TextField fx:id="password" layoutX="878.0" layoutY="213.0" prefHeight="40.0" prefWidth="209.0" />
+      <Text layoutX="816.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nationalité" />
+      <Text layoutX="818.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
+      <DatePicker fx:id="date_naissance" layoutX="557.0" layoutY="149.0" onAction="#selectDateNaissance" />
+      <TextField fx:id="email" layoutX="557.0" layoutY="216.0" prefHeight="40.0" prefWidth="200.0" />
+      <TextField fx:id="tel" layoutX="557.0" layoutY="279.0" prefHeight="40.0" prefWidth="200.0" />
+      <TextField fx:id="cni" layoutX="557.0" layoutY="341.0" prefHeight="40.0" prefWidth="200.0" />
+      <Text layoutX="472.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Naissance" />
+      <Text layoutX="497.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
+      <Text layoutX="493.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CNI" />
+      <Text layoutX="497.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tel" />
+      <TextField fx:id="nom" layoutX="244.0" layoutY="149.0" prefHeight="40.0" prefWidth="200.0" />
+      <TextField fx:id="prenom" layoutX="244.0" layoutY="216.0" prefHeight="40.0" prefWidth="200.0" />
+      <ComboBox fx:id="sexe" layoutX="244.0" layoutY="279.0" prefHeight="40.0" prefWidth="200.0" />
+      <TextField fx:id="cne" layoutX="244.0" layoutY="341.0" prefHeight="40.0" prefWidth="200.0" />
+      <Text layoutX="178.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" />
+      <Text layoutX="178.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom" />
+      <Text layoutX="178.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sexe" />
+      <Text layoutX="178.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CNE" />
+      <ImageView fx:id="profileViewImage" fitHeight="101.0" fitWidth="121.0" layoutX="23.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../assets/me2.jpeg" />
+         </image>
+      </ImageView>
+      <Button fx:id="chooseProfileImageBtn" layoutX="25.0" layoutY="261.0" mnemonicParsing="false" onAction="#chooseProfileImage" text="Choisir Image" />
+      <AnchorPane layoutX="55.0" layoutY="12.0" prefHeight="66.0" prefWidth="1007.0" style="-fx-background-color: #e3e2e1;" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="54.0" AnchorPane.topAnchor="11.0">
+         <children>
+            <Text layoutX="204.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations personnelles">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="359.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../assets/arrow.png" />
+               </image>
+            </ImageView>
+            <Text fill="#656363" layoutX="406.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations acadimiques" />
+            <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="556.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../assets/arrow.png" />
+               </image>
+            </ImageView>
+            <Text fill="#656363" layoutX="603.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="documents fournies" />
+            <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="725.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../assets/arrow.png" />
+               </image>
+            </ImageView>
+            <Text fill="#656363" layoutX="778.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fin" />
+         </children>
+      </AnchorPane>
+      <ComboBox fx:id="filier" layoutX="878.0" layoutY="280.0" prefHeight="40.0" prefWidth="209.0" />
+      <Text layoutX="813.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filière" />
    </children>
 </Pane>
