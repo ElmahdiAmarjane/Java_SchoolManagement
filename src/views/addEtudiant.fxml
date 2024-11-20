@@ -1,187 +1,278 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="1359.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddEtudiant">
+<AnchorPane fx:id="addStudentPane" xmlns:fx="http://javafx.com/fxml/1"
+AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0"  
+			xmlns="http://javafx.com/javafx/23.0.1" 
+			layoutX="11.0" layoutY="49.0" prefHeight="452.0" prefWidth="1115.0" 
+			style="-fx-border-color: #FFDDEE; -fx-background-color: #DDFFAA"
+			fx:controller="controllers.AddStudentsController">
+               <children>
+                  <Text layoutX="14.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Students" wrappingWidth="208.7734375">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="btnNext" layoutX="1021.0" layoutY="510.0" mnemonicParsing="false" onAction="#switchToFrontBetweenAddStudentsPane" prefHeight="33.0" prefWidth="81.0" text="Suivant" AnchorPane.bottomAnchor="44.0" AnchorPane.rightAnchor="30.0" />
+                  <Button fx:id="btnBack" layoutX="32.0" layoutY="510.0" mnemonicParsing="false" onAction="#switchToBackBetweenAddStudentsPane" prefHeight="33.0" prefWidth="81.0" text="Précedent" AnchorPane.bottomAnchor="44.0" />
+                  
+   
+                  <Text layoutX="14.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Students" wrappingWidth="208.7734375">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="btnNext" layoutX="1021.0" layoutY="510.0" mnemonicParsing="false" onAction="#switchToFrontBetweenAddStudentsPane" prefHeight="33.0" prefWidth="81.0" text="Suivant" AnchorPane.bottomAnchor="44.0" AnchorPane.rightAnchor="30.0" />
+                  <Button fx:id="btnBack" layoutX="32.0" layoutY="510.0" mnemonicParsing="false" onAction="#switchToBackBetweenAddStudentsPane" prefHeight="33.0" prefWidth="81.0" text="Précedent" AnchorPane.bottomAnchor="44.0" />               
+                  
+   
+	<AnchorPane fx:id="addStudentInfoPers" xmlns:fx="http://javafx.com/fxml/1"  xmlns="http://javafx.com/javafx/23.0.1" layoutX="11.0" layoutY="49.0" prefHeight="452.0" prefWidth="1115.0" style="-fx-border-color: #FFDDEE; -fx-background-color: #DDFFAA" >
 
-   <children>
-      <Pane layoutY="-87.0" prefHeight="791.0" prefWidth="57.0" style="-fx-background-color: #7d7876;" />
-      <VBox alignment="CENTER" layoutX="431.0" layoutY="14.0" prefHeight="128.0" prefWidth="119.0" spacing="10">
-         <children>
-            <ImageView fx:id="userImageView" fitHeight="79.0" fitWidth="107.0" preserveRatio="true" />
-            <Button onAction="#handleSelectImage" text="Select Image" />
-         </children>
-      </VBox>
-      <Text layoutX="569.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-      <Pane layoutX="55.0" layoutY="142.0" prefHeight="30.0" prefWidth="1306.0" style="-fx-background-color: #559ef5;" />
-      <Text layoutX="87.0" layoutY="203.0" text="Nom :" />
-      <Text layoutX="84.0" layoutY="240.0" text="Prenom" />
-      <TextField fx:id="prenom" layoutX="188.0" layoutY="214.0" prefHeight="30.0" prefWidth="250.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="nom" layoutX="185.0" layoutY="176.0" prefHeight="18.0" prefWidth="256.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-      <Text layoutX="485.0" layoutY="249.0" text="Email" />
-      <Text layoutX="66.0" layoutY="285.0" text="Date De Naissance" />
-      <TextField fx:id="email" layoutX="589.0" layoutY="220.0" prefHeight="30.0" prefWidth="285.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="date_naissance" layoutX="185.0" layoutY="258.0" prefHeight="30.0" prefWidth="256.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-      <ComboBox fx:id="sexe" layoutX="192.0" layoutY="337.0" prefHeight="26.0" prefWidth="256.0" />
-      <Text layoutX="80.0" layoutY="354.0" text="Sexe " />
-      <Pane layoutX="56.0" layoutY="378.0" prefHeight="30.0" prefWidth="1306.0" style="-fx-background-color: #559ef5;" />
-      <Text layoutX="73.0" layoutY="448.0" text="Bac" />
-      <Text layoutX="73.0" layoutY="486.0" text="Note Bac" />
-      <TextField fx:id="bac_note" layoutX="181.0" layoutY="457.0" prefHeight="30.0" prefWidth="250.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="bac_type" layoutX="175.0" layoutY="419.0" prefHeight="30.0" prefWidth="256.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-      <Text layoutX="73.0" layoutY="528.0" text="BAC+2" />
-      <Text layoutX="73.0" layoutY="573.0" text="Ecole" />
-      <TextField fx:id="bac2_type" layoutX="175.0" layoutY="508.0" prefHeight="30.0" prefWidth="256.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="ecole" layoutX="175.0" layoutY="544.0" prefHeight="30.0" prefWidth="256.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-      <Text layoutX="72.0" layoutY="613.0" text="Filiére" />
-      <TextField fx:id="filier" layoutX="175.0" layoutY="593.0" prefHeight="30.0" prefWidth="256.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-      <Text layoutX="480.0" layoutY="454.0" text="Note Bac+2" />
-      <Text layoutX="483.0" layoutY="501.0" text="S1" />
-      <TextField fx:id="s1" layoutX="619.0" layoutY="481.0" prefHeight="30.0" prefWidth="250.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="bac2_note" layoutX="616.0" layoutY="434.0" prefHeight="30.0" prefWidth="256.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-      <Text layoutX="483.0" layoutY="543.0" text="S2" />
-      <Text layoutX="483.0" layoutY="582.0" text="S3" />
-      <TextField fx:id="s2" layoutX="616.0" layoutY="523.0" prefHeight="30.0" prefWidth="256.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="s3" layoutX="616.0" layoutY="562.0" prefHeight="30.0" prefWidth="256.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-      <Text layoutX="483.0" layoutY="628.0" text="S4" />
-      <TextField fx:id="s4" layoutX="608.0" layoutY="608.0" prefHeight="30.0" prefWidth="256.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-      <Button fx:id="btn_suiver" layoutX="1167.0" layoutY="649.0" mnemonicParsing="false" onAction="#btn_aaddEtd" prefHeight="30.0" prefWidth="159.0" text="Suivant" />
-      <Text layoutX="489.0" layoutY="210.0" text="CNE" />
-      <TextField fx:id="cne" layoutX="589.0" layoutY="190.0" prefHeight="26.0" prefWidth="256.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-      <Text layoutX="480.0" layoutY="354.0" text="Nationaliter" />
-      <ComboBox fx:id="nationaliter" layoutX="608.0" layoutY="329.0" prefHeight="26.0" prefWidth="256.0" />
-      <VBox alignment="CENTER" layoutX="967.0" layoutY="199.0" prefHeight="128.0" prefWidth="119.0" spacing="10">
-         <children>
-            <ImageView fx:id="imageCartNational" fitHeight="79.0" fitWidth="107.0" preserveRatio="true" />
-            <Button onAction="#selectCartNationl" text="Carte Nationalle" />
-         </children>
-      </VBox>
-      <VBox alignment="CENTER" layoutX="1157.0" layoutY="199.0" prefHeight="128.0" prefWidth="119.0" spacing="10">
-         <children>
-            <ImageView fx:id="imageExtrai" fitHeight="79.0" fitWidth="107.0" preserveRatio="true" />
-            <Button onAction="#selectExtrai" prefHeight="30.0" prefWidth="85.0" text="Extrais" />
-         </children>
-      </VBox>
-      <VBox alignment="CENTER" layoutX="947.0" layoutY="432.0" prefHeight="99.0" prefWidth="91.0" spacing="10">
-         <children>
-            <ImageView fx:id="imageBac" fitHeight="52.0" fitWidth="83.0" preserveRatio="true" />
-            <Button onAction="#selectBac" text="Bac" />
-         </children>
-      </VBox>
-      <VBox alignment="CENTER" layoutX="1059.0" layoutY="522.0" prefHeight="105.0" prefWidth="91.0" spacing="10">
-         <children>
-            <ImageView fx:id="imageS3" fitHeight="52.0" fitWidth="83.0" preserveRatio="true" />
-            <Button minWidth="46.0" onAction="#selectS3" prefHeight="29.0" prefWidth="46.0" text="S3" />
-         </children>
-      </VBox>
-      <VBox alignment="CENTER" layoutX="1179.0" layoutY="521.0" prefHeight="105.0" prefWidth="91.0" spacing="10">
-         <children>
-            <ImageView fx:id="imageS4" fitHeight="52.0" fitWidth="83.0" preserveRatio="true" />
-            <Button onAction="#selectS4" text="S4" />
-         </children>
-      </VBox>
-      <VBox alignment="CENTER" layoutX="954.0" layoutY="522.0" prefHeight="105.0" prefWidth="91.0" spacing="10">
-         <children>
-            <ImageView fx:id="imageS2" fitHeight="52.0" fitWidth="83.0" preserveRatio="true" />
-            <Button onAction="#selectS2" text="S2" />
-         </children>
-      </VBox>
-      <VBox alignment="CENTER" layoutX="1059.0" layoutY="431.0" prefHeight="99.0" prefWidth="91.0" spacing="10">
-         <children>
-            <ImageView fx:id="imageBac2" fitHeight="52.0" fitWidth="83.0" preserveRatio="true" />
-            <Button onAction="#selectBac2" text="Bac+2" />
-         </children>
-      </VBox>
-      <VBox alignment="CENTER" layoutX="1179.0" layoutY="431.0" prefHeight="99.0" prefWidth="91.0" spacing="10">
-         <children>
-            <ImageView fx:id="imageS1" fitHeight="52.0" fitWidth="83.0" preserveRatio="true" />
-            <Button onAction="#selectS1" text="S1" />
-         </children>
-      </VBox>
-      <TextField fx:id="cni" layoutX="192.0" layoutY="298.0" prefHeight="30.0" prefWidth="256.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-      <Text layoutX="83.0" layoutY="325.0" text="CNI" />
-      <TextField fx:id="tele" layoutX="589.0" layoutY="258.0" prefHeight="30.0" prefWidth="285.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-      <Text layoutX="494.0" layoutY="285.0" text="Tel" />
-      <TextField fx:id="password" layoutX="589.0" layoutY="298.0" prefHeight="30.0" prefWidth="285.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-      <Text layoutX="485.0" layoutY="325.0" text="Password" />
-   </children>
-</Pane>
+<children>
+                        <ComboBox fx:id="nationalite" layoutX="878.0" layoutY="146.0" prefHeight="40.0" prefWidth="209.0" />
+                        <TextField fx:id="password" layoutX="878.0" layoutY="213.0" prefHeight="40.0" prefWidth="209.0" />
+                        <Text layoutX="816.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nationalité" />
+                        <Text layoutX="818.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
+                        <DatePicker fx:id="date_naissance" layoutX="557.0" layoutY="149.0" />
+                        <TextField fx:id="email" layoutX="557.0" layoutY="216.0" prefHeight="40.0" prefWidth="200.0" />
+                        <TextField fx:id="tel" layoutX="557.0" layoutY="279.0" prefHeight="40.0" prefWidth="200.0" />
+                        <TextField fx:id="cni" layoutX="557.0" layoutY="341.0" prefHeight="40.0" prefWidth="200.0" />
+                        <Text layoutX="472.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Naissance" />
+                        <Text layoutX="497.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
+                        <Text layoutX="493.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CNI" />
+                        <Text layoutX="497.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tel" />
+                        <TextField fx:id="nom" layoutX="244.0" layoutY="149.0" prefHeight="40.0" prefWidth="200.0" />
+                        <TextField fx:id="prenom" layoutX="244.0" layoutY="216.0" prefHeight="40.0" prefWidth="200.0" />
+                        <ComboBox fx:id="sexe" layoutX="244.0" layoutY="279.0" prefHeight="40.0" prefWidth="200.0" />
+                        <TextField fx:id="cne" layoutX="244.0" layoutY="341.0" prefHeight="40.0" prefWidth="200.0" />
+                        <Text layoutX="178.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" />
+                        <Text layoutX="178.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom" />
+                        <Text layoutX="178.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sexe" />
+                        <Text layoutX="178.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CNE" />
+                        <AnchorPane layoutX="55.0" layoutY="12.0" prefHeight="66.0" prefWidth="1007.0" style="-fx-background-color: #e3e2e1;" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="54.0" AnchorPane.topAnchor="11.0">
+                           <children>
+                              <Text layoutX="204.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations personnelles">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="359.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/arrow.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="#656363" layoutX="406.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations acadimiques" />
+                              <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="556.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/arrow.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="#656363" layoutX="603.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="documents fournies" />
+                              <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="725.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/arrow.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="#656363" layoutX="778.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fin" />
+                           </children>
+                        </AnchorPane>
+                        <ComboBox fx:id="filier" layoutX="878.0" layoutY="280.0" prefHeight="40.0" prefWidth="209.0" />
+      					<Text layoutX="813.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filière" />
+      					
+      					<VBox alignment="CENTER" layoutX="24.0" layoutY="172.0" prefHeight="128.0" prefWidth="119.0" spacing="10">
+			               <children>
+			                  <ImageView fx:id="userImageView" fitHeight="79.0" fitWidth="107.0" preserveRatio="true" />
+			                  <Button onAction="#handleSelectImage" text="Select Image" />
+			               </children>
+			            </VBox>
+                        
+                     </children>
+</AnchorPane>
+
+
+
+<AnchorPane fx:id="addStudentInfoAcad" xmlns:fx="http://javafx.com/fxml/1"  xmlns="http://javafx.com/javafx/23.0.1" layoutX="11.0" layoutY="49.0" prefHeight="452.0" prefWidth="1115.0" style="-fx-border-color: #FFDDEE; -fx-background-color: #DDFFAA">
+         
+<children>
+            <ComboBox fx:id="anneeS1"  layoutX="805.0" layoutY="146.0"  />
+                        <Text layoutX="770.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S1" />
+                        <Text layoutX="770.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S2" />
+                        <TextField fx:id="typeBac2" layoutX="527.0" layoutY="149.0" prefHeight="40.0" prefWidth="200.0" />
+                        <TextField fx:id="university" layoutX="527.0" layoutY="216.0" prefHeight="40.0" prefWidth="200.0" />
+                        <TextField fx:id="etablisment" layoutX="527.0" layoutY="279.0" prefHeight="40.0" prefWidth="200.0" />
+                        <TextField fx:id="moyenneBac2" layoutX="527.0" layoutY="341.0" prefHeight="40.0" prefWidth="200.0" />
+                        <Text layoutX="454.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type Bac+2" />
+                        <Text layoutX="461.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="University " />
+                        <Text layoutX="463.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Moyenne" />
+                        <Text layoutX="452.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Etablissment" />
+                        <ComboBox fx:id="anneBac"  layoutX="168.0" layoutY="149.0"/>
+                        <TextField fx:id="bacAcadimie" layoutX="168.0" layoutY="216.0" prefHeight="40.0" prefWidth="200.0" />
+                        <TextField fx:id="serieBac" layoutX="168.0" layoutY="279.0" prefHeight="40.0" prefWidth="200.0" />
+                        <TextField fx:id="MoyeeneBac" layoutX="168.0" layoutY="341.0" prefHeight="40.0" prefWidth="200.0" />
+                        <Text layoutX="51.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Annee Baccaleauraut" />
+                        <Text layoutX="87.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bac Acadimie" />
+                        <Text layoutX="102.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Série Bac" />
+                        <Text layoutX="103.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Moyeene" />
+                        <AnchorPane layoutX="55.0" layoutY="12.0" prefHeight="66.0" prefWidth="1007.0" style="-fx-background-color: #e3e2e1;" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="54.0" AnchorPane.topAnchor="11.0">
+                           <children>
+                              <Text fill="#656363" layoutX="204.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations personnelles" />
+                              <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="359.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/arrow.png" />
+                                 </image>
+                              </ImageView>
+                              <Text layoutX="402.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations acadimiques">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="556.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/arrow.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="#656363" layoutX="603.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="documents fournies" />
+                              <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="725.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/arrow.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="#656363" layoutX="778.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fin" />
+                           </children>
+                        </AnchorPane>
+                        <TextField fx:id="s1" alignment="CENTER" layoutX="911.0" layoutY="146.0" prefHeight="40.0" prefWidth="96.0" promptText="Note" />
+                        <ComboBox fx:id="anneeS4"  layoutX="805.0" layoutY="341.0"/>
+                        <TextField fx:id="s4" alignment="CENTER" layoutX="911.0" layoutY="339.0" prefHeight="40.0" prefWidth="96.0" promptText="Note" />
+                        <ComboBox fx:id="anneeS3" layoutX="805.0" layoutY="280.0"  />
+                        <TextField fx:id="s3" alignment="CENTER" layoutX="911.0" layoutY="280.0" prefHeight="40.0" prefWidth="96.0" promptText="Note" />
+                        <ComboBox fx:id="anneeS2"  layoutX="805.0" layoutY="216.0" />
+                        <TextField fx:id="s2" alignment="CENTER" layoutX="911.0" layoutY="216.0" prefHeight="40.0" prefWidth="96.0" promptText="Note" />
+                        <Text layoutX="770.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S4" />
+                        <Text layoutX="770.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S3" />  
+                        
+                                  
+</children>
+
+</AnchorPane>
+
+
+<AnchorPane fx:id="addStudentDocs" xmlns:fx="http://javafx.com/fxml/1"  
+			xmlns="http://javafx.com/javafx/23.0.1" 
+			layoutX="11.0" layoutY="49.0" prefHeight="452.0" prefWidth="1115.0" 
+			style="-fx-border-color: #FFDDEE; -fx-background-color: #DDFFAA"
+			>
+            
+
+    <children>
+        <!-- Header Section -->
+        <AnchorPane layoutX="55.0" layoutY="12.0" prefHeight="66.0" prefWidth="1007.0" style="-fx-background-color: #e3e2e1;">
+            <children>
+                <Text layoutX="204.0" layoutY="38.0" fill="#656363" text="Informations personnelles" />
+                <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="359.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../assets/arrow.png" />
+                    </image>
+                </ImageView>
+                <Text layoutX="402.0" layoutY="39.0" fill="#656363" text="Informations académiques" />
+                <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="556.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../assets/arrow.png" />
+                    </image>
+                </ImageView>
+                <Text layoutX="603.0" layoutY="39.0" text="Documents fournis" style="-fx-font-weight: bold;" />
+                <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="725.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../assets/arrow.png" />
+                    </image>
+                </ImageView>
+                <Text layoutX="778.0" layoutY="39.0" fill="#656363" text="Fin" />
+            </children>
+        </AnchorPane>
+
+        <!-- Labels and Buttons -->
+        <Text layoutX="84.0" layoutY="150.0" text="CNI" />
+        <Text layoutX="84.0" layoutY="205.0" text="Baccalauréat" />
+        <Text layoutX="84.0" layoutY="269.0" text="Relevé Note Bac" />
+        <Text layoutX="454.0" layoutY="150.0" text="Bac+2" />
+        <Text layoutX="454.0" layoutY="205.0" text="Relevé Notes S1" />
+        <Text layoutX="454.0" layoutY="248.0" text="Relevé Notes S2" />
+        <Text layoutX="454.0" layoutY="296.0" text="Relevé Notes S3" />
+        <Text layoutX="454.0" layoutY="341.0" text="Relevé Notes S4" />
+
+        <!-- File Chooser Buttons -->
+        <Button fx:id="btnChooseFileCIN" layoutX="183.0" layoutY="133.0" prefHeight="25.0" prefWidth="171.0" text="Choose File..." onAction="#chooseFileCNI" />
+        <Button fx:id="btnChooseFileBac" layoutX="183.0" layoutY="188.0" prefHeight="25.0" prefWidth="171.0" text="Choose File..." onAction="#chooseFileBac" />
+        <Button fx:id="btnChooseFileNoteBac" layoutX="187.0" layoutY="252.0" prefHeight="25.0" prefWidth="171.0" text="Choose File..." onAction="#chooseFileNoteBac" />
+        <Button fx:id="btnChooseFileBac2" layoutX="566.0" layoutY="133.0" prefHeight="25.0" prefWidth="171.0" text="Choose File..." onAction="#chooseFileBac2" />
+        <Button fx:id="btnChooseFileNoteS1" layoutX="566.0" layoutY="188.0" prefHeight="25.0" prefWidth="171.0" text="Choose File..." onAction="#chooseFileNoteS1" />
+        <Button fx:id="btnChooseFileNoteS2" layoutX="566.0" layoutY="231.0" prefHeight="25.0" prefWidth="171.0" text="Choose File..." onAction="#chooseFileNoteS2" />
+        <Button fx:id="btnChooseFileNoteS3" layoutX="566.0" layoutY="279.0" prefHeight="25.0" prefWidth="171.0" text="Choose File..." onAction="#chooseFileNoteS3" />
+        <Button fx:id="btnChooseFileNoteS4" layoutX="566.0" layoutY="324.0" prefHeight="25.0" prefWidth="171.0" text="Choose File..." onAction="#chooseFileNoteS4" />
+    </children>
+</AnchorPane>
+
+
+<AnchorPane fx:id="addStudentFin" xmlns:fx="http://javafx.com/fxml/1"  
+			xmlns="http://javafx.com/javafx/23.0.1" 
+			layoutX="11.0" layoutY="49.0" prefHeight="452.0" prefWidth="1115.0" 
+			style="-fx-border-color: #FFDDEE; -fx-background-color: #DDFFAA"
+			>
+            
+
+    <children>
+                        <Text layoutX="103.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <AnchorPane layoutX="55.0" layoutY="12.0" prefHeight="66.0" prefWidth="1007.0" style="-fx-background-color: #e3e2e1;" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="54.0" AnchorPane.topAnchor="11.0">
+                           <children>
+                              <Text fill="#656363" layoutX="204.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations personnelles" />
+                              <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="359.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/arrow.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="#656363" layoutX="402.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations acadimiques" />
+                              <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="556.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/arrow.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="#656363" layoutX="603.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Documents fournies" />
+                              <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="725.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/arrow.png" />
+                                 </image>
+                              </ImageView>
+                              <Text layoutX="778.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fin">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>                        
+                        
+                        <Button fx:id="enregistreBtn"  onAction="#AjouterEtudiantAction" layoutX="505.0" layoutY="391.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="105.0" style="-fx-background-color: #11FF11;" text="Enregistrer">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Button>
+                        
+                     </children>
+                     
+</AnchorPane>
+
+ </children>
+</AnchorPane>
