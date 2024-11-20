@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -62,6 +63,12 @@ public class adminController {
 	
 	@FXML 
 	 private Text listProfBtn;
+	
+	@FXML 
+	 private HBox  emploiTempsMenu;
+	
+	@FXML
+	  private AnchorPane emploiTempsPane;
 	// TABLE STUDENT 
 	
 	@FXML
@@ -133,6 +140,25 @@ public class adminController {
 	 
 	 
 	 ///////////
+	 @FXML
+	 private Pane emploiTempsProfBtn;
+	 @FXML
+	 private AnchorPane emploiTempsProfGrid;
+	 
+	 @FXML
+	 private Pane emploiTempsFilliereBtn;
+	 @FXML
+	 private AnchorPane emploiTempsFilliereGrid;
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 //////////
 	@FXML
 	public void professorPaneToFront() {
 		professorPane.toFront();
@@ -177,6 +203,16 @@ public class adminController {
 	    studentNavMenu.getChildren().removeLast();
 		
 	};
+	
+	@FXML
+	  public void emploiTempsPaneToFront() {
+		emploiTempsPane.toFront();
+	}
+	
+	
+	
+	
+	////////////////////////////
 	
 	public void initialize() {
 	    colNumber.prefWidthProperty().bind(studentsTable.widthProperty().multiply(0.15));
@@ -339,6 +375,20 @@ public class adminController {
 		        System.out.println("No file selected.");
 		        btnChooseFileNoteBac2.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
 		    }
+	}
+	
+	
+	
+	////////////////////////////////
+	
+	public void emploiTempsProfGridToFront(){
+		emploiTempsProfGrid.toFront();
+	}
+	
+	
+	public void emploiTempsFilliereGridToFront() {
+		System.out.print("fffffffffffffffffffffffffffff");
+		emploiTempsFilliereGrid.toFront();
 	}
 	
 	

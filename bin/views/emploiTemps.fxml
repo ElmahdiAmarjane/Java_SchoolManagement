@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          hgap="5" vgap="5" alignment="CENTER" style="-fx-padding: 10;">
+
+    <!-- Colonnes des horaires -->
+    <Label text="" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+    <Label text="8H30 - 10H15" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+    <Label text="10H30 - 12H15" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+    <Label text="14H30 - 16H15" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+    <Label text="16H30 - 18H15" GridPane.rowIndex="0" GridPane.columnIndex="4"/>
+
+    <!-- Lundi -->
+    <Label text="LUN" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+    <TextField promptText="Module (Salle)" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+    <TextField promptText="Module (Salle)" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+    <TextField promptText="Module (Salle)" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+    <TextField promptText="Module (Salle)" GridPane.rowIndex="1" GridPane.columnIndex="4"/>
+    
+   
+
+    <!-- Mardi -->
+    <Label text="MAR" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+    <TextField promptText="Module (Salle)" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+    <TextField promptText="Module (Salle)" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+    <TextField promptText="Module (Salle)" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+    <TextField promptText="Module (Salle)" GridPane.rowIndex="2" GridPane.columnIndex="4"/>
+
+    <!-- Mercredi -->
+    <Label text="MER" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+    <TextField promptText="Module (Salle)" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+    <TextField promptText="Module (Salle)" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
+    <TextField promptText="Module (Salle)" GridPane.rowIndex="3" GridPane.columnIndex="3"/>
+    <TextField promptText="Module (Salle)" GridPane.rowIndex="3" GridPane.columnIndex="4"/>
+
+    <!-- Jeudi -->
+    <Label text="JEU" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+    <TextField promptText="Module (Salle)" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+    <TextField promptText="Module (Salle)" GridPane.rowIndex="4" GridPane.columnIndex="2"/>
+    <TextField promptText="Module (Salle)" GridPane.rowIndex="4" GridPane.columnIndex="3"/>
+    <TextField promptText="Module (Salle)" GridPane.rowIndex="4" GridPane.columnIndex="4"/>
+
+    <!-- Vendredi -->
+    <Label text="VEN" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+    <TextField promptText="Module (Salle)" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+    <TextField promptText="Module (Salle)" GridPane.rowIndex="5" GridPane.columnIndex="2"/>
+    <TextField promptText="Module (Salle)" GridPane.rowIndex="5" GridPane.columnIndex="3"/>
+    <TextField promptText="Module (Salle)" GridPane.rowIndex="5" GridPane.columnIndex="4"/>
+
+    <!-- Samedi -->
+    <Label text="SAM" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+    <TextField promptText="Module (Salle)" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+    <TextField promptText="Module (Salle)" GridPane.rowIndex="6" GridPane.columnIndex="2"/>
+    <TextField promptText="Module (Salle)" GridPane.rowIndex="6" GridPane.columnIndex="3"/>
+    <TextField promptText="Module (Salle)" GridPane.rowIndex="6" GridPane.columnIndex="4"/>
+
+</GridPane>
