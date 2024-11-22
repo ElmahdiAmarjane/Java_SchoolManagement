@@ -244,6 +244,8 @@ public class adminController {
         Circle clip = new Circle(20,20,20); // Adjust radius as needed
         viewImageProfile.setClip(clip);
 	  
+        //////////////////////
+        
 	}
 	
 	
@@ -391,12 +393,16 @@ public class adminController {
 	
 	public void emploiTempsProfGridToFront(){
 		emploiTempsProfGrid.toFront();
+		
+		goBackToMainEmploiTempsBtn.setVisible(true);
 	}
 	
 	
 	public void emploiTempsFilliereGridToFront() {
 		System.out.print("fffffffffffffffffffffffffffff");
 		emploiTempsFilliereGrid.toFront();
+		
+		goBackToMainEmploiTempsBtn.setVisible(true);
 	}
 	
 	
@@ -404,6 +410,7 @@ public class adminController {
 	public void goBackToMainEmploiTemps() {
 		emploisChoose.toFront();
 		
+		goBackToMainEmploiTempsBtn.setVisible(false);
 	}
 	
 	
