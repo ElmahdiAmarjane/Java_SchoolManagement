@@ -494,17 +494,11 @@
          <children>
             <AnchorPane prefHeight="51.0" prefWidth="517.0" style="-fx-background-color: #112277;" AnchorPane.bottomAnchor="388.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Text fx:id="listProfBtn1" fill="WHITE" layoutX="53.0" layoutY="30.0" onMouseClicked="#listProfPaneToFront" strokeType="OUTSIDE" strokeWidth="0.0" text="Emploi du Temps">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="addProfBtn1" fill="WHITE" layoutX="194.0" layoutY="30.0" onMouseClicked="#addProfPaneToFront" strokeType="OUTSIDE" strokeWidth="0.0" text="Test 2">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Text>
-                  <Line endX="72.0" endY="7.0" fill="WHITE" layoutX="99.0" layoutY="35.0" startX="-51.0" startY="7.0" stroke="WHITE" strokeWidth="2.0" />
+                  <ImageView fx:id="goBackToMainEmploiTempsBtn" fitHeight="33.0" fitWidth="28.0" layoutX="39.0" layoutY="12.0" onMouseClicked="#goBackToMainEmploiTemps" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                     <image>
+                        <Image url="@../../assets/icons8-arrow-60.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="emploiTempsFilliereGrid" layoutX="1.0" layoutY="52.0" prefHeight="593.0" prefWidth="1135.0" style="-fx-background-color: #FFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
@@ -663,6 +657,28 @@
                      </children></AnchorPane>
                </children>
             </AnchorPane>
+            <AnchorPane fx:id="emploisChoose" layoutY="51.0" prefHeight="587.0" prefWidth="1135.0" style="-fx-background-color: #11FFDD;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+               <children>
+                  <Pane fx:id="emploiTempsProfBtn" layoutX="191.0" layoutY="194.0" onMouseClicked="#emploiTempsProfGridToFront" prefHeight="101.0" prefWidth="281.0" style="-fx-background-color: #FF9111; -fx-background-radius: 10;">
+                     <children>
+                        <Text layoutX="43.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Emploi du Temps pour Professeurs">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="emploiTempsFilliereBtn" layoutX="663.0" layoutY="194.0" onMouseClicked="#emploiTempsFilliereGridToFront" prefHeight="101.0" prefWidth="281.0" style="-fx-background-color: #FF9111; -fx-background-radius: 10;">
+                     <children>
+                        <Text layoutX="54.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Emploi du Temps pour Fillieres">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
             <AnchorPane fx:id="emploiTempsProfGrid" layoutY="50.0" prefHeight="587.0" prefWidth="1145.0" style="-fx-background-color: #FFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="50.0">
                <children>
                   <Text layoutX="18.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Emploi Professeur xxx" wrappingWidth="213.87451171875">
@@ -755,16 +771,16 @@
                         </Pane>
                         <Pane layoutX="533.0" layoutY="35.0" prefHeight="516.0" prefWidth="244.0" style="-fx-background-color: EEFFDD;">
                            <children>
-                              <TextField alignment="CENTER" layoutX="5.0" layoutY="2.0" prefHeight="51.0" prefWidth="236.0" style="-fx-background-color: #b9bbbd;" />
-                              <TextField alignment="CENTER" layoutX="4.0" layoutY="51.0" prefHeight="51.0" prefWidth="236.0" promptText="Salle &amp; Prof" />
-                              <TextField alignment="CENTER" layoutX="4.0" layoutY="103.0" prefHeight="51.0" prefWidth="236.0" style="-fx-background-color: #b9bbbd;" />
-                              <TextField alignment="CENTER" layoutX="5.0" layoutY="154.0" prefHeight="51.0" prefWidth="236.0" promptText="Salle &amp; Prof" />
-                              <TextField alignment="CENTER" layoutX="5.0" layoutY="205.0" prefHeight="51.0" prefWidth="236.0" style="-fx-background-color: #b9bbbd;" />
-                              <TextField alignment="CENTER" layoutX="6.0" layoutY="254.0" prefHeight="51.0" prefWidth="236.0" promptText="Salle &amp; Prof" />
-                              <TextField alignment="CENTER" layoutX="6.0" layoutY="306.0" prefHeight="51.0" prefWidth="236.0" style="-fx-background-color: #b9bbbd;" />
-                              <TextField alignment="CENTER" layoutX="6.0" layoutY="355.0" prefHeight="51.0" prefWidth="236.0" promptText="Salle &amp; Prof" />
-                              <TextField alignment="CENTER" layoutX="7.0" layoutY="408.0" prefHeight="51.0" prefWidth="236.0" style="-fx-background-color: #b9bbbd;" />
-                              <TextField alignment="CENTER" layoutX="8.0" layoutY="457.0" prefHeight="51.0" prefWidth="236.0" promptText="Salle &amp; Prof" />
+                              <TextField alignment="CENTER" layoutX="8.0" layoutY="2.0" prefHeight="51.0" prefWidth="236.0" style="-fx-background-color: #b9bbbd;" />
+                              <TextField alignment="CENTER" layoutX="7.0" layoutY="51.0" prefHeight="51.0" prefWidth="236.0" promptText="Salle &amp; Prof" />
+                              <TextField alignment="CENTER" layoutX="7.0" layoutY="103.0" prefHeight="51.0" prefWidth="236.0" style="-fx-background-color: #b9bbbd;" />
+                              <TextField alignment="CENTER" layoutX="8.0" layoutY="154.0" prefHeight="51.0" prefWidth="236.0" promptText="Salle &amp; Prof" />
+                              <TextField alignment="CENTER" layoutX="8.0" layoutY="205.0" prefHeight="51.0" prefWidth="236.0" style="-fx-background-color: #b9bbbd;" />
+                              <TextField alignment="CENTER" layoutX="9.0" layoutY="254.0" prefHeight="51.0" prefWidth="236.0" promptText="Salle &amp; Prof" />
+                              <TextField alignment="CENTER" layoutX="9.0" layoutY="306.0" prefHeight="51.0" prefWidth="236.0" style="-fx-background-color: #b9bbbd;" />
+                              <TextField alignment="CENTER" layoutX="9.0" layoutY="355.0" prefHeight="51.0" prefWidth="236.0" promptText="Salle &amp; Prof" />
+                              <TextField alignment="CENTER" layoutX="10.0" layoutY="408.0" prefHeight="51.0" prefWidth="236.0" style="-fx-background-color: #b9bbbd;" />
+                              <TextField alignment="CENTER" layoutX="11.0" layoutY="457.0" prefHeight="51.0" prefWidth="236.0" promptText="Salle &amp; Prof" />
                            </children>
                         </Pane>
                         <Pane layoutX="779.0" layoutY="35.0" prefHeight="516.0" prefWidth="253.0" style="-fx-background-color: EEFFDD;">
@@ -781,31 +797,9 @@
                               <TextField alignment="CENTER" layoutX="8.0" layoutY="457.0" prefHeight="51.0" prefWidth="236.0" promptText="Salle &amp; Prof" />
                            </children>
                         </Pane>
-                        <Pane layoutX="517.0" layoutY="37.0" prefHeight="506.0" prefWidth="20.0" style="-fx-background-color: #8444d4;" />
+                        <Pane layoutX="517.0" layoutY="37.0" prefHeight="506.0" prefWidth="22.0" style="-fx-background-color: #8444d4;" />
                      </children>
                   </AnchorPane>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="emploisChoose" layoutY="51.0" prefHeight="587.0" prefWidth="1135.0" style="-fx-background-color: #11FFDD;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
-               <children>
-                  <Pane fx:id="emploiTempsProfBtn" layoutX="191.0" layoutY="194.0" onMouseClicked="#emploiTempsProfGridToFront" prefHeight="101.0" prefWidth="281.0" style="-fx-background-color: #FF9111; -fx-background-radius: 10;">
-                     <children>
-                        <Text layoutX="43.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Emploi du Temps pour Professeurs">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </Pane>
-                  <Pane fx:id="emploiTempsFilliereBtn" layoutX="663.0" layoutY="194.0" onMouseClicked="#emploiTempsFilliereGridToFront" prefHeight="101.0" prefWidth="281.0" style="-fx-background-color: #FF9111; -fx-background-radius: 10;">
-                     <children>
-                        <Text layoutX="54.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Emploi du Temps pour Fillieres">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </Pane>
                </children>
             </AnchorPane>
          </children>

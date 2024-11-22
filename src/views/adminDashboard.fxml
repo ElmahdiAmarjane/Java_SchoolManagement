@@ -494,7 +494,7 @@
          <children>
             <AnchorPane prefHeight="51.0" prefWidth="517.0" style="-fx-background-color: #112277;" AnchorPane.bottomAnchor="388.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ImageView fitHeight="33.0" fitWidth="28.0" layoutX="39.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                  <ImageView fx:id="goBackToMainEmploiTempsBtn" fitHeight="33.0" fitWidth="28.0" layoutX="39.0" layoutY="12.0" onMouseClicked="#goBackToMainEmploiTemps" pickOnBounds="true" preserveRatio="true" rotate="180.0">
                      <image>
                         <Image url="@../../assets/icons8-arrow-60.png" />
                      </image>
