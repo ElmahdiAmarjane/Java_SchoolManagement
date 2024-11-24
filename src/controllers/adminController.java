@@ -3,6 +3,7 @@ package controllers;
 import java.io.File;
 import java.util.function.Predicate;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -201,7 +202,7 @@ public class AdminController {
 	 
 	 @FXML
 	 private AnchorPane filliereDetailsAnchorPane;
-	 
+	 @FXML AnchorPane filliereListAnchorPane;
 	 
 	 
 	 
@@ -505,15 +506,19 @@ public void switchToFrontBetweenAddProfPane() {
 	}
 	
 	public void filliereMenuOnclick() {
-		fillieresMainPane.toFront();
-		
-		try {
-			getFilliers();
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		 // Bring the main pane to the front
+	    fillieresMainPane.toFront();
+
+	    // Schedule getFilliers() to run after the UI update
+	    Platform.runLater(() -> {
+	        try {
+	            getFilliers();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    });
+	    
+	    // i use runLater because i want make fillierePANE tofront befor loading filliers
 		
 	}
 	
@@ -598,8 +603,13 @@ public void switchToFrontBetweenAddProfPane() {
         GridPane.setValignment(widget9, VPos.CENTER);
     }
 
+    
     public void setFilliereDetailsToFront() {
-    	filliereDetailsAnchorPane.toFront();
+    	filliereDetailsAnchorPane.toFront();  	
+    }
+    
+    public void setFilliereListToFront() {
+    	filliereListAnchorPane.toFront();
     }
 	
 }
