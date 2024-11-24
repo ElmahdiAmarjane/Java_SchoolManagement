@@ -28,7 +28,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Text>
-      <Button fx:id="filliereDetailsBtn" layoutX="25.0" layoutY="114.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="181.0" style="-fx-background-color: #FFF; -fx-border-width: 2; -fx-border-color: #66e89e; -fx-border-radius: 4;" text="Voir Details" textFill="#207241">
+      <Button fx:id="filliereDetailsBtn" layoutX="25.0" layoutY="114.0" mnemonicParsing="false" onAction="#setFilliereDetailsToFront" prefHeight="25.0" prefWidth="181.0" style="-fx-background-color: #FFF; -fx-border-width: 2; -fx-border-color: #66e89e; -fx-border-radius: 4;" text="Voir Details" textFill="#207241">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>

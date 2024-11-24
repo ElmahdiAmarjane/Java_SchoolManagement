@@ -54,6 +54,13 @@ public class FilliereWidgetController {
 
         return widget;
     }
+    
+    public void setFilliereDetailsToFront(){
+    	
+    	AdminController adminController = new AdminController();
+    	adminController.setFilliereDetailsToFront();
+    	
+    }
 	
 
 }

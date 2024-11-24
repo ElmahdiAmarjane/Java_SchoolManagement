@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="filliereListAnchorPane" prefHeight="587.0" prefWidth="1145.0" style="-fx-background-color: #FFFF;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text layoutX="14.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Details du fillieres xxxxxx" wrappingWidth="222.7734375">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TextField layoutX="354.0" layoutY="139.0" prefHeight="53.0" prefWidth="341.0" AnchorPane.leftAnchor="354.0" />
+      <Text layoutX="255.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom de la filière" />
+      <TextField layoutX="354.0" layoutY="223.0" prefHeight="53.0" prefWidth="341.0" AnchorPane.leftAnchor="354.0" />
+      <TextField layoutX="354.0" layoutY="307.0" prefHeight="53.0" prefWidth="341.0" AnchorPane.leftAnchor="354.0" />
+      <Button layoutX="717.0" layoutY="422.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="109.0" style="-fx-background-color: #FF2244; -fx-background-radius: 4;" text="Supprimer" textFill="WHITE" AnchorPane.leftAnchor="717.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="541.0" layoutY="422.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="109.0" style="-fx-background-color: #11ffAA; -fx-background-radius: 4;" text="Modifier" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="365.0" layoutY="422.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="109.0" style="-fx-border-color: #323333; -fx-border-width: 2; -fx-background-color: #FFF; -fx-border-radius: 4;" text="Annuler" AnchorPane.leftAnchor="365.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Text layoutX="213.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom abrégé de la filière" />
+      <Text layoutX="252.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date du création" />
+      <ImageView fitHeight="139.0" fitWidth="200.0" layoutX="751.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="751.0" AnchorPane.topAnchor="139.0">
+         <image>
+            <Image url="@../../assets/logoibnzohr.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="746.0" layoutY="287.0" mnemonicParsing="false" text="importer nouveau image" AnchorPane.leftAnchor="746.0" />
+   </children>
+</AnchorPane>

@@ -107,7 +107,7 @@ public class AdminController {
 	//FIN TABLE STUDENT
 	
 	
-	///////////
+	//////ADD STUDENT/////
 	 @FXML
 	 private AnchorPane addStudentFin;
 	 @FXML
@@ -120,6 +120,28 @@ public class AdminController {
 	 private Button btnNext;
 	 @FXML
 	 private Button btnBack;
+     //////ADD PROF/////
+	 @FXML
+	 private AnchorPane addProfFin;
+	 @FXML
+	 private AnchorPane addProfDocs;
+	 @FXML
+	 private AnchorPane addProfInfoAcad;
+	 @FXML
+	 private AnchorPane addProfInfoPers;
+	 @FXML
+	 private Button addProfBtnNext;
+	 @FXML
+	 private Button addProfBtnBack;
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 //////////////////////
 	///////////
 	 
 	 @FXML
@@ -177,7 +199,8 @@ public class AdminController {
 	 
 	 ////////////////////
 	 
-	 
+	 @FXML
+	 private AnchorPane filliereDetailsAnchorPane;
 	 
 	 
 	 
@@ -297,6 +320,58 @@ public class AdminController {
 		}
 		   
 	}
+	
+	/////////////////////////////////////////////////////////////////////
+	
+public void switchToFrontBetweenAddProfPane() {
+		
+		System.out.println("LASTPANE : "+addProfPane.getChildren().getLast().getId());
+		if("addProfInfoPers".equals(addProfPane.getChildren().getLast().getId())  ) {
+			addProfInfoAcad.toFront();
+		}
+		else if("addProfInfoAcad".equals(addProfPane.getChildren().getLast().getId())) {
+			addProfDocs.toFront();
+		}else if("addProfDocs".equals(addProfPane.getChildren().getLast().getId()) ) {
+			addProfFin.toFront();
+		}else if("addProfFin".equals(addProfPane.getChildren().getLast().getId())) {
+			System.out.println("NO NEXT!");
+		}
+		   
+	}
+	public void switchToBackBetweenAddProfPane() {
+		
+		System.out.println("LASTPANE : "+addProfPane.getChildren().getLast().getId());
+		if("addProfInfoPers".equals(addProfPane.getChildren().getLast().getId()) ) {
+			System.out.println("NO BACK!");
+		}
+		else if("addProfInfoAcad".equals(addProfPane.getChildren().getLast().getId())) {
+			addProfInfoPers.toFront();
+		}else if("addProfDocs".equals(addProfPane.getChildren().getLast().getId())) {
+			addProfInfoAcad.toFront();
+		}else if("addProfFin".equals(addProfPane.getChildren().getLast().getId())) {
+			addProfDocs.toFront();
+		}
+		   
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/////////////////////////////////////////////////////////////////////////////
 	
 	public void chooseProfileImage() {
 		 FileChooser fileChooser = new FileChooser();
@@ -433,7 +508,7 @@ public class AdminController {
 		fillieresMainPane.toFront();
 		
 		try {
-			getFilliers99();
+			getFilliers();
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -442,154 +517,10 @@ public class AdminController {
 		
 	}
 	
+
+
+	
     public void getFilliers() throws Exception {
-		FilliereWidgetController loader = new FilliereWidgetController();
-		
-		 Pane widget1 = loader.loadFilliereWidget(
-			        "Nom de la Filière 1",
-			        "NF1",
-			        new Image("file:C:/Users/lenovo/eclipse-workspace/schoolManagement/assets/logoibnzohr.png")
-			    );
-
-			    Pane widget2 = loader.loadFilliereWidget(
-			        "Nom de la Filière 2",
-			        "NF2",
-			        new Image("file:C:/Users/lenovo/eclipse-workspace/schoolManagement/assets/logoibnzohr.png")
-			    );
-
-			    Pane widget3 = loader.loadFilliereWidget(
-			        "Nom de la Filière 3",
-			        "NF3",
-			        new Image("file:C:/Users/lenovo/eclipse-workspace/schoolManagement/assets/logoibnzohr.png")
-			    );
-
-			    // Get the GridPane content from the ScrollPane
-			    GridPane gridPane = (GridPane) filliereScrollPane.getContent();
-                gridPane.setAlignment(Pos.CENTER);
-                // Center the widgets inside their cells
-                GridPane.setHalignment(widget1, HPos.CENTER);
-                GridPane.setValignment(widget1, VPos.CENTER);
-                GridPane.setHalignment(widget2, HPos.CENTER);
-                GridPane.setValignment(widget2, VPos.CENTER);
-                GridPane.setHalignment(widget3, HPos.CENTER);
-                GridPane.setValignment(widget3, VPos.CENTER);
-			    // Add widgets to the GridPane
-			    gridPane.add(widget1, 0, 0); // Column 0, Row 0
-			    gridPane.add(widget2, 1, 0); // Column 1, Row 0
-			    gridPane.add(widget3, 0, 1); // Column 0, Row 1
-	}
-	
-	
-    public void getFilliers9() throws Exception {
-        FilliereWidgetController loader = new FilliereWidgetController();
-
-        // Create widgets for 9 filières
-        Pane widget1 = loader.loadFilliereWidget(
-            "Nom de la Filière 1",
-            "NF1",
-            new Image("file:C:/Users/lenovo/eclipse-workspace/schoolManagement/assets/logoibnzohr.png")
-        );
-
-        Pane widget2 = loader.loadFilliereWidget(
-            "Nom de la Filière 2",
-            "NF2",
-            new Image("file:C:/Users/lenovo/eclipse-workspace/schoolManagement/assets/logoibnzohr.png")
-        );
-
-        Pane widget3 = loader.loadFilliereWidget(
-            "Nom de la Filière 3",
-            "NF3",
-            new Image("file:C:/Users/lenovo/eclipse-workspace/schoolManagement/assets/logoibnzohr.png")
-        );
-
-        Pane widget4 = loader.loadFilliereWidget(
-            "Nom de la Filière 4",
-            "NF4",
-            new Image("file:C:/Users/lenovo/eclipse-workspace/schoolManagement/assets/logoibnzohr.png")
-        );
-
-        Pane widget5 = loader.loadFilliereWidget(
-            "Nom de la Filière 5",
-            "NF5",
-            new Image("file:C:/Users/lenovo/eclipse-workspace/schoolManagement/assets/logoibnzohr.png")
-        );
-
-        Pane widget6 = loader.loadFilliereWidget(
-            "Nom de la Filière 6",
-            "NF6",
-            new Image("file:C:/Users/lenovo/eclipse-workspace/schoolManagement/assets/logoibnzohr.png")
-        );
-
-        Pane widget7 = loader.loadFilliereWidget(
-            "Nom de la Filière 7",
-            "NF7",
-            new Image("file:C:/Users/lenovo/eclipse-workspace/schoolManagement/assets/logoibnzohr.png")
-        );
-
-        Pane widget8 = loader.loadFilliereWidget(
-            "Nom de la Filière 8",
-            "NF8",
-            new Image("file:C:/Users/lenovo/eclipse-workspace/schoolManagement/assets/logoibnzohr.png")
-        );
-        
-        Pane widget9 = loader.loadFilliereWidget(
-            "Nom de la Filière 9",
-            "NF9",
-            new Image("file:C:/Users/lenovo/eclipse-workspace/schoolManagement/assets/logoibnzohr.png")
-        );
-        
-        
-
-        // Get the GridPane content from the ScrollPane
-        GridPane gridPane = (GridPane) filliereScrollPane.getContent();
-        gridPane.setAlignment(Pos.CENTER);
-
-        // Add widgets to the GridPane
-        gridPane.add(widget1, 0, 0); // Column 0, Row 0
-        gridPane.add(widget2, 1, 0); // Column 1, Row 0
-        gridPane.add(widget3, 0, 1); // Column 2, Row 0
-
-        gridPane.add(widget4, 1, 1); // Column 0, Row 1
-        gridPane.add(widget5, 0, 2); // Column 1, Row 1
-        gridPane.add(widget6, 1, 2); // Column 2, Row 1
-
-        gridPane.add(widget7, 0, 3); // Column 0, Row 2
-        gridPane.add(widget8, 1, 3); // Column 1, Row 2
-        gridPane.add(widget9, 0, 4); // Column 2, Row 2
-
-        // Center each widget inside its cell
-        GridPane.setHalignment(widget1, HPos.CENTER);
-        GridPane.setValignment(widget1, VPos.CENTER);
-
-        GridPane.setHalignment(widget2, HPos.CENTER);
-        GridPane.setValignment(widget2, VPos.CENTER);
-
-        GridPane.setHalignment(widget3, HPos.CENTER);
-        GridPane.setValignment(widget3, VPos.CENTER);
-
-        GridPane.setHalignment(widget4, HPos.CENTER);
-        GridPane.setValignment(widget4, VPos.CENTER);
-
-        GridPane.setHalignment(widget5, HPos.CENTER);
-        GridPane.setValignment(widget5, VPos.CENTER);
-
-        GridPane.setHalignment(widget6, HPos.CENTER);
-        GridPane.setValignment(widget6, VPos.CENTER);
-
-        GridPane.setHalignment(widget7, HPos.CENTER);
-        GridPane.setValignment(widget7, VPos.CENTER);
-
-        GridPane.setHalignment(widget8, HPos.CENTER);
-        GridPane.setValignment(widget8, VPos.CENTER);
-
-        GridPane.setHalignment(widget9, HPos.CENTER);
-        GridPane.setValignment(widget9, VPos.CENTER);
-        
-        
-    }
-
-	
-    public void getFilliers99() throws Exception {
         FilliereWidgetController loader = new FilliereWidgetController();
 
         Pane widget1 = loader.loadFilliereWidget("Nom de la Filière 1", "NF1", new Image("file:C:/Users/lenovo/eclipse-workspace/schoolManagement/assets/logoibnzohr.png"));
@@ -667,5 +598,8 @@ public class AdminController {
         GridPane.setValignment(widget9, VPos.CENTER);
     }
 
+    public void setFilliereDetailsToFront() {
+    	filliereDetailsAnchorPane.toFront();
+    }
 	
 }
