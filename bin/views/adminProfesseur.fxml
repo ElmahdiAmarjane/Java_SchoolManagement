@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+
+<AnchorPane  xmlns:fx="http://javafx.com/fxml" fx:id="professorPane" 
+            prefHeight="441.0" prefWidth="517.0" 
+            style="-fx-background-color: #EE11DD;" 
+            AnchorPane.bottomAnchor="0.0" 
+            AnchorPane.leftAnchor="236.0" 
+            AnchorPane.rightAnchor="0.0" 
+            AnchorPane.topAnchor="76.0" 
+            fx:controller="controllers.ProfesseurController">
+
+    <children>
+
+        <AnchorPane prefHeight="51.0" prefWidth="517.0" 
+                    style="-fx-background-color: #112277;" 
+                    AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0" 
+                    AnchorPane.rightAnchor="0.0">
+            <children>
+                <Text fx:id="listProfBtn" 
+                      fill="WHITE" layoutX="53.0" layoutY="30.0" 
+                      onMouseClicked="#listProfPaneToFront" 
+                      strokeType="OUTSIDE" strokeWidth="0.0" 
+                      text="Liste Professeurs">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Text>
+                <Text fx:id="addProfBtn" 
+                      fill="WHITE" layoutX="194.0" layoutY="30.0" 
+                      onMouseClicked="#addProfPaneToFront" 
+                      strokeType="OUTSIDE" strokeWidth="0.0" 
+                      text="Ajouter Professeur">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Text>
+                <Line endX="72.0" endY="7.0" fill="WHITE" 
+                      layoutX="97.0" layoutY="35.0" 
+                      startX="-51.0" startY="7.0" 
+                      stroke="WHITE" strokeWidth="2.0" />
+            </children>
+        </AnchorPane>
+
+        <AnchorPane fx:id="addProfPane" 
+                    layoutY="52.0" prefHeight="389.0" prefWidth="517.0" 
+                    style="-fx-background-color: #11FF99;" 
+                    AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" 
+                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+            <children>
+                <Text layoutX="167.0" layoutY="84.0" 
+                      strokeType="OUTSIDE" strokeWidth="0.0" 
+                      text="Ajouter Professeur" wrappingWidth="215.7734375">
+                    <font>
+                        <Font size="25.0" />
+                    </font>
+                </Text>
+            </children>
+        </AnchorPane>
+
+        <AnchorPane fx:id="listProfPane" 
+                    layoutY="52.0" prefHeight="388.0" prefWidth="517.0" 
+                    style="-fx-background-color: #11FFDD;" 
+                    AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" 
+                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+            <children>
+                
+              <AnchorPane layoutY="51.0" prefHeight="388.0" prefWidth="517.0" style="-fx-background-color: #11FF99;" 
+                    AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+            	<children>
+                <Text layoutX="15.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste Prof" wrappingWidth="170.7734375">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Text>
+                
+                <!-- TableView for displaying student data -->
+                <TableView fx:id="studentsTable" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="53.0">
+                    <columns>
+                        <!-- TableColumn for number (index) -->
+                        <TableColumn fx:id="colNumber" prefWidth="121.0" text="N°" />
+
+                        <!-- TableColumn for CIN -->
+                        <TableColumn fx:id="colCIN" prefWidth="112.0" text="CIN" />
+
+                        <!-- TableColumn for Nom -->
+                        <TableColumn fx:id="colNom" prefWidth="112.0" text="Nom" />
+
+                        <!-- TableColumn for Prenom -->
+                        <TableColumn fx:id="colPrenom" prefWidth="103.0" text="Prénom" />
+
+                        <!-- TableColumn for Filière -->
+                        <TableColumn fx:id="colFilliere" prefWidth="130.0" text="Filliére" />
+
+                        <!-- TableColumn for CNE -->
+                        <TableColumn fx:id="colCNE" prefWidth="130.0" text="CNE" />
+                    </columns>
+                </TableView>
+                
+            </children>
+        </AnchorPane>
+    
+            </children>
+        </AnchorPane>
+   
+   		<AnchorPane fx:id="addProfPane" layoutX="-9.0" layoutY="50.0" prefHeight="587.0" prefWidth="1152.0" style="-fx-background-color: #D9F9FD;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+               <children>
+                  <Text layoutX="14.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Professeur" wrappingWidth="208.7734375">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="addProfBtnNext" layoutX="1021.0" layoutY="510.0" mnemonicParsing="false" onAction="#switchToFrontBetweenAddProfPane" prefHeight="33.0" prefWidth="81.0" text="Suivant" AnchorPane.bottomAnchor="44.0" AnchorPane.rightAnchor="30.0" />
+                  <Button fx:id="addProfBtnBack" layoutX="32.0" layoutY="510.0" mnemonicParsing="false" onAction="#switchToBackBetweenAddProfPane" prefHeight="33.0" prefWidth="81.0" text="Précedent" AnchorPane.bottomAnchor="44.0" />
+                  
+                  <AnchorPane fx:id="addProfDocs" layoutX="8.0" layoutY="49.0" prefHeight="452.0" prefWidth="1126.0" style="-fx-border-color: #FFDDEE; -fx-background-color: #DDFFAA;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                     <children>
+                        <Text layoutX="420.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Curriculum Vitae (CV)" />
+                        <Text layoutX="86.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CIN" />
+                        <Text layoutX="86.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <Text layoutX="103.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <AnchorPane layoutX="55.0" layoutY="12.0" prefHeight="66.0" prefWidth="1007.0" style="-fx-background-color: #e3e2e1;" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="54.0" AnchorPane.topAnchor="11.0">
+                           <children>
+                              <Text fill="#656363" layoutX="204.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations personnelles" />
+                              <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="359.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/arrow.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="#656363" layoutX="419.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Infos Professionnelles" />
+                              <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="556.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/arrow.png" />
+                                 </image>
+                              </ImageView>
+                              <Text layoutX="603.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Documents fournies">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="725.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/arrow.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="#656363" layoutX="778.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fin" />
+                           </children>
+                        </AnchorPane>
+                        <Button fx:id="btnChooseFileCIN" layoutX="151.0" layoutY="164.0" mnemonicParsing="false" onAction="#chooseFileCIN" prefHeight="25.0" prefWidth="171.0" text="choose File ..." />
+                        <Button fx:id="btnChooseCv" layoutX="580.0" layoutY="165.0" mnemonicParsing="false" onAction="#chooseFileCv" prefHeight="25.0" prefWidth="171.0" text="choose File ..." />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="addProfInfoAcad" layoutX="11.0" layoutY="49.0" prefHeight="452.0" prefWidth="1115.0" style="-fx-border-color: #FFDDEE; -fx-background-color: #DDFFAA;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                     <children>
+                        <TextField fx:id="mention_doctorat" layoutX="491.0" layoutY="150.0" prefHeight="40.0" prefWidth="200.0" />
+                        <Text layoutX="385.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mention Doctorat" />
+                        <TextField fx:id="type_doctorat" layoutX="153.0" layoutY="149.0" prefHeight="40.0" prefWidth="200.0" />
+                        <TextField fx:id="etablissement" layoutX="869.0" layoutY="151.0" prefHeight="40.0" prefWidth="200.0" />
+                        <Text layoutX="53.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="type de doctorat" />
+                        <Text layoutX="722.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Etablissement d'obtention" />
+                        <Text layoutX="51.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matiére enseigné" />
+                        <Text layoutX="390.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type de contrat" />
+                        <AnchorPane layoutX="55.0" layoutY="12.0" prefHeight="66.0" prefWidth="1007.0" style="-fx-background-color: #e3e2e1;" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="54.0" AnchorPane.topAnchor="11.0">
+                           <children>
+                              <Text fill="#656363" layoutX="204.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations personnelles" />
+                              <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="359.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/arrow.png" />
+                                 </image>
+                              </ImageView>
+                              <Text layoutX="414.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Infos Professionnelles">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="556.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/arrow.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="#656363" layoutX="603.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="documents fournies" />
+                              <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="725.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/arrow.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="#656363" layoutX="778.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fin" />
+                           </children>
+                        </AnchorPane>
+                       <ComboBox fx:id="Matiere_enseigne" layoutX="153.0" layoutY="272.0" prefHeight="40.0" prefWidth="200.0" />
+                        <ComboBox fx:id="type_contrat" layoutX="514.0" layoutY="272.0" prefHeight="40.0" prefWidth="200.0" />
+                    	<TextField fx:id="rip" layoutX="871.0" layoutY="273.0" prefHeight="40.0" prefWidth="200.0" />
+            			<Text layoutX="826.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RIP" />
+                     
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="addProfFin" layoutX="11.0" layoutY="48.0" prefHeight="452.0" prefWidth="1115.0" style="-fx-border-color: #FFDDEE; -fx-background-color: #DDFFAA;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                     <children>
+                        <Text layoutX="103.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <AnchorPane layoutX="55.0" layoutY="12.0" prefHeight="66.0" prefWidth="1007.0" style="-fx-background-color: #e3e2e1;" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="54.0" AnchorPane.topAnchor="11.0">
+                           <children>
+                              <Text fill="#656363" layoutX="204.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations personnelles" />
+                              <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="359.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/arrow.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="#656363" layoutX="419.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Infos Professionnelles" />
+                              <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="556.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/arrow.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="#656363" layoutX="603.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Documents fournies" />
+                              <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="725.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/arrow.png" />
+                                 </image>
+                              </ImageView>
+                              <Text layoutX="778.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fin">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
+                        <Button onAction="#enregistrerBtn" layoutX="459.0" layoutY="301.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="196.0" style="-fx-background-color: #11FF11;" text="Enregistrer">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Button>
+                        <Text fill="#da3636" layoutX="166.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Avant de cliquer sur &quot;Enregistrer&quot;, assurez-vous que toutes les données saisies sont correctes. Merci de votre attention.">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="addProfInfoPers" layoutX="9.0" layoutY="47.0" prefHeight="260.0" prefWidth="498.0" style="-fx-border-color: #FFDDEE; -fx-background-color: #DDFFAA;" AnchorPane.bottomAnchor="82.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="47.0">
+                     <children>
+                        <ComboBox fx:id="nationalite" layoutX="878.0" layoutY="146.0" prefHeight="40.0" prefWidth="209.0" />
+                        <TextField fx:id="password" layoutX="878.0" layoutY="213.0" prefHeight="40.0" prefWidth="209.0" />
+                        <Text layoutX="816.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nationalité" />
+                        <Text layoutX="818.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
+                        <DatePicker fx:id="date_naissance" layoutX="557.0" layoutY="149.0" prefHeight="40.0" prefWidth="200.0"/>
+                        <TextField fx:id="email" layoutX="557.0" layoutY="216.0" prefHeight="40.0" prefWidth="200.0" />
+                        <TextField fx:id="adresse" layoutX="557.0" layoutY="279.0" prefHeight="40.0" prefWidth="200.0" />
+                        <TextField fx:id="tel" layoutX="557.0" layoutY="341.0" prefHeight="40.0" prefWidth="200.0" />
+                        <Text layoutX="472.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Naissance" />
+                        <Text layoutX="497.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
+                        <Text layoutX="493.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse" />
+                        <Text layoutX="497.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tel" />
+                        <TextField fx:id="nom" layoutX="244.0" layoutY="149.0" prefHeight="40.0" prefWidth="200.0" />
+                        <TextField fx:id="prenom" layoutX="244.0" layoutY="216.0" prefHeight="40.0" prefWidth="200.0" />
+                        <ComboBox fx:id="sexe" layoutX="244.0" layoutY="279.0" prefHeight="40.0" prefWidth="200.0" />
+                        <TextField fx:id="cni" layoutX="244.0" layoutY="341.0" prefHeight="40.0" prefWidth="200.0" />
+                        <Text layoutX="178.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" />
+                        <Text layoutX="178.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom" />
+                        <Text layoutX="178.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sexe" />
+                        <Text layoutX="178.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CNI" />
+                        <ImageView fx:id="profileViewImage1" fitHeight="101.0" fitWidth="121.0" layoutX="24.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../assets/profphoto.jpg" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="chooseProfileImageBtn1" layoutX="30.0" layoutY="261.0" mnemonicParsing="false" onAction="#chooseProfileImage" text="Choisir Image" />
+                        <AnchorPane layoutX="55.0" layoutY="12.0" prefHeight="66.0" prefWidth="1007.0" style="-fx-background-color: #e3e2e1;" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="54.0" AnchorPane.topAnchor="11.0">
+                           <children>
+                              <Text layoutX="204.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations personnelles">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="359.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/arrow.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="#656363" layoutX="417.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Infos Professionnelles" />
+                              <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="556.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/arrow.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="#656363" layoutX="603.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="documents fournies" />
+                              <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="725.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/arrow.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="#656363" layoutX="778.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fin" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+                </children>
+              </AnchorPane>
+    </children>
+</AnchorPane>
