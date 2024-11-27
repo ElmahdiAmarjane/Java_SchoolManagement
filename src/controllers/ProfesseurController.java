@@ -150,7 +150,7 @@ public class ProfesseurController {
 				
 				int ripval= Integer.parseInt(rip.getText());
 				
-				professeur.getDoctorant_type(type_doctorat.getText());
+				//professeur.getDoctorant_type(type_doctorat.getText());
 				professeur.setMatiere_enseigne(mention_doctorat.getText());
 				professeur.setEtablissement(etablissement.getText());
 				professeur.setMatiere_enseigne(Matiere_enseigne.getValue());
