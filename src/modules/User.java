@@ -1,6 +1,7 @@
 package modules;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 public class User {
 
@@ -10,14 +11,18 @@ public class User {
 	protected String image;
 	protected String role;
 	protected String password;
+	protected String adress;
 	protected String tel;
 	protected String email;
-	protected String dateNaissance;
+	protected String Sexe;
+	protected LocalDate dateNaissance;
+	protected String Nationalite;
+	protected String imagecni;
 	
 	
 	public User() {}
 	
-	public User(String cni,String nom,String prenom,String image,String role, String password,String tel,String email,String dateNaissance) {
+	public User(String cni,String nom,String prenom,String image,String role, String password,String tel,String email,LocalDate dateNaissance) {
 		this.cni=cni;
 		this.nom=nom;
 		this.prenom=prenom;
@@ -60,11 +65,11 @@ public class User {
 		this.email = email;
 	}
 
-	public String getDateNaissance() {
+	public LocalDate getDateNaissance() {
 		return dateNaissance;
 	}
 
-	public void setDateNaissance(String dateNaissance) {
+	public void setDateNaissance(LocalDate dateNaissance) {
 		this.dateNaissance = dateNaissance;
 	}
 	
@@ -103,6 +108,42 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public String getSexe() {
+		return Sexe;
+	}
+
+	public void setSexe(String sexe) {
+		Sexe = sexe;
+	}
+
+	public String getNationalite() {
+		return Nationalite;
+	}
+
+	public void setNationalite(String nationalite) {
+		Nationalite = nationalite;
+	}
+
+	public String getImagecni() {
+		return imagecni;
+	}
+
+	public void setImagecni(String imagecni) {
+		this.imagecni = imagecni;
+	}
+
+	public String getAdress() {
+		return adress;
+	}
+
+	public void setAdress(String adress) {
+		this.adress = adress;
+	}
+	
+	
+	
+	
 	
 	
 	

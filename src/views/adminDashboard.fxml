@@ -233,7 +233,7 @@
             </AnchorPane>
                  
                   
-             <fx:include fx:id="addStudentPane" source="addEtudiant.fxml" />
+             <fx:include fx:id="addStudentPane" source="adminEtudiant.fxml" />
                   
              <fx:include fx:id="listStudentPane" source="fetchEtudiantAdmin.fxml" />
 

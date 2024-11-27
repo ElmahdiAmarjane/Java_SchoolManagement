@@ -2,9 +2,13 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import db_connect.JDBC;
+import modules.Etudiant;
 import modules.Filier;
 import services.IFilierServices;
 
@@ -84,6 +88,30 @@ public class FilierDao implements IFilierServices{
 		        e.printStackTrace();
 		    }
 		    return false;
+	}
+
+	@Override
+	public List<Filier> selectAllFilier() {
+		 List<Filier> filiers = new ArrayList<>();
+	        String query = "SELECT * FROM filier";
+
+	        try (Connection connection = JDBC.getConnection();
+	             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+	            ResultSet resultSet = preparedStatement.executeQuery();
+
+	            while (resultSet.next()) {
+	                Filier filier = new Filier();
+	                filier.setTitel(resultSet.getString("titel"));
+	                
+	                filiers.add(filier);
+	            }
+
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+
+	        return filiers;
 	}
 
 }

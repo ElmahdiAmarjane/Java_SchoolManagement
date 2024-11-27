@@ -60,7 +60,7 @@ public class UserDao implements IUserServices {
     }
 
     public boolean insertUser(User user) {
-        String query = "INSERT INTO user (cni, nom, prenom, image, role, tele, email, dateNaissance, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO user (cni, nom, prenom, image, role, tele, email, dateNaissance, password, nationalite, sexe) VALUES (?,?,?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection connection = JDBC.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -73,8 +73,11 @@ public class UserDao implements IUserServices {
             preparedStatement.setString(5, user.getRole());
             preparedStatement.setString(6, user.getTel());
             preparedStatement.setString(7, user.getEmail());
-            preparedStatement.setString(8, user.getDateNaissance());
+            preparedStatement.setDate(8, java.sql.Date.valueOf(user.getDateNaissance()));
             preparedStatement.setString(9, user.getPassword());
+            preparedStatement.setString(10, user.getNationalite());
+            preparedStatement.setString(11, user.getSexe());
+            
 
             // Execute the update
             int rowsAffected = preparedStatement.executeUpdate();

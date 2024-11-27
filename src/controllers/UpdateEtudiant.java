@@ -16,7 +16,7 @@ public class UpdateEtudiant {
 		etudiant.setNote_bac(11.0);
 		etudiant.setType_bac2("modi");
 		etudiant.setNote_bac2(40.00);
-		etudiant.setId_filier(0);
+		etudiant.setFilier_titel("d");
 		etudiant.setImageBac("modi");
 		etudiant.setImageBac2("modi");
 		etudiant.setImageS1("modi");

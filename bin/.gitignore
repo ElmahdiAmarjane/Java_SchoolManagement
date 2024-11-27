@@ -1,3 +1,6 @@
 /dao/
 /application/
 /controllers/
+/modules/
+/services/
+/views/

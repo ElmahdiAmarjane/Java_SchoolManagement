@@ -19,9 +19,11 @@
 <AnchorPane fx:id="listStudentPane" xmlns:fx="http://javafx.com/fxml/1"
            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0"  
            xmlns="http://javafx.com/javafx/23.0.1" 
-           fx:controller="controllers.FetchStudentsAdminController">
+           fx:controller="controllers.AddFilier">
     <children>
-        <AnchorPane layoutY="51.0" prefHeight="388.0" prefWidth="517.0" style="-fx-background-color: #11FF99;" 
+       
+        
+                <AnchorPane layoutY="51.0" prefHeight="388.0" prefWidth="517.0" style="-fx-background-color: #11FF99;" 
                     AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
             <children>
                 <Text layoutX="15.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste Students" wrappingWidth="170.7734375">
@@ -37,7 +39,7 @@
                         <TableColumn fx:id="colNumber" prefWidth="121.0" text="N°" />
 
                         <!-- TableColumn for CIN -->
-                        <TableColumn fx:id="colCIN" prefWidth="112.0" text="CIN" />
+                        <TableColumn fx:id="colCNI" prefWidth="112.0" text="CNI" />
 
                         <!-- TableColumn for Nom -->
                         <TableColumn fx:id="colNom" prefWidth="112.0" text="Nom" />
@@ -55,5 +57,6 @@
                 
             </children>
         </AnchorPane>
+        
     </children>
 </AnchorPane>

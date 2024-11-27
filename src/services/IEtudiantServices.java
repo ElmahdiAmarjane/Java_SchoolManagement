@@ -9,5 +9,5 @@ public interface IEtudiantServices {
 	boolean insertEtudiant(Etudiant etudiante);
 	boolean deleteEtudiant(String cni);
 	boolean updateEtudiant(Etudiant etudiante);
-	List<Etudiant> selectAllEtudiants(int id_filier);
+	List<Etudiant> selectAllEtudiants(String filier_titel);
 }

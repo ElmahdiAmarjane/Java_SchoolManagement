@@ -3,18 +3,18 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TreeTableColumn?>
-<?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="1371.0" style="-fx-background-color: #334422;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.adminController">
+
+<AnchorPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="1371.0" style="-fx-background-color: #334422;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" AnchorPane.bottomAnchor="20.0" fx:controller="controllers.AdminController">
    <children>
       <VBox layoutY="76.0" prefHeight="441.0" prefWidth="236.0" style="-fx-background-color: #9865eb;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="74.0">
          <children>
@@ -87,7 +87,8 @@
                   <Insets bottom="15.0" />
                </VBox.margin>
             </HBox>
-            <HBox prefHeight="40.0" prefWidth="153.0">
+            <HBox prefHeight="40.0" prefWidth="153.0" onMouseClicked="#emploiTempsPaneToFront">
+               
                <children>
                   <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -97,7 +98,7 @@
                         <Insets left="30.0" right="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Emploi du temps" wrappingWidth="158.654296875">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Emploi du temps" wrappingWidth="158.654296875" >
                      <font>
                         <Font name="Segoe UI" size="20.0" />
                      </font>
@@ -135,18 +136,40 @@
             </HBox>
          </children>
       </VBox>
-      <HBox prefHeight="76.0" prefWidth="753.0" style="-fx-background-color: #bd9af5;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane style="-fx-background-color: #FFDD33;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fitHeight="76.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="76.0" fitWidth="97.0" layoutX="33.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="0.0">
                <image>
                   <Image url="@../../assets/logoibnzohr.png" />
                </image>
-               <HBox.margin>
-                  <Insets left="30.0" />
-               </HBox.margin>
+            </ImageView>
+            <AnchorPane layoutX="563.0" layoutY="9.0">
+               <children>
+                  <ImageView fx:id="viewImageProfile" fitHeight="59.0" fitWidth="67.0" layoutX="221.0" pickOnBounds="true" preserveRatio="true" style="-fx-fit-width: 60; -fx-fit-height: 60;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <image>
+                        <Image url="@../../assets/profile.jpg" />
+                     </image>
+                  </ImageView>
+                  <Text layoutY="24.4208984375" strokeType="OUTSIDE" strokeWidth="0.0" text="amarjaneelmahdi@uiz.uac.ma">
+                     <font>
+                        <Font name="Arial Bold" size="15.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="147.0" layoutY="43.9716796875" strokeType="OUTSIDE" strokeWidth="0.0" text="Directeur">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <Button layoutX="1263.0" layoutY="26.0" mnemonicParsing="false" style="-fx-background-color: #FFEEDD;" text="Déconnecter" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="26.0" />
+            <ImageView fitHeight="27.0" fitWidth="33.0" layoutX="1236.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../assets/arrow.png" />
+               </image>
             </ImageView>
          </children>
-      </HBox>
+      </AnchorPane>
       <AnchorPane fx:id="chatPane" layoutX="236.0" layoutY="76.0" prefHeight="441.0" prefWidth="517.0" style="-fx-background-color: #EE11AA;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="236.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="76.0">
          <children>
             <AnchorPane prefHeight="51.0" prefWidth="517.0" style="-fx-background-color: #112277;" AnchorPane.bottomAnchor="388.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -170,46 +193,30 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="professorPane" layoutX="236.0" layoutY="76.0" prefHeight="441.0" prefWidth="517.0" style="-fx-background-color: #EE11DD;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="236.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="76.0">
+      
+	<fx:include fx:id="professorPane" source="adminProfesseur.fxml" />
+	
+	
+	<fx:include fx:id="emploiTempsPane" source="emploiTemps.fxml" />
+	
+    <AnchorPane fx:id="studentPane" layoutX="236.0" layoutY="76.0" prefHeight="441.0" prefWidth="517.0" style="-fx-background-color: #EE11EE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="236.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="76.0">
          <children>
-            <AnchorPane prefHeight="51.0" prefWidth="517.0" style="-fx-background-color: #112277;" AnchorPane.bottomAnchor="388.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="studentNavMenu2" layoutX="2.0" layoutY="4.0" prefHeight="51.0" prefWidth="1135.0" style="-fx-background-color: #112277;" AnchorPane.bottomAnchor="618.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Text fx:id="listProfBtn" fill="WHITE" layoutX="53.0" layoutY="30.0" onMouseClicked="#listProfPaneToFront" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste Professeurs">
+                  <Text fx:id="listStudentBtn1" fill="WHITE" layoutX="53.0" layoutY="30.0" onMouseClicked="#listStudentPaneToFront" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste Etudiants">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Text>
-                  <Text fx:id="addProfBtn" fill="WHITE" layoutX="194.0" layoutY="30.0" onMouseClicked="#addProfPaneToFront" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Professeur">
+                  <Text fx:id="addStudentBtn1" fill="WHITE" layoutX="194.0" layoutY="30.0" onMouseClicked="#addStudentPaneToFront" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Etudiant">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Text>
-                  <Line endX="72.0" endY="7.0" fill="WHITE" layoutX="97.0" layoutY="35.0" startX="-51.0" startY="7.0" stroke="WHITE" strokeWidth="2.0" />
+                  <Line endX="87.0" endY="6.0" fill="WHITE" layoutX="221.0" layoutY="33.5" startX="-32.0" startY="6.0" stroke="WHITE" strokeWidth="3.0" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="40.0" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="addProfPane" layoutX="1.0" layoutY="52.0" prefHeight="389.0" prefWidth="517.0" style="-fx-background-color: #11FF99;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
-               <children>
-                  <Text layoutX="167.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Professeur" wrappingWidth="215.7734375">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Text>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="listProfPane" layoutY="51.0" prefHeight="388.0" prefWidth="517.0" style="-fx-background-color: #11FFDD;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
-               <children>
-                  <Text layoutX="173.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste Professeur" wrappingWidth="190.7734375">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Text>
-               </children>
-            </AnchorPane>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="studentPane" layoutX="236.0" layoutY="76.0" prefHeight="441.0" prefWidth="517.0" style="-fx-background-color: #EE11EE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="236.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="76.0">
-         <children>
-            <AnchorPane fx:id="studentNavMenu" prefHeight="51.0" prefWidth="517.0" style="-fx-background-color: #112277;" AnchorPane.bottomAnchor="388.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="studentNavMenu1" prefHeight="51.0" prefWidth="1135.0" style="-fx-background-color: #112277;" AnchorPane.bottomAnchor="586.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Text fx:id="listStudentBtn" fill="WHITE" layoutX="53.0" layoutY="30.0" onMouseClicked="#listStudentPaneToFront" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste Etudiants">
                      <font>
@@ -221,97 +228,21 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Text>
+                  <Line endX="73.0" endY="6.0" fill="WHITE" startX="-32.0" startY="6.0" stroke="WHITE" strokeWidth="3.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="47.5" AnchorPane.rightAnchor="981.0" AnchorPane.topAnchor="39.5" />
                </children>
             </AnchorPane>
-           <AnchorPane fx:id="listStudentPane" layoutY="51.0" prefHeight="388.0" prefWidth="517.0" style="-fx-background-color: #11FF99;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
-    <children>
-        <Text layoutX="15.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste Students" wrappingWidth="170.7734375">
-            <font>
-                <Font size="18.0" />
-            </font>
-        </Text>
-        <TreeTableView fx:id="studentsTable" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="53.0">
-            <columns>
-                <TreeTableColumn fx:id="colNumber" maxWidth="1.7976931348623157E308" prefWidth="121.0" text="N°" />
-                <TreeTableColumn fx:id="colCIN" maxWidth="1.7976931348623157E308" prefWidth="112.0" text="CIN" />
-                <TreeTableColumn fx:id="colNom" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="112.0" text="Nom" />
-                <TreeTableColumn fx:id="colPrenom" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="103.0" text="Prénom" />
-                <TreeTableColumn fx:id="colFilliere" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="130.0" text="Filliére" />
-                <TreeTableColumn fx:id="colCNE" minWidth="0.0" prefWidth="130.0" text="CNE" />
-            </columns>
-        </TreeTableView>
-    </children>
-</AnchorPane>
-            <AnchorPane fx:id="addStudentPane" layoutX="1.0" layoutY="52.0" prefHeight="389.0" prefWidth="517.0" style="-fx-background-color: #D9F9FD;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
-               <children>
-                  <Text layoutX="14.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Students" wrappingWidth="208.7734375">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Text>
-                  <Button layoutX="32.0" layoutY="312.0" mnemonicParsing="false" text="Précedent" AnchorPane.bottomAnchor="52.0" />
-                  <Button layoutX="433.0" layoutY="312.0" mnemonicParsing="false" text="Suivant" AnchorPane.bottomAnchor="52.0" AnchorPane.rightAnchor="29.0" />
-                  <AnchorPane layoutX="9.0" layoutY="47.0" prefHeight="260.0" prefWidth="498.0" style="-fx-border-color: #FFDDEE; -fx-background-color: #DDFFAA;" AnchorPane.bottomAnchor="82.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="47.0">
-                     <children>
-                        <TextField layoutX="878.0" layoutY="146.0" prefHeight="40.0" prefWidth="209.0" />
-                        <TextField layoutX="878.0" layoutY="213.0" prefHeight="40.0" prefWidth="209.0" />
-                        <Text layoutX="816.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nationalité" />
-                        <Text layoutX="818.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
-                        <TextField layoutX="557.0" layoutY="149.0" prefHeight="40.0" prefWidth="200.0" />
-                        <TextField layoutX="557.0" layoutY="216.0" prefHeight="40.0" prefWidth="200.0" />
-                        <TextField layoutX="557.0" layoutY="279.0" prefHeight="40.0" prefWidth="200.0" />
-                        <TextField layoutX="557.0" layoutY="341.0" prefHeight="40.0" prefWidth="200.0" />
-                        <Text layoutX="472.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Naissance" />
-                        <Text layoutX="497.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
-                        <Text layoutX="493.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CNI" />
-                        <Text layoutX="497.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tel" />
-                        <TextField layoutX="244.0" layoutY="149.0" prefHeight="40.0" prefWidth="200.0" />
-                        <TextField layoutX="244.0" layoutY="216.0" prefHeight="40.0" prefWidth="200.0" />
-                        <TextField layoutX="244.0" layoutY="279.0" prefHeight="40.0" prefWidth="200.0" />
-                        <TextField layoutX="244.0" layoutY="341.0" prefHeight="40.0" prefWidth="200.0" />
-                        <Text layoutX="178.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" />
-                        <Text layoutX="178.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom" />
-                        <Text layoutX="178.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sexe" />
-                        <Text layoutX="178.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CNE" />
-                        <ImageView fitHeight="101.0" fitWidth="121.0" layoutX="23.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../assets/me2.jpeg" />
-                           </image>
-                        </ImageView>
-                        <Button layoutX="25.0" layoutY="261.0" mnemonicParsing="false" text="Choisir Image" />
-                        <AnchorPane layoutX="55.0" layoutY="12.0" prefHeight="66.0" prefWidth="1007.0" style="-fx-background-color: #e3e2e1;" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="54.0" AnchorPane.topAnchor="11.0">
-                           <children>
-                              <Text layoutX="204.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations personnelles">
-                                 <font>
-                                    <Font name="System Bold" size="12.0" />
-                                 </font>
-                              </Text>
-                              <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="359.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../assets/arrow.png" />
-                                 </image>
-                              </ImageView>
-                              <Text fill="#656363" layoutX="406.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations acadimiques" />
-                              <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="556.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../assets/arrow.png" />
-                                 </image>
-                              </ImageView>
-                              <Text fill="#656363" layoutX="603.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="documents fournies" />
-                              <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="725.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../assets/arrow.png" />
-                                 </image>
-                              </ImageView>
-                              <Text fill="#656363" layoutX="778.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fin" />
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </AnchorPane>
-               </children>
-            </AnchorPane>
+                 
+                  
+             <fx:include fx:id="addStudentPane" source="adminEtudiant.fxml" />
+                  
+             <fx:include fx:id="listStudentPane" source="fetchEtudiantAdmin.fxml" />
+
            
          </children>
       </AnchorPane>
+
+
+
+   
    </children>
 </AnchorPane>

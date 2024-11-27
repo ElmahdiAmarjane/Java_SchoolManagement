@@ -94,7 +94,7 @@ public class PresenceController {
         ObservableList<Etudiant> students = FXCollections.observableArrayList();
         
         // Fetch students from the database with id_filier = 1
-        List<Etudiant> etudiants = etudiantDao.selectAllEtudiants(1);
+        List<Etudiant> etudiants = etudiantDao.selectAllEtudiants("IL");
         students.addAll(etudiants);
 
         return students;

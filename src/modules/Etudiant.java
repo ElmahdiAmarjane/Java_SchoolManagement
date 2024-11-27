@@ -1,20 +1,35 @@
 package modules;
 
+import java.time.LocalDate;
+
 public class Etudiant extends User{
 
-	String cne;
-	String type_bac;
-	Double note_bac;
-	String type_bac2;
-	Double note_bac2;
-	int id_filier;
-	String cni_user;
-	String imageBac;
-	String imageBac2;
-	String imageS1;
-	String imageS2;
-	String imageS3;
-	String imageS4;
+	protected String cne;
+	protected String type_bac;
+	protected int anneBac;
+	protected Double note_bac;
+	protected String bac_acadimic;
+	protected String university;
+	protected String etablisment_bac2;
+	protected String type_bac2;
+	protected Double note_bac2;
+	protected String filier_titel;
+	protected int anneeS1;
+	protected int anneeS2;
+	protected int anneeS3;
+	protected int anneeS4;
+	protected Double note_S1;
+	protected Double note_S2;
+	protected Double note_S3;
+	protected Double note_S4;
+	protected String cni_user;
+	protected String imageBac;
+	protected String iamge_note_bac;
+	protected String imageBac2;
+	protected String imageS1;
+	protected String imageS2;
+	protected String imageS3;
+	protected String imageS4;
 	
 	public Etudiant() {}
 	
@@ -27,13 +42,13 @@ public class Etudiant extends User{
 			String password,
 			String tel,
 			String email,
-			String dateNaissance,
+			LocalDate dateNaissance,
 			String cne,
 			String type_bac,
 			Double note_bac,
 			String type_bac2,
 			Double note_bac2,
-			int id_filier,
+			String filier_titel,
 			String cni_user,
 			String imageBac,
 			String imageBac2,
@@ -49,7 +64,7 @@ public class Etudiant extends User{
 		this.note_bac=note_bac;
 		this.type_bac2=type_bac2;
 		this.note_bac2=note_bac2;
-		this.id_filier=id_filier;
+		this.filier_titel=filier_titel;
 		this.cni_user=cni_user;
 		this.imageBac=imageBac;
 		this.imageBac=imageBac2;
@@ -140,19 +155,11 @@ public class Etudiant extends User{
 	}
 
 	public Double getNote_bac2() {
-		return note_bac2;
+		return this.note_bac2;
 	}
 
 	public void setNote_bac2(Double note_bac2) {
 		this.note_bac2 = note_bac2;
-	}
-
-	public int getId_filier() {
-		return id_filier;
-	}
-
-	public void setId_filier(int id_filier) {
-		this.id_filier = id_filier;
 	}
 
 	public String getCni_user() {
@@ -166,6 +173,119 @@ public class Etudiant extends User{
 	public String toString() {
 		return cne+" "+nom+" "+prenom;
 	}
+
+	public String getFilier_titel() {
+		return filier_titel;
+	}
+
+	public void setFilier_titel(String filier_titel) {
+		this.filier_titel = filier_titel;
+	}
+
+	public int getAnneBac() {
+		return anneBac;
+	}
+
+	public void setAnneBac(int anneBac) {
+		this.anneBac = anneBac;
+	}
+
+	public String getBac_acadimic() {
+		return bac_acadimic;
+	}
+
+	public void setBac_acadimic(String bac_acadimic) {
+		this.bac_acadimic = bac_acadimic;
+	}
+
+	public String getUniversity() {
+		return university;
+	}
+
+	public void setUniversity(String university) {
+		this.university = university;
+	}
+
+	public String getEtablisment_bac2() {
+		return etablisment_bac2;
+	}
+
+	public void setEtablisment_bac2(String etablisment_bac2) {
+		this.etablisment_bac2 = etablisment_bac2;
+	}
+
+	public int getAnneeS1() {
+		return anneeS1;
+	}
+
+	public void setAnneeS1(int anneeS1) {
+		this.anneeS1 = anneeS1;
+	}
+
+	public int getAnneeS2() {
+		return anneeS2;
+	}
+
+	public void setAnneeS2(int anneeS2) {
+		this.anneeS2 = anneeS2;
+	}
+
+	public int getAnneeS3() {
+		return anneeS3;
+	}
+
+	public void setAnneeS3(int anneeS3) {
+		this.anneeS3 = anneeS3;
+	}
+
+	public int getAnneeS4() {
+		return anneeS4;
+	}
+
+	public void setAnneeS4(int anneeS4) {
+		this.anneeS4 = anneeS4;
+	}
+
+	public double getNote_S1() {
+		return note_S1;
+	}
+
+	public void setNote_S1(double note_S1) {
+		this.note_S1 = note_S1;
+	}
+
+	public double getNote_S2() {
+		return note_S2;
+	}
+
+	public void setNote_S2(double note_S2) {
+		this.note_S2 = note_S2;
+	}
+
+	public double getNote_S3() {
+		return note_S3;
+	}
+
+	public void setNote_S3(double note_S3) {
+		this.note_S3 = note_S3;
+	}
+
+	public double getNote_S4() {
+		return note_S4;
+	}
+
+	public void setNote_S4(double note_S4) {
+		this.note_S4 = note_S4;
+	}
+
+	public String getIamge_note_bac() {
+		return iamge_note_bac;
+	}
+
+	public void setIamge_note_bac(String iamge_not_bac) {
+		this.iamge_note_bac = iamge_not_bac;
+	}
+	
 	
 	
 }

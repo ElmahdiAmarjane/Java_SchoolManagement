@@ -1,14 +1,18 @@
 package modules;
 
+import java.time.LocalDate;
+
 public class Professeur extends User{
 
 	private int id;
 	private int rip;
 	private String doctorant_type;
 	private String doctorant_mention;
-	private String faculter;
+	private String etablissement;
 	private String cni_user;
-	private String cv;
+	private String imagecv;
+	private String Matiere_enseigne;
+	private String type_contrat;
 	
 	public Professeur() {}
 	
@@ -22,7 +26,7 @@ public class Professeur extends User{
 			String password,
 			String tel,
 			String email,
-			String dateNaissance,
+			LocalDate dateNaissance,
 			int rip,
 			String doctorant_type,
 			String doctorant_mention,
@@ -34,9 +38,9 @@ public class Professeur extends User{
 		this.rip=rip;
 		this.doctorant_type=doctorant_type;
 		this.doctorant_mention=doctorant_mention;
-		this.faculter=faculter;
+		this.etablissement=faculter;
 		this.cni_user=cni_user;
-		this.cv=cv;
+		this.imagecv=cv;
 	}
 
 
@@ -80,13 +84,15 @@ public class Professeur extends User{
 	}
 
 
-	public String getFaculter() {
-		return faculter;
+	
+
+	public String getEtablissement() {
+		return etablissement;
 	}
 
 
-	public void setFaculter(String faculter) {
-		this.faculter = faculter;
+	public void setEtablissement(String etablissement) {
+		this.etablissement = etablissement;
 	}
 
 
@@ -100,12 +106,34 @@ public class Professeur extends User{
 	}
 
 
-	public String getCv() {
-		return cv;
+	public String getImagecv() {
+		return imagecv;
 	}
 
 
-	public void setCv(String cv) {
-		this.cv = cv;
+	public void setImagecv(String imagecv) {
+		this.imagecv = imagecv;
 	}
+
+
+	public String getMatiere_enseigne() {
+		return Matiere_enseigne;
+	}
+
+
+	public void setMatiere_enseigne(String matiere_enseigne) {
+		Matiere_enseigne = matiere_enseigne;
+	}
+
+
+	public String getType_contrat() {
+		return type_contrat;
+	}
+
+
+	public void setType_contrat(String type_contrat) {
+		this.type_contrat = type_contrat;
+	}
+	
+	
 }

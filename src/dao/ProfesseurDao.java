@@ -16,7 +16,7 @@ public class ProfesseurDao implements IProfesseurServices{
 
 	@Override
 	public boolean insertProfesseur(Professeur professeur) {
-        String query = "INSERT INTO professeur (rip, doctorant_type, doctorant_mention, faculter, cni_user, cv) VALUES (?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO professeur (rip, doctorant_type, doctorant_mention, faculter, cni_user, imagecv, Matiere_enseigne,type_contrat) VALUES (? ,? ,?, ?, ?, ?, ?, ?)";
 
         try (Connection connection = JDBC.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -25,10 +25,11 @@ public class ProfesseurDao implements IProfesseurServices{
             preparedStatement.setInt(1, professeur.getRip());
             preparedStatement.setString(2, professeur.getDoctorant_type());
             preparedStatement.setString(3, professeur.getDoctorant_mention());
-            preparedStatement.setString(4, professeur.getFaculter());
+            preparedStatement.setString(4, professeur.getEtablissement());
             preparedStatement.setString(5, professeur.getCni());
-            preparedStatement.setString(6, professeur.getCv());
-
+            preparedStatement.setString(6, professeur.getImage());
+            preparedStatement.setString(7, professeur.getMatiere_enseigne());
+            preparedStatement.setString(8, professeur.getType_contrat());
             // Execute the update
             int rowsAffected = preparedStatement.executeUpdate();
 
@@ -81,8 +82,8 @@ public class ProfesseurDao implements IProfesseurServices{
 	        preparedStatement.setInt(1, prof.getRip());
 	        preparedStatement.setString(2, prof.getDoctorant_type());
 	        preparedStatement.setString(3, prof.getDoctorant_mention());
-	        preparedStatement.setString(4, prof.getFaculter());
-	        preparedStatement.setString(5, prof.getCv());
+	        preparedStatement.setString(4, prof.getEtablissement());
+	        preparedStatement.setString(5, prof.getImagecv());
 	        preparedStatement.setString(6, prof.getCni_user());
 
 	        int rowsAffected = preparedStatement.executeUpdate();
