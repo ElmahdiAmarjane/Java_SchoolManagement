@@ -82,6 +82,9 @@ public class ProfesseurController {
 
 		@FXML
 		private TableView<?> studentsTable; 
+		
+		@FXML
+		private AnchorPane studentNavMenu;
 	
 	
 		 @FXML
@@ -145,17 +148,19 @@ public class ProfesseurController {
 			user.setNationalite(nationalite.getValue());
 			user.setPassword(password.getText());
 			user.setImage(imageProfile);
-			
+    		
 			if(userDao.insertUser(user)) {
 				
 				int ripval= Integer.parseInt(rip.getText());
 				
-				professeur.getDoctorant_type(type_doctorat.getText());
-				professeur.setMatiere_enseigne(mention_doctorat.getText());
+				professeur.setDoctorant_type(type_doctorat.getText());
+				professeur.setDoctorant_mention(mention_doctorat.getText());
 				professeur.setEtablissement(etablissement.getText());
 				professeur.setMatiere_enseigne(Matiere_enseigne.getValue());
 				professeur.setType_contrat(type_contrat.getValue());
 				professeur.setRip(ripval);
+				professeur.setImagecv(imageCv);
+				professeur.setCni_user(cni.getText());
 				
 				professeurDao.insertProfesseur(professeur);
 			}
@@ -169,10 +174,12 @@ public class ProfesseurController {
 		
 	}
 	public void addProfPaneToFront() {
-			
+		addProfPane.toFront();
+	   // studentNavMenu.getChildren().removeLast();
 	}
 	public void listProfPaneToFront() {
-		
+		listProfPane.toFront();
+	   // studentNavMenu.getChildren().removeLast();
 	}
 	
 	@FXML
@@ -237,6 +244,7 @@ public class ProfesseurController {
 public void switchToFrontBetweenAddProfPane() {
 		
 		System.out.println("LASTPANE : "+addProfPane.getChildren().getLast().getId());
+		
 		if("addProfInfoPers".equals(addProfPane.getChildren().getLast().getId())  ) {
 			addProfInfoAcad.toFront();
 		}

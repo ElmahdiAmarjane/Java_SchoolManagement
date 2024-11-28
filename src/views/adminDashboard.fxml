@@ -194,52 +194,14 @@
          </children>
       </AnchorPane>
       
+      
 	<fx:include fx:id="professorPane" source="adminProfesseur.fxml" />
-	
-	
-	<fx:include fx:id="emploiTempsPane" source="emploiTemps.fxml" />
-	
-    <AnchorPane fx:id="studentPane" layoutX="236.0" layoutY="76.0" prefHeight="441.0" prefWidth="517.0" style="-fx-background-color: #EE11EE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="236.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="76.0">
-         <children>
-            <AnchorPane fx:id="studentNavMenu2" layoutX="2.0" layoutY="4.0" prefHeight="51.0" prefWidth="1135.0" style="-fx-background-color: #112277;" AnchorPane.bottomAnchor="618.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <Text fx:id="listStudentBtn1" fill="WHITE" layoutX="53.0" layoutY="30.0" onMouseClicked="#listStudentPaneToFront" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste Etudiants">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="addStudentBtn1" fill="WHITE" layoutX="194.0" layoutY="30.0" onMouseClicked="#addStudentPaneToFront" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Etudiant">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Text>
-                  <Line endX="87.0" endY="6.0" fill="WHITE" layoutX="221.0" layoutY="33.5" startX="-32.0" startY="6.0" stroke="WHITE" strokeWidth="3.0" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="40.0" />
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="studentNavMenu1" prefHeight="51.0" prefWidth="1135.0" style="-fx-background-color: #112277;" AnchorPane.bottomAnchor="586.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <Text fx:id="listStudentBtn" fill="WHITE" layoutX="53.0" layoutY="30.0" onMouseClicked="#listStudentPaneToFront" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste Etudiants">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="addStudentBtn" fill="WHITE" layoutX="194.0" layoutY="30.0" onMouseClicked="#addStudentPaneToFront" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Etudiant">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Text>
-                  <Line endX="73.0" endY="6.0" fill="WHITE" startX="-32.0" startY="6.0" stroke="WHITE" strokeWidth="3.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="47.5" AnchorPane.rightAnchor="981.0" AnchorPane.topAnchor="39.5" />
-               </children>
-            </AnchorPane>
-                 
-                  
-             <fx:include fx:id="addStudentPane" source="adminEtudiant.fxml" />
-                  
-             <fx:include fx:id="listStudentPane" source="fetchEtudiantAdmin.fxml" />
 
+	<fx:include fx:id="emploiTempsPane" source="emploiTemps.fxml" />
            
-         </children>
-      </AnchorPane>
+    <fx:include fx:id="studentPane" source="adminEtudiant.fxml" />
+
+         
 
 
 

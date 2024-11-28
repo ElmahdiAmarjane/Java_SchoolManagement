@@ -2,11 +2,14 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import org.json.*;
 import db_connect.JDBC;
 import modules.Absence;
+import modules.Element;
 import modules.Etudiant;
 import modules.Professeur;
 import modules.User;
@@ -16,7 +19,7 @@ public class ProfesseurDao implements IProfesseurServices{
 
 	@Override
 	public boolean insertProfesseur(Professeur professeur) {
-        String query = "INSERT INTO professeur (rip, doctorant_type, doctorant_mention, faculter, cni_user, imagecv, Matiere_enseigne,type_contrat) VALUES (? ,? ,?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO professeur (rip, doctorant_type, doctorant_mention, etablissement, cni_user, imagecv, Matiere_enseigne,type_contrat) VALUES (? ,? ,?, ?, ?, ?, ?, ?)";
 
         try (Connection connection = JDBC.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -26,8 +29,8 @@ public class ProfesseurDao implements IProfesseurServices{
             preparedStatement.setString(2, professeur.getDoctorant_type());
             preparedStatement.setString(3, professeur.getDoctorant_mention());
             preparedStatement.setString(4, professeur.getEtablissement());
-            preparedStatement.setString(5, professeur.getCni());
-            preparedStatement.setString(6, professeur.getImage());
+            preparedStatement.setString(5, professeur.getCni_user());
+            preparedStatement.setString(6, professeur.getImagecv());
             preparedStatement.setString(7, professeur.getMatiere_enseigne());
             preparedStatement.setString(8, professeur.getType_contrat());
             // Execute the update
@@ -142,6 +145,42 @@ public class ProfesseurDao implements IProfesseurServices{
 	        }*/
 	    }
 	    return false;
+	}
+
+	@Override
+	public List<Professeur> selectAllProfesseur() {
+		List<Professeur> professeurs = new ArrayList<>();
+        String query = "SELECT * FROM professeur JOIN user ON professeur.cni_user = user.cni ";
+
+        try (Connection connection = JDBC.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Professeur prof = new Professeur();
+                prof.setCni(resultSet.getString("cni"));
+                prof.setNom(resultSet.getString("nom"));
+                prof.setPrenom(resultSet.getString("prenom"));
+                /*etd.setType_bac2(resultSet.getString("type_bac2"));
+                etd.setNote_bac2(resultSet.getDouble("note_bac2"));
+                etd.setId_filier(resultSet.getInt("id_filier"));
+                etd.setCni_user(resultSet.getString("cni_user"));
+                etd.setImageBac(resultSet.getString("imageBac"));
+                etd.setImageBac2(resultSet.getString("imageBac2"));
+                etd.setImageS1(resultSet.getString("imageS1"));
+                etd.setImageS2(resultSet.getString("imageS2"));
+                etd.setImageS3(resultSet.getString("imageS3"));
+                etd.setImageS4(resultSet.getString("imageS4"));*/
+                
+                professeurs.add(prof);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return professeurs;
 	}
 	
 }

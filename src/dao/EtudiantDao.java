@@ -57,6 +57,7 @@ public class EtudiantDao implements IEtudiantServices{
             } else {
                 System.out.println("Failed to insert Etudiant.");
             }
+            
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -143,16 +144,16 @@ public class EtudiantDao implements IEtudiantServices{
                 etd.setNom(resultSet.getString("nom"));
                 etd.setPrenom(resultSet.getString("prenom"));
                 etd.setFilier_titel(resultSet.getString("titel_filier"));
-                /*etd.setType_bac2(resultSet.getString("type_bac2"));
+                etd.setType_bac2(resultSet.getString("type_bac2"));
                 etd.setNote_bac2(resultSet.getDouble("note_bac2"));
-                etd.setId_filier(resultSet.getInt("id_filier"));
+                etd.setFilier_titel(resultSet.getString("titel_filier"));
                 etd.setCni_user(resultSet.getString("cni_user"));
                 etd.setImageBac(resultSet.getString("imageBac"));
                 etd.setImageBac2(resultSet.getString("imageBac2"));
                 etd.setImageS1(resultSet.getString("imageS1"));
                 etd.setImageS2(resultSet.getString("imageS2"));
                 etd.setImageS3(resultSet.getString("imageS3"));
-                etd.setImageS4(resultSet.getString("imageS4"));*/
+                etd.setImageS4(resultSet.getString("imageS4"));
                 
                 etudiants.add(etd);
             }

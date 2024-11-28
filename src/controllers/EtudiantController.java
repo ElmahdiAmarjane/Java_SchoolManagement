@@ -9,6 +9,8 @@ import dao.EtudiantDao;
 import dao.FilierDao;
 import dao.UserDao;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.HPos;
@@ -21,11 +23,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -68,26 +72,29 @@ public class EtudiantController {
     String imageCartNationalpath;
     String imageExtraipath;
     
-	@FXML
-	private TableColumn<?, ?> colNumber;
+    @FXML
+	private TableColumn<Etudiant, String> colNumber;
 
 	@FXML
-	private TableColumn<?, ?> colCIN;
+	private TableColumn<Etudiant, String> colCNI;
 
 	@FXML
-	private TableColumn<?, ?> colNom;
+	private TableColumn<Etudiant, String> colNom;
 
 	@FXML
-	private TableColumn<?, ?> colPrenom;
+	private TableColumn<Etudiant, String> colPrenom;
 
 	@FXML
-	private TableColumn<?, ?> colFilliere;
+	private TableColumn<Etudiant, String> colFilliere;
 
 	@FXML
-	private TableColumn<?, ?> colCNE;
+	private TableColumn<Etudiant, String> colCNE;
 
 	@FXML
-	private TableView<?> studentsTable; // Assuming you also have the TreeTableView defined in FXML
+	private TableView<Etudiant> studentsTable;
+	
+	@FXML
+	private TableColumn<Etudiant, Void> icons;
 
 	@FXML
 	private AnchorPane studentNavMenu ;
@@ -109,8 +116,7 @@ public class EtudiantController {
 	 private AnchorPane studentNavMenu1;
 	 @FXML
 	 private AnchorPane studentNavMenu2;
-	 
-	 //////////
+
 	 @FXML
 	 private ImageView viewImageProfile;
 	 @FXML
@@ -159,40 +165,82 @@ public class EtudiantController {
     @FXML
     private ComboBox<Integer> anneeS1,anneeS2,anneeS3,anneeS4,anneBac;
     
-    public void FetchCombBox() {
-  
-    	int currentYear = LocalDate.now().getYear();
-    	
-    	try {
-    		List<Filier> filiers=filierDao.selectAllFilier();
-    		
-    		for(Filier fil:filiers) {
-    			filier.getItems().addAll(fil.getTitel());
-    		}
-    		
-    	}catch(Exception e) {
-    		System.out.print(e);
-    	}
-    	
-    	sexe.getItems().addAll("Male", "Female");
-        nationalite.getItems().addAll("Moroccan", "Other");
-        
-        for(int i=0;i<5;i++) {
-        	
-            anneeS1.getItems().addAll(currentYear - i);
-            anneeS2.getItems().addAll(currentYear - i);
-            anneeS3.getItems().add(currentYear - i);
-            anneeS4.getItems().add(currentYear - i);
-            
-            anneBac.getItems().add(currentYear - i);
+    
+    private void addIconsToTable() {
+        icons.setCellFactory(param -> new TableCell<>() {
+            private final HBox actionBox = new HBox(10);
+            private final Button updateButton = new Button("✏️");
+            private final Button deleteButton = new Button("🗑️");
+            private final Button viewButton = new Button("🔍");
 
-        }
-    	
+            {
+                // Ajouter un style ou une classe CSS si nécessaire
+                actionBox.setStyle("-fx-alignment: CENTER;");
+                updateButton.setStyle("-fx-background-color: #0000FF; -fx-cursor: hand;");
+                deleteButton.setStyle("-fx-background-color: #FF0000; -fx-cursor: hand;");
+                viewButton.setStyle("-fx-background-color: #FFA500; -fx-cursor: hand;");
+
+                actionBox.getChildren().addAll(updateButton, deleteButton, viewButton);
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(actionBox);
+
+                   
+                }
+            }
+        });
     }
+    
+    public void fetchEtudiant() {
+        try {
+            List<Etudiant> listEtudiants = etudiantDao.selectAllEtudiants("IL");
+
+            ObservableList<Etudiant> etudiants = FXCollections.observableArrayList(listEtudiants);
+            studentsTable.setItems(etudiants); // Set items to the table
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    @FXML
+	public void addStudentPaneToFront() {
+		addStudentPane.toFront();	
+		//studentNavMenu2.toFront();
+		//updateLinePosition(addStudentPane);
+	}
+	@FXML
+	public void listStudentPaneToFront() {
+		listStudentPane.toFront();
+		//studentNavMenu1.toFront();
+		//updateLinePosition(listStudentPane);
+	}
+    
+    @FXML
+	public void studentPaneToFront() {
+		studentPane.toFront();
+		initialize();
+		
+	}
+    
     public void initialize() {
     	
-    	
-    	
+    	addIconsToTable();
+    	// Set up TableView and TableColumn bindings
+        colNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        colPrenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+        colCNI.setCellValueFactory(new PropertyValueFactory<>("cni"));
+        colCNE.setCellValueFactory(new PropertyValueFactory<>("cne"));
+        colFilliere.setCellValueFactory(new PropertyValueFactory<>("filier_titel"));
+        
+        fetchEtudiant();
+        
     	cni.textProperty().addListener((observal,oledvaleu,newvale)->{
     		password.setText(newvale);
     	});
@@ -271,6 +319,7 @@ public class EtudiantController {
 	public void switchToFrontBetweenAddStudentsPane() {
 		
 		System.out.println("LASTPANE : "+addStudentPane.getChildren().getLast().getId());
+		
 		if("addStudentInfoPers".equals(addStudentPane.getChildren().getLast().getId())  ) {
 			addStudentInfoAcad.toFront();
 		}
@@ -283,9 +332,11 @@ public class EtudiantController {
 		}
 		   
 	}
+	
 	public void switchToBackBetweenAddStudentsPane() {
 		
 		System.out.println("LASTPANE : "+addStudentPane.getChildren().getLast().getId());
+		
 		if("addStudentInfoPers".equals(addStudentPane.getChildren().getLast().getId()) ) {
 			System.out.println("NO BACK!");
 		}
@@ -491,11 +542,43 @@ public class EtudiantController {
         alert.showAndWait();
     }
     
+	public void FetchCombBox() {
+		  
+    	int currentYear = LocalDate.now().getYear();
+    	
+    	try {
+    		List<Filier> filiers=filierDao.selectAllFilier();
+    		
+    		for(Filier fil:filiers) {
+    			filier.getItems().addAll(fil.getTitel());
+    		}
+    		
+    	}catch(Exception e) {
+    		System.out.print(e);
+    	}
+    	
+    	sexe.getItems().addAll("Male", "Female");
+        nationalite.getItems().addAll("Moroccan", "Other");
+        
+        for(int i=0;i<5;i++) {
+        	
+            anneeS1.getItems().addAll(currentYear - i);
+            anneeS2.getItems().addAll(currentYear - i);
+            anneeS3.getItems().add(currentYear - i);
+            anneeS4.getItems().add(currentYear - i);
+            
+            anneBac.getItems().add(currentYear - i);
+
+        }
+    	
+    }
     
   //DELET ETUDIANT
     public boolean deleteEtudiant(){
     	return etudiantDao.deleteEtudiant("med");
     }
+    
+    
     
     
 }

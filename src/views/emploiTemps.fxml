@@ -56,22 +56,15 @@ xmlns="http://javafx.com/javafx/23.0.1"  xmlns:fx="http://javafx.com/fxml/1"
     <content>
                  <AnchorPane layoutX="1.0" layoutY="52.0" prefHeight="900.0" prefWidth="1135.0" style="-fx-background-color: #FFF;" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                <children>
-                  <Text layoutX="18.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Emploi Filiere xxx" wrappingWidth="213.87451171875">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Text>
-                  
+               
                  <ScrollPane fitToWidth="true" xmlns:fx="http://javafx.com/fxml">
     
     			<content>
                      <AnchorPane layoutX="1.0" layoutY="52.0" prefHeight="771.0" prefWidth="1206.0" style="-fx-background-color: #FFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                <children>
-                  <Text layoutX="18.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Emploi Filiere xxx" wrappingWidth="213.87451171875">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Text>
+                  
+                  <ComboBox   fx:id="filier_titel" layoutX="20.0" layoutY="23.0" prefHeight="25.0" prefWidth="119.0" promptText="Filier" style="-fx-background-color: blue" />
+
                   <AnchorPane layoutX="62.0" layoutY="30.0" prefHeight="500.0" prefWidth="1033.0" style="-fx-background-color: #FFF;" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="30.0">
                      <children>
                         <Pane prefHeight="35.0" prefWidth="1033.0" style="-fx-background-color: #FFF;">
@@ -264,7 +257,7 @@ xmlns="http://javafx.com/javafx/23.0.1"  xmlns:fx="http://javafx.com/fxml/1"
                                
                      </children>
                      </AnchorPane>
-                              <Button fx:id="myButton" layoutX="13.0" layoutY="242.0" onAction="#saveEmploi" prefHeight="23.0" prefWidth="38.0" style="-fx-background-color: green;" text="save" textFill="WHITE" />
+                              <Button fx:id="myButton" layoutX="13.0" layoutY="242.0" onAction="#saveEmploiFilier" prefHeight="23.0" prefWidth="38.0" style="-fx-background-color: green;" text="save" textFill="WHITE" />
                      
                     
                </children>

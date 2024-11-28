@@ -97,7 +97,7 @@ public class Professeur extends User{
 
 
 	public String getCni_user() {
-		return cni_user;
+		return this.cni_user;
 	}
 
 
