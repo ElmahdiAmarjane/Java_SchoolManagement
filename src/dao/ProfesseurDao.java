@@ -112,15 +112,13 @@ public class ProfesseurDao implements IProfesseurServices{
 	    try (Connection connection = JDBC.getConnection();
 	         PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-	        connection.setAutoCommit(false); // Enable transaction management
+	        connection.setAutoCommit(false); 
 
-	        // Convert the list of 'cne_etudiants' to a JSON string using org.json
-	        JSONArray cneArray = new JSONArray(absence.getCne_etudiants()); // Convert list to JSONArray
-	        String cneJson = cneArray.toString(); // Convert JSONArray to JSON string
+	        JSONArray cneArray = new JSONArray(absence.getCne_etudiants()); 
+	        String cneJson = cneArray.toString(); 
 
-	        // Set the parameters for the prepared statement
-	        preparedStatement.setString(1, cneJson); // Store the JSON string
-	        preparedStatement.setDate(2, absence.getDate());
+	        preparedStatement.setString(1, cneJson); 
+	        preparedStatement.setDate(2, java.sql.Date.valueOf(absence.getDate().toString()) );
 	        preparedStatement.setTime(3, absence.getHeure_debut());
 	        preparedStatement.setTime(4, absence.getHeure_fine());
 	        preparedStatement.setInt(5, absence.getFilier_id());

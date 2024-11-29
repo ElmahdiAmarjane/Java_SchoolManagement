@@ -3,49 +3,30 @@ package controllers;
 
 import java.io.File;
 import java.util.List;
-import java.util.function.Predicate;
 import java.time.LocalDate;
 import dao.EtudiantDao;
 import dao.FilierDao;
 import dao.UserDao;
-import javafx.application.Platform;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.HPos;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.geometry.VPos;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TreeTableColumn;
-import javafx.scene.control.TreeTableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.RowConstraints;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import modules.Etudiant;
 import modules.Filier;
 import modules.User;
@@ -166,21 +147,43 @@ public class EtudiantController {
     private ComboBox<Integer> anneeS1,anneeS2,anneeS3,anneeS4,anneBac;
     
     
+    void update(){
+		System.out.println("Updated");
+	}
+    
     private void addIconsToTable() {
+    	
+   
         icons.setCellFactory(param -> new TableCell<>() {
             private final HBox actionBox = new HBox(10);
-            private final Button updateButton = new Button("✏️");
-            private final Button deleteButton = new Button("🗑️");
-            private final Button viewButton = new Button("🔍");
+            private final Button updateButton = new Button();
+            private final Button deleteButton = new Button();
+            private final Button downloadButton = new Button();
 
             {
-                // Ajouter un style ou une classe CSS si nécessaire
-                actionBox.setStyle("-fx-alignment: CENTER;");
-                updateButton.setStyle("-fx-background-color: #0000FF; -fx-cursor: hand;");
-                deleteButton.setStyle("-fx-background-color: #FF0000; -fx-cursor: hand;");
-                viewButton.setStyle("-fx-background-color: #FFA500; -fx-cursor: hand;");
+                // Configure buttons with FontAwesomeFX icons
+                FontAwesomeIconView updateIcon = new FontAwesomeIconView(FontAwesomeIcon.EDIT);
+                FontAwesomeIconView deleteIcon = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
+                FontAwesomeIconView downloadIcon = new FontAwesomeIconView(FontAwesomeIcon.DOWNLOAD);
 
-                actionBox.getChildren().addAll(updateButton, deleteButton, viewButton);
+                // Style the icons
+                updateIcon.setStyle("-fx-fill: blue; -fx-font-size: 16px;");
+                deleteIcon.setStyle("-fx-fill: red; -fx-font-size: 16px;");
+                downloadIcon.setStyle("-fx-fill: orange; -fx-font-size: 16px;");
+
+                // Add icons to buttons
+                updateButton.setGraphic(updateIcon);
+                deleteButton.setGraphic(deleteIcon);
+                downloadButton.setGraphic(downloadIcon);
+
+                // Style the buttons
+                updateButton.setStyle("-fx-background-color: transparent; -fx-cursor: hand;");
+                deleteButton.setStyle("-fx-background-color: transparent; -fx-cursor: hand;");
+                downloadButton.setStyle("-fx-background-color: transparent; -fx-cursor: hand;");
+
+                // Add buttons to the HBox
+                actionBox.setStyle("-fx-alignment: CENTER;");
+                actionBox.getChildren().addAll(updateButton, deleteButton, downloadButton);
             }
 
             @Override
@@ -191,12 +194,14 @@ public class EtudiantController {
                 } else {
                     setGraphic(actionBox);
 
-                   
+                    // Add actions to buttons
+                    updateButton.setOnAction(event -> update());
+                    deleteButton.setOnAction(event -> update());
+                    downloadButton.setOnAction(event -> update());
                 }
             }
         });
     }
-    
     public void fetchEtudiant() {
         try {
             List<Etudiant> listEtudiants = etudiantDao.selectAllEtudiants("IL");
@@ -230,6 +235,7 @@ public class EtudiantController {
 	}
     
     public void initialize() {
+    	
     	
     	addIconsToTable();
     	// Set up TableView and TableColumn bindings
