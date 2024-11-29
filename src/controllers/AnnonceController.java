@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -33,7 +34,8 @@ public class AnnonceController {
 
 	////////////////////
 	@FXML private ScrollPane annoncesScrollPane;
-	
+	@FXML private AnchorPane annoncesListAnchorPane;
+	@FXML private AnchorPane annoncesAddAnchorPane;
 	
 	
 	 @FXML
@@ -111,10 +113,11 @@ public class AnnonceController {
 	 }
 
 	 public void setAnnoncesListToFront() {
-		 
+		 annoncesListAnchorPane.toFront();
 	 }
 	
 	 public void setAnnonceAddAnchorPaneToFront() {
+		 annoncesAddAnchorPane.toFront();
 		 
 	 }
 	 public void setFAnnoncesDetailsToFront() {

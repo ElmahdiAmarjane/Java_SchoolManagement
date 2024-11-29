@@ -181,7 +181,11 @@ public class AdminController {
 	 private AnchorPane filliereDetailsAnchorPane;
 	 @FXML AnchorPane filliereListAnchorPane;
 	 
+	 ////////
+	 @FXML AnchorPane annoncesMainPane;
 	 
+	 
+	 /////////
 	 
 	 //////////
 	@FXML
@@ -438,5 +442,8 @@ public void switchToFrontBetweenAddProfPane() {
 
 	}
 	 
+	public void  annoncesMenuOnclick() {
+		annoncesMainPane.toFront();
+	}
 	
 }
