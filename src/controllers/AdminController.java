@@ -423,4 +423,20 @@ public void switchToFrontBetweenAddProfPane() {
     
     */
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	 public void filliereMenuOnclick() {
+		 // Bring the main pane to the front
+	    fillieresMainPane.toFront();
+
+	}
+	 
+	
 }
