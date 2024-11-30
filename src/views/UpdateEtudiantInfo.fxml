@@ -14,40 +14,12 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TableColumn?>
          
-<AnchorPane  fx:id="EtudiantView" xmlns:fx="http://javafx.com/fxml" layoutX="236.0" layoutY="76.0" prefHeight="441.0" prefWidth="517.0" style="-fx-background-color: #EE11EE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="236.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="76.0" fx:controller="controllers.EtudiantController">
+<AnchorPane  xmlns:fx="http://javafx.com/fxml" style="-fx-background-color: #EE11EE;" fx:controller="controllers.UpdateEtudiantInfoController">
             
 
     <children>
 
-        <AnchorPane prefHeight="51.0" prefWidth="517.0" 
-                    style="-fx-background-color: #112277;" 
-                    AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0" 
-                    AnchorPane.rightAnchor="0.0">
-            <children>
-                <Text fx:id="listStudentBtn" 
-                      fill="WHITE" layoutX="53.0" layoutY="30.0" 
-                      onMouseClicked="#listStudentPaneToFront" 
-                      strokeType="OUTSIDE" strokeWidth="0.0" 
-                      text="Liste Etudiant">
-                    <font>
-                        <Font name="System Bold" size="14.0" />
-                    </font>
-                </Text>
-                <Text fx:id="addStudentBtn" 
-                      fill="WHITE" layoutX="194.0" layoutY="30.0" 
-                      onMouseClicked="#addStudentPaneToFront" 
-                      strokeType="OUTSIDE" strokeWidth="0.0" 
-                      text="Ajouter Etudiant">
-                    <font>
-                        <Font name="System Bold" size="14.0" />
-                    </font>
-                </Text>
-                <Line endX="72.0" endY="7.0" fill="WHITE" 
-                      layoutX="97.0" layoutY="35.0" 
-                      startX="-51.0" startY="7.0" 
-                      stroke="WHITE" strokeWidth="2.0" />
-            </children>
-        </AnchorPane>
+        
 
         <AnchorPane fx:id="addStudentPane" 
                     layoutY="52.0" prefHeight="389.0" prefWidth="517.0" 
@@ -57,7 +29,7 @@
             <children>
                 <Text layoutX="167.0" layoutY="84.0" 
                       strokeType="OUTSIDE" strokeWidth="0.0" 
-                      text="Ajouter Professeur" wrappingWidth="215.7734375">
+                      text="Modifier les informations de l'étudiant" wrappingWidth="215.7734375">
                     <font>
                         <Font size="25.0" />
                     </font>
@@ -65,54 +37,8 @@
             </children>
         </AnchorPane>
 
-        <AnchorPane fx:id="listStudentPane" 
-                    layoutY="52.0" prefHeight="388.0" prefWidth="517.0" 
-                    style="-fx-background-color: #11FFDD;" 
-                    AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" 
-                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
-            <children>
-                
-              <AnchorPane layoutY="51.0" prefHeight="388.0" prefWidth="517.0" style="-fx-background-color: #11FF99;" 
-                    AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
-            	<children>
-                <Text layoutX="15.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste Etudiant" wrappingWidth="170.7734375">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Text>
-                
-                <!-- TableView for displaying student data -->
-                <TableView fx:id="studentsTable"  AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="53.0">
-                    <columns>
-                        <!-- TableColumn for number (index) -->
-                        <TableColumn fx:id="colNumber" prefWidth="121.0" text="N°" />
-
-                        <!-- TableColumn for CIN -->
-                        <TableColumn fx:id="colCNI" prefWidth="112.0" text="CIN" />
-
-                        <!-- TableColumn for Nom -->
-                        <TableColumn fx:id="colNom" prefWidth="112.0" text="Nom" />
-
-                        <!-- TableColumn for Prenom -->
-                        <TableColumn fx:id="colPrenom" prefWidth="103.0" text="Prénom" />
-
-                        <!-- TableColumn for Filière -->
-                        <TableColumn fx:id="colFilliere" prefWidth="130.0" text="Filliére" />
-
-                        <!-- TableColumn for CNE -->
-                        <TableColumn fx:id="colCNE" prefWidth="130.0" text="CNE" />
-                        
-                         <TableColumn fx:id="icons" prefWidth="130.0" text="Action" />
-                         
-                    </columns>
-                </TableView>
-                
-            </children>
-        </AnchorPane>
+       
     
-            </children>
-        </AnchorPane>
-   
    
    
    <AnchorPane fx:id="addStudentPane" layoutX="-9.0" layoutY="50.0" prefHeight="587.0" prefWidth="1152.0" style="-fx-background-color: #D9F9FD;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
@@ -350,4 +276,3 @@
          
     </children>
 </AnchorPane>
-

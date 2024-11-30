@@ -7,6 +7,7 @@ import modules.User;
 public interface IUserServices {
 	
 	User login(User user);
+	boolean deleteUser(String cni);
 	
 	
 	

@@ -14,7 +14,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TableColumn?>
          
-<AnchorPane  xmlns:fx="http://javafx.com/fxml" layoutX="236.0" layoutY="76.0" prefHeight="441.0" prefWidth="517.0" style="-fx-background-color: #EE11EE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="236.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="76.0" fx:controller="controllers.EtudiantController">
+<AnchorPane  fx:id="EtudiantView" xmlns:fx="http://javafx.com/fxml" layoutX="236.0" layoutY="76.0" prefHeight="441.0" prefWidth="517.0" style="-fx-background-color: #EE11EE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="236.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="76.0" fx:controller="controllers.EtudiantController">
             
 
     <children>
@@ -350,3 +350,4 @@
          
     </children>
 </AnchorPane>
+

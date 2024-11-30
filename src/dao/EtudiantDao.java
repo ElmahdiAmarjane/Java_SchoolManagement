@@ -65,30 +65,6 @@ public class EtudiantDao implements IEtudiantServices{
     }
 
 	@Override
-	public boolean deleteEtudiant(String cni) {
-        String query = "DELETE FROM user WHERE cni = ?";
-
-        try (Connection connection = JDBC.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-
-            preparedStatement.setString(1, cni);
-
-            int rowsAffected = preparedStatement.executeUpdate();
-
-            if (rowsAffected > 0) {
-                System.out.println("Etudiant deleted successfully.");
-                return true;
-            } else {
-                System.out.println("Failed to delete Etudiant.");
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-	@Override
 	public boolean updateEtudiant(Etudiant etd) {
 	    String query = "UPDATE etudiant SET cne = ?, type_bac = ?, note_bac = ?, type_bac2 = ?, note_bac2 = ?, id_filier = ?, cni_user = ?, imageBac = ?, imageBac2 = ?, imageS1 = ?, imageS2 = ?, imageS3 = ?, imageS4 = ? WHERE cni_user = ?";
 
@@ -165,5 +141,57 @@ public class EtudiantDao implements IEtudiantServices{
         return etudiants;
     }
 
+	@Override
+	public Etudiant selectEtudiant(String cni) {
+	    Etudiant etd = null; // Initialize to null to indicate no data if not found
+	    String query = "SELECT * FROM etudiant JOIN user ON etudiant.cni_user = user.cni WHERE user.cni = ?";
+
+	    try (Connection connection = JDBC.getConnection();
+	         PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+	        preparedStatement.setString(1, cni);
+	        ResultSet resultSet = preparedStatement.executeQuery();
+
+	        if (resultSet.next()) { // Check if a row exists
+	            etd = new Etudiant(); // Instantiate the object only when data is found
+	            etd.setCne(resultSet.getString("cne"));
+	            etd.setCni(resultSet.getString("cni"));
+	            etd.setNom(resultSet.getString("nom"));
+	            etd.setSexe(resultSet.getString("sexe"));
+	            etd.setPrenom(resultSet.getString("prenom"));
+	            etd.setTel(resultSet.getString("tele"));
+	            etd.setFilier_titel(resultSet.getString("titel_filier"));
+	            etd.setType_bac2(resultSet.getString("type_bac2"));
+	            etd.setNote_bac2(resultSet.getDouble("note_bac2"));
+	            etd.setCni_user(resultSet.getString("cni_user"));
+	            etd.setEmail(resultSet.getString("eamil"));
+	            etd.setPassword(resultSet.getString("password"));
+	            
+	            etd.setNationalite(resultSet.getString("nationalite"));
+	            
+	            etd.setNote_S1(resultSet.getDouble("noteS1"));
+	            etd.setNote_S2(resultSet.getDouble("noteS2"));
+	            etd.setNote_S3(resultSet.getDouble("noteS3"));
+	            etd.setNote_S4(resultSet.getDouble("noteS4"));
+	            
+	            etd.setAnneeS1(resultSet.getInt("anneeS1"));
+	            etd.setAnneeS2(resultSet.getInt("anneeS2"));
+	            etd.setAnneeS3(resultSet.getInt("anneeS3"));
+	            etd.setAnneeS4(resultSet.getInt("anneeS4"));
+	            
+	            etd.setImageBac(resultSet.getString("imageBac"));
+	            etd.setImageBac2(resultSet.getString("imageBac2"));
+	            etd.setImageS1(resultSet.getString("imageS1"));
+	            etd.setImageS2(resultSet.getString("imageS2"));
+	            etd.setImageS3(resultSet.getString("imageS3"));
+	            etd.setImageS4(resultSet.getString("imageS4"));
+	        }
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return etd; // Will return null if no record is found
+	}
 	
 }

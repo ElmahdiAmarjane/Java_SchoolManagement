@@ -94,6 +94,30 @@ public class UserDao implements IUserServices {
         }
         return false;
     }
+
+	@Override
+	public boolean deleteUser(String cni) {
+		String query = "DELETE FROM user WHERE cni = ?";
+
+        try (Connection connection = JDBC.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, cni);
+
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("USER deleted successfully.");
+                return true;
+            } else {
+                System.out.println("Failed to delete USER.");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+	}
     
     //UPDATE USER
 	

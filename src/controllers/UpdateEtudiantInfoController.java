@@ -2,12 +2,12 @@ package controllers;
 
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 import org.kordamp.ikonli.javafx.FontIcon;
 import org.kordamp.ikonli.materialdesign.MaterialDesign;
-
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import java.time.LocalDate;
 import dao.EtudiantDao;
 import dao.FilierDao;
@@ -17,7 +17,6 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -31,25 +30,25 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import modules.Etudiant;
 import modules.Filier;
-import modules.SceneSwitch;
 import modules.User;
 
 
-public class EtudiantController {
+public class UpdateEtudiantInfoController {
 
+	//Etudiant etudiant=new Etudiant();
 	Etudiant etudiant=new Etudiant();
-	User user=new User();
 	
 	EtudiantDao etudiantDao=new EtudiantDao();
 	UserDao userDao = new UserDao();
 	FilierDao filierDao=new FilierDao();
 	
 	List<Etudiant> listEtudiants;
+	
+	
 
     String imagepath;
     String imageCnipath;
@@ -61,31 +60,23 @@ public class EtudiantController {
     String imageS4path;
     String imageCartNationalpath;
     String imageExtraipath;
+   
+    static private String cniVal;
     
-    @FXML
-    private Pane EtudiantView;
-    
-    @FXML
-	private TableColumn<Etudiant, String> colNumber;
+    private StringProperty cniValue = new SimpleStringProperty();
 
-	@FXML
-	private TableColumn<Etudiant, String> colCNI;
+    public StringProperty cniValueProperty() {
+        return cniValue;
+    }
 
-	@FXML
-	private TableColumn<Etudiant, String> colNom;
+    public void setCniValue(String value) {
+        this.cniValue.set(value);
+    }
 
-	@FXML
-	private TableColumn<Etudiant, String> colPrenom;
+    public String getCniValue() {
+        return cniValue.get();
+    }
 
-	@FXML
-	private TableColumn<Etudiant, String> colFilliere;
-
-	@FXML
-	private TableColumn<Etudiant, String> colCNE;
-
-	@FXML
-	private TableView<Etudiant> studentsTable;
-	
 	@FXML
 	private TableColumn<Etudiant, Void> icons;
 
@@ -117,14 +108,12 @@ public class EtudiantController {
 	 
 	@FXML
 	private AnchorPane addStudentPane ; 
-	@FXML
-	private AnchorPane listStudentPane ; 
+	
 		
 	@FXML
 	private Text addStudentBtn;
 		
-	@FXML 
-	 private Text listStudentBtn;
+	
 	 
 	 @FXML
 	 private ImageView profileViewImage;
@@ -160,123 +149,10 @@ public class EtudiantController {
     
 
    
-    private void addIconsToTable() {
-        icons.setCellFactory(param -> new TableCell<>() {
-            @Override
-            protected void updateItem(Void item, boolean empty) {
-                super.updateItem(item, empty);
-
-                if (empty) {
-                    setGraphic(null);
-                } else {
-                    // Create HBox for buttons
-                    HBox actionBox = new HBox(10);
-
-                    // Create buttons
-                    Button updateButton = new Button();
-                    Button deleteButton = new Button();
-                    Button downloadButton = new Button();
-
-                    // Create ImageView for icons
-                    ImageView deleteIcon = createImageView("/assets/delete_icon.png");
-                    ImageView downloadIcon = createImageView("/assets/upload_icon.png");
-                    ImageView updateIcon = createImageView("/assets/edit_icon.png");
-
-                    // Add ImageView to buttons
-                    updateButton.setGraphic(updateIcon);
-                    deleteButton.setGraphic(deleteIcon);
-                    downloadButton.setGraphic(downloadIcon);
-
-                    // Style buttons
-                    updateButton.setStyle("-fx-background-color: transparent; -fx-cursor: hand;");
-                    deleteButton.setStyle("-fx-background-color: transparent; -fx-cursor: hand;");
-                    downloadButton.setStyle("-fx-background-color: transparent; -fx-cursor: hand;");
-
-                    // Add buttons to HBox
-                    actionBox.setStyle("-fx-alignment: CENTER;");
-                    actionBox.getChildren().addAll(updateButton, deleteButton, downloadButton);
-
-                    // Set the HBox as the graphic for the cell
-                    setGraphic(actionBox);
-                    
-                    Etudiant rowData = getTableView().getItems().get(getIndex());  // Replace YourDataType with the type of your row data
-
-                    // Add button actions
-                    updateButton.setOnAction(event -> updateAction(rowData.getCni()));
-                    deleteButton.setOnAction(event -> deleteAction(rowData.getCni()));
-                    downloadButton.setOnAction(event -> downloadAction(getIndex()));
-                }
-            }
-        });
-    }
-
-    // Helper method to create an ImageView
-    private ImageView createImageView(String resourcePath) {
-        ImageView imageView = new ImageView();
-        try {
-            Image image = new Image(getClass().getResourceAsStream(resourcePath));
-            imageView.setImage(image);
-            imageView.setFitWidth(16); // Set desired icon width
-            imageView.setFitHeight(16); // Set desired icon height
-            imageView.setPreserveRatio(true);
-        } catch (Exception e) {
-            System.err.println("Could not load image: " + resourcePath);
-        }
-        return imageView;
-    }
+   
 
 
-    private void updateAction(String cni) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/UpdateEtudiantInfo.fxml"));
-            Pane nextPane = loader.load();
-
-            UpdateEtudiantInfoController controller = loader.getController();
-            controller.setCniValue(cni); // This now calls customInitialize()
-
-            EtudiantView.getChildren().clear();
-            EtudiantView.getChildren().add(nextPane);
-        } catch (IOException e) {
-            System.err.println("Failed to load UpdateEtudiantInfo.fxml: " + e.getMessage());
-        }
-    }
-
-
-    private void deleteAction(String cni) {
-        // Create a confirmation alert
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirm Deletion");
-        alert.setHeaderText(null);
-        alert.setContentText("Are you sure you want to delete this user?");
-
-        alert.showAndWait().ifPresent(response -> {
-            if (response.getText().equals("OK")) {
-                try {
-                    userDao.deleteUser(cni);
-
-                    fetchEtudiant();
-                } catch (Exception e) {
-                    System.out.println("Error deleting user: " + e.getMessage());
-                }
-            }
-        });
-    }
-
-
-    private void downloadAction(int index) {
-        System.out.println("Download action triggered for row: " + index);
-    }
-    public void fetchEtudiant() {
-        try {
-             listEtudiants = etudiantDao.selectAllEtudiants("IL");
-
-            ObservableList<Etudiant> etudiants = FXCollections.observableArrayList(listEtudiants);
-            studentsTable.setItems(etudiants); // Set items to the table
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    
     
     @FXML
 	public void addStudentPaneToFront() {
@@ -284,32 +160,102 @@ public class EtudiantController {
 		//studentNavMenu2.toFront();
 		//updateLinePosition(addStudentPane);
 	}
-	@FXML
-	public void listStudentPaneToFront() {
-		listStudentPane.toFront();
-		//studentNavMenu1.toFront();
-		//updateLinePosition(listStudentPane);
-	}
+	
     
     @FXML
 	public void studentPaneToFront() {
 		studentPane.toFront();
-		initialize();
+		//initialize();
 		
 	}
     
+
+    public void initialize() {
+        // Add a listener to cniValue
+        cniValue.addListener((observable, oldValue, newValue) -> {
+            if (newValue == null || newValue.isEmpty()) {
+                System.out.println("CNI is NULL or EMPTY");
+            } else {
+                //cniVal = newValue;
+                //cniValue.set(newValue);// Set the static variable to the new value of cniValue
+                System.out.println("CNI Value: " + newValue);
+                fechEtudiant(newValue);
+            }
+        });
+
+        
+    }
+
+    public void fechEtudiant(String cnival) {
+       Etudiant etudiant=etudiantDao.selectEtudiant(cnival);
+       
+       //anneeS1,anneeS2,anneeS3,anneeS4,anneBac;
+       
+       nom.setText(etudiant.getNom());
+       prenom.setText(etudiant.getPrenom());
+       sexe.setValue(etudiant.getSexe());
+       cne.setText(etudiant.getCne());
+       date_naissance.setValue(etudiant.getDateNaissance());
+       email.setText(etudiant.getEmail());
+       tel.setText(etudiant.getTel());
+       cni.setText(etudiant.getCni());
+       nationalite.setValue(etudiant.getNationalite());
+       password.setText(etudiant.getPassword());
+       filier.setValue(etudiant.getFilier_titel());
+       anneBac.setValue(etudiant.getAnneBac());
+       bacAcadimie.setText(etudiant.getBac_acadimic());
+       serieBac.setText(etudiant.getType_bac());
+       
+       MoyeeneBac.setText(etudiant.getNote_bac().toString()); 
+       
+       moyenneBac2.setText(etudiant.getNote_bac2() != null ? etudiant.getNote_bac2().toString() : "");
+       
+       university.setText(etudiant.getUniversity());
+       etablisment.setText(etudiant.getEtablisment_bac2());
+       moyenneBac2.setText(etudiant.getNote_bac2().toString());
+       
+       s1.setText(etudiant.getNote_S2() != null ? etudiant.getNote_S2().toString() : ""); // Assuming s1 is for Note S2
+       s2.setText(etudiant.getNote_S2() != null ? etudiant.getNote_S2().toString() : "");
+       s3.setText(etudiant.getNote_S3() != null ? etudiant.getNote_S3().toString() : "");
+       s4.setText(etudiant.getNote_S4() != null ? etudiant.getNote_S4().toString() : "");
+       
+       anneeS1.setValue(etudiant.getAnneeS1());
+       anneeS2.setValue(etudiant.getAnneeS2());
+       anneeS3.setValue(etudiant.getAnneeS3());
+       anneeS4.setValue(etudiant.getAnneeS4());
+       
+       
+       
+    }
+
+
+    /*private String cniValue;
+
+    public String cniValueProperty() {
+        return cniValue;
+    }
+
+    public void setCniValue(String value) {
+        this.cniValue=value;
+    }
+
+    public String getCniValue() {
+        return cniValue;
+    }
+	
+	
     public void initialize() {
     	
+    	//etudiant = etudiantDao.selectEtudiant(cniValue);
     	
-    	addIconsToTable();
-    	// Set up TableView and TableColumn bindings
-        colNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        colPrenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
-        colCNI.setCellValueFactory(new PropertyValueFactory<>("cni"));
-        colCNE.setCellValueFactory(new PropertyValueFactory<>("cne"));
-        colFilliere.setCellValueFactory(new PropertyValueFactory<>("filier_titel"));
-        
-        fetchEtudiant();
+    	//fetchEtudiant();
+    	
+    	 if(cniValue==null) {
+    		 
+         	System.out.print("TRUE");
+         }else {
+         	System.out.println("FALSE");
+         }
         
     	cni.textProperty().addListener((observal,oledvaleu,newvale)->{
     		password.setText(newvale);
@@ -317,12 +263,25 @@ public class EtudiantController {
     	
     	userImageView.setImage(new Image("https://via.placeholder.com/150"));
     	FetchCombBox();
+    }*/
+    
+    private void fetchEtudiant() {
+        
+       
+        /*if (etudiant != null) {
+            nom.setText(etudiant.getCne());
+            prenom.setText(etudiant.getCne());
+            sexe.setValue(etudiant.getCne());
+            email.setText("gmail@gmail.com");
+        }else {
+        	System.out.println("ETD is NULL !!");
+        }*/
     }
 
     
     public void AjouterEtudiantAction() {
     	
-    	try {
+    	/*try {
     		
     		user.setNom(nom.getText());
     		user.setPrenom(prenom.getText());
@@ -378,14 +337,17 @@ public class EtudiantController {
     			etudiant.setImageS4(imageS4path);
     			
     			etudiantDao.insertEtudiant(etudiant);
-    			 fetchEtudiant();
     		}
     		
     		
     		
     	}catch(Exception e) {
     		System.out.println(e);
-    	}
+    	}*/
+    	
+    	System.out.println(cniValue);
+    	;
+    	
     }
     
 	public void switchToFrontBetweenAddStudentsPane() {

@@ -7,6 +7,10 @@ module Java_SchoolManagement {
     requires java.sql; 
     requires java.base; 
     requires org.json;
+    requires org.kordamp.ikonli.javafx;
+    requires org.kordamp.ikonli.websymbols;
+    requires org.kordamp.ikonli.materialdesign; 
+    requires javafx.base;
 
    // requires controlsfx;
 	
