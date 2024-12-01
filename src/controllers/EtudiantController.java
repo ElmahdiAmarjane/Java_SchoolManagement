@@ -54,6 +54,7 @@ public class EtudiantController {
     String imagepath;
     String imageCnipath;
     String imageBacpath;
+    String imageRelverBac;
     String imageBac2path;
     String imageS1path;
     String imageS2path;
@@ -266,6 +267,7 @@ public class EtudiantController {
     private void downloadAction(int index) {
         System.out.println("Download action triggered for row: " + index);
     }
+    
     public void fetchEtudiant() {
         try {
              listEtudiants = etudiantDao.selectAllEtudiants("IL");
@@ -316,6 +318,7 @@ public class EtudiantController {
     	});
     	
     	userImageView.setImage(new Image("https://via.placeholder.com/150"));
+    	
     	FetchCombBox();
     }
 
@@ -335,6 +338,8 @@ public class EtudiantController {
     		user.setNationalite(nationalite.getValue());
     		user.setPassword(password.getText());
     		user.setRole("Etudiant");
+			user.setImageCni(imageCnipath);
+
     		
     		if(userDao.insertUser(user)) {
     			
@@ -368,10 +373,9 @@ public class EtudiantController {
     			etudiant.setNote_S3(noteS3);
     			etudiant.setNote_S4(noteS4);
     			
-    			etudiant.setImagecni(imageCnipath);
     			etudiant.setImageBac(imageBacpath);
     			etudiant.setImageBac2(imageBac2path);
-    			etudiant.setIamge_note_bac(imageBac2path);
+    			etudiant.setIamge_note_bac(imageRelverBac);
     			etudiant.setImageS1(imageS1path);
     			etudiant.setImageS2(imageS2path);
     			etudiant.setImageS3(imageS3path);
@@ -458,8 +462,8 @@ public class EtudiantController {
 	    if (selectedFile != null) {
 	    	imageCnipath = selectedFile.getAbsolutePath();
 	        btnChooseFileCNI.setText("Image Selected");
-	        selectImageProfileButton.setText(selectedFile.getName());
-            selectImageProfileButton.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+	        btnChooseFileCNI.setText(selectedFile.getName());
+	        btnChooseFileCNI.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
 	    } else {
 	        // Handle the case where no file was selected (Optional)
 	        btnChooseFileCNI.setText("Select Image");
@@ -478,8 +482,8 @@ public class EtudiantController {
 	    if (selectedFile != null) {
 	    	imageBacpath = selectedFile.getAbsolutePath();
 	    	btnChooseFileBac.setText("Image Selected");
-	    	selectImageProfileButton.setText(selectedFile.getName());
-            selectImageProfileButton.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+	    	btnChooseFileBac.setText(selectedFile.getName());
+	    	btnChooseFileBac.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
 	    } else {
 	        // Handle the case where no file was selected (Optional)
 	    	btnChooseFileBac.setText("Select Image");
@@ -496,10 +500,10 @@ public class EtudiantController {
 
 	    File selectedFile = fileChooser.showOpenDialog(btnChooseFileNoteBac.getScene().getWindow());
 	    if (selectedFile != null) {
-	    	imageBacpath = selectedFile.getAbsolutePath();
+	    	imageRelverBac = selectedFile.getAbsolutePath();
 	    	btnChooseFileNoteBac.setText("Image Selected");
-	    	selectImageProfileButton.setText(selectedFile.getName());
-            selectImageProfileButton.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+	    	btnChooseFileNoteBac.setText(selectedFile.getName());
+	    	btnChooseFileNoteBac.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
 	    } else {
 	        // Handle the case where no file was selected (Optional)
 	    	btnChooseFileNoteBac.setText("Select Image");
@@ -518,8 +522,8 @@ public class EtudiantController {
 	    if (selectedFile != null) {
 	    	imageBac2path = selectedFile.getAbsolutePath();
 	    	btnChooseFileBac2.setText("Image Selected");
-	    	selectImageProfileButton.setText(selectedFile.getName());
-            selectImageProfileButton.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+	    	btnChooseFileBac2.setText(selectedFile.getName());
+	    	btnChooseFileBac2.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
 	    } else {
 	        // Handle the case where no file was selected (Optional)
 	    	btnChooseFileBac2.setText("Select Image");
@@ -538,8 +542,8 @@ public class EtudiantController {
 	    if (selectedFile != null) {
 	    	imageS1path = selectedFile.getAbsolutePath();
 	    	btnChooseFileNoteS1.setText("Image Selected");
-	    	selectImageProfileButton.setText(selectedFile.getName());
-            selectImageProfileButton.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+	    	btnChooseFileNoteS1.setText(selectedFile.getName());
+	    	btnChooseFileNoteS1.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
 	    } else {
 	        // Handle the case where no file was selected (Optional)
 	    	btnChooseFileNoteS1.setText("Select Image");
@@ -558,8 +562,8 @@ public class EtudiantController {
 	    if (selectedFile != null) {
 	    	imageS2path = selectedFile.getAbsolutePath();
 	    	btnChooseFileNoteS2.setText("Image Selected");
-	    	selectImageProfileButton.setText(selectedFile.getName());
-            selectImageProfileButton.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+	    	btnChooseFileNoteS2.setText(selectedFile.getName());
+	    	btnChooseFileNoteS2.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
 	    } else {
 	        // Handle the case where no file was selected (Optional)
 	    	btnChooseFileNoteS2.setText("Select Image");
@@ -578,8 +582,8 @@ public class EtudiantController {
 	    if (selectedFile != null) {
 	    	imageS3path = selectedFile.getAbsolutePath();
 	    	btnChooseFileNoteS3.setText("Image Selected");
-	    	selectImageProfileButton.setText(selectedFile.getName());
-            selectImageProfileButton.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+	    	btnChooseFileNoteS3.setText(selectedFile.getName());
+	    	btnChooseFileNoteS3.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
 	    } else {
 	        // Handle the case where no file was selected (Optional)
 	    	btnChooseFileNoteS3.setText("Select Image");
@@ -598,22 +602,15 @@ public class EtudiantController {
 	    if (selectedFile != null) {
 	    	imageS4path = selectedFile.getAbsolutePath();
 	    	btnChooseFileNoteS4.setText("Image Selected");
-	    	selectImageProfileButton.setText(selectedFile.getName());
-            selectImageProfileButton.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+	    	btnChooseFileNoteS4.setText(selectedFile.getName());
+	    	btnChooseFileNoteS4.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
 	    } else {
 	        // Handle the case where no file was selected (Optional)
 	    	btnChooseFileNoteS4.setText("Select Image");
 	    }
 	}
 	
-	private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
-    
+	
 	public void FetchCombBox() {
 		  
     	int currentYear = LocalDate.now().getYear();

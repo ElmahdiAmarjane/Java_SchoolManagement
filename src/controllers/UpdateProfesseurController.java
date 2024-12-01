@@ -1,34 +1,26 @@
 package controllers;
 
 import java.io.File;
-import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
-
-import config.AppFunctions;
 import dao.ElementDao;
 import dao.FilierDao;
 import dao.ProfesseurDao;
 import dao.UserDao;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
@@ -38,23 +30,40 @@ import modules.Filier;
 import modules.Professeur;
 import modules.User;
 
-public class ProfesseurController {
+public class UpdateProfesseurController {
 	
 	Professeur professeur=new Professeur();
 	ProfesseurDao professeurDao=new ProfesseurDao();
 	ElementDao elementDao = new ElementDao();
+	FilierDao filierDao=new FilierDao();
 	UserDao userDao=new UserDao();
+	
 	User user=new User();
+	List<Filier> filiers;
 	
 	private String imageCv;
 	private String imageCni;
 	private String imageProfile;
-	private List<Element> elements;
-	private List<Professeur> listProfesseurs;
-	 
-	@FXML
-    private Pane ProfesseurView;
 	
+	private List<Element> elements;
+	
+	
+    static private String cniVal;
+    
+    private StringProperty cniValue = new SimpleStringProperty();
+
+    public StringProperty cniValueProperty() {
+        return cniValue;
+    }
+
+    public void setCniValue(String value) {
+        this.cniValue.set(value);
+    }
+
+    public String getCniValue() {
+        return cniValue.get();
+    }
+    
 	@FXML
 	 private AnchorPane addProfFin;
 	 @FXML
@@ -78,30 +87,6 @@ public class ProfesseurController {
 		
 		@FXML 
 		 private Text listProfBtn;
-		
-		@FXML
-		private TableColumn<Professeur, String> colNumber;
-
-		@FXML
-		private TableColumn<Professeur, String> colCIN;
-
-		@FXML
-		private TableColumn<Professeur, String> colNom;
-
-		@FXML
-		private TableColumn<Professeur, String> colPrenom;
-
-		@FXML
-		private TableColumn<Professeur, String> colMatiere_enseigne ;
-
-		@FXML
-		private TableColumn<Professeur, String> coltype_contrat;
-
-		@FXML
-		private TableView<Professeur> studentsTable;
-		
-		@FXML
-		private TableColumn<Professeur, Void> icons; 
 		
 		@FXML
 		private AnchorPane studentNavMenu;
@@ -135,149 +120,75 @@ public class ProfesseurController {
 	  	    }
 		}
 		
-		 private void addIconsToTable() {
-		        icons.setCellFactory(param -> new TableCell<>() {
-		            @Override
-		            protected void updateItem(Void item, boolean empty) {
-		                super.updateItem(item, empty);
-
-		                if (empty) {
-		                    setGraphic(null);
-		                } else {
-		                    // Create HBox for buttons
-		                    HBox actionBox = new HBox(10);
-
-		                    // Create buttons
-		                    Button updateButton = new Button();
-		                    Button deleteButton = new Button();
-		                    Button downloadButton = new Button();
-
-		                    // Create ImageView for icons
-		                    ImageView deleteIcon = createImageView("/assets/delete_icon.png");
-		                    ImageView downloadIcon = createImageView("/assets/upload_icon.png");
-		                    ImageView updateIcon = createImageView("/assets/edit_icon.png");
-
-		                    // Add ImageView to buttons
-		                    updateButton.setGraphic(updateIcon);
-		                    deleteButton.setGraphic(deleteIcon);
-		                    downloadButton.setGraphic(downloadIcon);
-
-		                    // Style buttons
-		                    updateButton.setStyle("-fx-background-color: transparent; -fx-cursor: hand;");
-		                    deleteButton.setStyle("-fx-background-color: transparent; -fx-cursor: hand;");
-		                    downloadButton.setStyle("-fx-background-color: transparent; -fx-cursor: hand;");
-
-		                    // Add buttons to HBox
-		                    actionBox.setStyle("-fx-alignment: CENTER;");
-		                    actionBox.getChildren().addAll(updateButton, deleteButton, downloadButton);
-
-		                    // Set the HBox as the graphic for the cell
-		                    setGraphic(actionBox);
-		                    
-		                    Professeur rowData = getTableView().getItems().get(getIndex());  // Replace YourDataType with the type of your row data
-
-		                    // Add button actions
-		                    updateButton.setOnAction(event -> updateAction(rowData.getCni()));
-		                    deleteButton.setOnAction(event -> deleteAction(rowData.getCni()));
-		                    downloadButton.setOnAction(event -> downloadAction(getIndex()));
-		                }
-		            }
-		        });
-		    }
-		 
-		 // Helper method to create an ImageView
-		    private ImageView createImageView(String resourcePath) {
-		        ImageView imageView = new ImageView();
-		        try {
-		            Image image = new Image(getClass().getResourceAsStream(resourcePath));
-		            imageView.setImage(image);
-		            imageView.setFitWidth(16); // Set desired icon width
-		            imageView.setFitHeight(16); // Set desired icon height
-		            imageView.setPreserveRatio(true);
-		        } catch (Exception e) {
-		            System.err.println("Could not load image: " + resourcePath);
-		        }
-		        return imageView;
-		    }
-
-
-		    private void updateAction(String cni) {
-		        try {
-		            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/UpdateProfesseur.fxml"));
-		            Pane nextPane = loader.load();
-
-		            UpdateProfesseurController controller = loader.getController();
-		            controller.setCniValue(cni); // This now calls customInitialize()
-
-		            ProfesseurView.getChildren().clear();
-		            ProfesseurView.getChildren().add(nextPane);
-		        } catch (IOException e) {
-		            System.err.println("Failed to load UpdateEtudiantInfo.fxml: " + e.getMessage());
-		        }
-		    }
-
-
-		    private void deleteAction(String cni) {
-		        // Create a confirmation alert
-		        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-		        alert.setTitle("Confirm Deletion");
-		        alert.setHeaderText(null);
-		        alert.setContentText("Are you sure you want to delete this user?");
-
-		        alert.showAndWait().ifPresent(response -> {
-		            if (response.getText().equals("OK")) {
-		                try {
-		                    userDao.deleteUser(cni);
-
-		                    fetchProfesseur();
-		                } catch (Exception e) {
-		                    System.out.println("Error deleting user: " + e.getMessage());
-		                }
-		            }
-		        });
-		    }
-
-
-		    private void downloadAction(int index) {
-		        System.out.println("Download action triggered for row: " + index);
-		    }
-		    
-		    public void fetchProfesseur() {
-		        try {
-		             listProfesseurs = professeurDao.selectAllProfesseur();
-
-		            ObservableList<Professeur> professeurs = FXCollections.observableArrayList(listProfesseurs);
-		            studentsTable.setItems(professeurs); // Set items to the table
-
-		        } catch (Exception e) {
-		            e.printStackTrace();
-		        }
-		    }
-		    
+		
 	    public void initialize() {
 	    	
-	    	addIconsToTable();
-	    	// Set up TableView and TableColumn bindings
-	        colNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
-	        colPrenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
-	        colCIN.setCellValueFactory(new PropertyValueFactory<>("cni"));
-	        colMatiere_enseigne.setCellValueFactory(new PropertyValueFactory<>("Matiere_enseigne"));
-	        coltype_contrat.setCellValueFactory(new PropertyValueFactory<>("type_contrat"));
-	        
-	        fetchProfesseur();
-	  	    
-	  	    cni.textProperty().addListener((observal,oledvaleu,newvale)->{
-	    		password.setText(newvale);
-	    	});
-	  	  
-	  	    initialisCombpBox();
-	  	    
-	  	    
+	    	cniValue.addListener((observable, oldValue, newValue) -> {
+	            if (newValue == null || newValue.isEmpty()) {
+	                System.out.println("CNI is NULL or EMPTY");
+	            } else {
+	                //cniVal = newValue;
+	                //cniValue.set(newValue);// Set the static variable to the new value of cniValue
+	                System.out.println("CNI Value: " + newValue);
+	                fetchProfesseur(newValue);
+	            }
+	        });
+	    	
+	    	initialisCombpBox();
+	    	nom.setText("jjjj");
 	    }
-	
+	    
+
+	    public void fetchProfesseur(String cnival) {
+	        try {
+	            Professeur professeur = professeurDao.selectProfesseur(cnival);
+	            if (professeur != null) {
+
+	            	nom.setText(professeur.getNom());
+	                prenom.setText(professeur.getPrenom());
+	                sexe.setValue(professeur.getSexe());
+	                date_naissance.setValue(professeur.getDateNaissance());
+	                email.setText(professeur.getEmail());
+	                tel.setText(professeur.getTel());
+	                cni.setText(professeur.getCni());
+	                nationalite.setValue(professeur.getNationalite());
+	                password.setText(professeur.getPassword());
+	                adresse.setText(professeur.getAdress());
+	                type_doctorat.setText(professeur.getDoctorant_type());
+	                mention_doctorat.setText(professeur.getDoctorant_mention());
+	                etablissement.setText(professeur.getEtablissement());
+	                Matiere_enseigne.setValue(professeur.getMatiere_enseigne());
+	                type_contrat.setValue(professeur.getType_contrat());
+	                rip.setText(String.valueOf(professeur.getRip()).toString());
+	                
+	            	
+	            	imageProfile=professeur.getImage();
+	            	imageCni=professeur.getImageCni();
+	            	imageCv=professeur.getImagecv();
+	            	
+	            	chooseProfileImageBtn.setText("Image Selected");
+	    	    	chooseProfileImageBtn.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+	    	    	
+	    	    	btnChooseCv.setText("Image Selected");
+	    	    	btnChooseCv.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+	    	    	
+	    	    	btnChooseFileCIN.setText("Image Selected");
+	    	    	btnChooseFileCIN.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+	            	
+
+	                
+	            } else {
+	                System.out.println("No professor found with CNI: " + cnival);
+	            }
+	        } catch (Exception e) {
+	            System.out.println("Error fetching professor: " + e.getMessage());
+	        }
+	    }
+	    
+	    
 	public void enregistrerBtn() {
 		
-		try {
+		/*try {
 			
 			user.setNom(nom.getText());
 			user.setPrenom(prenom.getText());
@@ -291,7 +202,7 @@ public class ProfesseurController {
 			user.setNationalite(nationalite.getValue());
 			user.setPassword(password.getText());
 			user.setImage(imageProfile);
-    		user.setImageCni(imageCni);
+			
     		
 			if(userDao.insertUser(user)) {
 				
@@ -304,29 +215,15 @@ public class ProfesseurController {
 				professeur.setType_contrat(type_contrat.getValue());
 				professeur.setRip(ripval);
 				professeur.setImagecv(imageCv);
-				
 				professeur.setCni_user(cni.getText());
 				
-				boolean isInsered=professeurDao.insertProfesseur(professeur);
-				
-    			
-    			if(isInsered) {
-    				AppFunctions.showAlertInformation("Succès","Utilisateur ajouter avec succès !");
-    				fetchProfesseur();
-    				
-    			}else {
-    				AppFunctions.showAlertInformation("Erreur","Échec de l'ajoute de l'utilisateur.");
-    			}
-    		}
-			
-			
-			
-			
+				professeurDao.insertProfesseur(professeur);
+			}
 			
 		}catch(Exception e) {
 			System.out.print(e);
 		}
-		
+		*/
 	}
 	public void addProfPaneToFront() {
 		addProfPane.toFront();

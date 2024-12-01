@@ -125,11 +125,11 @@ public class User {
 		Nationalite = nationalite;
 	}
 
-	public String getImagecni() {
+	public String getImageCni() {
 		return imagecni;
 	}
 
-	public void setImagecni(String imagecni) {
+	public void setImageCni(String imagecni) {
 		this.imagecni = imagecni;
 	}
 
@@ -140,6 +140,7 @@ public class User {
 	public void setAdress(String adress) {
 		this.adress = adress;
 	}
+	
 	
 	
 	

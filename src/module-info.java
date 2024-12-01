@@ -11,7 +11,9 @@ module Java_SchoolManagement {
     requires org.kordamp.ikonli.websymbols;
     requires org.kordamp.ikonli.materialdesign; 
     requires javafx.base;
-
+	requires java.desktop;
+	requires itextpdf;
+    
    // requires controlsfx;
 	
 	opens application to javafx.graphics, javafx.fxml;

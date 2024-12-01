@@ -13,14 +13,9 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TableColumn?>
 
-<AnchorPane  fx:id="ProfesseurView" xmlns:fx="http://javafx.com/fxml" 
-            prefHeight="441.0" prefWidth="517.0" 
+<AnchorPane  xmlns:fx="http://javafx.com/fxml" 
             style="-fx-background-color: #EE11DD;" 
-            AnchorPane.bottomAnchor="0.0" 
-            AnchorPane.leftAnchor="236.0" 
-            AnchorPane.rightAnchor="0.0" 
-            AnchorPane.topAnchor="76.0" 
-            fx:controller="controllers.ProfesseurController">
+            fx:controller="controllers.UpdateProfesseurController">
 
     <children>
 
@@ -62,7 +57,7 @@
             <children>
                 <Text layoutX="167.0" layoutY="84.0" 
                       strokeType="OUTSIDE" strokeWidth="0.0" 
-                      text="Ajouter Professeur" wrappingWidth="215.7734375">
+                      text="Modifie les informations de professeur" wrappingWidth="215.7734375">
                     <font>
                         <Font size="25.0" />
                     </font>
@@ -85,26 +80,6 @@
                         <Font size="18.0" />
                     </font>
                 </Text>
-                
-                <!-- TableView for displaying student data -->
-                <TableView fx:id="studentsTable" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="53.0">
-                    <columns>
-                        <!-- TableColumn for number (index) -->
-                        <TableColumn fx:id="colNumber" prefWidth="121.0" text="N°" />
-
-                        <TableColumn fx:id="colCIN" prefWidth="112.0" text="CIN" />
-
-                        <TableColumn fx:id="colNom" prefWidth="112.0" text="Nom" />
-
-                        <TableColumn fx:id="colPrenom" prefWidth="103.0" text="Prénom" />                        
-
-                        <TableColumn fx:id="colMatiere_enseigne" prefWidth="130.0" text="Matière enseignée" />
-                        
-                        <TableColumn fx:id="coltype_contrat" prefWidth="130.0" text="type de contrat" />
-                        
-                        <TableColumn fx:id="icons" prefWidth="130.0" text="Action" />
-                    </columns>
-                </TableView>
                 
             </children>
         </AnchorPane>

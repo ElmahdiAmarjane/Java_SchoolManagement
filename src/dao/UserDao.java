@@ -60,7 +60,7 @@ public class UserDao implements IUserServices {
     }
 
     public boolean insertUser(User user) {
-        String query = "INSERT INTO user (cni, nom, prenom, image, role, tele, email, dateNaissance, password, nationalite, sexe) VALUES (?,?,?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO user (cni, nom, prenom, image, role, tele, email, dateNaissance, password, nationalite, sexe,image_cni) VALUES (?, ?,?,?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection connection = JDBC.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -77,6 +77,7 @@ public class UserDao implements IUserServices {
             preparedStatement.setString(9, user.getPassword());
             preparedStatement.setString(10, user.getNationalite());
             preparedStatement.setString(11, user.getSexe());
+            preparedStatement.setString(12, user.getImageCni());
             
 
             // Execute the update
@@ -119,6 +120,42 @@ public class UserDao implements IUserServices {
         return false;
 	}
     
+	@Override
+	public boolean updateUser(User user) {
+	    String query = "UPDATE user SET nom = ?, prenom = ?, image = ?, role = ?, tele = ?, email = ?, dateNaissance = ?, password = ?, nationalite = ?, sexe = ?, image_cni = ? WHERE cni = ?";
+
+	    try (Connection connection = JDBC.getConnection();
+	         PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+	        // Set parameters for the query
+	        preparedStatement.setString(1, user.getNom());
+	        preparedStatement.setString(2, user.getPrenom());
+	        preparedStatement.setString(3, user.getImage());
+	        preparedStatement.setString(4, user.getRole());
+	        preparedStatement.setString(5, user.getTel());
+	        preparedStatement.setString(6, user.getEmail());
+	        preparedStatement.setDate(7, java.sql.Date.valueOf(user.getDateNaissance()));
+	        preparedStatement.setString(8, user.getPassword());
+	        preparedStatement.setString(9, user.getNationalite());
+	        preparedStatement.setString(10, user.getSexe());
+	        preparedStatement.setString(11, user.getImageCni());
+	        preparedStatement.setString(12, user.getCni()); // WHERE condition
+
+	        // Execute the update
+	        int rowsAffected = preparedStatement.executeUpdate();
+
+	        if (rowsAffected > 0) {
+	            System.out.println("User updated successfully.");
+	            return true;
+	        } else {
+	            System.out.println("Failed to update user.");
+	        }
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return false;
+	}
     //UPDATE USER
 	
     /*public boolean updateEtudiant(Etudiant etudiant) {

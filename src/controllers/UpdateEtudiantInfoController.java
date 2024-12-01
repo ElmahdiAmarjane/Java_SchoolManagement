@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.kordamp.ikonli.javafx.FontIcon;
 import org.kordamp.ikonli.materialdesign.MaterialDesign;
+
+import config.AppFunctions;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import java.time.LocalDate;
@@ -41,6 +43,7 @@ public class UpdateEtudiantInfoController {
 
 	//Etudiant etudiant=new Etudiant();
 	Etudiant etudiant=new Etudiant();
+	User user=new User();
 	
 	EtudiantDao etudiantDao=new EtudiantDao();
 	UserDao userDao = new UserDao();
@@ -58,9 +61,7 @@ public class UpdateEtudiantInfoController {
     String imageS2path;
     String imageS3path;
     String imageS4path;
-    String imageCartNationalpath;
-    String imageExtraipath;
-   
+
     static private String cniVal;
     
     private StringProperty cniValue = new SimpleStringProperty();
@@ -182,14 +183,16 @@ public class UpdateEtudiantInfoController {
                 fechEtudiant(newValue);
             }
         });
-
+        
+        FetchCombBox();
         
     }
-
+    
     public void fechEtudiant(String cnival) {
+    	
        Etudiant etudiant=etudiantDao.selectEtudiant(cnival);
        
-       //anneeS1,anneeS2,anneeS3,anneeS4,anneBac;
+       
        
        nom.setText(etudiant.getNom());
        prenom.setText(etudiant.getPrenom());
@@ -202,86 +205,70 @@ public class UpdateEtudiantInfoController {
        nationalite.setValue(etudiant.getNationalite());
        password.setText(etudiant.getPassword());
        filier.setValue(etudiant.getFilier_titel());
+       
+       typeBac2.setText(etudiant.getType_bac2());
+       moyenneBac2.setText(etudiant.getNote_bac2().toString());
+       university.setText(etudiant.getUniversity());
+       etablisment.setText(etudiant.getEtablisment_bac2());
+       
        anneBac.setValue(etudiant.getAnneBac());
        bacAcadimie.setText(etudiant.getBac_acadimic());
        serieBac.setText(etudiant.getType_bac());
-       
        MoyeeneBac.setText(etudiant.getNote_bac().toString()); 
-       
-       moyenneBac2.setText(etudiant.getNote_bac2() != null ? etudiant.getNote_bac2().toString() : "");
-       
-       university.setText(etudiant.getUniversity());
-       etablisment.setText(etudiant.getEtablisment_bac2());
-       moyenneBac2.setText(etudiant.getNote_bac2().toString());
-       
-       s1.setText(etudiant.getNote_S2() != null ? etudiant.getNote_S2().toString() : ""); // Assuming s1 is for Note S2
-       s2.setText(etudiant.getNote_S2() != null ? etudiant.getNote_S2().toString() : "");
-       s3.setText(etudiant.getNote_S3() != null ? etudiant.getNote_S3().toString() : "");
-       s4.setText(etudiant.getNote_S4() != null ? etudiant.getNote_S4().toString() : "");
+      
+       s1.setText(etudiant.getNote_S2().toString()); // Assuming s1 is for Note S2
+       s2.setText(etudiant.getNote_S2().toString());
+       s3.setText(etudiant.getNote_S3().toString());
+       s4.setText(etudiant.getNote_S4().toString());
        
        anneeS1.setValue(etudiant.getAnneeS1());
        anneeS2.setValue(etudiant.getAnneeS2());
        anneeS3.setValue(etudiant.getAnneeS3());
        anneeS4.setValue(etudiant.getAnneeS4());
        
+       imagepath=etudiant.getImage();
+       imageCnipath=etudiant.getImageCni();
+       imageBacpath=etudiant.getImageBac();
+       imageBac2path=etudiant.getImageBac2();
+       imageS1path=etudiant.getImageS1();
+       imageS2path=etudiant.getImageS2();
+       imageS3path=etudiant.getImageS3();
+       imageS4path=etudiant.getImageS4();
        
+       File imageFile = new File(imagepath);
+       userImageView.setImage(new Image(imageFile.toURI().toString()));
        
-    }
-
-
-    /*private String cniValue;
-
-    public String cniValueProperty() {
-        return cniValue;
-    }
-
-    public void setCniValue(String value) {
-        this.cniValue=value;
-    }
-
-    public String getCniValue() {
-        return cniValue;
-    }
-	
-	
-    public void initialize() {
+       selectImageProfileButton.setText("Profile Selected");
+       selectImageProfileButton.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+       
+       	btnChooseFileBac2.setText("Bac +2 Selected");
+   		btnChooseFileBac2.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+   	
+	   	btnChooseFileNoteBac.setText(" Relver de Bac Selected");
+		btnChooseFileNoteBac.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+		
+		btnChooseFileBac.setText("Bac Selected");
+		btnChooseFileBac.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+	       
+		btnChooseFileCNI.setText("Carte National Selected");
+	    btnChooseFileCNI.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+	    
+	    btnChooseFileNoteS1.setText("S1 Selected");
+    	btnChooseFileNoteS1.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
     	
-    	//etudiant = etudiantDao.selectEtudiant(cniValue);
+    	btnChooseFileNoteS2.setText("S2 Selected");
+    	btnChooseFileNoteS2.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
     	
-    	//fetchEtudiant();
+    	btnChooseFileNoteS3.setText("S3 Selected");
+    	btnChooseFileNoteS3.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
     	
-    	 if(cniValue==null) {
-    		 
-         	System.out.print("TRUE");
-         }else {
-         	System.out.println("FALSE");
-         }
-        
-    	cni.textProperty().addListener((observal,oledvaleu,newvale)->{
-    		password.setText(newvale);
-    	});
-    	
-    	userImageView.setImage(new Image("https://via.placeholder.com/150"));
-    	FetchCombBox();
-    }*/
+    	btnChooseFileNoteS4.setText("S4 Selected");
+    	btnChooseFileNoteS4.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
     
-    private void fetchEtudiant() {
-        
-       
-        /*if (etudiant != null) {
-            nom.setText(etudiant.getCne());
-            prenom.setText(etudiant.getCne());
-            sexe.setValue(etudiant.getCne());
-            email.setText("gmail@gmail.com");
-        }else {
-        	System.out.println("ETD is NULL !!");
-        }*/
     }
-
-    
     public void AjouterEtudiantAction() {
     	
-    	/*try {
+    	try {
     		
     		user.setNom(nom.getText());
     		user.setPrenom(prenom.getText());
@@ -294,8 +281,9 @@ public class UpdateEtudiantInfoController {
     		user.setNationalite(nationalite.getValue());
     		user.setPassword(password.getText());
     		user.setRole("Etudiant");
+			user.setImageCni(imageCnipath);
     		
-    		if(userDao.insertUser(user)) {
+    		if(userDao.updateUser(user)) {
     			
     			Double noteS1= Double.parseDouble(s1.getText());
     			Double noteS2= Double.parseDouble(s2.getText());
@@ -327,7 +315,6 @@ public class UpdateEtudiantInfoController {
     			etudiant.setNote_S3(noteS3);
     			etudiant.setNote_S4(noteS4);
     			
-    			etudiant.setImagecni(imageCnipath);
     			etudiant.setImageBac(imageBacpath);
     			etudiant.setImageBac2(imageBac2path);
     			etudiant.setIamge_note_bac(imageBac2path);
@@ -336,16 +323,22 @@ public class UpdateEtudiantInfoController {
     			etudiant.setImageS3(imageS3path);
     			etudiant.setImageS4(imageS4path);
     			
-    			etudiantDao.insertEtudiant(etudiant);
+    			boolean isUdated=etudiantDao.updateEtudiant(etudiant);
+    			
+    			if(isUdated) {
+    				AppFunctions.showAlertInformation("Succès","Utilisateur mis à jour avec succès !");
+    			}else {
+    				AppFunctions.showAlertInformation("Erreur","Échec de la mise à jour de l'utilisateur.");
+    			}
     		}
     		
     		
     		
     	}catch(Exception e) {
     		System.out.println(e);
-    	}*/
+    	}
     	
-    	System.out.println(cniValue);
+    	System.out.println(imagepath);
     	;
     	
     }
@@ -387,6 +380,7 @@ public class UpdateEtudiantInfoController {
 	@FXML
     public void handleSelectImage() {
         FileChooser fileChooser = new FileChooser();
+        
         fileChooser.setTitle("Select an Image");
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg")
@@ -420,8 +414,8 @@ public class UpdateEtudiantInfoController {
 	    if (selectedFile != null) {
 	    	imageCnipath = selectedFile.getAbsolutePath();
 	        btnChooseFileCNI.setText("Image Selected");
-	        selectImageProfileButton.setText(selectedFile.getName());
-            selectImageProfileButton.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+	        btnChooseFileCNI.setText(selectedFile.getName());
+	        btnChooseFileCNI.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
 	    } else {
 	        // Handle the case where no file was selected (Optional)
 	        btnChooseFileCNI.setText("Select Image");
@@ -440,8 +434,8 @@ public class UpdateEtudiantInfoController {
 	    if (selectedFile != null) {
 	    	imageBacpath = selectedFile.getAbsolutePath();
 	    	btnChooseFileBac.setText("Image Selected");
-	    	selectImageProfileButton.setText(selectedFile.getName());
-            selectImageProfileButton.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+	    	btnChooseFileBac.setText(selectedFile.getName());
+	    	btnChooseFileBac.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
 	    } else {
 	        // Handle the case where no file was selected (Optional)
 	    	btnChooseFileBac.setText("Select Image");
@@ -460,8 +454,8 @@ public class UpdateEtudiantInfoController {
 	    if (selectedFile != null) {
 	    	imageBacpath = selectedFile.getAbsolutePath();
 	    	btnChooseFileNoteBac.setText("Image Selected");
-	    	selectImageProfileButton.setText(selectedFile.getName());
-            selectImageProfileButton.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+	    	btnChooseFileNoteBac.setText(selectedFile.getName());
+	    	btnChooseFileNoteBac.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
 	    } else {
 	        // Handle the case where no file was selected (Optional)
 	    	btnChooseFileNoteBac.setText("Select Image");
@@ -480,8 +474,8 @@ public class UpdateEtudiantInfoController {
 	    if (selectedFile != null) {
 	    	imageBac2path = selectedFile.getAbsolutePath();
 	    	btnChooseFileBac2.setText("Image Selected");
-	    	selectImageProfileButton.setText(selectedFile.getName());
-            selectImageProfileButton.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+	    	btnChooseFileBac2.setText(selectedFile.getName());
+	    	btnChooseFileBac2.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
 	    } else {
 	        // Handle the case where no file was selected (Optional)
 	    	btnChooseFileBac2.setText("Select Image");
@@ -500,8 +494,8 @@ public class UpdateEtudiantInfoController {
 	    if (selectedFile != null) {
 	    	imageS1path = selectedFile.getAbsolutePath();
 	    	btnChooseFileNoteS1.setText("Image Selected");
-	    	selectImageProfileButton.setText(selectedFile.getName());
-            selectImageProfileButton.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+	    	btnChooseFileNoteS1.setText(selectedFile.getName());
+	    	btnChooseFileNoteS1.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
 	    } else {
 	        // Handle the case where no file was selected (Optional)
 	    	btnChooseFileNoteS1.setText("Select Image");
@@ -520,8 +514,8 @@ public class UpdateEtudiantInfoController {
 	    if (selectedFile != null) {
 	    	imageS2path = selectedFile.getAbsolutePath();
 	    	btnChooseFileNoteS2.setText("Image Selected");
-	    	selectImageProfileButton.setText(selectedFile.getName());
-            selectImageProfileButton.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+	    	btnChooseFileNoteS2.setText(selectedFile.getName());
+	    	btnChooseFileNoteS2.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
 	    } else {
 	        // Handle the case where no file was selected (Optional)
 	    	btnChooseFileNoteS2.setText("Select Image");
@@ -540,8 +534,8 @@ public class UpdateEtudiantInfoController {
 	    if (selectedFile != null) {
 	    	imageS3path = selectedFile.getAbsolutePath();
 	    	btnChooseFileNoteS3.setText("Image Selected");
-	    	selectImageProfileButton.setText(selectedFile.getName());
-            selectImageProfileButton.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+	    	btnChooseFileNoteS3.setText(selectedFile.getName());
+	    	btnChooseFileNoteS3.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
 	    } else {
 	        // Handle the case where no file was selected (Optional)
 	    	btnChooseFileNoteS3.setText("Select Image");
@@ -560,8 +554,8 @@ public class UpdateEtudiantInfoController {
 	    if (selectedFile != null) {
 	    	imageS4path = selectedFile.getAbsolutePath();
 	    	btnChooseFileNoteS4.setText("Image Selected");
-	    	selectImageProfileButton.setText(selectedFile.getName());
-            selectImageProfileButton.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+	    	btnChooseFileNoteS4.setText(selectedFile.getName());
+	    	btnChooseFileNoteS4.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
 	    } else {
 	        // Handle the case where no file was selected (Optional)
 	    	btnChooseFileNoteS4.setText("Select Image");
