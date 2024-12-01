@@ -5,8 +5,6 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -15,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="annoncesMainPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="227.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="76.0" prefHeight="561.0" prefWidth="926.0" style="-fx-background-color: red;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AnnonceController">
+<AnchorPane fx:id="annoncesMainPane" prefHeight="561.0" prefWidth="926.0" style="-fx-background-color: red;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="227.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="76.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AnnonceController">
    <children>
       <AnchorPane fx:id="annoncesNavMenu2" prefHeight="49.0" prefWidth="1145.0" style="-fx-background-color: #112277;" AnchorPane.bottomAnchor="508.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -24,7 +22,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <Text fx:id="addAnnoncesBtn1" fill="WHITE" layoutX="194.0" layoutY="30.0" onMouseClicked="#setFAnnoncesDetailsToFront" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Annonce">
+            <Text fx:id="addAnnoncesBtn1" fill="WHITE" layoutX="194.0" layoutY="30.0" onMouseClicked="#setAnnonceAddAnchorPaneToFront" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Annonce">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -47,52 +45,18 @@
             <Line endX="73.0" endY="6.0" fill="WHITE" layoutX="81.5" layoutY="35.5" startX="-32.0" startY="6.0" stroke="WHITE" strokeWidth="3.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="48.0" AnchorPane.rightAnchor="989.0" AnchorPane.topAnchor="40.0" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="annoncesDetailsAnchorPane" layoutY="50.0" prefHeight="536.0" prefWidth="1145.0" style="-fx-background-color: #FFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="50.0">
-         <children>
-            <Text layoutX="14.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Details du fillieres xxxxxx" wrappingWidth="222.7734375">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <TextField layoutX="354.0" layoutY="139.0" prefHeight="53.0" prefWidth="341.0" AnchorPane.leftAnchor="354.0" />
-            <Text layoutX="255.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom de la filière" />
-            <TextField layoutX="354.0" layoutY="223.0" prefHeight="53.0" prefWidth="341.0" AnchorPane.leftAnchor="354.0" />
-            <TextField layoutX="354.0" layoutY="307.0" prefHeight="53.0" prefWidth="341.0" AnchorPane.leftAnchor="354.0" />
-            <Button layoutX="717.0" layoutY="422.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="109.0" style="-fx-background-color: #FF2244; -fx-background-radius: 4;" text="Supprimer" textFill="WHITE" AnchorPane.leftAnchor="717.0">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Button>
-            <Button layoutX="541.0" layoutY="422.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="109.0" style="-fx-background-color: #11ffAA; -fx-background-radius: 4;" text="Modifier" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Button>
-            <Button layoutX="365.0" layoutY="422.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="109.0" style="-fx-border-color: #323333; -fx-border-width: 2; -fx-background-color: #FFF; -fx-border-radius: 4;" text="Annuler" AnchorPane.leftAnchor="365.0">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Button>
-            <Text layoutX="213.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom abrégé de la filière" />
-            <Text layoutX="252.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date du création" />
-            <ImageView fitHeight="139.0" fitWidth="200.0" layoutX="751.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="751.0" AnchorPane.topAnchor="139.0">
-               <image>
-                  <Image url="@../../assets/logoibnzohr.png" />
-               </image>
-            </ImageView>
-            <Button layoutX="746.0" layoutY="287.0" mnemonicParsing="false" text="importer nouveau image" AnchorPane.leftAnchor="746.0" />
-         </children>
-      </AnchorPane>
       <AnchorPane fx:id="annoncesAddAnchorPane" layoutY="50.0" prefHeight="536.0" prefWidth="1145.0" style="-fx-background-color: #FFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="50.0">
          <children>
             <Text layoutX="13.0" layoutY="28.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Créer une annonce" />
-            <Label layoutX="326.0" layoutY="70.0" text="Texte de l'annonce : " />
-            <TextArea fx:id="announcementTextArea" layoutX="332.0" layoutY="97.0" prefHeight="150" promptText="Écrivez votre annonce ici..." wrapText="true" />
-            <Label layoutX="326.0" layoutY="256.0" text="Joindre un fichier : " />
-            <Button fx:id="uploadButton" layoutX="332.0" layoutY="284.0" text="Choisir un fichier" />
-            <Label fx:id="fileNameLabel" layoutX="449.0" layoutY="289.0" style="-fx-text-fill: grey;" text="Aucun fichier sélectionné" />
-            <Button fx:id="submitButton" layoutX="688.0" layoutY="353.0" prefHeight="25.0" prefWidth="122.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="Publier" />
-            <Button fx:id="cancelButton" layoutX="615.0" layoutY="353.0" style="-fx-background-color: #f44336; -fx-text-fill: white;" text="Annuler" />
+            <Label layoutX="331.0" layoutY="163.0" text="Texte de l'annonce : " />
+            <TextArea fx:id="AnnonceTextArea" layoutX="332.0" layoutY="183.0" prefHeight="124.0" prefWidth="478.0" promptText="Écrivez votre annonce ici..." wrapText="true" />
+            <Label layoutX="326.0" layoutY="316.0" text="Joindre un fichier : " />
+            <Button fx:id="uploadAnnonceFichierButton" layoutX="332.0" layoutY="344.0" onAction="#selectAnnonceFile" text="Choisir un fichier" />
+            <Label fx:id="annonceFileNameLabel" layoutX="449.0" layoutY="349.0" style="-fx-text-fill: grey;" text="Aucun fichier sélectionné" />
+            <Button fx:id="annonceSubmitButton" layoutX="688.0" layoutY="413.0" onAction="#saveAnnonceToDB" prefHeight="25.0" prefWidth="122.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="Publier" />
+            <Button fx:id="annonceCancelButton" layoutX="615.0" layoutY="413.0" onAction="#setAnnoncesListToFront" style="-fx-background-color: #f44336; -fx-text-fill: white;" text="Annuler" />
+            <TextField fx:id="annonceTitleTF" layoutX="332.0" layoutY="107.0" prefHeight="43.0" prefWidth="478.0" />
+            <Label layoutX="331.0" layoutY="85.0" text="Titre de l'annonce : " />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="annoncesListAnchorPane" layoutY="50.0" prefHeight="536.0" prefWidth="1145.0" style="-fx-background-color: #FFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="50.0">
@@ -114,6 +78,7 @@
                   </GridPane>
                </content>
             </ScrollPane>
+            <Button fx:id="refreshDataBtn" layoutX="990.0" layoutY="14.0" mnemonicParsing="false" onAction="#refrechAnnoncesWidgets" text="Refresh" />
          </children>
       </AnchorPane>
    </children>

@@ -74,7 +74,7 @@ public void initialize() {
         filliereScrollPane.setFitToWidth(true);
         filliereScrollPane.setPannable(true);
     } else {
-        System.out.println("ScrollPane is not initialized");
+        System.out.println("ScrollPane filliere is not initialized");
     }
 }
 
