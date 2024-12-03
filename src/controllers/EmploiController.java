@@ -54,56 +54,59 @@ public class EmploiController {
 	 
 	 @FXML
 	 private ComboBox<String> filier_titel;
+	 
 	 //LUNDI
 	 @FXML 
-	 private ComboBox<String> Lundi_matiere_8_10_L1,Lundi_salle_8_10_L1,Lundi_prof_8_10_L1,Lundi_matiere_8_10_L2,Lundi_salle_8_10_L2,Lundi_prof_8_10_L2;
+	 private ComboBox<String> Lundi_8_10_element, Lundi_8_10_salle, Lundi_8_10_type;
 	 @FXML 
-	 private ComboBox<String> Lundi_matiere_10_12_L1,Lundi_salle_10_12_L1,Lundi_prof_10_12_L1,Lundi_matiere_10_12_L2,Lundi_salle_10_12_L2,Lundi_prof_10_12_L2;
+	 private ComboBox<String> Lundi_10_12_element,Lundi_10_12_salle,Lundi_10_12_type;
 	 @FXML 
-	 private ComboBox<String> Lundi_matiere_2_4_L1,Lundi_salle_2_4_L1,Lundi_prof_2_4_L1,Lundi_matiere_2_4_L2,Lundi_salle_2_4_L2,Lundi_prof_2_4_L2;
+	 private ComboBox<String> Lundi_14_16_element,Lundi_14_16_salle,Lundi_14_16_type;
 	 @FXML 
-	 private ComboBox<String> Lundi_matiere_4_6_L1,Lundi_salle_4_6_L1,Lundi_prof_4_6_L1,Lundi_matiere_4_6_L2,Lundi_salle_4_6_L2,Lundi_prof_4_6_L2;
+	 private ComboBox<String> Lundi_16_18_element,Lundi_16_18_salle,Lundi_16_18_type;
 	
 	 //MARDI
 	 @FXML 
-	 private ComboBox<String> Mardi_matiere_8_10_L1,Mardi_salle_8_10_L1,Mardi_prof_8_10_L1,Mardi_matiere_8_10_L2,Mardi_salle_8_10_L2,Mardi_prof_8_10_L2;
+	 private ComboBox<String> Mardi_8_10_element, Mardi_8_10_salle, Mardi_8_10_type;
 	 @FXML 
-	 private ComboBox<String> Mardi_matiere_10_12_L1,Mardi_salle_10_12_L1,Mardi_prof_10_12_L1,Mardi_matiere_10_12_L2,Mardi_salle_10_12_L2,Mardi_prof_10_12_L2;
+	 private ComboBox<String> Mardi_10_12_element,Mardi_10_12_salle,Mardi_10_12_type;
 	 @FXML 
-	 private ComboBox<String> Mardi_matiere_2_4_L1,Mardi_salle_2_4_L1,Mardi_prof_2_4_L1,Mardi_matiere_2_4_L2,Mardi_salle_2_4_L2,Mardi_prof_2_4_L2;
+	 private ComboBox<String> Mardi_14_16_element,Mardi_14_16_salle,Mardi_14_16_type;
 	 @FXML 
-	 private ComboBox<String> Mardi_matiere_4_6_L1,Mardi_salle_4_6_L1,Mardi_prof_4_6_L1,Mardi_matiere_4_6_L2,Mardi_salle_4_6_L2,Mardi_prof_4_6_L2;
+	 private ComboBox<String> Mardi_16_18_element,Mardi_16_18_salle,Mardi_16_18_type;
 	 
 	 //MERCREDI
 	 @FXML 
-	 private ComboBox<String> Mercredi_matiere_8_10_L1,Mercredi_salle_8_10_L1,Mercredi_prof_8_10_L1,Mercredi_matiere_8_10_L2,Mercredi_salle_8_10_L2,Mercredi_prof_8_10_L2;
+	 private ComboBox<String> Mercredi_8_10_element, Mercredi_8_10_salle, Mercredi_8_10_type;
 	 @FXML 
-	 private ComboBox<String> Mercredi_matiere_10_12_L1,Mercredi_salle_10_12_L1,Mercredi_prof_10_12_L1,Mercredi_matiere_10_12_L2,Mercredi_salle_10_12_L2,Mercredi_prof_10_12_L2;
+	 private ComboBox<String> Mercredi_10_12_element,Mercredi_10_12_salle,Mercredi_10_12_type;
 	 @FXML 
-	 private ComboBox<String> Mercredi_matiere_2_4_L1,Mercredi_salle_2_4_L1,Mercredi_prof_2_4_L1,Mercredi_matiere_2_4_L2,Mercredi_salle_2_4_L2,Mercredi_prof_2_4_L2;
+	 private ComboBox<String> Mercredi_14_16_element,Mercredi_14_16_salle,Mercredi_14_16_type;
 	 @FXML 
-	 private ComboBox<String> Mercredi_matiere_4_6_L1,Mercredi_salle_4_6_L1,Mercredi_prof_4_6_L1,Mercredi_matiere_4_6_L2,Mercredi_salle_4_6_L2,Mercredi_prof_4_6_L2;
+	 private ComboBox<String> Mercredi_16_18_element,Mercredi_16_18_salle,Mercredi_16_18_type;
 	 
 	 //JEUDI
 	 @FXML 
-	 private ComboBox<String> Jeudi_matiere_8_10_L1, Jeudi_salle_8_10_L1, Jeudi_prof_8_10_L1, Jeudi_matiere_8_10_L2, Jeudi_salle_8_10_L2, Jeudi_prof_8_10_L2;
+	 private ComboBox<String> Jeudi_8_10_element, Jeudi_8_10_salle, Jeudi_8_10_type;
 	 @FXML 
-	 private ComboBox<String>  Jeudi_matiere_10_12_L1, Jeudi_salle_10_12_L1, Jeudi_prof_10_12_L1, Jeudi_matiere_10_12_L2, Jeudi_salle_10_12_L2, Jeudi_prof_10_12_L2;
+	 private ComboBox<String> Jeudi_10_12_element,Jeudi_10_12_salle,Jeudi_10_12_type;
 	 @FXML 
-	 private ComboBox<String>  Jeudi_matiere_2_4_L1, Jeudi_salle_2_4_L1, Jeudi_prof_2_4_L1, Jeudi_matiere_2_4_L2, Jeudi_salle_2_4_L2, Jeudi_prof_2_4_L2;
+	 private ComboBox<String> Jeudi_14_16_element,Jeudi_14_16_salle,Jeudi_14_16_type;
 	 @FXML 
-	 private ComboBox<String>  Jeudi_matiere_4_6_L1, Jeudi_salle_4_6_L1, Jeudi_prof_4_6_L1, Jeudi_matiere_4_6_L2, Jeudi_salle_4_6_L2, Jeudi_prof_4_6_L2;
+	 private ComboBox<String> Jeudi_16_18_element,Jeudi_16_18_salle,Jeudi_16_18_type;
 	 
 	 //VENDREDI
 	 @FXML 
-	 private ComboBox<String> Vendredi_matiere_8_10_L1,Vendredi_salle_8_10_L1,Vendredi_prof_8_10_L1,Vendredi_matiere_8_10_L2,Vendredi_salle_8_10_L2,Vendredi_prof_8_10_L2;
+	 private ComboBox<String> Vendredi_8_10_element, Vendredi_8_10_salle, Vendredi_8_10_type;
 	 @FXML 
-	 private ComboBox<String> Vendredi_matiere_10_12_L1,Vendredi_salle_10_12_L1,Vendredi_prof_10_12_L1,Vendredi_matiere_10_12_L2,Vendredi_salle_10_12_L2,Vendredi_prof_10_12_L2;
+	 private ComboBox<String> Vendredi_10_12_element,Vendredi_10_12_salle,Vendredi_10_12_type;
 	 @FXML 
-	 private ComboBox<String> Vendredi_matiere_2_4_L1,Vendredi_salle_2_4_L1,Vendredi_prof_2_4_L1,Vendredi_matiere_2_4_L2,Vendredi_salle_2_4_L2,Vendredi_prof_2_4_L2;
+	 private ComboBox<String> Vendredi_14_16_element,Vendredi_14_16_salle,Vendredi_14_16_type;
 	 @FXML 
-	 private ComboBox<String> Vendredi_matiere_4_6_L1,Vendredi_salle_4_6_L1,Vendredi_prof_4_6_L1,Vendredi_matiere_4_6_L2,Vendredi_salle_4_6_L2,Vendredi_prof_4_6_L2;
+	 private ComboBox<String> Vendredi_16_18_element,Vendredi_16_18_salle,Vendredi_16_18_type;
 	 
+	 @FXML
+	 ComboBox <String> list_profs;
 	 
 	 
 	 public void initialize() {
@@ -113,6 +116,7 @@ public class EmploiController {
 	 @FXML
 	public void saveEmploiFilier() {
 		
+		 /*
 		// Lundi (Monday)
 		 List<String> H_8_10_element_lundi = Arrays.asList(Lundi_matiere_8_10_L1.getValue(), Lundi_matiere_8_10_L2.getValue());
 		 List<String> H_10_12_element_lundi = Arrays.asList(Lundi_matiere_10_12_L1.getValue(), Lundi_matiere_10_12_L2.getValue());
@@ -280,6 +284,8 @@ public class EmploiController {
 		 emploi.setFilier_titel(filier_titel.getValue());
 		 
 		 emploiDao.insertEmploi(emploi);
+		 
+		 */
 			
 	}
 	
@@ -304,6 +310,18 @@ public class EmploiController {
 	}
 	
 	public void initializeComboBox() {
+		
+		//Les Professeurs
+		try {
+			List<Professeur> professeurs=professeurDao.selectAllProfesseur();
+			
+			for(Professeur prof:professeurs) {
+				list_profs.getItems().add(prof.getNom()+" "+prof.getPrenom());
+			}
+		}catch(Exception e) {
+			System.out.print(e);
+		}
+		
 		try {
 			filiers=filierDao.selectAllFilier();
 			for(Filier filier:filiers) {
@@ -318,172 +336,112 @@ public class EmploiController {
 			 //MATIER
 			 for(Element elem:elements) {
 				 //LUNDI
-				 Lundi_matiere_8_10_L1.getItems().addAll(elem.getNom());
-				 Lundi_matiere_8_10_L2.getItems().addAll(elem.getNom());
-				 Lundi_matiere_10_12_L1.getItems().addAll(elem.getNom());
-				 Lundi_matiere_10_12_L2.getItems().addAll(elem.getNom());
-				 Lundi_matiere_2_4_L1.getItems().addAll(elem.getNom());
-				 Lundi_matiere_2_4_L2.getItems().addAll(elem.getNom());
-				 Lundi_matiere_4_6_L1.getItems().addAll(elem.getNom());
-				 Lundi_matiere_4_6_L2.getItems().addAll(elem.getNom());
+				 Lundi_8_10_element.getItems().addAll(elem.getNom());
+				 Lundi_10_12_element.getItems().addAll(elem.getNom());
+				 Lundi_14_16_element.getItems().addAll(elem.getNom());
+				 Lundi_16_18_element.getItems().addAll(elem.getNom());
 				 
 				//MARDI
-				 Mardi_matiere_8_10_L1.getItems().addAll(elem.getNom());
-				 Mardi_matiere_8_10_L2.getItems().addAll(elem.getNom());
-				 Mardi_matiere_10_12_L1.getItems().addAll(elem.getNom());
-				 Mardi_matiere_10_12_L2.getItems().addAll(elem.getNom());
-				 Mardi_matiere_2_4_L1.getItems().addAll(elem.getNom());
-				 Mardi_matiere_2_4_L2.getItems().addAll(elem.getNom());
-				 Mardi_matiere_4_6_L1.getItems().addAll(elem.getNom());
-				 Mardi_matiere_4_6_L2.getItems().addAll(elem.getNom());
+				 Mardi_8_10_element.getItems().addAll(elem.getNom());
+				 Mardi_10_12_element.getItems().addAll(elem.getNom());
+				 Mardi_14_16_element.getItems().addAll(elem.getNom());
+				 Mardi_16_18_element.getItems().addAll(elem.getNom());
 				 
 				//MERCEDI
-				 Mercredi_matiere_8_10_L1.getItems().addAll(elem.getNom());
-				 Mercredi_matiere_8_10_L2.getItems().addAll(elem.getNom());
-				 Mercredi_matiere_10_12_L1.getItems().addAll(elem.getNom());
-				 Mercredi_matiere_10_12_L2.getItems().addAll(elem.getNom());
-				 Mercredi_matiere_2_4_L1.getItems().addAll(elem.getNom());
-				 Mercredi_matiere_2_4_L2.getItems().addAll(elem.getNom());
-				 Mercredi_matiere_4_6_L1.getItems().addAll(elem.getNom());
-				 Mercredi_matiere_4_6_L2.getItems().addAll(elem.getNom());
+				 Mercredi_8_10_element.getItems().addAll(elem.getNom());
+				 Mercredi_10_12_element.getItems().addAll(elem.getNom());
+				 Mercredi_14_16_element.getItems().addAll(elem.getNom());
+				 Mercredi_16_18_element.getItems().addAll(elem.getNom());
 				 
 				//JUEDI
-				 Jeudi_matiere_8_10_L1.getItems().addAll(elem.getNom());
-				 Jeudi_matiere_8_10_L2.getItems().addAll(elem.getNom());
-				 Jeudi_matiere_10_12_L1.getItems().addAll(elem.getNom());
-				 Jeudi_matiere_10_12_L2.getItems().addAll(elem.getNom());
-				 Jeudi_matiere_2_4_L1.getItems().addAll(elem.getNom());
-				 Jeudi_matiere_2_4_L2.getItems().addAll(elem.getNom());
-				 Jeudi_matiere_4_6_L1.getItems().addAll(elem.getNom());
-				 Jeudi_matiere_4_6_L2.getItems().addAll(elem.getNom());
+				 Jeudi_8_10_element.getItems().addAll(elem.getNom());
+				 Jeudi_10_12_element.getItems().addAll(elem.getNom());
+				 Jeudi_14_16_element.getItems().addAll(elem.getNom());
+				 Jeudi_16_18_element.getItems().addAll(elem.getNom());
 				 
 				//Vendredi
-				 Vendredi_matiere_8_10_L1.getItems().addAll(elem.getNom());
-				 Vendredi_matiere_8_10_L2.getItems().addAll(elem.getNom());
-				 Vendredi_matiere_10_12_L1.getItems().addAll(elem.getNom());
-				 Vendredi_matiere_10_12_L2.getItems().addAll(elem.getNom());
-				 Vendredi_matiere_2_4_L1.getItems().addAll(elem.getNom());
-				 Vendredi_matiere_2_4_L2.getItems().addAll(elem.getNom());
-				 Vendredi_matiere_4_6_L1.getItems().addAll(elem.getNom());
-				 Vendredi_matiere_4_6_L2.getItems().addAll(elem.getNom());
+				 Vendredi_8_10_element.getItems().addAll(elem.getNom());
+				 Vendredi_10_12_element.getItems().addAll(elem.getNom());
+				 Vendredi_14_16_element.getItems().addAll(elem.getNom());
+				 Vendredi_16_18_element.getItems().addAll(elem.getNom());
 				 
 			 }
 		 }catch(Exception e2) {
 			 System.out.println(e2);
 		 }
 		 
-		 try {
-			 professeurs=professeurDao.selectAllProfesseur();			 
+		 List<String> types=List.of("CM","TD","TP");
+		 			 
 			//PROF
-			 for(Professeur prof:professeurs ) {
+			 for(String type:types ) {
 				 //LUNDI
-				 Lundi_prof_8_10_L1.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Lundi_prof_8_10_L2.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Lundi_prof_10_12_L1.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Lundi_prof_10_12_L2.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Lundi_prof_2_4_L1.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Lundi_prof_2_4_L2.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Lundi_prof_4_6_L1.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Lundi_prof_4_6_L2.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
+				 Lundi_8_10_type.getItems().addAll(type);
+				 Lundi_10_12_type.getItems().addAll(type);
+				 Lundi_14_16_type.getItems().addAll(type);
+				 Lundi_16_18_type.getItems().addAll(type);
 				 
 				//MARDI
-				 Mardi_prof_8_10_L1.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Mardi_prof_8_10_L2.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Mardi_prof_10_12_L1.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Mardi_prof_10_12_L2.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Mardi_prof_2_4_L1.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Mardi_prof_2_4_L2.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Mardi_prof_4_6_L1.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Mardi_prof_4_6_L2.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
+				 Mardi_8_10_type.getItems().addAll(type);
+				 Mardi_10_12_type.getItems().addAll(type);
+				 Mardi_14_16_type.getItems().addAll(type);
+				 Mardi_16_18_type.getItems().addAll(type);
 				 
 				//MERCREDI
-				 Mercredi_prof_8_10_L1.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Mercredi_prof_8_10_L2.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Mercredi_prof_10_12_L1.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Mercredi_prof_10_12_L2.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Mercredi_prof_2_4_L1.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Mercredi_prof_2_4_L2.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Mercredi_prof_4_6_L1.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Mercredi_prof_4_6_L2.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
+				 Mercredi_8_10_type.getItems().addAll(type);
+				 Mercredi_10_12_type.getItems().addAll(type);
+				 Mercredi_14_16_type.getItems().addAll(type);
+				 Mercredi_16_18_type.getItems().addAll(type);
 				 
 				//LUNDI
-				 Jeudi_prof_8_10_L1.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Jeudi_prof_8_10_L2.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Jeudi_prof_10_12_L1.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Jeudi_prof_10_12_L2.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Jeudi_prof_2_4_L1.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Jeudi_prof_2_4_L2.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Jeudi_prof_4_6_L1.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Jeudi_prof_4_6_L2.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
+				 Jeudi_8_10_type.getItems().addAll(type);
+				 Jeudi_10_12_type.getItems().addAll(type);
+				 Jeudi_14_16_type.getItems().addAll(type);
+				 Jeudi_16_18_type.getItems().addAll(type);
 				 
 				//LUNDI
-				 Vendredi_prof_8_10_L1.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Vendredi_prof_8_10_L2.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Vendredi_prof_10_12_L1.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Vendredi_prof_10_12_L2.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Vendredi_prof_2_4_L1.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Vendredi_prof_2_4_L2.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Vendredi_prof_4_6_L1.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
-				 Vendredi_prof_4_6_L2.getItems().addAll(prof.getNom()+" "+prof.getPrenom());
+				 Vendredi_8_10_type.getItems().addAll(type);
+				 Vendredi_10_12_type.getItems().addAll(type);
+				 Vendredi_14_16_type.getItems().addAll(type);
+				 Vendredi_16_18_type.getItems().addAll(type);
 			 }
-		 }catch(Exception e) {
-			 System.out.print(e);
-		 }
+		 
 		 
 		 try {
 			 salles=salleDao.selectSalle();
 
 			//SALLE
 			 for(Salle salle:salles ) {
+				 
 				 //LUNDI
-				 Lundi_salle_8_10_L1.getItems().addAll(salle.getTitel());
-				 Lundi_salle_8_10_L2.getItems().addAll(salle.getTitel());
-				 Lundi_salle_10_12_L1.getItems().addAll(salle.getTitel());
-				 Lundi_salle_10_12_L2.getItems().addAll(salle.getTitel());
-				 Lundi_salle_2_4_L1.getItems().addAll(salle.getTitel());
-				 Lundi_salle_2_4_L2.getItems().addAll(salle.getTitel());
-				 Lundi_salle_4_6_L1.getItems().addAll(salle.getTitel());
-				 Lundi_salle_4_6_L2.getItems().addAll(salle.getTitel());
+				 Lundi_8_10_salle.getItems().addAll(salle.getTitel());
+				 Lundi_10_12_salle.getItems().addAll(salle.getTitel());
+				 Lundi_14_16_salle.getItems().addAll(salle.getTitel());
+				 Lundi_16_18_salle.getItems().addAll(salle.getTitel());
+				 
 				 
 				//MARDI
-				 Mardi_salle_8_10_L1.getItems().addAll(salle.getTitel());
-				 Mardi_salle_8_10_L2.getItems().addAll(salle.getTitel());
-				 Mardi_salle_10_12_L1.getItems().addAll(salle.getTitel());
-				 Mardi_salle_10_12_L2.getItems().addAll(salle.getTitel());
-				 Mardi_salle_2_4_L1.getItems().addAll(salle.getTitel());
-				 Mardi_salle_2_4_L2.getItems().addAll(salle.getTitel());
-				 Mardi_salle_4_6_L1.getItems().addAll(salle.getTitel());
-				 Mardi_salle_4_6_L2.getItems().addAll(salle.getTitel());
+				 Mardi_8_10_salle.getItems().addAll(salle.getTitel());
+				 Mardi_10_12_salle.getItems().addAll(salle.getTitel());
+				 Mardi_14_16_salle.getItems().addAll(salle.getTitel());
+				 Mardi_16_18_salle.getItems().addAll(salle.getTitel());
 				 
 				//MERCREDI 
-				 Mercredi_salle_8_10_L1.getItems().addAll(salle.getTitel());
-				 Mercredi_salle_8_10_L2.getItems().addAll(salle.getTitel());
-				 Mercredi_salle_10_12_L1.getItems().addAll(salle.getTitel());
-				 Mercredi_salle_10_12_L2.getItems().addAll(salle.getTitel());
-				 Mercredi_salle_2_4_L1.getItems().addAll(salle.getTitel());
-				 Mercredi_salle_2_4_L2.getItems().addAll(salle.getTitel());
-				 Mercredi_salle_4_6_L1.getItems().addAll(salle.getTitel());
-				 Mercredi_salle_4_6_L2.getItems().addAll(salle.getTitel());
+				 Mercredi_8_10_salle.getItems().addAll(salle.getTitel());
+				 Mercredi_10_12_salle.getItems().addAll(salle.getTitel());
+				 Mercredi_14_16_salle.getItems().addAll(salle.getTitel());
+				 Mercredi_16_18_salle.getItems().addAll(salle.getTitel());
 				 
 				//JEUDI
-				 Jeudi_salle_8_10_L1.getItems().addAll(salle.getTitel());
-				 Jeudi_salle_8_10_L2.getItems().addAll(salle.getTitel());
-				 Jeudi_salle_10_12_L1.getItems().addAll(salle.getTitel());
-				 Jeudi_salle_10_12_L2.getItems().addAll(salle.getTitel());
-				 Jeudi_salle_2_4_L1.getItems().addAll(salle.getTitel());
-				 Jeudi_salle_2_4_L2.getItems().addAll(salle.getTitel());
-				 Jeudi_salle_4_6_L1.getItems().addAll(salle.getTitel());
-				 Jeudi_salle_4_6_L2.getItems().addAll(salle.getTitel());
+				 Jeudi_8_10_salle.getItems().addAll(salle.getTitel());
+				 Jeudi_10_12_salle.getItems().addAll(salle.getTitel());
+				 Jeudi_14_16_salle.getItems().addAll(salle.getTitel());
+				 Jeudi_16_18_salle.getItems().addAll(salle.getTitel());
 				 
 				//VENDREDI
-				 Vendredi_salle_8_10_L1.getItems().addAll(salle.getTitel());
-				 Vendredi_salle_8_10_L2.getItems().addAll(salle.getTitel());
-				 Vendredi_salle_10_12_L1.getItems().addAll(salle.getTitel());
-				 Vendredi_salle_10_12_L2.getItems().addAll(salle.getTitel());
-				 Vendredi_salle_2_4_L1.getItems().addAll(salle.getTitel());
-				 Vendredi_salle_2_4_L2.getItems().addAll(salle.getTitel());
-				 Vendredi_salle_4_6_L1.getItems().addAll(salle.getTitel());
-				 Vendredi_salle_4_6_L2.getItems().addAll(salle.getTitel());
+				 Vendredi_8_10_salle.getItems().addAll(salle.getTitel());
+				 Vendredi_10_12_salle.getItems().addAll(salle.getTitel());
+				 Vendredi_14_16_salle.getItems().addAll(salle.getTitel());
+				 Vendredi_16_18_salle.getItems().addAll(salle.getTitel());
 			 }
 		 }catch(Exception e) {
 			 System.out.print(e);

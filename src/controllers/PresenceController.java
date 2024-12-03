@@ -33,7 +33,18 @@ public class PresenceController {
 
     @FXML
     public void initialize() {
-        // Set up the idColumn to show row numbers (1, 2, 3, ...)
+        
+    	colNumber.setCellFactory(column -> new TableCell<>() {
+    	    @Override
+    	    protected void updateItem(String item, boolean empty) {
+    	        super.updateItem(item, empty);
+    	        if (empty) {
+    	            setText(null);
+    	        } else {
+    	            setText(String.valueOf(getIndex() + 1)); // Row index starts from 0, so add 1
+    	        }
+    	    }
+    	});
         idColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(tableView.getItems().indexOf(cellData.getValue()) + 1)));
 
         nameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNom() + " " + cellData.getValue().getPrenom()));
@@ -94,7 +105,7 @@ public class PresenceController {
         ObservableList<Etudiant> students = FXCollections.observableArrayList();
         
         // Fetch students from the database with id_filier = 1
-        List<Etudiant> etudiants = etudiantDao.selectAllEtudiants("IL");
+        List<Etudiant> etudiants = etudiantDao.selectAllEtudiants();
         students.addAll(etudiants);
 
         return students;

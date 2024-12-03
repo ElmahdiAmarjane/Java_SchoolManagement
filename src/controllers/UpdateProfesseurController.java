@@ -3,6 +3,8 @@ package controllers;
 import java.io.File;
 import java.time.LocalDate;
 import java.util.List;
+
+import config.AppFunctions;
 import dao.ElementDao;
 import dao.FilierDao;
 import dao.ProfesseurDao;
@@ -95,7 +97,7 @@ public class UpdateProfesseurController {
 		 @FXML
 		 private Button btnChooseFileCIN,chooseProfileImageBtn,btnChooseCv;
 		 @FXML
-		 private TextField nom, prenom, cni, tel,email,adresse,password,rip,etablissement,mention_doctorat,type_doctorat;
+		 private TextField nom, prenom, cni, tele ,email,adresse,password,rip,etablissement,mention_doctorat,type_doctorat;
 		 @FXML
 		 private ComboBox<String> Matiere_enseigne,sexe,nationalite,type_contrat;
 		 @FXML
@@ -149,7 +151,7 @@ public class UpdateProfesseurController {
 	                sexe.setValue(professeur.getSexe());
 	                date_naissance.setValue(professeur.getDateNaissance());
 	                email.setText(professeur.getEmail());
-	                tel.setText(professeur.getTel());
+	                
 	                cni.setText(professeur.getCni());
 	                nationalite.setValue(professeur.getNationalite());
 	                password.setText(professeur.getPassword());
@@ -159,7 +161,9 @@ public class UpdateProfesseurController {
 	                etablissement.setText(professeur.getEtablissement());
 	                Matiere_enseigne.setValue(professeur.getMatiere_enseigne());
 	                type_contrat.setValue(professeur.getType_contrat());
-	                rip.setText(String.valueOf(professeur.getRip()).toString());
+	                rip.setText(String.valueOf(professeur.getRip()));
+	                
+	                tele.setText(professeur.getTel());
 	                
 	            	
 	            	imageProfile=professeur.getImage();
@@ -188,7 +192,7 @@ public class UpdateProfesseurController {
 	    
 	public void enregistrerBtn() {
 		
-		/*try {
+		try {
 			
 			user.setNom(nom.getText());
 			user.setPrenom(prenom.getText());
@@ -197,14 +201,15 @@ public class UpdateProfesseurController {
 			user.setSexe(sexe.getValue());
 			user.setDateNaissance(date_naissance.getValue());
 			user.setEmail(email.getText());
-			user.setTel(tel.getText());
+			user.setTel(tele.getText());
 			user.setAdress(adresse.getText());
 			user.setNationalite(nationalite.getValue());
 			user.setPassword(password.getText());
 			user.setImage(imageProfile);
+			user.setImageCni(imageCni);
 			
     		
-			if(userDao.insertUser(user)) {
+			if(userDao.updateUser(user)) {
 				
 				int ripval= Integer.parseInt(rip.getText());
 				
@@ -217,13 +222,21 @@ public class UpdateProfesseurController {
 				professeur.setImagecv(imageCv);
 				professeur.setCni_user(cni.getText());
 				
-				professeurDao.insertProfesseur(professeur);
+				
+				boolean isUdated=professeurDao.updateProfesseur(professeur);
+    			
+    			if(isUdated) {
+    				AppFunctions.showAlertInformation("Succès","Utilisateur mis à jour avec succès !");
+    				professeurDao.selectAllProfesseur();
+    			}else {
+    				AppFunctions.showAlertInformation("Erreur","Échec de la mise à jour de l'utilisateur.");
+    			}
 			}
 			
 		}catch(Exception e) {
 			System.out.print(e);
 		}
-		*/
+		
 	}
 	public void addProfPaneToFront() {
 		addProfPane.toFront();

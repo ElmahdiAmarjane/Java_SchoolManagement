@@ -190,7 +190,7 @@ public class UpdateEtudiantInfoController {
     
     public void fechEtudiant(String cnival) {
     	
-       Etudiant etudiant=etudiantDao.selectEtudiant(cnival);
+       Etudiant etudiant=etudiantDao.selectEtudiantByCni(cnival);
        
        
        

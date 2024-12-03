@@ -98,7 +98,7 @@ public class ProfesseurDao implements IProfesseurServices{
 	        preparedStatement.setDate(2, java.sql.Date.valueOf(absence.getDate().toString()) );
 	        preparedStatement.setTime(3, absence.getHeure_debut());
 	        preparedStatement.setTime(4, absence.getHeure_fine());
-	        preparedStatement.setInt(5, absence.getFilier_id());
+	        preparedStatement.setString(5, absence.getFilier_titel());
 	        preparedStatement.setInt(6, absence.getElement_id());
 
 	        int rowsAffected = preparedStatement.executeUpdate();
@@ -177,13 +177,14 @@ public class ProfesseurDao implements IProfesseurServices{
 	        	
 	        	prof.setDoctorant_type(resultSet.getString("doctorant_type"));
 	        	prof.setDoctorant_mention(resultSet.getString("doctorant_mention"));
-	        	prof.setMatiere_enseigne(resultSet.getString("Matiere_enseigne "));
+	        	prof.setMatiere_enseigne(resultSet.getString("Matiere_enseigne"));
 	        	prof.setType_contrat(resultSet.getString("type_contrat"));
 	        	prof.setRip(resultSet.getInt("rip"));
-	        	prof.setMatiere_enseigne(resultSet.getString("etablissement"));
+	        	prof.setEtablissement(resultSet.getString("etablissement"));
 	        	
 	        	prof.setImageCni(resultSet.getString("image_cni"));
 	        	prof.setImagecv(resultSet.getString("imagecv"));
+	        	prof.setImage(resultSet.getString("image"));
 	        	
 	        	
 	            

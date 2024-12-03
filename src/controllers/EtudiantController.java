@@ -233,7 +233,7 @@ public class EtudiantController {
             Pane nextPane = loader.load();
 
             UpdateEtudiantInfoController controller = loader.getController();
-            controller.setCniValue(cni); // This now calls customInitialize()
+            controller.setCniValue(cni); 
 
             EtudiantView.getChildren().clear();
             EtudiantView.getChildren().add(nextPane);
@@ -270,7 +270,7 @@ public class EtudiantController {
     
     public void fetchEtudiant() {
         try {
-             listEtudiants = etudiantDao.selectAllEtudiants("IL");
+             listEtudiants = etudiantDao.selectAllEtudiants();
 
             ObservableList<Etudiant> etudiants = FXCollections.observableArrayList(listEtudiants);
             studentsTable.setItems(etudiants); // Set items to the table
@@ -301,10 +301,19 @@ public class EtudiantController {
 	}
     
     public void initialize() {
-    	
-    	
     	addIconsToTable();
-    	// Set up TableView and TableColumn bindings
+    	
+    	colNumber.setCellFactory(column -> new TableCell<>() {
+    	    @Override
+    	    protected void updateItem(String item, boolean empty) {
+    	        super.updateItem(item, empty);
+    	        if (empty) {
+    	            setText(null);
+    	        } else {
+    	            setText(String.valueOf(getIndex() + 1)); // Row index starts from 0, so add 1
+    	        }
+    	    }
+    	});
         colNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
         colPrenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         colCNI.setCellValueFactory(new PropertyValueFactory<>("cni"));
@@ -619,7 +628,7 @@ public class EtudiantController {
     		List<Filier> filiers=filierDao.selectAllFilier();
     		
     		for(Filier fil:filiers) {
-    			filier.getItems().addAll(fil.getTitel());
+    			filier.getItems().addAll(fil.getShortName());
     		}
     		
     	}catch(Exception e) {

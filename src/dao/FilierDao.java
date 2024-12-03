@@ -17,12 +17,14 @@ public class FilierDao implements IFilierServices{
 	
 	@Override
 	public boolean addFilier(Filier filier) {
-        String query = "INSERT INTO filier (titel, programme_id) VALUES (?,?)";
+        String query = "INSERT INTO filier (titel,shortName,fillierLogo ,programme_id) VALUES (?,?,?,?)";
         try(Connection connection = JDBC.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(query)){
         	
         	 preparedStatement.setString(1, filier.getTitel());
-             preparedStatement.setInt(2, filier.getProgrammeId());
+             preparedStatement.setString(2, filier.getShortName());
+             preparedStatement.setString(3, filier.getFilliereLogo());
+             preparedStatement.setInt(4, filier.getProgrammeId());
              
              int rowsAffected = preparedStatement.executeUpdate();
 
@@ -41,12 +43,12 @@ public class FilierDao implements IFilierServices{
 
 	@Override
 	public boolean supprimerFilier(Filier filier) {
-		String query = "DELETE FROM filier WHERE id = ?";
+		String query = "DELETE FROM filier WHERE shortName = ?";
 
         try (Connection connection = JDBC.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-            preparedStatement.setInt(1, filier.getId());
+            preparedStatement.setString(1, filier.getShortName());
 
             int rowsAffected = preparedStatement.executeUpdate();
 
@@ -65,7 +67,7 @@ public class FilierDao implements IFilierServices{
 
 	@Override
 	public boolean updateFilier(Filier filier) {
-		String query = "UPDATE filier SET titel=?, programme_id=? WHERE id=? ";
+		String query = "UPDATE filier SET titel=?, programme_id=? WHERE shortName=? ";
 		
 		try (Connection connection = JDBC.getConnection();
 		         PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -73,7 +75,7 @@ public class FilierDao implements IFilierServices{
 		        // Set the parameters for the update
 		        preparedStatement.setString(1, filier.getTitel());
 		        preparedStatement.setInt(2, filier.getProgrammeId());
-		        preparedStatement.setInt(3, filier.getId());
+		        preparedStatement.setString(3, filier.getShortName());
 
 		        int rowsAffected = preparedStatement.executeUpdate();
 
@@ -103,7 +105,9 @@ public class FilierDao implements IFilierServices{
 	            while (resultSet.next()) {
 	                Filier filier = new Filier();
 	                filier.setTitel(resultSet.getString("titel"));
-	                
+	                filier.setShortName(resultSet.getString("shortName"));
+	                filier.setFilliereLogo(resultSet.getString("fillierLogo"));
+	                filier.setProgrammeId(resultSet.getInt("programme_id"));
 	                filiers.add(filier);
 	            }
 

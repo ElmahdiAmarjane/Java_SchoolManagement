@@ -3,7 +3,10 @@ package application;
 import java.util.ArrayList;
 import java.sql.Date;
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.List;
+
+import dao.AbsenceDao;
 import dao.EtudiantDao;
 import dao.ProfesseurDao;
 import javafx.application.Application;
@@ -44,39 +47,41 @@ public class Main extends Application {
 			
 			showMainApplication();
 			
-			/*try {
-		        ProfesseurDao professeurDao = new ProfesseurDao();
+			/*AbsenceDao absenceDao = new AbsenceDao();
+			Absence absence = new Absence();
 
-		        // Initialize the list of CNEs with sample values
-		        List<String> cne_etudiants = new ArrayList<>();
-		        cne_etudiants.add("a");
-		        cne_etudiants.add("dd");
+			try {
+			    // Correctly setting the date
+			    String dateString = "2024-12-03"; // Date as a string
+			    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			    java.util.Date utilDate = format.parse(dateString); // Parse the string into a java.util.Date
 
-		        // Define other parameters for testing
-		        Date date_jour = Date.valueOf("2024-11-09"); // Use java.sql.Date for date_jour
-		        Time heure_debut = Time.valueOf("08:00:00"); // Use java.sql.Time for heure_debut
-		        Time heure_fin = Time.valueOf("10:00:00"); 
-		        int id_filiere = 2;
-		        int element_id = 1;
+			    // Convert java.util.Date to java.sql.Date
+			    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+			    absence.setDate(sqlDate); // Set the converted java.sql.Date
 
-		        Absence abs = new Absence();
-		        abs.setCne_etudiants(cne_etudiants);
-		        abs.setDate(date_jour);
-		        abs.setHeure_debut(heure_debut);
-		        abs.setHeure_fine(heure_fin);
-		        abs.setFilier_id(id_filiere);
-		        abs.setElement_id(element_id);
+			    // Set the filier title
+			    absence.setFilier_titel("IL"); // Set the appropriate filier title
 
-		        // Call the absence method
-		        boolean result = professeurDao.absence(abs);
+			    // Fetch absences filtered by filier title and date
+			    Absence abs = absenceDao.fetchAbsenceFilier(absence);
 
-		        // Output result for testing
-		        System.out.println("Absence recorded: " + result);
+			    if (abs != null) {
+			        System.out.println("Start Time: " + abs.getHeure_debut());
+			        System.out.println("End Time: " + abs.getHeure_fine());
+			        
+			        List<String> cne=abs.getCne_etudiants();
+			        
+			        for(String a:cne) {
+			        	System.out.println("CNE : "+a);
+			        }
+			    } else {
+			        System.out.println("No absences found for the given filier and date.");
+			    }
+			} catch (Exception e) {
+			    e.printStackTrace(); // Catch and print any exceptions
+			}*/
 
-		    } catch (Exception e) {
-		        e.printStackTrace();
-		    }*/
-			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

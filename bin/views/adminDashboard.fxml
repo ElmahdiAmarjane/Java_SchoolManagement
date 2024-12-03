@@ -22,7 +22,7 @@
                <children>
                   <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../assets/chat.png" />
+                        <Image url="@../assets/chat.png" />
                      </image>
                      <HBox.margin>
                         <Insets left="30.0" right="10.0" />
@@ -111,7 +111,8 @@
                   <Insets bottom="15.0" />
                </VBox.margin>
             </HBox>
-            <HBox prefHeight="40.0" prefWidth="153.0">
+            
+            <HBox onMouseClicked="#filliereMenuOnclick" prefHeight="40.0" prefWidth="153.0">
                <children>
                   <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -134,13 +135,59 @@
                   <Insets bottom="15.0" />
                </VBox.margin>
             </HBox>
+            
+            <HBox onMouseClicked="#annoncesMenuOnclick" prefHeight="40.0" prefWidth="153.0">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/annonce.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="30.0" right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Annonces" wrappingWidth="93.654296875">
+                     <font>
+                        <Font name="Segoe UI" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="6.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+            
+            <HBox fx:id="studentMenu" onMouseClicked="#absencePaneToFront" prefHeight="40.0" prefWidth="153.0">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/students.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="30.0" right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Absence" wrappingWidth="93.654296875">
+                     <font>
+                        <Font name="Segoe UI" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="6.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="18.0" />
+               </VBox.margin>
+            </HBox>
+            
          </children>
       </VBox>
       <AnchorPane style="-fx-background-color: #FFDD33;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="76.0" fitWidth="97.0" layoutX="33.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="0.0">
                <image>
-                  <Image url="@../../assets/logoibnzohr.png" />
+                  <Image url="@../assets/logoibnzohr.png" />
                </image>
             </ImageView>
             <AnchorPane layoutX="563.0" layoutY="9.0">
@@ -200,6 +247,13 @@
 	<fx:include fx:id="emploiTempsPane" source="emploiTemps.fxml" />
            
     <fx:include fx:id="studentPane" source="adminEtudiant.fxml" />
+    
+    <fx:include fx:id="fillieresMainPane" source="adminFilliere.fxml" /> 
+    
+    <fx:include fx:id="annoncesMainPane" source="adminAnnonces.fxml" /> 
+    
+    <fx:include fx:id="absencePane" source="adminAbsence.fxml" />
+    
 
          
 

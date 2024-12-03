@@ -256,6 +256,17 @@ public class ProfesseurController {
 		    
 	    public void initialize() {
 	    	
+	    	colNumber.setCellFactory(column -> new TableCell<>() {
+	    	    @Override
+	    	    protected void updateItem(String item, boolean empty) {
+	    	        super.updateItem(item, empty);
+	    	        if (empty) {
+	    	            setText(null);
+	    	        } else {
+	    	            setText(String.valueOf(getIndex() + 1)); // Row index starts from 0, so add 1
+	    	        }
+	    	    }
+	    	});
 	    	addIconsToTable();
 	    	// Set up TableView and TableColumn bindings
 	        colNom.setCellValueFactory(new PropertyValueFactory<>("nom"));

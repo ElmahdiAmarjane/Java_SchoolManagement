@@ -24,15 +24,6 @@
                     AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0" 
                     AnchorPane.rightAnchor="0.0">
             <children>
-                <Text fx:id="listProfBtn" 
-                      fill="WHITE" layoutX="53.0" layoutY="30.0" 
-                      onMouseClicked="#listProfPaneToFront" 
-                      strokeType="OUTSIDE" strokeWidth="0.0" 
-                      text="Liste Professeurs">
-                    <font>
-                        <Font name="System Bold" size="14.0" />
-                    </font>
-                </Text>
                 <Text fx:id="addProfBtn" 
                       fill="WHITE" layoutX="194.0" layoutY="30.0" 
                       onMouseClicked="#addProfPaneToFront" 
@@ -64,29 +55,7 @@
                 </Text>
             </children>
         </AnchorPane>
-
-        <AnchorPane fx:id="listProfPane" 
-                    layoutY="52.0" prefHeight="388.0" prefWidth="517.0" 
-                    style="-fx-background-color: #11FFDD;" 
-                    AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" 
-                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
-            <children>
-                
-              <AnchorPane layoutY="51.0" prefHeight="388.0" prefWidth="517.0" style="-fx-background-color: #11FF99;" 
-                    AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
-            	<children>
-                <Text layoutX="15.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste Prof" wrappingWidth="170.7734375">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Text>
-                
-            </children>
-        </AnchorPane>
-    
-            </children>
-        </AnchorPane>
-   
+        
    		<AnchorPane fx:id="addProfPane" layoutX="-9.0" layoutY="50.0" prefHeight="587.0" prefWidth="1152.0" style="-fx-background-color: #D9F9FD;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                <children>
                   <Text layoutX="14.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Professeur" wrappingWidth="208.7734375">
@@ -96,9 +65,6 @@
                   </Text>
                   <Button fx:id="addProfBtnNext" layoutX="1021.0" layoutY="510.0" mnemonicParsing="false" onAction="#switchToFrontBetweenAddProfPane" prefHeight="33.0" prefWidth="81.0" text="Suivant" AnchorPane.bottomAnchor="44.0" AnchorPane.rightAnchor="30.0" />
                   <Button fx:id="addProfBtnBack" layoutX="32.0" layoutY="510.0" mnemonicParsing="false" onAction="#switchToBackBetweenAddProfPane" prefHeight="33.0" prefWidth="81.0" text="Précedent" AnchorPane.bottomAnchor="44.0" />
-                  
-                  
-                  
                   
                   <AnchorPane fx:id="addProfDocs" layoutX="8.0" layoutY="49.0" prefHeight="452.0" prefWidth="1126.0" style="-fx-border-color: #FFDDEE; -fx-background-color: #DDFFAA;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                      <children>
@@ -152,7 +118,7 @@
                               <Text fill="#656363" layoutX="204.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations personnelles" />
                               <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="359.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../assets/arrow.png" />
+                                    <Image url="@../assets/arrow.png" />
                                  </image>
                               </ImageView>
                               <Text layoutX="414.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Infos Professionnelles">
@@ -162,13 +128,13 @@
                               </Text>
                               <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="556.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../assets/arrow.png" />
+                                    <Image url="@../assets/arrow.png" />
                                  </image>
                               </ImageView>
                               <Text fill="#656363" layoutX="603.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="documents fournies" />
                               <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="725.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../assets/arrow.png" />
+                                    <Image url="@../assets/arrow.png" />
                                  </image>
                               </ImageView>
                               <Text fill="#656363" layoutX="778.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fin" />
@@ -195,13 +161,13 @@
                               <Text fill="#656363" layoutX="419.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Infos Professionnelles" />
                               <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="556.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../assets/arrow.png" />
+                                    <Image url="@../assets/arrow.png" />
                                  </image>
                               </ImageView>
                               <Text fill="#656363" layoutX="603.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Documents fournies" />
                               <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="725.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../assets/arrow.png" />
+                                    <Image url="@../assets/arrow.png" />
                                  </image>
                               </ImageView>
                               <Text layoutX="778.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fin">
@@ -232,7 +198,7 @@
                         <DatePicker fx:id="date_naissance" layoutX="557.0" layoutY="149.0" prefHeight="40.0" prefWidth="200.0"/>
                         <TextField fx:id="email" layoutX="557.0" layoutY="216.0" prefHeight="40.0" prefWidth="200.0" />
                         <TextField fx:id="adresse" layoutX="557.0" layoutY="279.0" prefHeight="40.0" prefWidth="200.0" />
-                        <TextField fx:id="tel" layoutX="557.0" layoutY="341.0" prefHeight="40.0" prefWidth="200.0" />
+                        <TextField fx:id="tele" layoutX="557.0" layoutY="341.0" prefHeight="40.0" prefWidth="200.0" />
                         <Text layoutX="472.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Naissance" />
                         <Text layoutX="497.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
                         <Text layoutX="493.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse" />
@@ -260,19 +226,19 @@
                               </Text>
                               <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="359.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../assets/arrow.png" />
+                                    <Image url="@../assets/arrow.png" />
                                  </image>
                               </ImageView>
                               <Text fill="#656363" layoutX="417.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Infos Professionnelles" />
                               <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="556.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../assets/arrow.png" />
+                                    <Image url="@../assets/arrow.png" />
                                  </image>
                               </ImageView>
                               <Text fill="#656363" layoutX="603.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="documents fournies" />
                               <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="725.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../assets/arrow.png" />
+                                    <Image url="@../assets/arrow.png" />
                                  </image>
                               </ImageView>
                               <Text fill="#656363" layoutX="778.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fin" />

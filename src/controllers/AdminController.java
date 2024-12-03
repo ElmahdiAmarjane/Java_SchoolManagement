@@ -37,6 +37,8 @@ public class AdminController {
 	@FXML
 	private AnchorPane mainPane;
 	
+	
+	
 	@FXML
 	 private HBox chatMenuBtn ;
 	
@@ -49,6 +51,10 @@ public class AdminController {
 	 private AnchorPane professorPane ;
 	@FXML
 	 private AnchorPane studentPane ;
+	
+	@FXML
+	 private AnchorPane absencePane ;
+	
 	@FXML
 	 private AnchorPane chatPane ;
 	
@@ -181,9 +187,15 @@ public class AdminController {
 	 private AnchorPane filliereDetailsAnchorPane;
 	 @FXML AnchorPane filliereListAnchorPane;
 	 
+	 ////////
+	 @FXML AnchorPane annoncesMainPane;
 	 
 	 
-	 //////////
+	@FXML
+	 public void absencePaneToFront() {
+		
+		absencePane.toFront();
+	}
 	@FXML
 	public void professorPaneToFront() {
 		professorPane.toFront();
@@ -422,5 +434,24 @@ public void switchToFrontBetweenAddProfPane() {
     
     
     */
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	 public void filliereMenuOnclick() {
+		 // Bring the main pane to the front
+	    fillieresMainPane.toFront();
+
+	}
+	 
+	public void  annoncesMenuOnclick() {
+		annoncesMainPane.toFront();
+	}
 	
 }
