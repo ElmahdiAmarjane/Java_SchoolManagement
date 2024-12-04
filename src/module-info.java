@@ -6,8 +6,11 @@ module schoolManagement {
     requires java.sql; 
     requires java.base; 
     requires org.json;
+    requires cloudinary.core;
+    requires cloudinary.http5;
 
-
+    requires com.fasterxml.jackson.databind;
+  
    // requires controlsfx;
 	
 	opens application to javafx.graphics, javafx.fxml;

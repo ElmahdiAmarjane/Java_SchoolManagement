@@ -1,16 +1,21 @@
 package controllers;
 
+import java.io.File;
 import java.io.IOException;
 
+import cloudinary.CloudinaryUploader;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import modules.Annonce;
@@ -28,6 +33,8 @@ public class AnnonceWidgetController {
 	
 	@FXML private Button downloadButton;
 	@FXML private Text annonceId;
+	@FXML private Text annonceFilePath;
+	
 	
 	 // Setter for the announcement header
     public void setAnnouncementHeaderText(String text) {
@@ -54,7 +61,7 @@ public class AnnonceWidgetController {
         downloadButton.setText(text);
     }
     
-    public Pane loadAnnonceWidget(String title, String contenu , String date,String id) throws Exception {
+    public Pane loadAnnonceWidget(String title, String contenu , String date,String id , String filePath) throws Exception {
         // Charger le fichier FXML
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/annoncesWidget.fxml"));
         Pane widget = loader.load();
@@ -67,7 +74,11 @@ public class AnnonceWidgetController {
         controller.announcementTitle.setText(title);
         controller.announcementText.setText(contenu);
         controller.announcementDate.setText(date);
-       // controller.setButtonAction(buttonAction);
+        controller.annonceFilePath.setText(filePath);
+        if (filePath == null || filePath.trim().isEmpty()) {
+            downloadButton.setStyle("-fx-background-color :red;");
+        }
+       // controller.downloadButton.setOnAction(e->{ 	downloadAnnonceFile(filePath);});
 
         return widget;
     }
@@ -139,6 +150,78 @@ public class AnnonceWidgetController {
         rudController.setDetailsAnnonceStage(stage); // Set the stage to enable closing
         stage.show();
     }
-   
     
+    public void downloadAnnonceFile() {
+        System.out.println("helloCloud");
+
+        // Get the file path (URL) and check if it's valid
+        String filePath = annonceFilePath.getText();
+        if (filePath == null || filePath.isEmpty()) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Chemin du fichier manquant");
+            alert.setContentText("Veuillez entrer un chemin de fichier valide.");
+            alert.showAndWait();
+            return;
+        }
+
+        CloudinaryUploader uploader = new CloudinaryUploader();
+
+        // Extract the file extension from the URL
+        String fileExtension = "";
+        int dotIndex = filePath.lastIndexOf('.');
+        if (dotIndex != -1 && dotIndex < filePath.length() - 1) {
+            fileExtension = filePath.substring(dotIndex); // Includes the dot (e.g., ".pdf")
+        }
+
+        // Suggest a default file name
+        String defaultFileName = announcementTitle.getText();
+        if (defaultFileName == null || defaultFileName.trim().isEmpty()) {
+            defaultFileName = "fichier"; // Fallback default name
+        }
+        defaultFileName = defaultFileName.replaceAll("[\\\\/:*?\"<>|]", "_"); // Sanitize file name
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("All Files", "*.*"));
+        fileChooser.setInitialFileName(defaultFileName + fileExtension);
+
+        // Show the "Save As" dialog
+        fileChooser.setTitle("Sélectionner un emplacement pour enregistrer le fichier");
+        File fileToSave = fileChooser.showSaveDialog(announcementText.getScene().getWindow());
+
+        if (fileToSave != null) {
+            // Ensure the file has the correct extension
+            File finalFile = fileToSave;
+            if (!fileToSave.getName().endsWith(fileExtension)) {
+                finalFile = new File(fileToSave.getAbsolutePath() + fileExtension);
+            }
+
+            // Download the file
+            try {
+                uploader.downloadAnnonceFile(filePath, finalFile.getAbsolutePath());
+
+                // Success alert
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Téléchargement Réussi");
+                alert.setHeaderText("Fichier téléchargé avec succès !");
+                alert.setContentText("Le fichier a été enregistré à l'emplacement sélectionné.");
+                alert.showAndWait();
+            } catch (Exception e) {
+                // Failure alert
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Échec du Téléchargement");
+                alert.setHeaderText("Erreur lors du téléchargement");
+                alert.setContentText("Le fichier n'a pas pu être téléchargé. Veuillez réessayer.");
+                alert.showAndWait();
+                e.printStackTrace();
+            }
+        } else {
+            // Cancel warning in French
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Téléchargement Annulé");
+            alert.setHeaderText("Aucun emplacement sélectionné");
+            alert.setContentText("Le fichier ne sera pas téléchargé si aucun emplacement n'est sélectionné.");
+            alert.showAndWait();
+        }
+    }
+   
 }

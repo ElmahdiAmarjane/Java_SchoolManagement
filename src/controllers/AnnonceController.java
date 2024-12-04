@@ -266,7 +266,7 @@ public class AnnonceController {
 	                    AnnonceWidgetController widgetController = loader.getController();
 	                    widget = widgetController.loadAnnonceWidget(
 	                   		  annonce.getTitle(), annonce.getContenu(),
-	                   		  annonce.getDateAnnonce().toString(), String.valueOf(annonce.getId()) );
+	                   		  annonce.getDateAnnonce().toString(), String.valueOf(annonce.getId()) , annonce.getFile() );
 	                    // Pass the main controller instance to the widget controller
 	                    AnnonceWidgetController.setMainController(this);
 System.out.println("ertyuio");
