@@ -259,7 +259,7 @@
  
  
   <fx:include fx:id="annoncesMainPane" source="adminAnnonces.fxml" /> 
-  <!-- <fx:include fx:id="fillieresMainPane" source="adminFilliere.fxml" />  --> 
+   <fx:include fx:id="fillieresMainPane" source="adminFilliere.fxml" /> 
    
 
 

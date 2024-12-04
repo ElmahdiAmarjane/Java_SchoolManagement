@@ -21,7 +21,7 @@ public class Main extends Application {
 	private void showMainApplication() throws Exception {
 		
         // Load your main application FXML and show the main window
-        FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("/views/adminDashboard.fxml"));
+        FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("/views/studentDash/studentDashboard.fxml"));
         Parent mainRoot = mainLoader.load();
         Scene mainScene = new Scene(mainRoot,800,500);
         Stage mainStage = new Stage();

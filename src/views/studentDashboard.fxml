@@ -38,17 +38,17 @@
                   <Insets bottom="15.0" top="10.0" />
                </VBox.margin>
             </HBox>
-            <HBox fx:id="studentMenu" onMouseClicked="#studentPaneToFront" prefHeight="40.0" prefWidth="153.0">
+            <HBox fx:id="studentMenu1" onMouseClicked="#studentPaneToFront" prefHeight="40.0" prefWidth="153.0">
                <children>
                   <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../assets/students.png" />
+                        <Image url="@../../assets/courses.png" />
                      </image>
                      <HBox.margin>
                         <Insets left="30.0" right="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Etudiants" wrappingWidth="93.654296875">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cours" wrappingWidth="144.654296875">
                      <font>
                         <Font name="Segoe UI" size="20.0" />
                      </font>
@@ -57,21 +57,18 @@
                      </HBox.margin>
                   </Text>
                </children>
-               <VBox.margin>
-                  <Insets bottom="15.0" />
-               </VBox.margin>
             </HBox>
-            <HBox fx:id="profMenu" onMouseClicked="#professorPaneToFront" prefHeight="40.0" prefWidth="153.0">
+            <HBox fx:id="studentMenu" onMouseClicked="#studentPaneToFront" prefHeight="40.0" prefWidth="153.0">
                <children>
                   <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../assets/teachers.png" />
+                        <Image url="@../../assets/annonce.png" />
                      </image>
                      <HBox.margin>
                         <Insets left="30.0" right="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Proffesseurs" wrappingWidth="120.654296875">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Annonces" wrappingWidth="93.654296875">
                      <font>
                         <Font name="Segoe UI" size="20.0" />
                      </font>
@@ -108,49 +105,6 @@
                   <Insets bottom="15.0" />
                </VBox.margin>
             </HBox>
-            <HBox onMouseClicked="#filliereMenuOnclick" prefHeight="40.0" prefWidth="153.0">
-               <children>
-                  <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../assets/fillieres.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="30.0" right="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Filliéres" wrappingWidth="93.654296875">
-                     <font>
-                        <Font name="Segoe UI" size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="6.0" />
-                     </HBox.margin>
-                  </Text>
-               </children>
-               <VBox.margin>
-                  <Insets bottom="15.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox onMouseClicked="#annoncesMenuOnclick" prefHeight="40.0" prefWidth="153.0">
-               <children>
-                  <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../assets/annonce.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="30.0" right="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Annonces" wrappingWidth="93.654296875">
-                     <font>
-                        <Font name="Segoe UI" size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="6.0" />
-                     </HBox.margin>
-                  </Text>
-               </children>
-            </HBox>
          </children>
       </VBox>
       <AnchorPane style="-fx-background-color: #FFDD33;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -172,7 +126,7 @@
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Text>
-                  <Text layoutX="147.0" layoutY="43.9716796875" strokeType="OUTSIDE" strokeWidth="0.0" text="Directeur">
+                  <Text layoutX="147.0" layoutY="43.9716796875" strokeType="OUTSIDE" strokeWidth="0.0" text="Etudiant">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
@@ -210,56 +164,12 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      
-	<fx:include fx:id="professorPane" source="adminProfesseur.fxml" />
 	
 	
 	<fx:include fx:id="emploiTempsPane" source="emploiTemps.fxml" />
-	
-    <AnchorPane fx:id="studentPane" layoutX="236.0" layoutY="76.0" prefHeight="441.0" prefWidth="517.0" style="-fx-background-color: #EE11EE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="236.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="76.0">
-         <children>
-            <AnchorPane fx:id="studentNavMenu2" layoutX="2.0" layoutY="4.0" prefHeight="51.0" prefWidth="1135.0" style="-fx-background-color: #112277;" AnchorPane.bottomAnchor="618.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <Text fx:id="listStudentBtn1" fill="WHITE" layoutX="53.0" layoutY="30.0" onMouseClicked="#listStudentPaneToFront" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste Etudiants">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="addStudentBtn1" fill="WHITE" layoutX="194.0" layoutY="30.0" onMouseClicked="#addStudentPaneToFront" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Etudiant">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Text>
-                  <Line endX="87.0" endY="6.0" fill="WHITE" layoutX="221.0" layoutY="33.5" startX="-32.0" startY="6.0" stroke="WHITE" strokeWidth="3.0" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="40.0" />
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="studentNavMenu1" prefHeight="51.0" prefWidth="1135.0" style="-fx-background-color: #112277;" AnchorPane.bottomAnchor="586.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <Text fx:id="listStudentBtn" fill="WHITE" layoutX="53.0" layoutY="30.0" onMouseClicked="#listStudentPaneToFront" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste Etudiants">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="addStudentBtn" fill="WHITE" layoutX="194.0" layoutY="30.0" onMouseClicked="#addStudentPaneToFront" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Etudiant">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Text>
-                  <Line endX="73.0" endY="6.0" fill="WHITE" startX="-32.0" startY="6.0" stroke="WHITE" strokeWidth="3.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="47.5" AnchorPane.rightAnchor="981.0" AnchorPane.topAnchor="39.5" />
-               </children>
-            </AnchorPane>
-                 
-                  
-             <fx:include fx:id="addStudentPane" source="adminEtudiant.fxml" />
-                  
-             <fx:include fx:id="listStudentPane" source="fetchEtudiantAdmin.fxml" />
-
-         </children>
-      </AnchorPane>
  
  
   <fx:include fx:id="annoncesMainPane" source="adminAnnonces.fxml" /> 
-   <fx:include fx:id="fillieresMainPane" source="adminFilliere.fxml" /> 
    
 
 
