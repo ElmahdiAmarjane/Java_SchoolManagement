@@ -99,7 +99,7 @@ public class ProfesseurDao implements IProfesseurServices{
 	        preparedStatement.setTime(3, absence.getHeure_debut());
 	        preparedStatement.setTime(4, absence.getHeure_fine());
 	        preparedStatement.setString(5, absence.getFilier_titel());
-	        preparedStatement.setInt(6, absence.getElement_id());
+	        preparedStatement.setString(6, absence.getElement_nom());
 
 	        int rowsAffected = preparedStatement.executeUpdate();
 	        connection.commit(); // Commit transaction after successful execution

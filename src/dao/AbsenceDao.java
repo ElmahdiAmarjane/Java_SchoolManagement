@@ -16,36 +16,42 @@ import services.IAbsenceServices;
 
 public class AbsenceDao implements IAbsenceServices{
 
-	 @Override
-	    public boolean insertAbsence(Absence absence) {
-	        /*String query = "INSERT INTO absence (cne_etudiant, date_absence, motif_absence, justification) VALUES (?, ?, ?, ?)";
+	@Override
+	public boolean insertAbsence(Absence absence) {
+	    // SQL query to insert absence details
+	    String query = "INSERT INTO absence (etudiants, date,heure_debut, heure_fine, id_filier, element_nom) " +
+	                   "VALUES (?, ?, ?, ?, ?, ?)";
+
+	    try (Connection connection = JDBC.getConnection();
+	         PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+	        // Set the parameters for the query
+	        String jsonCNEs = new JSONArray(absence.getCne_etudiants()).toString();
+
 	        
-	        try (Connection connection = JDBC.getConnection();
-	             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+	        preparedStatement.setString(1, jsonCNEs); 
+	        preparedStatement.setDate(2, java.sql.Date.valueOf(absence.getDate())); 
+	        preparedStatement.setTime(3, java.sql.Time.valueOf(absence.getHeure_debut().toString())); 
+	        preparedStatement.setTime(4, java.sql.Time.valueOf(absence.getHeure_fine().toString())); 
+	        preparedStatement.setString(5, absence.getFilier_titel()); // id_filier
+	        preparedStatement.setString(6, absence.getElement_nom()); // element_id
 
-	            // Set the parameters for the query
-	            preparedStatement.setString(1, absence.getCneEtudiant()); // cne_etudiant
-	            preparedStatement.setDate(2, java.sql.Date.valueOf(absence.getDateAbsence())); // date_absence (assumes LocalDate)
-	            preparedStatement.setString(3, absence.getMotifAbsence()); // motif_absence
-	            preparedStatement.setString(4, absence.getJustification()); // justification
+	        int rowsAffected = preparedStatement.executeUpdate();
 
-	            // Execute the update
-	            int rowsAffected = preparedStatement.executeUpdate();
-
-	            if (rowsAffected > 0) {
-	                System.out.println("Absence inserted successfully.");
-	                return true;
-	            } else {
-	                System.out.println("Failed to insert Absence.");
-	            }
-	        } catch (SQLException e) {
-	            e.printStackTrace();
+	        if (rowsAffected > 0) {
+	            System.out.println("Absence inserted successfully.");
+	            return true;
+	        } else {
+	            System.out.println("Failed to insert Absence.");
 	        }
-	        return false;
-	    }*/
-		 
-		 return false;
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return false;
 	}
+
+
 
 	@Override
 	public Absence fetchAbsenceFilier(String filier) {
@@ -76,7 +82,7 @@ public class AbsenceDao implements IAbsenceServices{
 	            	abs.setHeure_debut(resultSet.getTime("heure_debut"));
 	            	abs.setHeure_fine(resultSet.getTime("heure_fine"));
 	            	abs.setFilier_titel(resultSet.getString("id_filier"));
-	            	abs.setElement_id(resultSet.getInt("element_id"));
+	            	abs.setElement_nom(resultSet.getString("element_nom"));
 	                
 	            }
 
@@ -129,7 +135,7 @@ public class AbsenceDao implements IAbsenceServices{
 	            	abs.setHeure_debut(resultSet.getTime("heure_debut"));
 	            	abs.setHeure_fine(resultSet.getTime("heure_fine"));
 	            	abs.setFilier_titel(resultSet.getString("id_filier"));
-	            	abs.setElement_id(resultSet.getInt("element_id"));
+	            	abs.setElement_nom(resultSet.getString("element_nom"));;
 	                
 	            }
 

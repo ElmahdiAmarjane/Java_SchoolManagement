@@ -30,6 +30,7 @@ public class Etudiant extends User{
 	protected String imageS2;
 	protected String imageS3;
 	protected String imageS4;
+	protected String attendanceStatus;
 	
 	public Etudiant() {}
 	
@@ -286,6 +287,13 @@ public class Etudiant extends User{
 		this.iamge_note_bac = iamge_not_bac;
 	}
 	
+	public String getAttendanceStatus() {
+        return attendanceStatus;
+    }
+
+    public void setAttendanceStatus(String attendanceStatus) {
+        this.attendanceStatus = attendanceStatus;
+    }
 	
 	
 }

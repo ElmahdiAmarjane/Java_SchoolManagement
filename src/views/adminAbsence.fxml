@@ -13,7 +13,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 
-<AnchorPane fx:id="AbsenceViews" xmlns:fx="http://javafx.com/fxml" layoutX="236.0" layoutY="76.0" prefHeight="441.0" prefWidth="517.0" style="-fx-background-color: #EE11EE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="236.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="76.0" fx:controller="controllers.AbsenceController">
+<AnchorPane fx:id="AbsenceViews" xmlns:fx="http://javafx.com/fxml" layoutX="236.0" layoutY="76.0" prefHeight="441.0" prefWidth="517.0" style="-fx-background-color: #EE11EE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="236.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="76.0" fx:controller="controllers.AdminAbsenceController">
     <children>
         <AnchorPane prefHeight="51.0" prefWidth="517.0" 
                     style="-fx-background-color: #112277;" 

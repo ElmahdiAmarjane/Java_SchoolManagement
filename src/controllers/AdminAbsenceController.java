@@ -27,7 +27,7 @@ import modules.Filier;
 import dao.AbsenceDao;
 import dao.EtudiantDao;
 import dao.FilierDao;
-public class AbsenceController {
+public class AdminAbsenceController {
 
     // Data Models
     private final EtudiantDao etudiantDao = new EtudiantDao();
@@ -171,6 +171,7 @@ public class AbsenceController {
     }
 
     private void refreshTable(List<Etudiant> students) {
+    	
         ObservableList<Etudiant> data = FXCollections.observableArrayList(students);
         studentsTable.setItems(data);
 

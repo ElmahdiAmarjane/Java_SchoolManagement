@@ -14,17 +14,17 @@ public class Absence {
 	Time heure_debut;
 	Time heure_fine;
 	String filier_titel;
-	int element_id;
+	String element_nom;
 	
 	public Absence() {}
 	
-	public Absence(int id,List<String> cne_etudiants,LocalDate date,Time heure_debut,Time heure_fine,String filier_titel,int element_id) {
+	public Absence(int id,List<String> cne_etudiants,LocalDate date,Time heure_debut,Time heure_fine,String filier_titel,String element_nom) {
 		this.id=id;
 		this.cne_etudiants=cne_etudiants;
 		this.date=date;
 		this.heure_debut=heure_debut;
 		this.filier_titel=filier_titel;
-		this.element_id=element_id;
+		this.element_nom=element_nom;
 	}
 	
 	public int getId() {
@@ -63,11 +63,11 @@ public class Absence {
 	public void setFilier_titel(String filier_titel) {
 		this.filier_titel = filier_titel;
 	}
-	public int getElement_id() {
-		return element_id;
+	public String getElement_nom() {
+		return element_nom;
 	}
-	public void setElement_id(int element_id) {
-		this.element_id = element_id;
+	public void setElement_nom(String element_nom) {
+		this.element_nom = element_nom;
 	}
 	
 }
