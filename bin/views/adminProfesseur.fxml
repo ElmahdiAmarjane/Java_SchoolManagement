@@ -13,7 +13,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TableColumn?>
 
-<AnchorPane  xmlns:fx="http://javafx.com/fxml" fx:id="professorPane" 
+<AnchorPane  fx:id="ProfesseurView" xmlns:fx="http://javafx.com/fxml" 
             prefHeight="441.0" prefWidth="517.0" 
             style="-fx-background-color: #EE11DD;" 
             AnchorPane.bottomAnchor="0.0" 
@@ -92,20 +92,17 @@
                         <!-- TableColumn for number (index) -->
                         <TableColumn fx:id="colNumber" prefWidth="121.0" text="N°" />
 
-                        <!-- TableColumn for CIN -->
                         <TableColumn fx:id="colCIN" prefWidth="112.0" text="CIN" />
 
-                        <!-- TableColumn for Nom -->
                         <TableColumn fx:id="colNom" prefWidth="112.0" text="Nom" />
 
-                        <!-- TableColumn for Prenom -->
-                        <TableColumn fx:id="colPrenom" prefWidth="103.0" text="Prénom" />
+                        <TableColumn fx:id="colPrenom" prefWidth="103.0" text="Prénom" />                        
 
-                        <!-- TableColumn for Filière -->
-                        <TableColumn fx:id="colFilliere" prefWidth="130.0" text="Filliére" />
-
-                        <!-- TableColumn for CNE -->
-                        <TableColumn fx:id="colCNE" prefWidth="130.0" text="CNE" />
+                        <TableColumn fx:id="colMatiere_enseigne" prefWidth="130.0" text="Matière enseignée" />
+                        
+                        <TableColumn fx:id="coltype_contrat" prefWidth="130.0" text="type de contrat" />
+                        
+                        <TableColumn fx:id="icons" prefWidth="130.0" text="Action" />
                     </columns>
                 </TableView>
                 
@@ -124,6 +121,9 @@
                   </Text>
                   <Button fx:id="addProfBtnNext" layoutX="1021.0" layoutY="510.0" mnemonicParsing="false" onAction="#switchToFrontBetweenAddProfPane" prefHeight="33.0" prefWidth="81.0" text="Suivant" AnchorPane.bottomAnchor="44.0" AnchorPane.rightAnchor="30.0" />
                   <Button fx:id="addProfBtnBack" layoutX="32.0" layoutY="510.0" mnemonicParsing="false" onAction="#switchToBackBetweenAddProfPane" prefHeight="33.0" prefWidth="81.0" text="Précedent" AnchorPane.bottomAnchor="44.0" />
+                  
+                  
+                  
                   
                   <AnchorPane fx:id="addProfDocs" layoutX="8.0" layoutY="49.0" prefHeight="452.0" prefWidth="1126.0" style="-fx-border-color: #FFDDEE; -fx-background-color: #DDFFAA;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                      <children>
@@ -305,6 +305,14 @@
                         </AnchorPane>
                      </children>
                   </AnchorPane>
+               
+               
+               
+               
+               
+               
+               
+               
                 </children>
               </AnchorPane>
     </children>

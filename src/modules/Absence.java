@@ -1,28 +1,30 @@
 package modules;
 
-import java.sql.Date;
+
 import java.sql.Time;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public class Absence {
 
 	private int id;
 	List<String> cne_etudiants;
-	Date date;
+	LocalDate date;
 	Time heure_debut;
 	Time heure_fine;
-	int filier_id;
-	int element_id;
+	String filier_titel;
+	String element_nom;
 	
 	public Absence() {}
 	
-	public Absence(int id,List<String> cne_etudiants,Date date,Time heure_debut,Time heure_fine,int filier_id,int element_id) {
+	public Absence(int id,List<String> cne_etudiants,LocalDate date,Time heure_debut,Time heure_fine,String filier_titel,String element_nom) {
 		this.id=id;
 		this.cne_etudiants=cne_etudiants;
 		this.date=date;
 		this.heure_debut=heure_debut;
-		this.filier_id=filier_id;
-		this.element_id=element_id;
+		this.filier_titel=filier_titel;
+		this.element_nom=element_nom;
 	}
 	
 	public int getId() {
@@ -37,10 +39,10 @@ public class Absence {
 	public void setCne_etudiants(List<String> cne_etudiants) {
 		this.cne_etudiants = cne_etudiants;
 	}
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 	public Time getHeure_debut() {
@@ -55,17 +57,17 @@ public class Absence {
 	public void setHeure_fine(Time heure_fine) {
 		this.heure_fine = heure_fine;
 	}
-	public int getFilier_id() {
-		return filier_id;
+	public String getFilier_titel() {
+		return filier_titel;
 	}
-	public void setFilier_id(int filier_id) {
-		this.filier_id = filier_id;
+	public void setFilier_titel(String filier_titel) {
+		this.filier_titel = filier_titel;
 	}
-	public int getElement_id() {
-		return element_id;
+	public String getElement_nom() {
+		return element_nom;
 	}
-	public void setElement_id(int element_id) {
-		this.element_id = element_id;
+	public void setElement_nom(String element_nom) {
+		this.element_nom = element_nom;
 	}
 	
 }

@@ -136,7 +136,10 @@ public class AdminController {
 	 private Button addProfBtnBack;
 	 
 	 
-	 
+	 //////////////////
+	 @FXML
+     private AnchorPane absencePane ;
+    
 	 
 	 
 	 
@@ -446,4 +449,13 @@ public void switchToFrontBetweenAddProfPane() {
 		annoncesMainPane.toFront();
 	}
 	
+	  
+    
+    @FXML
+     public void absencePaneToFront() {
+            
+     /////////
+            absencePane.toFront();
+    }
+    
 }

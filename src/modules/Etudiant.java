@@ -30,6 +30,7 @@ public class Etudiant extends User{
 	protected String imageS2;
 	protected String imageS3;
 	protected String imageS4;
+	protected String attendanceStatus;
 	
 	public Etudiant() {}
 	
@@ -254,7 +255,7 @@ public class Etudiant extends User{
 		this.note_S1 = note_S1;
 	}
 
-	public double getNote_S2() {
+	public Double getNote_S2() {
 		return note_S2;
 	}
 
@@ -262,7 +263,7 @@ public class Etudiant extends User{
 		this.note_S2 = note_S2;
 	}
 
-	public double getNote_S3() {
+	public Double getNote_S3() {
 		return note_S3;
 	}
 
@@ -270,7 +271,7 @@ public class Etudiant extends User{
 		this.note_S3 = note_S3;
 	}
 
-	public double getNote_S4() {
+	public Double getNote_S4() {
 		return note_S4;
 	}
 
@@ -286,6 +287,13 @@ public class Etudiant extends User{
 		this.iamge_note_bac = iamge_not_bac;
 	}
 	
+	public String getAttendanceStatus() {
+        return attendanceStatus;
+    }
+
+    public void setAttendanceStatus(String attendanceStatus) {
+        this.attendanceStatus = attendanceStatus;
+    }
 	
 	
 }

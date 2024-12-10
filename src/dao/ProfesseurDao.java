@@ -2,11 +2,14 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import org.json.*;
 import db_connect.JDBC;
 import modules.Absence;
+import modules.Element;
 import modules.Etudiant;
 import modules.Professeur;
 import modules.User;
@@ -16,7 +19,7 @@ public class ProfesseurDao implements IProfesseurServices{
 
 	@Override
 	public boolean insertProfesseur(Professeur professeur) {
-        String query = "INSERT INTO professeur (rip, doctorant_type, doctorant_mention, faculter, cni_user, imagecv, Matiere_enseigne,type_contrat) VALUES (? ,? ,?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO professeur (rip, doctorant_type, doctorant_mention, etablissement, cni_user, imagecv, Matiere_enseigne,type_contrat) VALUES (? ,? ,?, ?, ?, ?, ?, ?)";
 
         try (Connection connection = JDBC.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -26,8 +29,8 @@ public class ProfesseurDao implements IProfesseurServices{
             preparedStatement.setString(2, professeur.getDoctorant_type());
             preparedStatement.setString(3, professeur.getDoctorant_mention());
             preparedStatement.setString(4, professeur.getEtablissement());
-            preparedStatement.setString(5, professeur.getCni());
-            preparedStatement.setString(6, professeur.getImage());
+            preparedStatement.setString(5, professeur.getCni_user());
+            preparedStatement.setString(6, professeur.getImagecv());
             preparedStatement.setString(7, professeur.getMatiere_enseigne());
             preparedStatement.setString(8, professeur.getType_contrat());
             // Execute the update
@@ -45,46 +48,22 @@ public class ProfesseurDao implements IProfesseurServices{
         }
         return false;
     }
-	
-	@Override
-	public boolean deleteProfesseur(String cni) {
-        String query = "DELETE FROM user WHERE cni = ?";
-
-        try (Connection connection = JDBC.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-
-            preparedStatement.setString(1, cni);
-
-            int rowsAffected = preparedStatement.executeUpdate();
-
-            if (rowsAffected > 0) {
-                System.out.println("Professeur deleted successfully.");
-                return true;
-            } else {
-                System.out.println("Failed to delete Professeur.");
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
 
 	
 	@Override
-	public boolean updateProfesseur(Professeur prof) {
-	    String query = "UPDATE professeur SET rip = ?, doctorant_type = ?, doctorant_mention = ?, faculter = ?, cv = ? WHERE cni_user = ?";
+	public boolean updateProfesseur(Professeur professeur) {
+	    String query = "UPDATE professeur SET doctorant_type = ?, doctorant_mention = ?, etablissement = ?, imagecv = ?, Matiere_enseigne = ?, type_contrat = ? WHERE cni_user = ?";
 
 	    try (Connection connection = JDBC.getConnection();
 	         PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-	        // Set the parameters for the update
-	        preparedStatement.setInt(1, prof.getRip());
-	        preparedStatement.setString(2, prof.getDoctorant_type());
-	        preparedStatement.setString(3, prof.getDoctorant_mention());
-	        preparedStatement.setString(4, prof.getEtablissement());
-	        preparedStatement.setString(5, prof.getImagecv());
-	        preparedStatement.setString(6, prof.getCni_user());
+	        preparedStatement.setString(1, professeur.getDoctorant_type());
+	        preparedStatement.setString(2, professeur.getDoctorant_mention());
+	        preparedStatement.setString(3, professeur.getEtablissement());
+	        preparedStatement.setString(4, professeur.getImagecv());
+	        preparedStatement.setString(5, professeur.getMatiere_enseigne());
+	        preparedStatement.setString(6, professeur.getType_contrat());
+	        preparedStatement.setString(7, professeur.getCni_user()); 
 
 	        int rowsAffected = preparedStatement.executeUpdate();
 
@@ -94,12 +73,13 @@ public class ProfesseurDao implements IProfesseurServices{
 	        } else {
 	            System.out.println("Failed to update Professeur.");
 	        }
-	        
+
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	    }
 	    return false;
 	}
+
 
 
 	@Override
@@ -109,19 +89,17 @@ public class ProfesseurDao implements IProfesseurServices{
 	    try (Connection connection = JDBC.getConnection();
 	         PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-	        connection.setAutoCommit(false); // Enable transaction management
+	        connection.setAutoCommit(false); 
 
-	        // Convert the list of 'cne_etudiants' to a JSON string using org.json
-	        JSONArray cneArray = new JSONArray(absence.getCne_etudiants()); // Convert list to JSONArray
-	        String cneJson = cneArray.toString(); // Convert JSONArray to JSON string
+	        JSONArray cneArray = new JSONArray(absence.getCne_etudiants()); 
+	        String cneJson = cneArray.toString(); 
 
-	        // Set the parameters for the prepared statement
-	        preparedStatement.setString(1, cneJson); // Store the JSON string
-	        preparedStatement.setDate(2, absence.getDate());
+	        preparedStatement.setString(1, cneJson); 
+	        preparedStatement.setDate(2, java.sql.Date.valueOf(absence.getDate().toString()) );
 	        preparedStatement.setTime(3, absence.getHeure_debut());
 	        preparedStatement.setTime(4, absence.getHeure_fine());
-	        preparedStatement.setInt(5, absence.getFilier_id());
-	        preparedStatement.setInt(6, absence.getElement_id());
+	        preparedStatement.setString(5, absence.getFilier_titel());
+	        preparedStatement.setString(6, absence.getElement_nom());
 
 	        int rowsAffected = preparedStatement.executeUpdate();
 	        connection.commit(); // Commit transaction after successful execution
@@ -142,6 +120,81 @@ public class ProfesseurDao implements IProfesseurServices{
 	        }*/
 	    }
 	    return false;
+	}
+
+	@Override
+	public List<Professeur> selectAllProfesseur() {
+		List<Professeur> professeurs = new ArrayList<>();
+        String query = "SELECT * FROM professeur JOIN user ON professeur.cni_user = user.cni ";
+
+        try (Connection connection = JDBC.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Professeur prof = new Professeur();
+                prof.setCni(resultSet.getString("cni"));
+                prof.setNom(resultSet.getString("nom"));
+                prof.setPrenom(resultSet.getString("prenom"));
+                prof.setMatiere_enseigne(resultSet.getString("Matiere_enseigne"));
+                prof.setType_contrat(resultSet.getString("type_contrat"));;
+                
+                professeurs.add(prof);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return professeurs;
+	}
+
+
+	@Override
+	public Professeur selectProfesseur(String cni) {
+		Professeur prof = null; // Initialize to null to indicate no data if not found
+	    String query = "SELECT * FROM professeur JOIN user ON professeur.cni_user = user.cni WHERE user.cni = ?";
+
+	    try (Connection connection = JDBC.getConnection();
+	         PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+	        preparedStatement.setString(1, cni);
+	        ResultSet resultSet = preparedStatement.executeQuery();
+
+	        if (resultSet.next()) { // Check if a row exists
+	        	prof = new Professeur(); // Instantiate the object only when data is found
+	        	prof.setCni(resultSet.getString("cni"));
+	        	prof.setNom(resultSet.getString("nom"));
+	        	prof.setSexe(resultSet.getString("sexe"));
+	        	prof.setPrenom(resultSet.getString("prenom"));
+	        	prof.setTel(resultSet.getString("tele"));
+	        	prof.setCni_user(resultSet.getString("cni_user"));
+	        	prof.setEmail(resultSet.getString("email"));
+	        	prof.setPassword(resultSet.getString("password"));
+	        	prof.setDateNaissance(resultSet.getDate("dateNaissance").toLocalDate());
+	        	prof.setNationalite(resultSet.getString("nationalite"));
+	        	
+	        	prof.setDoctorant_type(resultSet.getString("doctorant_type"));
+	        	prof.setDoctorant_mention(resultSet.getString("doctorant_mention"));
+	        	prof.setMatiere_enseigne(resultSet.getString("Matiere_enseigne"));
+	        	prof.setType_contrat(resultSet.getString("type_contrat"));
+	        	prof.setRip(resultSet.getInt("rip"));
+	        	prof.setEtablissement(resultSet.getString("etablissement"));
+	        	
+	        	prof.setImageCni(resultSet.getString("image_cni"));
+	        	prof.setImagecv(resultSet.getString("imagecv"));
+	        	prof.setImage(resultSet.getString("image"));
+	        	
+	        	
+	            
+	        }
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return prof;
 	}
 	
 }

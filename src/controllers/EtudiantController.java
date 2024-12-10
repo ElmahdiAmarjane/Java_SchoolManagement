@@ -2,48 +2,39 @@ package controllers;
 
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
-import java.util.function.Predicate;
+
+
+
 import java.time.LocalDate;
 import dao.EtudiantDao;
 import dao.FilierDao;
 import dao.UserDao;
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.geometry.HPos;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.geometry.VPos;
-import javafx.scene.Node;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TreeTableColumn;
-import javafx.scene.control.TreeTableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.RowConstraints;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import modules.Etudiant;
 import modules.Filier;
+import modules.SceneSwitch;
 import modules.User;
 
 
@@ -56,10 +47,12 @@ public class EtudiantController {
 	UserDao userDao = new UserDao();
 	FilierDao filierDao=new FilierDao();
 	
+	List<Etudiant> listEtudiants;
 
     String imagepath;
     String imageCnipath;
     String imageBacpath;
+    String imageRelverBac;
     String imageBac2path;
     String imageS1path;
     String imageS2path;
@@ -68,26 +61,32 @@ public class EtudiantController {
     String imageCartNationalpath;
     String imageExtraipath;
     
-	@FXML
-	private TableColumn<?, ?> colNumber;
+    @FXML
+    private Pane EtudiantView;
+    
+    @FXML
+	private TableColumn<Etudiant, String> colNumber;
 
 	@FXML
-	private TableColumn<?, ?> colCIN;
+	private TableColumn<Etudiant, String> colCNI;
 
 	@FXML
-	private TableColumn<?, ?> colNom;
+	private TableColumn<Etudiant, String> colNom;
 
 	@FXML
-	private TableColumn<?, ?> colPrenom;
+	private TableColumn<Etudiant, String> colPrenom;
 
 	@FXML
-	private TableColumn<?, ?> colFilliere;
+	private TableColumn<Etudiant, String> colFilliere;
 
 	@FXML
-	private TableColumn<?, ?> colCNE;
+	private TableColumn<Etudiant, String> colCNE;
 
 	@FXML
-	private TableView<?> studentsTable; // Assuming you also have the TreeTableView defined in FXML
+	private TableView<Etudiant> studentsTable;
+	
+	@FXML
+	private TableColumn<Etudiant, Void> icons;
 
 	@FXML
 	private AnchorPane studentNavMenu ;
@@ -109,8 +108,7 @@ public class EtudiantController {
 	 private AnchorPane studentNavMenu1;
 	 @FXML
 	 private AnchorPane studentNavMenu2;
-	 
-	 //////////
+
 	 @FXML
 	 private ImageView viewImageProfile;
 	 @FXML
@@ -159,48 +157,179 @@ public class EtudiantController {
     @FXML
     private ComboBox<Integer> anneeS1,anneeS2,anneeS3,anneeS4,anneBac;
     
-    public void FetchCombBox() {
-  
-    	int currentYear = LocalDate.now().getYear();
-    	
-    	try {
-    		List<Filier> filiers=filierDao.selectAllFilier();
-    		
-    		for(Filier fil:filiers) {
-    			filier.getItems().addAll(fil.getTitel());
-    		}
-    		
-    	}catch(Exception e) {
-    		System.out.print(e);
-    	}
-    	
-    	sexe.getItems().addAll("Male", "Female");
-        nationalite.getItems().addAll("Moroccan", "Other");
-        
-        for(int i=0;i<5;i++) {
-        	
-            anneeS1.getItems().addAll(currentYear - i);
-            anneeS2.getItems().addAll(currentYear - i);
-            anneeS3.getItems().add(currentYear - i);
-            anneeS4.getItems().add(currentYear - i);
-            
-            anneBac.getItems().add(currentYear - i);
 
-        }
-    	
+   
+    private void addIconsToTable() {
+        icons.setCellFactory(param -> new TableCell<>() {
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    // Create HBox for buttons
+                    HBox actionBox = new HBox(10);
+
+                    // Create buttons
+                    Button updateButton = new Button();
+                    Button deleteButton = new Button();
+                    Button downloadButton = new Button();
+
+                    // Create ImageView for icons
+                    ImageView deleteIcon = createImageView("/assets/delete_icon.png");
+                    ImageView downloadIcon = createImageView("/assets/upload_icon.png");
+                    ImageView updateIcon = createImageView("/assets/edit_icon.png");
+
+                    // Add ImageView to buttons
+                    updateButton.setGraphic(updateIcon);
+                    deleteButton.setGraphic(deleteIcon);
+                    downloadButton.setGraphic(downloadIcon);
+
+                    // Style buttons
+                    updateButton.setStyle("-fx-background-color: transparent; -fx-cursor: hand;");
+                    deleteButton.setStyle("-fx-background-color: transparent; -fx-cursor: hand;");
+                    downloadButton.setStyle("-fx-background-color: transparent; -fx-cursor: hand;");
+
+                    // Add buttons to HBox
+                    actionBox.setStyle("-fx-alignment: CENTER;");
+                    actionBox.getChildren().addAll(updateButton, deleteButton, downloadButton);
+
+                    // Set the HBox as the graphic for the cell
+                    setGraphic(actionBox);
+                    
+                    Etudiant rowData = getTableView().getItems().get(getIndex());  // Replace YourDataType with the type of your row data
+
+                    // Add button actions
+                    updateButton.setOnAction(event -> updateAction(rowData.getCni()));
+                    deleteButton.setOnAction(event -> deleteAction(rowData.getCni()));
+                    downloadButton.setOnAction(event -> downloadAction(getIndex()));
+                }
+            }
+        });
     }
+
+    // Helper method to create an ImageView
+    private ImageView createImageView(String resourcePath) {
+        ImageView imageView = new ImageView();
+        try {
+            Image image = new Image(getClass().getResourceAsStream(resourcePath));
+            imageView.setImage(image);
+            imageView.setFitWidth(16); // Set desired icon width
+            imageView.setFitHeight(16); // Set desired icon height
+            imageView.setPreserveRatio(true);
+        } catch (Exception e) {
+            System.err.println("Could not load image: " + resourcePath);
+        }
+        return imageView;
+    }
+
+
+    private void updateAction(String cni) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/UpdateEtudiantInfo.fxml"));
+            Pane nextPane = loader.load();
+
+            UpdateEtudiantInfoController controller = loader.getController();
+            controller.setCniValue(cni); 
+
+            EtudiantView.getChildren().clear();
+            EtudiantView.getChildren().add(nextPane);
+        } catch (IOException e) {
+            System.err.println("Failed to load UpdateEtudiantInfo.fxml: " + e.getMessage());
+        }
+    }
+
+
+    private void deleteAction(String cni) {
+        // Create a confirmation alert
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirm Deletion");
+        alert.setHeaderText(null);
+        alert.setContentText("Are you sure you want to delete this user?");
+
+        alert.showAndWait().ifPresent(response -> {
+            if (response.getText().equals("OK")) {
+                try {
+                    userDao.deleteUser(cni);
+
+                    fetchEtudiant();
+                } catch (Exception e) {
+                    System.out.println("Error deleting user: " + e.getMessage());
+                }
+            }
+        });
+    }
+
+
+    private void downloadAction(int index) {
+        System.out.println("Download action triggered for row: " + index);
+    }
+    
+    public void fetchEtudiant() {
+        try {
+             listEtudiants = etudiantDao.selectAllEtudiants();
+
+            ObservableList<Etudiant> etudiants = FXCollections.observableArrayList(listEtudiants);
+            studentsTable.setItems(etudiants); // Set items to the table
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    @FXML
+	public void addStudentPaneToFront() {
+		addStudentPane.toFront();	
+		//studentNavMenu2.toFront();
+		//updateLinePosition(addStudentPane);
+	}
+	@FXML
+	public void listStudentPaneToFront() {
+		listStudentPane.toFront();
+		//studentNavMenu1.toFront();
+		//updateLinePosition(listStudentPane);
+	}
+    
+    @FXML
+	public void studentPaneToFront() {
+		studentPane.toFront();
+		initialize();
+		
+	}
+    
     public void initialize() {
+    	addIconsToTable();
     	
-    	
-    	
+    	colNumber.setCellFactory(column -> new TableCell<>() {
+    	    @Override
+    	    protected void updateItem(String item, boolean empty) {
+    	        super.updateItem(item, empty);
+    	        if (empty) {
+    	            setText(null);
+    	        } else {
+    	            setText(String.valueOf(getIndex() + 1)); // Row index starts from 0, so add 1
+    	        }
+    	    }
+    	});
+        colNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        colPrenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+        colCNI.setCellValueFactory(new PropertyValueFactory<>("cni"));
+        colCNE.setCellValueFactory(new PropertyValueFactory<>("cne"));
+        colFilliere.setCellValueFactory(new PropertyValueFactory<>("filier_titel"));
+        
+        fetchEtudiant();
+        
     	cni.textProperty().addListener((observal,oledvaleu,newvale)->{
     		password.setText(newvale);
     	});
     	
     	userImageView.setImage(new Image("https://via.placeholder.com/150"));
+    	
     	FetchCombBox();
     }
 
+    
     public void AjouterEtudiantAction() {
     	
     	try {
@@ -216,6 +345,8 @@ public class EtudiantController {
     		user.setNationalite(nationalite.getValue());
     		user.setPassword(password.getText());
     		user.setRole("Etudiant");
+			user.setImageCni(imageCnipath);
+
     		
     		if(userDao.insertUser(user)) {
     			
@@ -249,16 +380,16 @@ public class EtudiantController {
     			etudiant.setNote_S3(noteS3);
     			etudiant.setNote_S4(noteS4);
     			
-    			etudiant.setImagecni(imageCnipath);
     			etudiant.setImageBac(imageBacpath);
     			etudiant.setImageBac2(imageBac2path);
-    			etudiant.setIamge_note_bac(imageBac2path);
+    			etudiant.setIamge_note_bac(imageRelverBac);
     			etudiant.setImageS1(imageS1path);
     			etudiant.setImageS2(imageS2path);
     			etudiant.setImageS3(imageS3path);
     			etudiant.setImageS4(imageS4path);
     			
     			etudiantDao.insertEtudiant(etudiant);
+    			 fetchEtudiant();
     		}
     		
     		
@@ -271,6 +402,7 @@ public class EtudiantController {
 	public void switchToFrontBetweenAddStudentsPane() {
 		
 		System.out.println("LASTPANE : "+addStudentPane.getChildren().getLast().getId());
+		
 		if("addStudentInfoPers".equals(addStudentPane.getChildren().getLast().getId())  ) {
 			addStudentInfoAcad.toFront();
 		}
@@ -283,9 +415,11 @@ public class EtudiantController {
 		}
 		   
 	}
+	
 	public void switchToBackBetweenAddStudentsPane() {
 		
 		System.out.println("LASTPANE : "+addStudentPane.getChildren().getLast().getId());
+		
 		if("addStudentInfoPers".equals(addStudentPane.getChildren().getLast().getId()) ) {
 			System.out.println("NO BACK!");
 		}
@@ -335,8 +469,8 @@ public class EtudiantController {
 	    if (selectedFile != null) {
 	    	imageCnipath = selectedFile.getAbsolutePath();
 	        btnChooseFileCNI.setText("Image Selected");
-	        selectImageProfileButton.setText(selectedFile.getName());
-            selectImageProfileButton.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+	        btnChooseFileCNI.setText(selectedFile.getName());
+	        btnChooseFileCNI.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
 	    } else {
 	        // Handle the case where no file was selected (Optional)
 	        btnChooseFileCNI.setText("Select Image");
@@ -355,8 +489,8 @@ public class EtudiantController {
 	    if (selectedFile != null) {
 	    	imageBacpath = selectedFile.getAbsolutePath();
 	    	btnChooseFileBac.setText("Image Selected");
-	    	selectImageProfileButton.setText(selectedFile.getName());
-            selectImageProfileButton.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+	    	btnChooseFileBac.setText(selectedFile.getName());
+	    	btnChooseFileBac.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
 	    } else {
 	        // Handle the case where no file was selected (Optional)
 	    	btnChooseFileBac.setText("Select Image");
@@ -373,10 +507,10 @@ public class EtudiantController {
 
 	    File selectedFile = fileChooser.showOpenDialog(btnChooseFileNoteBac.getScene().getWindow());
 	    if (selectedFile != null) {
-	    	imageBacpath = selectedFile.getAbsolutePath();
+	    	imageRelverBac = selectedFile.getAbsolutePath();
 	    	btnChooseFileNoteBac.setText("Image Selected");
-	    	selectImageProfileButton.setText(selectedFile.getName());
-            selectImageProfileButton.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+	    	btnChooseFileNoteBac.setText(selectedFile.getName());
+	    	btnChooseFileNoteBac.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
 	    } else {
 	        // Handle the case where no file was selected (Optional)
 	    	btnChooseFileNoteBac.setText("Select Image");
@@ -395,8 +529,8 @@ public class EtudiantController {
 	    if (selectedFile != null) {
 	    	imageBac2path = selectedFile.getAbsolutePath();
 	    	btnChooseFileBac2.setText("Image Selected");
-	    	selectImageProfileButton.setText(selectedFile.getName());
-            selectImageProfileButton.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+	    	btnChooseFileBac2.setText(selectedFile.getName());
+	    	btnChooseFileBac2.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
 	    } else {
 	        // Handle the case where no file was selected (Optional)
 	    	btnChooseFileBac2.setText("Select Image");
@@ -415,8 +549,8 @@ public class EtudiantController {
 	    if (selectedFile != null) {
 	    	imageS1path = selectedFile.getAbsolutePath();
 	    	btnChooseFileNoteS1.setText("Image Selected");
-	    	selectImageProfileButton.setText(selectedFile.getName());
-            selectImageProfileButton.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+	    	btnChooseFileNoteS1.setText(selectedFile.getName());
+	    	btnChooseFileNoteS1.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
 	    } else {
 	        // Handle the case where no file was selected (Optional)
 	    	btnChooseFileNoteS1.setText("Select Image");
@@ -435,8 +569,8 @@ public class EtudiantController {
 	    if (selectedFile != null) {
 	    	imageS2path = selectedFile.getAbsolutePath();
 	    	btnChooseFileNoteS2.setText("Image Selected");
-	    	selectImageProfileButton.setText(selectedFile.getName());
-            selectImageProfileButton.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+	    	btnChooseFileNoteS2.setText(selectedFile.getName());
+	    	btnChooseFileNoteS2.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
 	    } else {
 	        // Handle the case where no file was selected (Optional)
 	    	btnChooseFileNoteS2.setText("Select Image");
@@ -455,8 +589,8 @@ public class EtudiantController {
 	    if (selectedFile != null) {
 	    	imageS3path = selectedFile.getAbsolutePath();
 	    	btnChooseFileNoteS3.setText("Image Selected");
-	    	selectImageProfileButton.setText(selectedFile.getName());
-            selectImageProfileButton.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+	    	btnChooseFileNoteS3.setText(selectedFile.getName());
+	    	btnChooseFileNoteS3.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
 	    } else {
 	        // Handle the case where no file was selected (Optional)
 	    	btnChooseFileNoteS3.setText("Select Image");
@@ -475,30 +609,50 @@ public class EtudiantController {
 	    if (selectedFile != null) {
 	    	imageS4path = selectedFile.getAbsolutePath();
 	    	btnChooseFileNoteS4.setText("Image Selected");
-	    	selectImageProfileButton.setText(selectedFile.getName());
-            selectImageProfileButton.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
+	    	btnChooseFileNoteS4.setText(selectedFile.getName());
+	    	btnChooseFileNoteS4.setStyle("-fx-border-color: green; -fx-border-width: 2px;");
 	    } else {
 	        // Handle the case where no file was selected (Optional)
 	    	btnChooseFileNoteS4.setText("Select Image");
 	    }
 	}
 	
-	private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+	
+	public void FetchCombBox() {
+		  
+    	int currentYear = LocalDate.now().getYear();
+    	
+    	try {
+    		List<Filier> filiers=filierDao.selectAllFilier();
+    		
+    		for(Filier fil:filiers) {
+    			filier.getItems().addAll(fil.getShortName());
+    		}
+    		
+    	}catch(Exception e) {
+    		System.out.print(e);
+    	}
+    	
+    	sexe.getItems().addAll("Male", "Female");
+        nationalite.getItems().addAll("Moroccan", "Other");
+        
+        for(int i=0;i<5;i++) {
+        	
+            anneeS1.getItems().addAll(currentYear - i);
+            anneeS2.getItems().addAll(currentYear - i);
+            anneeS3.getItems().add(currentYear - i);
+            anneeS4.getItems().add(currentYear - i);
+            
+            anneBac.getItems().add(currentYear - i);
+
+        }
+    	
     }
-    
     
   //DELET ETUDIANT
-    public boolean deleteEtudiant(){
-    	return etudiantDao.deleteEtudiant("med");
-    }
+   
     
- 
-
+    
     
     
 }

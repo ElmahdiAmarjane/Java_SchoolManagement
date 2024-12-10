@@ -125,11 +125,11 @@ public class User {
 		Nationalite = nationalite;
 	}
 
-	public String getImagecni() {
+	public String getImageCni() {
 		return imagecni;
 	}
 
-	public void setImagecni(String imagecni) {
+	public void setImageCni(String imagecni) {
 		this.imagecni = imagecni;
 	}
 
@@ -140,6 +140,15 @@ public class User {
 	public void setAdress(String adress) {
 		this.adress = adress;
 	}
+
+	@Override
+	public String toString() {
+		return "User [cni=" + cni + ", nom=" + nom + ", prenom=" + prenom + ", image=" + image + ", role=" + role
+				+ ", password=" + password + ", adress=" + adress + ", tel=" + tel + ", email=" + email + ", Sexe="
+				+ Sexe + ", dateNaissance=" + dateNaissance + ", Nationalite=" + Nationalite + ", imagecni=" + imagecni
+				+ "]";
+	}
+	
 	
 	
 	

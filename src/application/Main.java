@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import modules.Absence;
 import modules.Etudiant;
+import network.ChatServer2;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -21,12 +22,14 @@ public class Main extends Application {
 	private void showMainApplication() throws Exception {
 		
         // Load your main application FXML and show the main window
-        FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("/views/studentDash/studentDashboard.fxml"));
+        FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("/views/loginView.fxml"));
         Parent mainRoot = mainLoader.load();
-        Scene mainScene = new Scene(mainRoot,800,500);
+      
+        Scene mainScene = new Scene(mainRoot);
         Stage mainStage = new Stage();
         mainStage.setScene(mainScene);
         mainStage.setTitle("Main Application");
+        mainScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
         // Add your main application logic here
 
@@ -83,8 +86,9 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) {
+		 System.out.println("JavaFX Version: " + System.getProperty("javafx.version"));
 		launch(args);
-		
+		//ChatServer2.runServer();
 		//System.out.println("Hello MOhamed");
 	}
 }

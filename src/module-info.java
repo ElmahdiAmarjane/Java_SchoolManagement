@@ -8,6 +8,8 @@ module schoolManagement {
     requires org.json;
     requires cloudinary.core;
     requires cloudinary.http5;
+    requires com.jfoenix;
+    requires de.jensd.fx.glyphs.fontawesome;
 
     requires com.fasterxml.jackson.databind;
   

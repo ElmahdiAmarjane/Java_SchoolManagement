@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="absencePane" xmlns:fx="http://javafx.com/fxml" 
+            style="-fx-background-color: #EE11EE;" 
+            fx:controller="controllers.ProfesseurPresenceController" 
+            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="236.0" 
+            AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="76.0">
+    
+    <children>
+        <!-- Top Bar -->
+        <AnchorPane prefHeight="51.0" style="-fx-background-color: #112277;" 
+                    AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <children>
+                <!-- Button for listing students -->
+                <Text fx:id="listStudentBtn" fill="WHITE" layoutX="20.0" layoutY="30.0" 
+                      text="Liste Etudiant">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Text>
+                
+                <!-- ComboBox for selecting filière -->
+                <ComboBox fx:id="comboBoxFiliere" layoutX="150.0" layoutY="10.0" prefWidth="150.0" 
+                          promptText="Select Filière" />
+                          
+                          
+                <!-- DatePicker for selecting the date -->
+                <DatePicker fx:id="datePicker" layoutX="320.0" layoutY="10.0" prefWidth="150.0" 
+                            promptText="Select Date" />
+                            
+                            
+                 <ComboBox fx:id="comboBoxElement" layoutX="490.0" layoutY="10.0" prefWidth="150.0" 
+                          promptText="Select Element" />
+                          
+                <!-- TextField/ComboBox for selecting time -->
+                <ComboBox fx:id="comboBoxTimeRange" layoutX="660.0" layoutY="10.0" prefWidth="150.0" 
+          promptText="Select Time Range" />
+                
+            </children>
+        </AnchorPane>
+        
+        <!-- Main Pane -->
+        <AnchorPane fx:id="listStudentPane" style="-fx-background-color: #11FFDD;" 
+                    AnchorPane.topAnchor="51.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+            <children>
+                <!-- Nested Pane for student list -->
+                <AnchorPane style="-fx-background-color: #11FF99;" 
+                            AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+                    
+                    <children>
+                        <!-- Title Text -->
+                        <Text layoutX="15.0" layoutY="20.0" text="Liste Etudiant">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Text>
+                        
+                        <!-- TableView for displaying student data -->
+                        <TableView fx:id="tableView" AnchorPane.topAnchor="50.0" AnchorPane.leftAnchor="15.0" 
+                                   AnchorPane.rightAnchor="15.0" AnchorPane.bottomAnchor="60.0">
+                            <columns>
+                                <TableColumn fx:id="idColumn" prefWidth="121.0" text="ID" />
+                                <TableColumn fx:id="cneColumn" prefWidth="150.0" text="CNE" />
+                                <TableColumn fx:id="nomColumn" prefWidth="150.0" text="Nom" />
+                                <TableColumn fx:id="prenomColumn" prefWidth="150.0" text="Prenom" />
+                                <TableColumn fx:id="attendanceColumn" prefWidth="200.0" text="Attendance" />
+                            </columns>
+                        </TableView>
+                        
+                        <!-- Save Attendance Button -->
+                        <Button text="Envoyer" AnchorPane.bottomAnchor="10.0" 
+                                AnchorPane.rightAnchor="15.0" onAction="#handleSaveAttendance" />
+                                
+                         <Button text="Modifie" AnchorPane.bottomAnchor="10.0" 
+                                AnchorPane.rightAnchor="80.0"  />
+                    </children>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

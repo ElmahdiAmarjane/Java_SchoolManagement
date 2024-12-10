@@ -1,4 +1,7 @@
-/cloudinary/
-/application/
 /controllers/
+/dao/
+/db_connect/
+/modules/
+/network/
+/services/
 /views/
