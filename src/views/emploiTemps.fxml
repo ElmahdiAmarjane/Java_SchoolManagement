@@ -27,7 +27,7 @@ xmlns="http://javafx.com/javafx/23.0.1"  xmlns:fx="http://javafx.com/fxml/1"
                <children>
                   <ImageView fx:id="goBackToMainEmploiTempsBtn" fitHeight="33.0" fitWidth="28.0" layoutX="39.0" layoutY="12.0" onMouseClicked="#goBackToMainEmploiTemps" pickOnBounds="true" preserveRatio="true" rotate="180.0">
                      <image>
-                        <Image url="@../../assets/icons8-arrow-60.png" />
+                        <Image url="@../assets/icons8-arrow-60.png" />
                      </image>
                   </ImageView>
                </children>
@@ -37,7 +37,7 @@ xmlns="http://javafx.com/javafx/23.0.1"  xmlns:fx="http://javafx.com/fxml/1"
                <children>
                   <ImageView fitHeight="33.0" fitWidth="28.0" layoutX="39.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
                      <image>
-                        <Image url="@../../assets/icons8-arrow-60.png" />
+                        <Image url="@../assets/icons8-arrow-60.png" />
                      </image>
                   </ImageView>
                </children>
@@ -275,7 +275,7 @@ xmlns="http://javafx.com/javafx/23.0.1"  xmlns:fx="http://javafx.com/fxml/1"
             </AnchorPane>
             
 
-          <AnchorPane fx:id="emploiTempsProfGrid" layoutX="1.0" layoutY="52.0" prefHeight="900.0" prefWidth="1135.0" style="-fx-background-color: #FFF;" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="emploiTempsProfGrid" layoutX="1.0" layoutY="52.0" prefHeight="900.0" prefWidth="1135.0" style="-fx-background-color: #FFF;" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
                <children>
                   <Text layoutX="18.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Emploi Professeur :" wrappingWidth="213.87451171875">
                      <font>
@@ -414,11 +414,29 @@ xmlns="http://javafx.com/javafx/23.0.1"  xmlns:fx="http://javafx.com/fxml/1"
                </children>
                         </Pane>
                         <Pane layoutX="517.0" layoutY="37.0" prefHeight="506.0" prefWidth="22.0" style="-fx-background-color: #8444d4;" />
+                     <Button fx:id="saveButton" layoutY="174.0" onAction="#saveEmploiProf" prefHeight="19.0" prefWidth="44.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px;" text="Save">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+                     
                      </children>
                   </AnchorPane>
                   
       		<ComboBox fx:id="list_profs" layoutX="142.0" layoutY="4.0" prefWidth="150.0" promptText="Professeurs" />
       
+      
+       <Button fx:id="saveButton" layoutX="890.0" layoutY="850.0" prefHeight="40.0" prefWidth="100.0" text="Save" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px;">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+        <Button fx:id="clearButton" layoutX="1000.0" layoutY="850.0" prefHeight="40.0" prefWidth="100.0" text="Clear" style="-fx-background-color: #F44336; -fx-text-fill: white; -fx-font-size: 14px;">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+        
                </children>
             </AnchorPane>
             

@@ -1,71 +1,152 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<HBox alignment="CENTER" prefHeight="500.0" prefWidth="700.0" spacing="20" stylesheets="application/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProfesseurClassromController">
-              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-            <!-- Left VBox: Form Section -->
-            <VBox alignment="TOP_CENTER" prefWidth="450.0" spacing="15" style="-fx-background-color: #FFFFFF;">
-                <Label id="title" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" 
-                       prefHeight="27.0" prefWidth="237.0" style="-fx-font-style: Arial;" text="Partage des supports" 
-                       textOverrun="CENTER_ELLIPSIS">
-                    <VBox.margin>
-                        <Insets left="100.0" top="30.0" />
-                    </VBox.margin>
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Label>
-
-                <Label text="Date limite:" />
-                <DatePicker fx:id="deadlinePicker" />
-
-                <Label text="Types des docs:" />
-                <ComboBox fx:id="typeComboBox" prefHeight="31.0" prefWidth="117.0" promptText="Choisir " 
-                          style="-fx-background-color: #CBDCEB;" stylesheets="@../application/style.css" />
-
-                <TextField fx:id="titleField" prefHeight="25.0" prefWidth="403.0" promptText="Titre du cours ou exercice" />
-
-                <Label fx:id="fileNameLabel" />
-                <Button fx:id="browseButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" 
-                        minWidth="-Infinity" onAction="#handleBrowse" prefHeight="25.0" prefWidth="403.0" 
-                        style="-fx-background-color: #0B60B0;" stylesheets="@../application/style.css" text="Choisir un fichier" />
-
-                <TextArea fx:id="instructionsArea" prefHeight="63.0" prefWidth="335.0" promptText="Ajoutez vos instructions ici..." >
-                    <VBox.margin>
-                        <Insets bottom="30.0" left="0.0" />
-                    </VBox.margin>
-                </TextArea>
-
-                <!-- Section 6: Buttons for actions -->
-                <HBox alignment="CENTER" spacing="20">
-                    <Button fx:id="uploadButton" onAction="#handleUpload" prefHeight="9.0" prefWidth="75.0" 
-                            style="-fx-background-color: #0B60B0;" stylesheets="@../application/style.css" text="Envoyer" />
-                    <Button fx:id="cancelButton" onAction="#handleCancel" prefHeight="26.0" prefWidth="79.0" 
-                            style="-fx-background-color: #0B60B0;" stylesheets="@../application/style.css" text="Annuler" />
-                </HBox>
-
-            </VBox>
-
-            <!-- Right VBox: File Preview Section -->
-            <VBox alignment="CENTER" prefHeight="191.0" prefWidth="208.0" spacing="7.0" 
-                  style="-fx-border-color: lightgray; -fx-border-width: 1; -fx-background-color: #FFFFFF;">
-                <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" 
-                       text="Aperçu du fichier :" textAlignment="RIGHT">
-                    <VBox.margin>
-                        <Insets />
-                    </VBox.margin>
-                </Label>
-                <ImageView fx:id="filePreviewImage" fitHeight="100.0" fitWidth="150.0" preserveRatio="true" />
-            </VBox>
-        </HBox>
+<AnchorPane fx:id="emploiTempsProfGrid" prefHeight="900.0" prefWidth="1135.0" style="-fx-background-color: #F0F0F0;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Text layoutX="18.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Emploi Professeur :" wrappingWidth="213.87451171875">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Text>
+        <AnchorPane layoutX="68.0" layoutY="67.0" prefHeight="500.0" prefWidth="1033.0" style="-fx-background-color: #FFF;" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="30.0">
+            <children>
+                <Pane prefHeight="35.0" prefWidth="1033.0" style="-fx-background-color: #FFF;">
+                    <children>
+                        <TextField layoutX="40.0" layoutY="1.0" prefHeight="33.0" prefWidth="236.0" style="-fx-background-color: #91b8e6;" text="    8h30                                            10h15" />
+                        <TextField layoutX="280.0" layoutY="1.0" prefHeight="33.0" prefWidth="236.0" style="-fx-background-color: #91b8e6;" text="10:30                                                12:15" />
+                        <TextField layoutX="536.0" layoutY="1.0" prefHeight="33.0" prefWidth="244.0" style="-fx-background-color: #91b8e6;" text="    14:30                                               16:15" />
+                        <TextField layoutX="783.0" layoutY="1.0" prefHeight="33.0" prefWidth="236.0" style="-fx-background-color: #91b8e6;" text="     16:30                                            18:15" />
+                    </children>
+                </Pane>
+                <Pane layoutY="35.0" prefHeight="101.0" prefWidth="39.0" style="-fx-background-color: #7ac41a;">
+                    <children>
+                        <Text layoutX="1.0" layoutY="55.0" rotate="-90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LUNDI">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Text>
+                    </children>
+                </Pane>
+                <Pane layoutY="137.0" prefHeight="101.0" prefWidth="39.0" style="-fx-background-color: #aae858;">
+                    <children>
+                        <Text layoutY="55.0" rotate="-90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MARDI">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Text>
+                    </children>
+                </Pane>
+                <Pane layoutY="239.0" prefHeight="101.0" prefWidth="39.0" style="-fx-background-color: #7ac41a;">
+                    <children>
+                        <Text layoutX="-10.0" layoutY="56.0" rotate="-90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MERCREDI">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Text>
+                    </children>
+                </Pane>
+                <Pane layoutY="341.0" prefHeight="101.0" prefWidth="39.0" style="-fx-background-color: #aae858;">
+                    <children>
+                        <Text layoutX="3.0" layoutY="55.0" rotate="-90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JEUDI">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Text>
+                    </children>
+                </Pane>
+                <Pane layoutY="443.0" prefHeight="101.0" prefWidth="39.0" style="-fx-background-color: #7ac41a;">
+                    <children>
+                        <Text layoutX="-9.0" layoutY="55.0" rotate="-90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VENDREDI">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Text>
+                    </children>
+                </Pane>
+               <Pane layoutX="39.0" layoutY="37.0" prefHeight="516.0" prefWidth="236.0" style="-fx-background-color: EEFFDD;">
+                           <children>
+                  <ComboBox fx:id="Lundi_8_10_element" layoutY="-2.0" prefHeight="60.0" prefWidth="116.0" promptText="Element" />
+                  <ComboBox fx:id="Lundi_8_10_salle" layoutY="58.0" prefHeight="40.0" prefWidth="116.0" promptText="Salle" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Lundi_8_10_type" layoutX="112.0" layoutY="58.0" prefHeight="40.0" prefWidth="122.0" promptText="Type" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Mardi_8_10_element" layoutY="100.0" prefHeight="60.0" prefWidth="122.0" promptText="Element" />
+                  <ComboBox fx:id="Mardi_8_10_salle" layoutY="162.0" prefHeight="40.0" prefWidth="116.0" promptText="Salle" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Mardi_8_10_type" layoutX="112.0" layoutY="160.0" prefHeight="51.0" prefWidth="122.0" promptText="Type" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Mercredi_8_10_element" layoutY="202.0" prefHeight="60.0" prefWidth="122.0" promptText="Element" />
+                  <ComboBox fx:id="Mercredi_8_10_salle" layoutX="1.0" layoutY="262.0" prefHeight="40.0" prefWidth="116.0" promptText="Salle" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Mercredi_8_10_type" layoutX="113.0" layoutY="262.0" prefHeight="40.0" prefWidth="122.0" promptText="Type" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Jeudi_8_10_element" layoutX="-1.0" layoutY="304.0" prefHeight="60.0" prefWidth="122.0" promptText="Element" />
+                  <ComboBox fx:id="Jeudi_8_10_salle" layoutX="-1.0" layoutY="364.0" prefHeight="40.0" prefWidth="116.0" promptText="Salle" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Jeudi_8_10_type" layoutX="111.0" layoutY="364.0" prefHeight="40.0" prefWidth="122.0" promptText="Type" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Vendredi_8_10_element" layoutY="407.0" prefHeight="60.0" prefWidth="122.0" promptText="Element" />
+                  <ComboBox fx:id="Vendredi_8_10_salle" layoutY="467.0" prefHeight="40.0" prefWidth="116.0" promptText="Salle" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Vendredi_8_10_type" layoutX="112.0" layoutY="467.0" prefHeight="40.0" prefWidth="122.0" promptText="Type" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Lundi_8_10_element1" layoutX="116.0" layoutY="-2.0" prefHeight="60.0" prefWidth="116.0" promptText="Classe" />
+                           </children>
+                        </Pane>
+                        <Pane layoutX="274.0" layoutY="35.0" prefHeight="516.0" prefWidth="244.0" style="-fx-background-color: EEFFDD;">
+               <children>
+                  <ComboBox fx:id="Lundi_10_12_element" layoutX="3.0" layoutY="1.0" prefHeight="60.0" prefWidth="116.0" promptText="Element" />
+                  <ComboBox fx:id="Lundi_10_12_salle" layoutX="5.0" layoutY="61.0" prefHeight="40.0" prefWidth="116.0" promptText="Salle" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Lundi_10_12_type" layoutX="122.0" layoutY="61.0" prefHeight="40.0" prefWidth="122.0" promptText="Type" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Mardi_10_12_element" layoutX="3.0" layoutY="102.0" prefHeight="60.0" prefWidth="122.0" promptText="Element" />
+                  <ComboBox fx:id="Mardi_10_12_salle" layoutX="4.0" layoutY="162.0" prefHeight="40.0" prefWidth="116.0" promptText="Salle" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Mardi_10_12_type" layoutX="116.0" layoutY="162.0" prefHeight="40.0" prefWidth="122.0" promptText="Type" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Mercredi_10_12_element" layoutX="3.0" layoutY="204.0" prefHeight="60.0" prefWidth="122.0" promptText="Element" />
+                  <ComboBox fx:id="Mercredi_10_12_salle" layoutX="3.0" layoutY="263.0" prefHeight="40.0" prefWidth="116.0" promptText="Salle" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Mercredi_10_12_type" layoutX="115.0" layoutY="263.0" prefHeight="40.0" prefWidth="122.0" promptText="Type" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Jeudi_10_12_element" layoutX="2.0" layoutY="306.0" prefHeight="60.0" prefWidth="122.0" promptText="Element" />
+                  <ComboBox fx:id="Jeudi_10_12_salle" layoutX="2.0" layoutY="366.0" prefHeight="40.0" prefWidth="116.0" promptText="Salle" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Jeudi_10_12_type" layoutX="114.0" layoutY="366.0" prefHeight="40.0" prefWidth="122.0" promptText="Type" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Vendredi_10_12_element" layoutX="2.0" layoutY="409.0" prefHeight="60.0" prefWidth="122.0" promptText="Element" />
+                  <ComboBox fx:id="Vendredi_10_12_salle" layoutX="2.0" layoutY="469.0" prefHeight="40.0" prefWidth="116.0" promptText="Salle" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Vendredi_10_12_type" layoutX="114.0" layoutY="469.0" prefHeight="40.0" prefWidth="122.0" promptText="Type" style="-fx-background-color: #FFFFFF;" />
+               </children>
+                        </Pane>
+                        <Pane layoutX="533.0" layoutY="35.0" prefHeight="516.0" prefWidth="244.0" style="-fx-background-color: EEFFDD;">
+               <children>
+                  <ComboBox fx:id="Lundi_14_16_element" layoutX="7.0" layoutY="2.0" prefHeight="60.0" prefWidth="122.0" promptText="Element" />
+                  <ComboBox fx:id="Lundi_14_16_salle" layoutX="7.0" layoutY="62.0" prefHeight="40.0" prefWidth="116.0" promptText="Salle" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Lundi_14_16_type" layoutX="119.0" layoutY="62.0" prefHeight="40.0" prefWidth="122.0" promptText="Type" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Mardi_14_16_element" layoutX="7.0" layoutY="102.0" prefHeight="60.0" prefWidth="122.0" promptText="Element" />
+                  <ComboBox fx:id="Mardi_14_16_salle" layoutX="7.0" layoutY="163.0" prefHeight="40.0" prefWidth="116.0" promptText="Salle" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Mardi_14_16_type" layoutX="119.0" layoutY="162.0" prefHeight="40.0" prefWidth="122.0" promptText="Type" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Mercredi_14_16_element" layoutX="7.0" layoutY="204.0" prefHeight="60.0" prefWidth="122.0" promptText="Element" />
+                  <ComboBox fx:id="Mercredi_14_16_salle" layoutX="7.0" layoutY="264.0" prefHeight="40.0" prefWidth="116.0" promptText="Salle" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Mercredi_14_16_type" layoutX="119.0" layoutY="264.0" prefHeight="40.0" prefWidth="122.0" promptText="Type" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Jeudi_14_16_element" layoutX="7.0" layoutY="307.0" prefHeight="60.0" prefWidth="122.0" promptText="Element" />
+                  <ComboBox fx:id="Jeudi_14_16_salle" layoutX="7.0" layoutY="367.0" prefHeight="40.0" prefWidth="116.0" promptText="Salle" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Jeudi_14_16_type" layoutX="119.0" layoutY="367.0" prefHeight="40.0" prefWidth="122.0" promptText="Type" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Vendredi_14_16_element" layoutX="7.0" layoutY="409.0" prefHeight="60.0" prefWidth="122.0" promptText="Element" />
+                  <ComboBox fx:id="Vendredi_14_16_salle" layoutX="7.0" layoutY="469.0" prefHeight="40.0" prefWidth="116.0" promptText="Salle" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Vendredi_14_16_type" layoutX="119.0" layoutY="469.0" prefHeight="40.0" prefWidth="122.0" promptText="Type" style="-fx-background-color: #FFFFFF;" />
+               </children>
+                        </Pane>
+                        <Pane layoutX="779.0" layoutY="35.0" prefHeight="516.0" prefWidth="253.0" style="-fx-background-color: EEFFDD;">
+               <children>
+                  <ComboBox fx:id="Lundi_16_18_element" layoutX="2.0" layoutY="2.0" prefHeight="60.0" prefWidth="122.0" promptText="Element" />
+                  <ComboBox fx:id="Lundi_16_18_salle" layoutX="4.0" layoutY="62.0" prefHeight="40.0" prefWidth="116.0" promptText="Salle" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Lundi_16_18_type" layoutX="116.0" layoutY="62.0" prefHeight="40.0" prefWidth="122.0" promptText="Type" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Mardi_16_18_element" layoutX="1.0" layoutY="102.0" prefHeight="60.0" prefWidth="122.0" promptText="Element" />
+                  <ComboBox fx:id="Mardi_16_18_salle" layoutX="1.0" layoutY="162.0" prefHeight="40.0" prefWidth="116.0" promptText="Salle" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Mardi_16_18_type" layoutX="113.0" layoutY="162.0" prefHeight="40.0" prefWidth="122.0" promptText="Type" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Mercredi_16_18_element" layoutX="1.0" layoutY="204.0" prefHeight="60.0" prefWidth="122.0" promptText="Element" />
+                  <ComboBox fx:id="Mercredi_16_18_salle" layoutX="1.0" layoutY="264.0" prefHeight="40.0" prefWidth="116.0" promptText="Salle" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Mercredi_16_18_type" layoutX="113.0" layoutY="264.0" prefHeight="40.0" prefWidth="122.0" promptText="Type" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Jeudi_16_18_element" layoutX="1.0" layoutY="307.0" prefHeight="60.0" prefWidth="122.0" promptText="Element" />
+                  <ComboBox fx:id="Jeudi_16_18_salle" layoutX="1.0" layoutY="367.0" prefHeight="40.0" prefWidth="116.0" promptText="Salle" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Jeudi_16_18_type" layoutX="113.0" layoutY="367.0" prefHeight="40.0" prefWidth="122.0" promptText="Type" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Vendredi_16_18_element" layoutX="-7.0" layoutY="410.0" prefHeight="60.0" prefWidth="122.0" promptText="Element" />
+                  <ComboBox fx:id="Vendredi_16_18_salle" layoutY="470.0" prefHeight="40.0" prefWidth="116.0" promptText="Salle" style="-fx-background-color: #FFFFFF;" />
+                  <ComboBox fx:id="Vendredi_16_18_type" layoutX="113.0" layoutY="470.0" prefHeight="40.0" prefWidth="122.0" promptText="Type" style="-fx-background-color: #FFFFFF;" />
+               </children>
+                        </Pane>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

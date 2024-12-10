@@ -16,7 +16,7 @@
 
 <AnchorPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="1371.0" style="-fx-background-color: #334422;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" AnchorPane.bottomAnchor="20.0" fx:controller="controllers.AdminController">
    <children>
-      <VBox layoutY="76.0" prefHeight="441.0" prefWidth="236.0" style="-fx-background-color: #9865eb;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="74.0">
+      <VBox layoutY="76.0" prefHeight="441.0" prefWidth="236.0" style="-fx-background-color: #0096FF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="74.0">
          <children>
             <HBox fx:id="chatMenu" onMouseClicked="#chatPaneToFront" prefHeight="40.0" prefWidth="153.0">
                <children>
@@ -183,7 +183,7 @@
             
          </children>
       </VBox>
-      <AnchorPane style="-fx-background-color: #FFDD33;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane style="-fx-background-color: #0096FF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="76.0" fitWidth="97.0" layoutX="33.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="0.0">
                <image>
@@ -192,7 +192,7 @@
             </ImageView>
             <AnchorPane layoutX="563.0" layoutY="9.0">
                <children>
-                  <ImageView fx:id="viewImageProfile" fitHeight="59.0" fitWidth="67.0" layoutX="221.0" pickOnBounds="true" preserveRatio="true" style="-fx-fit-width: 60; -fx-fit-height: 60;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <ImageView fx:id="viewImageProfile" fitHeight="60.0" fitWidth="70.0" layoutX="221.0" pickOnBounds="true" preserveRatio="true" style="-fx-fit-width: 60; -fx-fit-height: 60;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <image>
                         <Image url="@../assets/profile.jpg" />
                      </image>
@@ -229,7 +229,7 @@
                   <Line endX="1.0" endY="7.0" fill="WHITE" layoutX="95.0" layoutY="35.0" startX="-51.0" startY="7.0" stroke="WHITE" strokeWidth="2.0" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="chatChildPane" layoutY="51.0" prefHeight="389.0" prefWidth="517.0" style="-fx-background-color: #11FF99;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+            <AnchorPane fx:id="chatChildPane" layoutY="51.0" prefHeight="389.0" prefWidth="517.0" style="-fx-background-color: #F0FFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                <children>
                   <Text layoutX="167.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHAT" wrappingWidth="215.7734375">
                      <font>
@@ -253,12 +253,6 @@
     <fx:include fx:id="annoncesMainPane" source="adminAnnonces.fxml" /> 
     
     <fx:include fx:id="absencePane" source="adminAbsence.fxml" />
-    
-
-         
-
-
-
    
    </children>
 </AnchorPane>

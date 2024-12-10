@@ -283,6 +283,8 @@ public class ProfesseurController {
 	  	  
 	  	    initialisCombpBox();
 	  	    
+	  	  enregistrerBtn();
+	  	    
 	  	    
 	    }
 	
@@ -324,6 +326,7 @@ public class ProfesseurController {
     			if(isInsered) {
     				AppFunctions.showAlertInformation("Succès","Utilisateur ajouter avec succès !");
     				fetchProfesseur();
+    				initialize();
     				
     			}else {
     				AppFunctions.showAlertInformation("Erreur","Échec de l'ajoute de l'utilisateur.");

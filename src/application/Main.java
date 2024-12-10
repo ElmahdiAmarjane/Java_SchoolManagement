@@ -9,6 +9,7 @@ import java.util.List;
 
 import dao.AbsenceDao;
 import dao.CourseDao;
+import dao.EmploiDao;
 import dao.EtudiantDao;
 import dao.ProfesseurDao;
 import javafx.application.Application;
@@ -16,6 +17,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import modules.Absence;
 import modules.Course;
+import modules.Emploi;
 import modules.Etudiant;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -27,7 +29,7 @@ public class Main extends Application {
 	private void showMainApplication() throws Exception {
 		
         // Load your main application FXML and show the main window
-        FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("/views/loginView.fxml"));
+        FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("/views/professeurDashboard.fxml"));
         Parent mainRoot = mainLoader.load();
         Scene mainScene = new Scene(mainRoot,990,550);
         Stage mainStage = new Stage();
@@ -46,6 +48,7 @@ public class Main extends Application {
 			primaryStage.show();*/
 			
 			showMainApplication();
+			
 			
 			/*CourseDao courseDao=new CourseDao();
 			Course cours=new Course();*/
