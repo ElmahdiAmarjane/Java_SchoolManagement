@@ -5,6 +5,8 @@ import java.net.*;
 import java.sql.*;
 import java.util.*;
 
+import db_connect.JDBC;
+
 public class ChatServer2 {
     private static final int PORT = 12345;
     static List<ClientHandler> clients = Collections.synchronizedList(new ArrayList<>());
@@ -13,7 +15,8 @@ public class ChatServer2 {
     public static void main(String[] args) {
         try {
            
-            dbConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/school", "root", "admin");
+           // dbConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/gestion_ecole", "root", "admin");
+        	dbConnection = JDBC.getConnection();
             System.out.println("Database connection established.");
 
             try (ServerSocket serverSocket = new ServerSocket(PORT)) {
@@ -27,9 +30,7 @@ public class ChatServer2 {
             }
         } catch (IOException e) {
             System.err.println("Error starting server: " + e.getMessage());
-        } catch (SQLException e) {
-            System.err.println("Database connection error: " + e.getMessage());
-        }
+        } 
     }
 
     // Broadcast the list of connected users to all clients
@@ -37,7 +38,7 @@ public class ChatServer2 {
         synchronized (clients) {
             StringBuilder userList = new StringBuilder("USERLIST:");
             for (ClientHandler client : clients) {
-                userList.append(client.getUsername()).append(",");
+                userList.append(client.getUserEmail()).append(",");
             }
 
             // Remove trailing comma, if present
@@ -57,7 +58,7 @@ public class ChatServer2 {
 
         synchronized (clients) {
             for (ClientHandler client : clients) {
-                if (client.getUsername().equals(receiver)) {
+                if (client.getUserEmail().equals(receiver)) {
                     client.sendMessage("From " + sender + ": " + content); // Send to receiver
                     foundReceiver = true;
                     break;
@@ -72,7 +73,7 @@ public class ChatServer2 {
         if (foundReceiver) {
             synchronized (clients) {
                 for (ClientHandler client : clients) {
-                    if (client.getUsername().equals(sender)) {
+                    if (client.getUserEmail().equals(sender)) {
                         client.sendMessage("You (to " + receiver + "): " + content);
                         break;
                     }
@@ -85,25 +86,25 @@ public class ChatServer2 {
 
 
     // Get user ID from the database by username
-    private static String getUserIdByUsername(String username) {
+   /* private static String getUserIdByUsername(String email) {
         try {
-            String sql = "SELECT cni FROM users WHERE cni = ?";
+            String sql = "SELECT email FROM user WHERE email = ?"; // not logic , but i dont want do a lot of changes
             PreparedStatement statement = dbConnection.prepareStatement(sql);
-            statement.setString(1, username);
+            statement.setString(1, email);
 
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 return resultSet.getString("cni");
             } else {
-                System.err.println("User not found: " + username);
+                System.err.println("User not found: " + email);
                 return null; // Return invalid ID
             }
         } catch (SQLException e) {
-            System.err.println("Error fetching user ID for username: " + username);
+            System.err.println("Error fetching user ID for username: " + email);
             e.printStackTrace();
             return null; // Return invalid ID in case of error
         }
-    }
+    } */
 
     // Save message to the database
     private static void saveMessageToDatabase(String sender, String receiver, String content) {
@@ -111,9 +112,10 @@ public class ChatServer2 {
             String sql = "INSERT INTO messages (sender_id, receiver_id, message_content, timestamp) VALUES (?, ?, ?, ?)";
             PreparedStatement statement = dbConnection.prepareStatement(sql);
 
-            String senderId = getUserIdByUsername(sender);
-            String receiverId = getUserIdByUsername(receiver);
-
+          //  String senderId = getUserIdByUsername(sender);
+          //  String receiverId = getUserIdByUsername(receiver);
+              String senderId = sender;
+              String receiverId = receiver;
             if (senderId == null || receiverId == null) {
                 System.err.println("Error: Unable to save message. Invalid sender or receiver ID.");
                 return;
@@ -135,8 +137,10 @@ public class ChatServer2 {
     
     static void fetchChatHistory(String sender, String receiver, ClientHandler clientHandler) {
         try {
-            String senderId = getUserIdByUsername(sender);
-            String receiverId = getUserIdByUsername(receiver);
+           // String senderId = getUserIdByUsername(sender);
+           // String receiverId = getUserIdByUsername(receiver);
+        	  String senderId = sender;
+              String receiverId = receiver;
 
             if (senderId == null || receiverId == null) {
                 clientHandler.sendMessage("HISTORY:" + receiver + ":ERROR:Invalid sender or receiver.");
@@ -163,7 +167,14 @@ public class ChatServer2 {
                 String messageSenderId = resultSet.getString("sender_id");
                 String senderUsername = messageSenderId == senderId ? "You" : receiver;
                 String messageContent = resultSet.getString("message_content");
-                chatHistory.append("\n").append(senderUsername).append(": ").append(messageContent);
+                if(messageSenderId==senderId) {
+                	chatHistory.append("\n").append("You (to "+sender+"): ").append(messageContent);
+                }else {
+                	chatHistory.append("\n").append("From "+receiver+": ").append(messageContent);
+                }
+                
+               
+
             }
 
             clientHandler.sendMessage(chatHistory.toString());
@@ -179,78 +190,5 @@ public class ChatServer2 {
 
 
 
-class ClientHandler implements Runnable {
-    private final Socket socket;
-    private BufferedReader in;
-    private PrintWriter out;
-    private String username;
-
-    public ClientHandler(Socket socket) {
-        this.socket = socket;
-    }
-
-  
-    @Override
-    public void run() {
-        try {
-            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            out = new PrintWriter(socket.getOutputStream(), true);
-
-            // Receive and register username
-            username = in.readLine();
-            System.out.println(username + " has joined.");
-
-            synchronized (ChatServer2.clients) {
-                ChatServer2.clients.add(this);
-            }
-
-            // Broadcast the updated user list
-            ChatServer2.broadcastUserList();
-
-            String message;
-            while ((message = in.readLine()) != null) {
-                if (message.startsWith("HISTORY:")) {
-                    String receiver = message.substring(8).trim();
-                    ChatServer2.fetchChatHistory(username, receiver, this);
-                } else {
-                    String[] parts = message.split(":", 2);
-                    if (parts.length == 2) {
-                        String receiver = parts[0].trim();
-                        String content = parts[1].trim();
-                        ChatServer2.sendMessageToClient(username, receiver, content);
-                    } else {
-                        sendMessage("Invalid message format. Use: recipient:message");
-                    }
-                }
-            }
-        } catch (IOException e) {
-            System.err.println("Connection with client " + username + " lost: " + e.getMessage());
-        } finally {
-            cleanup();
-        }
-    }
 
 
-    // Remove client and broadcast updated user list
-    private void cleanup() {
-        try {
-            socket.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        synchronized (ChatServer2.clients) {
-            ChatServer2.clients.remove(this);
-        }
-
-        ChatServer2.broadcastUserList();
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void sendMessage(String message) {
-        out.println(message);
-    }
-}

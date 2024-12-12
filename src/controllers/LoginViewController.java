@@ -3,6 +3,7 @@ package controllers;
 import javafx.event.ActionEvent;
 import java.io.IOException;
 
+import application.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -73,15 +74,28 @@ public class LoginViewController {
     		System.out.println("imhere after login");
     		 System.out.println(niveauxUser.toString()); 
     		 if(niveauxUser!=null) {
+    			 /////////////////////////////////////
+    			 Main.set("connectedUser", niveauxUser);
+    			 
+    			 
+    			 /////////////////////////////////////
     			 System.out.println("role user : "+niveauxUser.getRole()); 
     			 if(niveauxUser.getRole().equals("Etudiant")) {
     				 System.out.println("inside etudiant");
     				FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/studentDash/studentDashboard.fxml"));
      	            Parent homeView = loader.load();
-     	            
+     	           AdminController adminController = loader.getController(); // Get the controller
+     	             adminController.setloggedInUserData(niveauxUser);
      	            Stage stage = (Stage) ((Node) txtUsername).getScene().getWindow();
      	            Scene scene = new Scene(homeView);
      	            stage.setScene(scene);
+     	           ///////////////////////////
+     	           
+       			 
+
+       			 ////////////////////////////
+       			 
+       			 
      	            stage.show();
     				 
     				 System.out.println("TTT : Etudiant");
@@ -94,7 +108,7 @@ public class LoginViewController {
     				 FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/professeurDashboard.fxml"));
       	            Parent homeView = loader.load();
       	          ProfesseurDashboardController professeurController = loader.getController(); // Get the controller
-
+      	        professeurController.setloggedInUserData(niveauxUser);
       	            Stage stage = (Stage) ((Node) txtUsername).getScene().getWindow();
       	            Scene scene = new Scene(homeView);
       	            stage.setScene(scene);
@@ -122,7 +136,8 @@ public class LoginViewController {
     				 
     				FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/adminDashboard.fxml"));
       	            Parent homeView = loader.load();
-      	            
+      	          AdminController adminController = loader.getController(); // Get the controller
+        	        adminController.setloggedInUserData(niveauxUser);
       	            Stage stage = (Stage) ((Node) txtUsername).getScene().getWindow();
       	            Scene scene = new Scene(homeView);
       	            stage.setScene(scene);
@@ -130,13 +145,6 @@ public class LoginViewController {
       	          System.out.print("TTT : Admin");
     			 }
     		 }
-    		 
-    		 else {
-    			 
-	    			 System.out.println("FALSE");
-	    	         showErrorNotification("Invalid username or password.");
-    		 }
-    		 
     		
     	}catch(Exception e) {
     		e.printStackTrace();

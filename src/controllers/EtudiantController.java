@@ -118,7 +118,10 @@ public class EtudiantController {
 	private AnchorPane addStudentPane ; 
 	@FXML
 	private AnchorPane listStudentPane ; 
-		
+	
+	@FXML
+	 private AnchorPane chatPane ;
+	
 	@FXML
 	private Text addStudentBtn;
 		
@@ -157,7 +160,14 @@ public class EtudiantController {
     @FXML
     private ComboBox<Integer> anneeS1,anneeS2,anneeS3,anneeS4,anneBac;
     
-
+///////////////////////
+	
+	 
+     @FXML AnchorPane annoncesMainPane;
+     @FXML
+	  private AnchorPane emploiTempsPane;
+	 
+	 @FXML private AnchorPane coursMainPane;
    
     private void addIconsToTable() {
         icons.setCellFactory(param -> new TableCell<>() {
@@ -177,9 +187,9 @@ public class EtudiantController {
                     Button downloadButton = new Button();
 
                     // Create ImageView for icons
-                    ImageView deleteIcon = createImageView("/assets/delete_icon.png");
-                    ImageView downloadIcon = createImageView("/assets/upload_icon.png");
-                    ImageView updateIcon = createImageView("/assets/edit_icon.png");
+                    ImageView deleteIcon = createImageView("../assets/delete_icon.png");
+                    ImageView downloadIcon = createImageView("../assets/upload_icon.png");
+                    ImageView updateIcon = createImageView("../assets/edit_icon.png");
 
                     // Add ImageView to buttons
                     updateButton.setGraphic(updateIcon);
@@ -295,6 +305,12 @@ public class EtudiantController {
 	public void studentPaneToFront() {
 		studentPane.toFront();
 		initialize();
+		
+	}
+    
+	@FXML
+	public void chatPaneToFront() {
+		chatPane.toFront();
 		
 	}
     
@@ -648,10 +664,27 @@ public class EtudiantController {
         }
     	
     }
+	
     
   //DELET ETUDIANT
    
-    
+    ///////////////////////
+	
+	   
+	   
+	 ///////////////////////
+	   public void  annoncesMenuOnclick() {
+			annoncesMainPane.toFront();
+		}
+	   
+	   public void  CoursMenuOnclick() {
+			coursMainPane.toFront();
+		}
+	   
+	   @FXML
+		  public void emploiTempsPaneToFront() {
+			emploiTempsPane.toFront();
+		}
     
     
     

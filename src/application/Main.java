@@ -1,9 +1,12 @@
 package application;
 	
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.List;
+import java.util.Map;
+
 import dao.EtudiantDao;
 import dao.ProfesseurDao;
 import javafx.application.Application;
@@ -91,4 +94,31 @@ public class Main extends Application {
 		//ChatServer2.runServer();
 		//System.out.println("Hello MOhamed");
 	}
+	////////////////////////////////
+	
+	 // Crée un Map pour stocker des données par clé
+    private static Map<String, Object> sessionData = new HashMap<>();
+
+    // Méthode pour enregistrer les données dans la session
+    public static void set(String key, Object value) {
+        sessionData.put(key, value);
+    }
+
+    // Méthode pour récupérer les données de la session
+    public static Object get(String key) {
+        return sessionData.get(key);
+    }
+
+    // Méthode pour vérifier si une donnée existe dans la session
+    public static boolean contains(String key) {
+        return sessionData.containsKey(key);
+    }
+	
+	
+	
+	
+	
+	
+	
+	
 }

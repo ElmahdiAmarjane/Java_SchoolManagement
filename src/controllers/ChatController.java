@@ -238,8 +238,8 @@ public class ChatController implements Initializable {
 
     public void setLoggedInUser(User user) {
         this.loggedInUser = user;
-        lblLoggedInUser.setText("Logged in as: " + user.getCni());
-        chatClient = new ChatClient2(user.getCni(), this::receiveMessage, this::updateOnlineUsers);
+        lblLoggedInUser.setText("Logged in as: " + user.getEmail());
+        chatClient = new ChatClient2(user, this::receiveMessage, this::updateOnlineUsers);
         new Thread(chatClient).start();
     }
 
@@ -247,7 +247,7 @@ public class ChatController implements Initializable {
         Platform.runLater(() -> {
             onlineUsers.clear();
             Set<String> uniqueUsers = new HashSet<>(Arrays.asList(users));
-            uniqueUsers.remove(loggedInUser.getCni());
+            uniqueUsers.remove(loggedInUser.getEmail());
             onlineUsers.addAll(uniqueUsers);
         });
     }

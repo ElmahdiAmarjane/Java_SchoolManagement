@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import application.Main;
 import dao.CourseDao;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -16,6 +17,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import modules.Course;
+import modules.User;
 
 public class StudentCoursController {
 
@@ -30,8 +32,11 @@ public class StudentCoursController {
         // Set mainContainer as the content of the ScrollPane
         coursScrollPane.setContent(mainContainer);
 
+        User connectedUser = (User) Main.get("connectedUser");
+         System.out.println("HIIII : "+connectedUser.toString());
+         
         // Example Data
-        Map<String, List<Course>> groupedCourses = fetchGroupedCourses();
+        Map<String, List<Course>> groupedCourses = fetchGroupedCourses("");
 
         for (Map.Entry<String, List<Course>> entry : groupedCourses.entrySet()) {
             String elementName = entry.getKey();
@@ -141,7 +146,7 @@ public class StudentCoursController {
 	}
 
 	// Example Data Model
-    private Map<String, List<Course>> fetchGroupedCourses() {
+    private Map<String, List<Course>> fetchGroupedCourses(String Filliere_title) {
         // Replace with real data fetching
         List<Course> courses = courseDao.selectCoursesByFilliere(8); // 10 is filier ID
         System.out.println(courses);

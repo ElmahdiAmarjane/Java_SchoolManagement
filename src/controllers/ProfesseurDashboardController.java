@@ -2,8 +2,10 @@ package controllers;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Optional;
 import java.util.function.Predicate;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +15,10 @@ import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
@@ -33,6 +38,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import modules.User;
 
 public class ProfesseurDashboardController {
 	
@@ -146,8 +152,13 @@ public class ProfesseurDashboardController {
 	 @FXML
 	 private Button addProfBtnBack;
 	 
+	 ///////////////////////////////////
+	 //////////////////////////////////
+	 @FXML private Text loggedInUserEmail;
+	 @FXML private Text loggedInUserRole;
 	 
 	 
+	 @FXML private FontAwesomeIconView btnSignOut;
 	 
 	 
 	 
@@ -252,7 +263,7 @@ public class ProfesseurDashboardController {
 
 	    public void initialize() {
 	        // Initialize the chatController from the included chat2.fxml
-	        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/chat2.fxml"));
+	        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/chat4.fxml"));
 	        try {
 	            Parent chatRoot = loader.load();
 	            chatController = loader.getController();
@@ -464,5 +475,34 @@ public void switchToFrontBetweenAddProfPane() {
 	public void  annoncesMenuOnclick() {
 		annoncesMainPane.toFront();
 	}
+	
+	/////
+	
+   public void setloggedInUserData(User user) {
+	   loggedInUserEmail.setText(user.getEmail());
+	   loggedInUserRole.setText(user.getRole());
+	   viewImageProfile.setImage(new Image(user.getImage()));
+	   
+   }
+   
+   public void signOutBtnClicked() {
+	   // Créer une alerte de confirmation
+	    Alert alert = new Alert(AlertType.CONFIRMATION);
+	    alert.setTitle("Confirmation de déconnexion");
+	    alert.setHeaderText("Voulez-vous vraiment vous déconnecter ?");
+	    alert.setContentText("Vos modifications non enregistrées seront perdues.");
+
+	    // Afficher l'alerte et attendre la réponse de l'utilisateur
+	    Optional<ButtonType> result = alert.showAndWait();
+	    if (result.isPresent() && result.get() == ButtonType.OK) {
+	        // L'utilisateur a cliqué sur OK, fermer l'application
+	        Stage stage = (Stage) btnSignOut.getScene().getWindow();
+	        stage.close();
+	       
+	    } else {
+	        // L'utilisateur a cliqué sur Annuler ou a fermé l'alerte
+	        System.out.println("Déconnexion annulée");
+	    }
+   }
 	
 }

@@ -36,6 +36,8 @@ public class UserDao implements IUserServices {
                 String role = resultSet.getString("role");
                  user.setCni(resultSet.getString("cni"));
                  user.setRole(resultSet.getString("role"));
+                 user.setEmail(resultSet.getString("email"));
+                 user.setImage(resultSet.getString("image"));
 
                 switch (role.toLowerCase()) {
                     case "etudiant":

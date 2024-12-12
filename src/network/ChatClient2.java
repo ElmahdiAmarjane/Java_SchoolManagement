@@ -4,8 +4,11 @@ import java.io.*;
 import java.net.Socket;
 import java.util.function.Consumer;
 
+import modules.User;
+
 public class ChatClient2 implements Runnable {
     private final String username;
+    private String userEmail;
     private final Consumer<String> messageReceiver;
     private final Consumer<String[]> userListUpdater;
 
@@ -13,8 +16,9 @@ public class ChatClient2 implements Runnable {
     private BufferedReader in;
     private PrintWriter out;
 
-    public ChatClient2(String username, Consumer<String> messageReceiver, Consumer<String[]> userListUpdater) {
-        this.username = username;
+    public ChatClient2(User user, Consumer<String> messageReceiver, Consumer<String[]> userListUpdater) {
+        this.username = user.getCni();
+        this.userEmail=user.getEmail();
         this.messageReceiver = messageReceiver;
         this.userListUpdater = userListUpdater;
     }
@@ -28,7 +32,8 @@ public class ChatClient2 implements Runnable {
             out = new PrintWriter(socket.getOutputStream(), true);
 
             // Send username to the server
-            out.println(username);
+            System.out.println("UUEMAIL : "+userEmail);
+            out.println(userEmail);
 
             String serverMessage;
             while ((serverMessage = in.readLine()) != null) {
