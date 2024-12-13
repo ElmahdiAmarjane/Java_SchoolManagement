@@ -230,7 +230,7 @@ public class AdminAbsenceController {
                    
                     Button messageButton = new Button();
                                        
-                    ImageView messageIcon = createImageView("assets/message.png");
+                    ImageView messageIcon = createImageView("/assets/message.png");
 
                     // Add ImageView to buttons
                     messageButton.setGraphic(messageIcon);

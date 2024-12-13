@@ -12,4 +12,5 @@ public interface IEtudiantServices {
 	List<Etudiant> selectAllEtudiants();
 	Etudiant selectEtudiantByCni(String cni);
 	Etudiant selectEtudiantByCne(String cne);
+	String selectEtudiantFilliereByCni(String cni);
 }

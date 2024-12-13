@@ -13,21 +13,21 @@
 
 <AnchorPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="1371.0" style="-fx-background-color: #334422;" AnchorPane.bottomAnchor="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminController">
    <children>
-      <VBox layoutY="76.0" prefHeight="441.0" prefWidth="236.0" style="-fx-background-color: #9865eb;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="74.0">
+      <VBox layoutY="76.0" prefHeight="441.0" prefWidth="236.0" style="-fx-background-color: #001A6E;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="74.0">
          <children>
             <HBox fx:id="chatMenu" onMouseClicked="#chatPaneToFront" prefHeight="40.0" prefWidth="153.0">
                <children>
                   <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/chat.png" />
+                        <Image url="@../../assets/chat.png" />
                      </image>
                      <HBox.margin>
                         <Insets left="30.0" right="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chat" wrappingWidth="93.654296875">
+                  <Text fill="WHITE" strokeType="OUTSIDE" text="Chat" wrappingWidth="93.654296875">
                      <font>
-                        <Font name="Segoe UI" size="20.0" />
+                        <Font name="Segoe UI Bold" size="20.0" />
                      </font>
                      <HBox.margin>
                         <Insets top="6.0" />
@@ -42,15 +42,15 @@
                <children>
                   <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/students.png" />
+                        <Image url="@../../assets/students.png" />
                      </image>
                      <HBox.margin>
                         <Insets left="30.0" right="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Etudiants" wrappingWidth="93.654296875">
+                  <Text fill="WHITE" strokeType="OUTSIDE" text="Etudiants" wrappingWidth="93.654296875">
                      <font>
-                        <Font name="Segoe UI" size="20.0" />
+                        <Font name="Segoe UI Bold" size="20.0" />
                      </font>
                      <HBox.margin>
                         <Insets top="6.0" />
@@ -65,15 +65,15 @@
                <children>
                   <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/teachers.png" />
+                        <Image url="@../../assets/teachers.png" />
                      </image>
                      <HBox.margin>
                         <Insets left="30.0" right="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Proffesseurs" wrappingWidth="120.654296875">
+                  <Text fill="WHITE" strokeType="OUTSIDE" text="Proffesseurs" wrappingWidth="120.654296875">
                      <font>
-                        <Font name="Segoe UI" size="20.0" />
+                        <Font name="Segoe UI Bold" size="20.0" />
                      </font>
                      <HBox.margin>
                         <Insets top="6.0" />
@@ -89,15 +89,15 @@
                <children>
                   <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/timetable.png" />
+                        <Image url="@../../assets/timetable.png" />
                      </image>
                      <HBox.margin>
                         <Insets left="30.0" right="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Emploi du temps" wrappingWidth="158.654296875">
+                  <Text fill="WHITE" strokeType="OUTSIDE" text="Emploi du temps" wrappingWidth="158.654296875">
                      <font>
-                        <Font name="Segoe UI" size="20.0" />
+                        <Font name="Segoe UI Bold" size="20.0" />
                      </font>
                      <HBox.margin>
                         <Insets top="6.0" />
@@ -113,15 +113,15 @@
                <children>
                   <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/fillieres.png" />
+                        <Image url="@../../assets/fillieres.png" />
                      </image>
                      <HBox.margin>
                         <Insets left="30.0" right="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Filliéres" wrappingWidth="93.654296875">
+                  <Text fill="WHITE" strokeType="OUTSIDE" text="Filliéres" wrappingWidth="93.654296875">
                      <font>
-                        <Font name="Segoe UI" size="20.0" />
+                        <Font name="Segoe UI Bold" size="20.0" />
                      </font>
                      <HBox.margin>
                         <Insets top="6.0" />
@@ -137,36 +137,15 @@
                <children>
                   <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/annonce.png" />
+                        <Image url="@../../assets/annonce.png" />
                      </image>
                      <HBox.margin>
                         <Insets left="30.0" right="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Annonces" wrappingWidth="93.654296875">
+                  <Text fill="WHITE" strokeType="OUTSIDE" text="Annonces" wrappingWidth="93.654296875">
                      <font>
-                        <Font name="Segoe UI" size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="6.0" />
-                     </HBox.margin>
-                  </Text>
-               </children>
-            </HBox>
-            
-            <HBox fx:id="studentMenu" onMouseClicked="#absencePaneToFront" prefHeight="40.0" prefWidth="153.0">
-               <children>
-                  <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/students.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="30.0" right="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Absence" wrappingWidth="93.654296875">
-                     <font>
-                        <Font name="Segoe UI" size="20.0" />
+                        <Font name="Segoe UI Bold" size="20.0" />
                      </font>
                      <HBox.margin>
                         <Insets top="6.0" />
@@ -174,17 +153,41 @@
                   </Text>
                </children>
                <VBox.margin>
-                  <Insets bottom="18.0" />
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+            </HBox>
+            
+            <HBox fx:id="studentMenu" onMouseClicked="#absencePaneToFront" prefHeight="40.0" prefWidth="153.0">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../assets/abscence.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="30.0" right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" text="Absence" wrappingWidth="93.654296875">
+                     <font>
+                        <Font name="Segoe UI Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="6.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="15.0" />
                </VBox.margin>
             </HBox>
             
          </children>
       </VBox>
-      <AnchorPane style="-fx-background-color: #FFDD33;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fitHeight="76.0" fitWidth="97.0" layoutX="33.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="0.0">
+            <ImageView fitHeight="60.0" fitWidth="312.0" layoutX="11.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="9.080001831054688" AnchorPane.leftAnchor="11.0" AnchorPane.topAnchor="10.0">
                <image>
-                  <Image url="@../assets/logoibnzohr.png" />
+                  <Image url="@../../assets/LOGO-ENSIASD-TAROUDANTE-1-450x72.png" />
                </image>
             </ImageView>
             <AnchorPane layoutX="563.0" layoutY="9.0">
@@ -206,12 +209,12 @@
                   </Text>
                </children>
             </AnchorPane>
-            <FontAwesomeIconView fx:id="btnSignOut" accessibleRole="BUTTON" fill="WHITE" glyphName="SIGN_OUT" layoutX="1310.0" layoutY="48.0" onMouseClicked="#signOutBtnClicked" size="25" />
+            <FontAwesomeIconView fx:id="btnSignOut" accessibleRole="BUTTON" glyphName="SIGN_OUT" layoutX="1310.0" layoutY="44.0" onMouseClicked="#signOutBtnClicked" size="25" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="chatPane" layoutX="236.0" layoutY="76.0" prefHeight="441.0" prefWidth="517.0" style="-fx-background-color: #EE11AA;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="236.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="76.0">
          <children>
-            <AnchorPane prefHeight="51.0" prefWidth="517.0" style="-fx-background-color: #112277;" AnchorPane.bottomAnchor="388.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane prefHeight="51.0" prefWidth="517.0" style="-fx-background-color: #001A6E;" AnchorPane.bottomAnchor="388.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Text fill="WHITE" layoutX="53.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chat">
                      <font>
@@ -221,7 +224,7 @@
                   <Line endX="1.0" endY="7.0" fill="WHITE" layoutX="95.0" layoutY="35.0" startX="-51.0" startY="7.0" stroke="WHITE" strokeWidth="2.0" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="chatChildPane" layoutY="51.0" prefHeight="389.0" prefWidth="517.0" style="-fx-background-color: #11FF99;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+            <AnchorPane fx:id="chatChildPane" layoutY="51.0" prefHeight="389.0" prefWidth="517.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                <children>
                   <Text layoutX="167.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHAT" wrappingWidth="215.7734375">
                      <font>

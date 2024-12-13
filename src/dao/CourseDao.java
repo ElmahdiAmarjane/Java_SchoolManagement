@@ -42,6 +42,35 @@ public class CourseDao implements ICourseServices{
 
 	        return courses;
 	}
+	
+	@Override
+	public List<Course> selectCoursesByFilliereTitle(String filierTitle) {
+		 List<Course> courses = new ArrayList<>();
+	        String query = "SELECT * FROM Course where filier_titel = ?";
+
+	        try (Connection connection = JDBC.getConnection();
+	             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+	        	 preparedStatement.setString(1, filierTitle);
+	        	 
+	            ResultSet resultSet = preparedStatement.executeQuery();
+
+	            while (resultSet.next()) {
+	                Course course = new Course();
+	                course.setId(resultSet.getInt("id"));
+	                course.setTitle(resultSet.getString("title"));
+	                course.setDescription(resultSet.getString("description"));
+	                course.setFiles(resultSet.getString("files"));
+	                course.setType(resultSet.getString("type"));
+	                course.setDatePublication(resultSet.getDate("datePublication").toLocalDate());
+	                courses.add(course);
+	            }
+
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+
+	        return courses;
+	}
 
 	@Override
 	public boolean insertCours(Course course) {

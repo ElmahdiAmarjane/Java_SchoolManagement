@@ -28,7 +28,7 @@ public class Main extends Application {
         FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("/views/loginView.fxml"));
         Parent mainRoot = mainLoader.load();
       
-        Scene mainScene = new Scene(mainRoot);
+        Scene mainScene = new Scene(mainRoot); 
         Stage mainStage = new Stage();
         mainStage.setScene(mainScene);
         mainStage.setTitle("Main Application");

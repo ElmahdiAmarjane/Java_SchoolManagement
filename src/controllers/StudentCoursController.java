@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import application.Main;
 import dao.CourseDao;
+import dao.EtudiantDao;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -22,6 +23,8 @@ import modules.User;
 public class StudentCoursController {
 
 	private  CourseDao courseDao = new CourseDao();
+	private  EtudiantDao etudiantDao = new EtudiantDao();
+	
     @FXML
     private ScrollPane coursScrollPane; // Connect to FXML
 
@@ -34,9 +37,9 @@ public class StudentCoursController {
 
         User connectedUser = (User) Main.get("connectedUser");
          System.out.println("HIIII : "+connectedUser.toString());
-         
+         String etudiantFilliere = etudiantDao.selectEtudiantFilliereByCni(connectedUser.getCni());         
         // Example Data
-        Map<String, List<Course>> groupedCourses = fetchGroupedCourses("");
+        Map<String, List<Course>> groupedCourses = fetchGroupedCourses(etudiantFilliere);
 
         for (Map.Entry<String, List<Course>> entry : groupedCourses.entrySet()) {
             String elementName = entry.getKey();
@@ -113,7 +116,7 @@ public class StudentCoursController {
 
                 // Create HBox to hold both labels
                 HBox typeAndDate = new HBox();
-                typeAndDate.setMaxWidth(Double.MAX_VALUE);
+                typeAndDate.setMaxWidth(Double.MAX_VALUE); 
                 typeAndDate.setSpacing(10); // Optional: Set spacing between labels
                 HBox.setHgrow(courseType, Priority.ALWAYS); // Allow courseType to take up available space
                 typeAndDate.getChildren().addAll(courseType, courseDatePub);
@@ -146,9 +149,9 @@ public class StudentCoursController {
 	}
 
 	// Example Data Model
-    private Map<String, List<Course>> fetchGroupedCourses(String Filliere_title) {
+    private Map<String, List<Course>> fetchGroupedCourses(String filliere_title) {
         // Replace with real data fetching
-        List<Course> courses = courseDao.selectCoursesByFilliere(8); // 10 is filier ID
+        List<Course> courses = courseDao.selectCoursesByFilliereTitle(filliere_title); // 10 is filier ID
         System.out.println(courses);
 
         // Group the courses by their category (e.g., "Mathematics", "Network")

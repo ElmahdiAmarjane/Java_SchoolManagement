@@ -1,10 +1,3 @@
-/application/
-/cloudinary/
-/config/
-/controllers/
-/dao/
-/db_connect/
-/module-info.class
-/modules/
 /network/
 /services/
+/controllers/

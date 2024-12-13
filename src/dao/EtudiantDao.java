@@ -328,4 +328,25 @@ public class EtudiantDao implements IEtudiantServices{
 	    return etd;
 	}
 	
+	@Override
+	public String selectEtudiantFilliereByCni(String cni) {
+		 String result = null;// Initialize to null to indicate no data if not found
+	    String query = "SELECT titel_filier FROM etudiant WHERE etudiant.cni_user = ?";
+
+	    try (Connection connection = JDBC.getConnection();
+	         PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+	        preparedStatement.setString(1, cni);
+	        ResultSet resultSet = preparedStatement.executeQuery();
+	        if (resultSet.next()) { // Check if a row exists
+	          
+	            result = resultSet.getString("titel_filier");       
+	        }
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return result;
+	    }
+	
 }
