@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="email_marketing.controller.AddCompagnController">
+   <children>
+      <AnchorPane prefHeight="500.0" prefWidth="800.0" styleClass="midle-form">
+         <children>
+            <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="480.0" prefWidth="780.0" styleClass="content">
+               <children>
+                  <BorderPane prefHeight="480.0" prefWidth="780.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <center>
+                        <AnchorPane prefHeight="0.0" prefWidth="780.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <AnchorPane fx:id="templatesSection" prefHeight="376.0" prefWidth="780.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <ScrollPane fx:id="templatesFieldScroll" layoutX="40.0" layoutY="13.0" maxWidth="700.0" prefHeight="350.0" prefWidth="700.0" styleClass="templatesField">
+                                       <content>
+                                          <AnchorPane fx:id="templatesField" prefHeight="280.0" prefWidth="626.0">
+                                             <children>
+                                                <AnchorPane fx:id="template" layoutX="35.0" layoutY="8.0" prefHeight="260.0" prefWidth="600.0" styleClass="template">
+                                                   <children>
+                                                      <TextField layoutX="101.0" layoutY="14.0" prefHeight="30.0" prefWidth="200.0" promptText="Subject line" />
+                                                      <TextArea layoutX="101.0" layoutY="49.0" prefHeight="200.0" prefWidth="400.0" promptText="body" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="leadsSection" prefHeight="376.0" prefWidth="780.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <HBox alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="29.0" prefWidth="130.0" spacing="10.0">
+                                       <children>
+                                          <RadioButton fx:id="leadExelRadioBtn" mnemonicParsing="false" text="Exel">
+                                             <toggleGroup>
+                                                <ToggleGroup fx:id="leadAdd" />
+                                             </toggleGroup>
+                                          </RadioButton>
+                                          <RadioButton fx:id="leadPersoRadioBtn" mnemonicParsing="false" text="Perso">
+                                             <toggleGroup>
+                                                <ToggleGroup fx:id="leadAdd" />
+                                             </toggleGroup>
+                                          </RadioButton>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </center>
+                     <bottom>
+                        <AnchorPane prefHeight="66.0" prefWidth="780.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Button fx:id="annule" layoutX="696.0" layoutY="17.0" mnemonicParsing="false" onAction="#annule" styleClass="primary_btn" text="Annule" />
+                              <Button fx:id="addFlowUp" layoutX="15.0" layoutY="17.0" mnemonicParsing="false" onAction="#addFlowUp" styleClass="primary_btn" text="Add template" />
+                           </children>
+                        </AnchorPane>
+                     </bottom>
+                     <top>
+                        <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="780.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Button fx:id="next" mnemonicParsing="false" onAction="#switchStep" prefHeight="33.0" prefWidth="90.0" styleClass="primary_btn" text="Next" />
+                              <Button fx:id="back" mnemonicParsing="false" onAction="#switchStep" prefHeight="33.0" prefWidth="90.0" styleClass="primary_btn" text="Back" />
+                              <AnchorPane prefHeight="33.0" prefWidth="589.0">
+                                 <children>
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="678.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <Circle fx:id="step1" fill="YELLOW" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Label text="Templtes">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Circle fx:id="step2" fill="#1f93ff00" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Label text="Leads">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Circle fx:id="step3" fill="#1f93ff00" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Label text="Setting">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <padding>
+                                          <Insets right="10.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                           <BorderPane.margin>
+                              <Insets left="15.0" />
+                           </BorderPane.margin>
+                           <padding>
+                              <Insets top="5.0" />
+                           </padding>
+                        </HBox>
+                     </top>
+                  </BorderPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

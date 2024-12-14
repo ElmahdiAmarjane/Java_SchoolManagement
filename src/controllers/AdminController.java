@@ -35,7 +35,7 @@ public class AdminController {
 	
 	
 	@FXML
-	private AnchorPane mainPane;
+	private AnchorPane AdminDashboard;
 	
 	
 	
@@ -453,5 +453,9 @@ public void switchToFrontBetweenAddProfPane() {
 	public void  annoncesMenuOnclick() {
 		annoncesMainPane.toFront();
 	}
+	
+	
+	
+	
 	
 }

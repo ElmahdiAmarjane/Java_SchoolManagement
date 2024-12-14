@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="1371.0" style="-fx-background-color: #334422;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" AnchorPane.bottomAnchor="20.0" fx:controller="controllers.professeurDashboardController">
+<AnchorPane fx:id="ProfesseurmainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="1371.0" style="-fx-background-color: #334422;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" AnchorPane.bottomAnchor="20.0" fx:controller="controllers.professeurDashboardController">
    <children>
       <VBox layoutY="76.0" prefHeight="441.0" prefWidth="236.0" style="-fx-background-color: #9865eb;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="74.0">
          <children>
@@ -160,9 +160,35 @@
                </VBox.margin>
             </HBox>
             
+            
+             <HBox prefHeight="40.0" prefWidth="153.0" onMouseClicked="#resetpassword">
+               
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/timetable.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="30.0" right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reset Password" wrappingWidth="158.654296875" >
+                     <font>
+                        <Font name="Segoe UI" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="6.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+            </HBox>
+            
          </children>
       </VBox>
-      <AnchorPane style="-fx-background-color: #FFDD33;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane style="-fx-background-color: #FFFFFF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="76.0" fitWidth="97.0" layoutX="33.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="0.0">
                <image>

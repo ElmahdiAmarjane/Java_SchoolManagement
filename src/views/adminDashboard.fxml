@@ -14,7 +14,11 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="1371.0" style="-fx-background-color: #334422;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" AnchorPane.bottomAnchor="20.0" fx:controller="controllers.AdminController">
+   
+<AnchorPane fx:id="AdminDashboard" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminController">
+   
+   
+   
    <children>
       <VBox layoutY="76.0" prefHeight="441.0" prefWidth="236.0" style="-fx-background-color: #0096FF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="74.0">
          <children>
@@ -242,7 +246,8 @@
       </AnchorPane>
       
       
-	<fx:include fx:id="professorPane" source="adminProfesseur.fxml" />
+	<fx:include fx:id="professorPane" source="../views/adminProfesseur.fxml" />
+
 
 	<fx:include fx:id="emploiTempsPane" source="emploiTemps.fxml" />
            

@@ -1,71 +1,159 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER" prefHeight="500.0" prefWidth="700.0" spacing="20" stylesheets="application/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProfesseurClassromController">
-              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-            <!-- Left VBox: Form Section -->
-            <VBox alignment="TOP_CENTER" prefWidth="450.0" spacing="15" style="-fx-background-color: #FFFFFF;">
-                <Label id="title" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" 
-                       prefHeight="27.0" prefWidth="237.0" style="-fx-font-style: Arial;" text="Partage des supports" 
-                       textOverrun="CENTER_ELLIPSIS">
-                    <VBox.margin>
-                        <Insets left="100.0" top="30.0" />
-                    </VBox.margin>
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Label>
+<VBox layoutY="76.0" prefHeight="441.0" prefWidth="236.0" style="-fx-background-color: #9865eb;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="74.0">
+   <children>
+      <HBox fx:id="chatMenu" onMouseClicked="#chatPaneToFront" prefHeight="40.0" prefWidth="153.0">
+         <children>
+            <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/chat.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="30.0" right="10.0" />
+               </HBox.margin>
+            </ImageView>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chat" wrappingWidth="93.654296875">
+               <font>
+                  <Font name="Segoe UI" size="20.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="6.0" />
+               </HBox.margin>
+            </Text>
+         </children>
+         <VBox.margin>
+            <Insets bottom="15.0" top="10.0" />
+         </VBox.margin>
+      </HBox>
 
-                <Label text="Date limite:" />
-                <DatePicker fx:id="deadlinePicker" />
+      <HBox fx:id="studentMenu1" onMouseClicked="#studentPaneToFront" prefHeight="40.0" prefWidth="153.0">
+         <children>
+            <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/students.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="30.0" right="10.0" />
+               </HBox.margin>
+            </ImageView>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Etudiants" wrappingWidth="93.654296875">
+               <font>
+                  <Font name="Segoe UI" size="20.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="6.0" />
+               </HBox.margin>
+            </Text>
+         </children>
+         <VBox.margin>
+            <Insets bottom="15.0" />
+         </VBox.margin>
+      </HBox>
 
-                <Label text="Types des docs:" />
-                <ComboBox fx:id="typeComboBox" prefHeight="31.0" prefWidth="117.0" promptText="Choisir " 
-                          style="-fx-background-color: #CBDCEB;" stylesheets="@../application/style.css" />
+      <HBox prefHeight="40.0" prefWidth="153.0" onMouseClicked="#emploiTempsPaneToFront">
+         <children>
+            <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/timetable.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="30.0" right="10.0" />
+               </HBox.margin>
+            </ImageView>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Emploi du temps" wrappingWidth="158.654296875">
+               <font>
+                  <Font name="Segoe UI" size="20.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="6.0" />
+               </HBox.margin>
+            </Text>
+         </children>
+         <VBox.margin>
+            <Insets bottom="15.0" />
+         </VBox.margin>
+      </HBox>
 
-                <TextField fx:id="titleField" prefHeight="25.0" prefWidth="403.0" promptText="Titre du cours ou exercice" />
+      <HBox onMouseClicked="#annoncesMenuOnclick" prefHeight="40.0" prefWidth="153.0">
+         <children>
+            <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/annonce.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="30.0" right="10.0" />
+               </HBox.margin>
+            </ImageView>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Annonces" wrappingWidth="93.654296875">
+               <font>
+                  <Font name="Segoe UI" size="20.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="6.0" />
+               </HBox.margin>
+            </Text>
+         </children>
+      </HBox>
 
-                <Label fx:id="fileNameLabel" />
-                <Button fx:id="browseButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" 
-                        minWidth="-Infinity" onAction="#handleBrowse" prefHeight="25.0" prefWidth="403.0" 
-                        style="-fx-background-color: #0B60B0;" stylesheets="@../application/style.css" text="Choisir un fichier" />
+      <HBox fx:id="studentMenu2" onMouseClicked="#absencePaneToFront" prefHeight="40.0" prefWidth="153.0">
+         <children>
+            <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/students.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="30.0" right="10.0" />
+               </HBox.margin>
+            </ImageView>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Absence" wrappingWidth="93.654296875">
+               <font>
+                  <Font name="Segoe UI" size="20.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="6.0" />
+               </HBox.margin>
+            </Text>
+         </children>
+         <VBox.margin>
+            <Insets bottom="18.0" />
+         </VBox.margin>
+      </HBox>
 
-                <TextArea fx:id="instructionsArea" prefHeight="63.0" prefWidth="335.0" promptText="Ajoutez vos instructions ici..." >
-                    <VBox.margin>
-                        <Insets bottom="30.0" left="0.0" />
-                    </VBox.margin>
-                </TextArea>
+      <HBox prefHeight="40.0" prefWidth="153.0" onMouseClicked="#coursToFront">
+         <children>
+            <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/timetable.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="30.0" right="10.0" />
+               </HBox.margin>
+            </ImageView>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cours" wrappingWidth="158.654296875">
+               <font>
+                  <Font name="Segoe UI" size="20.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="6.0" />
+               </HBox.margin>
+            </Text>
+         </children>
+         <VBox.margin>
+            <Insets bottom="15.0" />
+         </VBox.margin>
+      </HBox>
 
-                <!-- Section 6: Buttons for actions -->
-                <HBox alignment="CENTER" spacing="20">
-                    <Button fx:id="uploadButton" onAction="#handleUpload" prefHeight="9.0" prefWidth="75.0" 
-                            style="-fx-background-color: #0B60B0;" stylesheets="@../application/style.css" text="Envoyer" />
-                    <Button fx:id="cancelButton" onAction="#handleCancel" prefHeight="26.0" prefWidth="79.0" 
-                            style="-fx-background-color: #0B60B0;" stylesheets="@../application/style.css" text="Annuler" />
-                </HBox>
-
-            </VBox>
-
-            <!-- Right VBox: File Preview Section -->
-            <VBox alignment="CENTER" prefHeight="191.0" prefWidth="208.0" spacing="7.0" 
-                  style="-fx-border-color: lightgray; -fx-border-width: 1; -fx-background-color: #FFFFFF;">
-                <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" 
-                       text="Aperçu du fichier :" textAlignment="RIGHT">
-                    <VBox.margin>
-                        <Insets />
-                    </VBox.margin>
-                </Label>
-                <ImageView fx:id="filePreviewImage" fitHeight="100.0" fitWidth="150.0" preserveRatio="true" />
-            </VBox>
-        </HBox>
+   </children>
+</VBox>

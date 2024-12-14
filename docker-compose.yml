@@ -1,0 +1,40 @@
+services:
+  mysql-container:
+    image: mysql:latest
+    container_name: mysql-container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: gestion_ecole
+      MYSQL_USER: med
+      MYSQL_PASSWORD: med
+    ports:
+      - "3306:3306"
+    networks:
+      - my-network
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  gestion-app-container:
+    build:
+      context: ./gestion-app
+    container_name: gestion-app-container
+    depends_on:
+      - mysql-container
+    networks:
+      - my-network
+    ports:
+      - "5900:5900"  # Assuming you are exposing this port
+    environment:
+      - DB_HOST=mysql-container
+      - DB_PORT=3306
+      - DB_NAME=gestion_ecole
+      - DB_USER=med
+      - DB_PASSWORD=med
+
+networks:
+  my-network:
+    driver: bridge
+
+volumes:
+  mysql_data:

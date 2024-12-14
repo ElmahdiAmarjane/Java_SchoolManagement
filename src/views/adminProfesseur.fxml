@@ -13,7 +13,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TableColumn?>
 
-<AnchorPane  fx:id="ProfesseurView" xmlns:fx="http://javafx.com/fxml" 
+<AnchorPane  fx:id="professorPane" xmlns:fx="http://javafx.com/fxml" 
             prefHeight="441.0" prefWidth="517.0" 
             style="-fx-background-color: #EE11DD;" 
             AnchorPane.bottomAnchor="0.0" 

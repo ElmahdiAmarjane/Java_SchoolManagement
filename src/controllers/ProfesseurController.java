@@ -53,7 +53,7 @@ public class ProfesseurController {
 	private List<Professeur> listProfesseurs;
 	 
 	@FXML
-    private Pane ProfesseurView;
+    private AnchorPane professorPane;
 	
 	@FXML
 	 private AnchorPane addProfFin;
@@ -209,8 +209,8 @@ public class ProfesseurController {
 		            UpdateProfesseurController controller = loader.getController();
 		            controller.setCniValue(cni); // This now calls customInitialize()
 
-		            ProfesseurView.getChildren().clear();
-		            ProfesseurView.getChildren().add(nextPane);
+		            professorPane.getChildren().clear();
+		            professorPane.getChildren().add(nextPane);
 		        } catch (IOException e) {
 		            System.err.println("Failed to load UpdateEtudiantInfo.fxml: " + e.getMessage());
 		        }

@@ -3,6 +3,8 @@ package controllers;
 import dao.EmploiDao;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import modules.Emploi;
 import java.util.List;
 
@@ -10,6 +12,9 @@ public class ProfesseurEmploiController {
 
     EmploiDao empoiDao = new EmploiDao();
     Emploi emploi;
+    
+    @FXML 
+    private Pane emploiTempsPane;
 
     @FXML
     private TextArea Lundi_8_10, Lundi_10_12, Lundi_2_4, Lundi_4_6;

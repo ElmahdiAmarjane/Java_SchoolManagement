@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="email_marketing.controller.DashBoradController">
+   <children>
+      <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <BorderPane layoutX="190.0" layoutY="74.0" prefHeight="600.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <top>
+                  <AnchorPane prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutY="-80.0" prefHeight="35.0" prefWidth="1100.0" styleClass="top-form" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Button fx:id="close" layoutX="1060.0" layoutY="8.0" mnemonicParsing="false" onAction="#close" styleClass="close" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+                                 <graphic>
+                                    <FontAwesomeIconView fill="#10222e" glyphName="CLOSE" />
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="minimize" layoutX="1020.0" layoutY="2.0" mnemonicParsing="false" onAction="#minimize" styleClass="minis" AnchorPane.topAnchor="2.0">
+                                 <graphic>
+                                    <FontAwesomeIconView fill="#10222e" glyphName="MINUS" />
+                                 </graphic>
+                              </Button>
+                              <FontAwesomeIconView fill="#10222e" glyphName="ENVELOPE" layoutX="8.0" layoutY="24.0" AnchorPane.leftAnchor="8.0" />
+                              <Label layoutX="25.0" layoutY="10.0" text="Email Marketing" textFill="#10222e">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </top>
+               <left>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutY="136.0" prefHeight="560.0" prefWidth="202.0" styleClass="sideBar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <FontAwesomeIconView fill="WHITE" glyphName="USER" layoutX="69.0" layoutY="94.0" size="7em" />
+                              <Label fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="-2.0" layoutY="106.0" prefHeight="27.0" prefWidth="202.0" text="UserName" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Line endX="100.0" layoutX="100.0" layoutY="161.0" startX="-100.0" stroke="WHITE" />
+                              <Button fx:id="compagn_btn" layoutX="-1.0" layoutY="188.0" mnemonicParsing="false" onAction="#switchPage" prefHeight="40.0" prefWidth="200.0" styleClass="sideBar-btn" text="Compagn" AnchorPane.leftAnchor="1.0">
+                                 <graphic>
+                                    <FontAwesomeIconView fill="WHITE" glyphName="INBOX" />
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="leads_btn" layoutX="-1.0" layoutY="254.0" mnemonicParsing="false" onAction="#switchPage" prefHeight="40.0" prefWidth="200.0" styleClass="sideBar-btn" text="Leads" AnchorPane.leftAnchor="1.0">
+                                 <graphic>
+                                    <FontAwesomeIconView fill="WHITE" glyphName="USERS" />
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="setting_btn" layoutX="-1.0" layoutY="320.0" mnemonicParsing="false" onAction="#switchPage" prefHeight="40.0" prefWidth="200.0" styleClass="sideBar-btn" text="Setting" AnchorPane.leftAnchor="1.0">
+                                 <graphic>
+                                    <FontAwesomeIconView fill="WHITE" glyphName="GEAR" />
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="logout" layoutX="88.0" layoutY="522.0" mnemonicParsing="false" onAction="#logout" styleClass="logout">
+                                 <graphic>
+                                    <FontAwesomeIconView fill="#10222e" glyphName="SIGN_OUT" />
+                                 </graphic>
+                              </Button>
+                              <Label fx:id="emailLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="-2.0" layoutY="133.0" prefHeight="27.0" prefWidth="202.0" text="emailUser" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Italic" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </left>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutX="9.0" layoutY="10.0" prefHeight="560.0" prefWidth="898.4" styleClass="midle-form" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane fx:id="compagn_page" layoutX="10.0" layoutY="10.0" prefHeight="540.0" prefWidth="878.0" styleClass="content">
+                                 <children>
+                                    <Button fx:id="addCompagnBtn" layoutX="746.0" layoutY="14.0" mnemonicParsing="false" onAction="#addCompagnBtn" styleClass="primary_btn" text="Add Compagn" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="leads_page" layoutX="10.0" layoutY="10.0" prefHeight="540.0" prefWidth="878.0" styleClass="content">
+                                 <children>
+                                    <TableView layoutX="14.0" layoutY="62.0" prefHeight="418.0" prefWidth="500.0">
+                                      <columns>
+                                        <TableColumn prefWidth="400.0" text="C1" />
+                                        <TableColumn prefWidth="100.0" text="C2" />
+                                      </columns>
+                                    </TableView>
+                                    <Button fx:id="to_lead_page_btn" layoutX="14.0" layoutY="500.0" mnemonicParsing="false" onAction="#to_lead_page_btn" styleClass="primary_btn" text="Add lead" />
+                                    <Label layoutX="14.0" layoutY="20.0" text="Filter lead" />
+                                    <ComboBox layoutX="78.0" layoutY="14.0" prefHeight="30.0" prefWidth="100.0" />
+                                    <AnchorPane layoutX="533.0" layoutY="116.0" prefHeight="310.0" prefWidth="330.0" styleClass="midle-form">
+                                       <children>
+                                          <Button layoutX="14.0" layoutY="268.0" mnemonicParsing="false" styleClass="primary_btn" text="Add" />
+                                          <Label layoutX="14.0" layoutY="20.0" text="Filter lead" />
+                                          <ComboBox layoutX="99.0" layoutY="14.0" prefHeight="30.0" prefWidth="100.0" />
+                                          <TextArea fx:id="textAreaSendingEmails" layoutX="99.0" layoutY="55.0" onKeyTyped="#textAreaSendingEmailsTyped" prefHeight="200.0" prefWidth="200.0" promptText="List emails" styleClass="text-area" wrapText="true" />
+                                          <Label fx:id="testFirld" layoutX="14.0" layoutY="55.0" text="Emails" />
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="setting_page" layoutX="10.0" layoutY="10.0" prefHeight="540.0" prefWidth="878.0" styleClass="content" visible="false">
+                                 <children>
+                                    <Button fx:id="sendingEmail_btn" layoutX="14.0" layoutY="501.0" mnemonicParsing="false" onAction="#sendingEmail_btn" styleClass="primary_btn" text="Gestion Email" />
+                                    <Label layoutX="65.0" layoutY="50.0" text="Delay between Emails" />
+                                    <TextField fx:id="delay_setting_field" layoutX="190.0" layoutY="43.0" prefHeight="30.0" prefWidth="120.0" promptText="Delay in seconds" />
+                                    <Label layoutX="65.0" layoutY="109.0" text="Start Hour" />
+                                    <ComboBox fx:id="start_hour" layoutX="129.0" layoutY="102.0" prefHeight="30.0" prefWidth="75.0" promptText="00:00" visibleRowCount="5" />
+                                    <Label layoutX="213.0" layoutY="109.0" text="End Hour" />
+                                    <ComboBox fx:id="end_hour" layoutX="272.0" layoutY="102.0" prefHeight="30.0" prefWidth="75.0" promptText="00:00" visibleRowCount="5" />
+                                    <TableView fx:id="sendingEmailsTableView" layoutX="64.0" layoutY="161.0" prefHeight="310.0" prefWidth="750.0">
+                                      <columns>
+                                        <TableColumn fx:id="selectedColumn" maxWidth="1.7976931348623157E308" minWidth="30.0" prefWidth="-1.0" text="Selected" />
+                                        <TableColumn fx:id="emailColumn" prefWidth="38.39996337890625" text="Email" />
+                                          <TableColumn fx:id="maxUseColumn" minWidth="50.0" prefWidth="-1.0" text="Max use per day" />
+                                          <TableColumn fx:id="deleteColumn" maxWidth="1.7976931348623157E308" minWidth="30.0" prefWidth="-1.0" text="Delete" />
+                                      </columns>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                    </TableView>
+                                    <Button layoutX="772.0" layoutY="498.0" mnemonicParsing="false" styleClass="primary_btn" text="Save Changes" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

@@ -2,6 +2,8 @@ package controllers;
 
 import javafx.event.ActionEvent;
 import java.io.IOException;
+import java.net.URL;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -45,70 +47,95 @@ public class LoginViewController {
     	System.exit(0);
     	
     }
-
     @FXML
     public void login(MouseEvent event) {
-        /*if (isValidCredentials()) {
-            openWelcomePage(event);
-            showSuccessNotification("Login successful! Welcome back.");
-        } else {
-            showErrorNotification("Invalid username or password.");
-        }*/
-    	
-    	
-    	try {
-    		
-    			
-    		user.setCni(txtUsername.getText());
-    		user.setPassword(txtPassword.getText());
-    		
-    		User niveauxUser=userDao.login(user);
-    		 
-    		 if(niveauxUser!=null) {
-    			 
-    			 if(niveauxUser.getRole()=="Etudiant") {
-    				 
-    				/*FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/adminDashboard.fxml"));
-     	            Parent homeView = loader.load();
-     	            
-     	            Stage stage = (Stage) ((Node) txtUsername).getScene().getWindow();
-     	            Scene scene = new Scene(homeView);
-     	            stage.setScene(scene);
-     	            stage.show();*/
-    				 
-    				 System.out.print("Etudiant");
-    				 
-    			 }else if(niveauxUser.getRole()=="Professeur") {
-    				 
-    				 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/professeurDashboard.fxml"));
-      	            Parent homeView = loader.load();
-      	            
-      	            Stage stage = (Stage) ((Node) txtUsername).getScene().getWindow();
-      	            Scene scene = new Scene(homeView);
-      	            stage.setScene(scene);
-      	            stage.show();
-      	            
-    			 }else {
-    				 
-    				FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/adminDashboard.fxml"));
-      	            Parent homeView = loader.load();
-      	            
-      	            Stage stage = (Stage) ((Node) txtUsername).getScene().getWindow();
-      	            Scene scene = new Scene(homeView);
-      	            stage.setScene(scene);
-      	            stage.show();
-    			 }
-    		 }else {
-    			 
-	    			 System.out.println("FALSE");
-	    	         showErrorNotification("Invalid username or password.");
-    		 }
-    		 
-    		
-    	}catch(Exception e) {
-    		e.printStackTrace();
-    	}
+        try {
+            // Set the user's CNI and password from the text fields
+            user.setCni(txtUsername.getText());
+            user.setPassword(txtPassword.getText());
+
+            // Attempt to log in the user using the DAO
+            User niveauxUser = userDao.login(user);
+
+            if (niveauxUser != null) {
+            	
+            	FXMLLoader loader;
+                Parent homeView;
+                
+                String role = niveauxUser.getRole();
+
+                if ("Professeur".equalsIgnoreCase(role)) {
+                	
+                    System.out.println("Professeur HH");
+                    
+                    /*URL url = getClass().getResource("/views/professeurDashboard.fxml");
+                    if (url == null) {
+                	    throw new RuntimeException("FXML file not found: /views/professeurDashboard.fxml");
+                	} else {
+                	    System.out.println("FXML file found successfully: " + url);
+                	}
+                    loader = new FXMLLoader(url);
+                    homeView = loader.load();
+                    Stage stage = (Stage) ((Node) txtUsername).getScene().getWindow();
+                    Scene scene = new Scene(homeView);
+                    stage.setScene(scene);
+                    stage.show();*/
+                	
+                    
+                    loader = new FXMLLoader(getClass().getResource("/views/professeurDashboard.fxml"));
+                    Pane nextPane = loader.load();
+
+                    professeurDashboardController controller = loader.getController();
+                    //controller.setCniValue(cni); 
+
+                    LoginView.getChildren().clear();
+                    LoginView.getChildren().add(nextPane);
+                	
+
+
+                } else if ("Etudiant".equalsIgnoreCase(role)) {
+                    System.out.println("Etudiant");
+                    
+                    /*URL url = getClass().getResource("/views/professeurDashboard.fxml");
+                    if (url != null) {
+                        System.out.println("FXML file not found: /Views/professeurDashboard.fxml");
+                    }
+                    loader = new FXMLLoader(url);
+                    homeView = loader.load();*/
+                    
+                } else if("Admin".equalsIgnoreCase(role)){
+                    System.out.println("Admin");
+                    
+                    URL url = getClass().getResource("/views/adminDashboard.fxml");
+                    if (url != null) {
+                        System.out.println("FXML file not found: ");
+                    }
+                    loader = new FXMLLoader(url);
+                    homeView = loader.load();
+                    Stage stage = (Stage) ((Node) txtUsername).getScene().getWindow();
+                    Scene scene = new Scene(homeView);
+                    stage.setScene(scene);
+                    stage.show();
+                    
+                    
+                    
+                    
+                }
+                
+                
+            } else {
+                // Show an error message if login fails
+                System.out.println("Invalid CNI or password.");
+            }
+            
+            
+        } catch (Exception e) {
+            // Log the exception and provide feedback
+            e.printStackTrace();
+            System.out.println("An error occurred during login.");
+        }
     }
+
 
     private boolean isValidCredentials() {
         String username = txtUsername.getText();

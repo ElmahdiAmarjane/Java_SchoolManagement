@@ -229,6 +229,7 @@ public class EtudiantController {
 
     private void updateAction(String cni) {
         try {
+        	
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/UpdateEtudiantInfo.fxml"));
             Pane nextPane = loader.load();
 
@@ -237,6 +238,7 @@ public class EtudiantController {
 
             EtudiantView.getChildren().clear();
             EtudiantView.getChildren().add(nextPane);
+            
         } catch (IOException e) {
             System.err.println("Failed to load UpdateEtudiantInfo.fxml: " + e.getMessage());
         }
