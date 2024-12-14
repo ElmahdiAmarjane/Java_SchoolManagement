@@ -17,6 +17,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -187,9 +188,9 @@ public class EtudiantController {
                     Button downloadButton = new Button();
 
                     // Create ImageView for icons
-                    ImageView deleteIcon = createImageView("../assets/delete_icon.png");
-                    ImageView downloadIcon = createImageView("../assets/upload_icon.png");
-                    ImageView updateIcon = createImageView("../assets/edit_icon.png");
+                    ImageView deleteIcon = createImageView("/assets/delete_icon.png");
+                    ImageView downloadIcon = createImageView("/assets/upload_icon.png");
+                    ImageView updateIcon = createImageView("/assets/edit_icon.png");
 
                     // Add ImageView to buttons
                     updateButton.setGraphic(updateIcon);
@@ -291,13 +292,13 @@ public class EtudiantController {
     @FXML
 	public void addStudentPaneToFront() {
 		addStudentPane.toFront();	
-		//studentNavMenu2.toFront();
+		studentNavMenu2.toFront();
 		//updateLinePosition(addStudentPane);
 	}
 	@FXML
 	public void listStudentPaneToFront() {
 		listStudentPane.toFront();
-		//studentNavMenu1.toFront();
+		studentNavMenu1.toFront();
 		//updateLinePosition(listStudentPane);
 	}
     
@@ -406,12 +407,16 @@ public class EtudiantController {
     			
     			etudiantDao.insertEtudiant(etudiant);
     			 fetchEtudiant();
+    			 
+    			 
     		}
     		
+    		showSuccessAlert("Les données ont été insérées avec succès !");
     		
     		
     	}catch(Exception e) {
     		System.out.println(e);
+    		showErrorAlert("ERREUR! RÉESSAYEZ");
     	}
     }
     
@@ -686,6 +691,22 @@ public class EtudiantController {
 			emploiTempsPane.toFront();
 		}
     
+	   public static void showSuccessAlert(String message) {
+	        Alert alert = new Alert(AlertType.INFORMATION); // Type "Information" pour un message de succès
+	        alert.setTitle("Succès"); // Titre de la fenêtre
+	        alert.setHeaderText(null); // En-tête (null pour le masquer)
+	        alert.setContentText(message); // Message à afficher
+	        alert.showAndWait(); // Afficher l'alerte et attendre que l'utilisateur la ferme
+	    }
+	   
+	   public static void showErrorAlert(String message) {
+	        Alert alert = new Alert(AlertType.ERROR); // Type "Information" pour un message de succès
+	        alert.setTitle("Erreur"); // Titre de la fenêtre
+	        alert.setHeaderText(null); // En-tête (null pour le masquer)
+	        alert.setContentText(message); // Message à afficher
+	        alert.showAndWait(); // Afficher l'alerte et attendre que l'utilisateur la ferme
+	    }
+	   
     
     
 }

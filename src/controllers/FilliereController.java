@@ -44,7 +44,9 @@ public class FilliereController {
     private TextField filliereNameTF;
     @FXML
     private TextField filliereShortNameTF;
-    
+    /////////////////////////////
+    @FXML AnchorPane filliereNavMenu1;
+    @FXML AnchorPane filliereNavMenu2;
     
     
     
@@ -160,10 +162,12 @@ private void addWidgetsToGridPane(GridPane gridPane) {
     }
     public void setFillereAddAnchorPaneToFront(){
     	fillereAddAnchorPane.toFront();
+    	filliereNavMenu2.toFront();
     }
 
     public void setFilliereListToFront() {
         filliereListAnchorPane.toFront();
+        filliereNavMenu1.toFront();
         initialize();
     }
 }

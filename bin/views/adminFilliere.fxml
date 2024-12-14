@@ -30,7 +30,7 @@
             <Line endX="87.0" endY="6.0" fill="WHITE" layoutX="221.0" layoutY="33.5" startX="-32.0" startY="6.0" stroke="WHITE" strokeWidth="3.0" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="40.0" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="fillierNavMenu1" prefHeight="49.0" prefWidth="1145.0" style="-fx-background-color: #112277;">
+      <AnchorPane fx:id="filliereNavMenu1" prefHeight="49.0" prefWidth="1145.0" style="-fx-background-color: #112277;">
          <children>
             <Text fx:id="listFilliereBtn" fill="WHITE" layoutX="53.0" layoutY="30.0" onMouseClicked="#setFilliereListToFront" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste Fillieres">
                <font>
@@ -89,7 +89,7 @@
             <Text layoutX="252.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date du création" />
             <ImageView fitHeight="139.0" fitWidth="200.0" layoutX="751.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="751.0" AnchorPane.topAnchor="139.0">
                <image>
-                  <Image url="@../../assets/logoibnzohr.png" />
+                  <Image url="@../assets/logoibnzohr.png" />
                </image>
             </ImageView>
             <Button layoutX="746.0" layoutY="287.0" mnemonicParsing="false" text="importer nouveau image" AnchorPane.leftAnchor="746.0" />

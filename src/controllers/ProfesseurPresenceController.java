@@ -182,7 +182,7 @@ public class ProfesseurPresenceController {
     	try {
             List<Filier> filiers=filierDao.selectAllFilier();
             for(Filier filier:filiers){
-            	comboBoxFiliere.getItems().add(filier.getShortName());
+            	comboBoxFiliere.getItems().add(filier.getTitel());
             }
         } catch (Exception e) {
             e.printStackTrace();

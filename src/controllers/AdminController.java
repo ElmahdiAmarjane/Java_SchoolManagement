@@ -1,17 +1,20 @@
 package controllers;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Optional;
 import java.util.function.Predicate;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -47,7 +50,7 @@ public class AdminController {
 	 private HBox chatMenuBtn ;
 	
 	@FXML
-	 private HBox studentMenuBtn ;
+	 private HBox studentMenu ;
 	@FXML
 	 private HBox profMenuBtn ;
 	
@@ -80,12 +83,31 @@ public class AdminController {
 	@FXML 
 	 private Text listProfBtn;
 	
-	@FXML 
-	 private HBox  emploiTempsMenu;
+	
 	
 	@FXML
 	  private AnchorPane emploiTempsPane;
+	////////////////////////////////////////////////////
 	
+	@FXML
+	private HBox abscenceMenu;
+
+	@FXML
+	private HBox annoncesMenu;
+
+
+
+	@FXML
+	private HBox emploiTempMenu;
+
+	@FXML
+	private HBox profMenu;
+
+	@FXML
+	private HBox chatMenu;
+
+	
+/////////////////////////////////////////////////////////////
 	
 	
 	
@@ -200,20 +222,25 @@ public class AdminController {
 	 @FXML AnchorPane annoncesMainPane;
 	 
 	 @FXML private AnchorPane coursMainPane;
-	 @FXML private HBox annonceMenu;
+	
 	 @FXML private HBox coursMenu;
 	 /////////
-	 
+	 private ChatController chatController; // Reference to the ChatController
+
 	 //////////
 	@FXML
 	public void professorPaneToFront() {
 		professorPane.toFront();
+		otherMenusDisableFocused("profMenu");
+		 profMenu.setStyle("-fx-background-color :  #29408a;");
 		
 	}
 
 	@FXML
 	public void studentPaneToFront() {
+		otherMenusDisableFocused("studentMenu");
 		studentPane.toFront();
+		 studentMenu.setStyle("-fx-background-color :  #29408a;");
 		initialize();
 		
 	}
@@ -221,6 +248,8 @@ public class AdminController {
 	@FXML
 	public void chatPaneToFront() {
 		chatPane.toFront();
+		otherMenusDisableFocused("chatMenu");
+		 chatMenu.setStyle("-fx-background-color :  #29408a;");
 		
 	}
 	@FXML
@@ -253,6 +282,8 @@ public class AdminController {
 	@FXML
 	  public void emploiTempsPaneToFront() {
 		emploiTempsPane.toFront();
+		otherMenusDisableFocused("emploiTempMenu");
+		 emploiTempMenu.setStyle("-fx-background-color :  #29408a;");
 	}
 	
 	
@@ -262,6 +293,21 @@ public class AdminController {
 	
 	public void initialize() {
         //////////////////////
+		if(coursMenu!=null) {
+			coursMenu.setStyle("-fx-background-color :  #29408a;");
+		}
+		
+	    // Initialize the chatController from the included chat2.fxml
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/chat4.fxml"));
+        try {
+            Parent chatRoot = loader.load();
+            chatController = loader.getController();
+            // Add chat root to the chatPane
+            chatPane.getChildren().setAll(chatRoot);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		
         
 	}
 	
@@ -456,14 +502,20 @@ public void switchToFrontBetweenAddProfPane() {
 	 public void filliereMenuOnclick() {
 		 // Bring the main pane to the front
 	    fillieresMainPane.toFront();
+	    otherMenusDisableFocused("FilliereMenu");
+	    filliereMenu.setStyle("-fx-background-color :  #29408a;");
 
 	}
 	 
 	public void  annoncesMenuOnclick() {
 		annoncesMainPane.toFront();
+		otherMenusDisableFocused("annoncesMenu");
+		 annoncesMenu.setStyle("-fx-background-color :  #29408a;");
 	}
 	public void  CoursMenuOnclick() {
 		coursMainPane.toFront();
+		otherMenusDisableFocused("coursMenu");
+		coursMenu.setStyle("-fx-background-color :  #29408a;");
 	}
 	
 	
@@ -471,7 +523,8 @@ public void switchToFrontBetweenAddProfPane() {
     
     @FXML
      public void absencePaneToFront() {
-            
+    	otherMenusDisableFocused("abscenceMenu");
+    	abscenceMenu.setStyle("-fx-background-color :  #29408a;");
      /////////
             absencePane.toFront();
     }
@@ -503,5 +556,47 @@ public void switchToFrontBetweenAddProfPane() {
  	        System.out.println("Déconnexion annulée");
  	    }
     }
+    
+ 
+  
+  public void otherMenusDisableFocused(String menuName) {
+	  
+	  if(!menuName.equals("studentMenu") && studentMenu !=null) {
+		  studentMenu.setStyle("-fx-background-color :   #001A6E;");
+	  }
+	  
+	  if(!menuName.equals("chatMenu") && chatMenu !=null) {
+		  chatMenu.setStyle("-fx-background-color :   #001A6E;");
+	  }
+	  
+	  if(!menuName.equals("profMenu") && profMenu !=null) {
+		  profMenu.setStyle("-fx-background-color :   #001A6E;");
+	  }
+	  
+	  if(!menuName.equals("emploiTempMenu") && emploiTempMenu !=null) {
+		  emploiTempMenu.setStyle("-fx-background-color :   #001A6E;");
+	  }
+	  
+	  if(!menuName.equals("annoncesMenu") && annoncesMenu !=null) {
+		  annoncesMenu.setStyle("-fx-background-color :   #001A6E;");
+	  }
+	  
+	  if(!menuName.equals("filliereMenu") && filliereMenu !=null) {
+		  filliereMenu.setStyle("-fx-background-color :   #001A6E;");
+	  }
+	  if(!menuName.equals("abscenceMenu") && abscenceMenu !=null) {
+		  abscenceMenu.setStyle("-fx-background-color :   #001A6E;");
+	  }
+	  if(!menuName.equals("coursMenu") && coursMenu !=null) {
+		  coursMenu.setStyle("-fx-background-color :   #001A6E;");
+	  }
+	
+  }
+  
+	
+
+	    public ChatController getChatController() {
+	        return chatController;
+	    }
   
 }

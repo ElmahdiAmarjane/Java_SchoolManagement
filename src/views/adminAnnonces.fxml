@@ -13,9 +13,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane  fx:id="annoncesMainPane" prefHeight="561.0" prefWidth="926.0" style="-fx-background-color: red;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="227.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="76.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AnnonceController">
+<AnchorPane fx:id="annoncesMainPane" prefHeight="561.0" prefWidth="926.0" style="-fx-background-color: red;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="227.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="76.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AnnonceController">
    <children>
-      <AnchorPane fx:id="annoncesNavMenu2" prefHeight="49.0" prefWidth="1145.0" style="-fx-background-color: #112277;" AnchorPane.bottomAnchor="508.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="annoncesNavMenu2" prefHeight="49.0" prefWidth="1145.0" style="-fx-background-color: #112277;">
          <children>
             <Text fx:id="listAnnoncesBtn1" fill="WHITE" layoutX="53.0" layoutY="30.0" onMouseClicked="#setAnnoncesListToFront" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste Annonces">
                <font>
@@ -30,7 +30,7 @@
             <Line endX="87.0" endY="6.0" fill="WHITE" layoutX="223.0" layoutY="35.5" startX="-32.0" startY="6.0" stroke="WHITE" strokeWidth="3.0" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="40.0" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="annoncesNavMenu1" prefHeight="49.0" prefWidth="1145.0" style="-fx-background-color: #112277;" AnchorPane.bottomAnchor="508.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="annoncesNavMenu1" prefHeight="49.0" prefWidth="1145.0" style="-fx-background-color: #112277;">
          <children>
             <Text fx:id="listAnnocesBtn" fill="WHITE" layoutX="53.0" layoutY="30.0" onMouseClicked="#setAnnoncesListToFront" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste Annonces">
                <font>
@@ -78,7 +78,7 @@
                   </GridPane>
                </content>
             </ScrollPane>
-            <Button fx:id="refreshDataBtn" layoutX="990.0" layoutY="14.0" mnemonicParsing="false" onAction="#refrechAnnoncesWidgets" text="Refresh" />
+            <Button fx:id="refreshDataBtn" layoutX="990.0" layoutY="14.0" mnemonicParsing="false" onAction="#refrechAnnoncesWidgets" text="Actualiser" />
          </children>
       </AnchorPane>
    </children>

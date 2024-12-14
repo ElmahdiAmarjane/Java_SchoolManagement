@@ -3,6 +3,7 @@ package controllers;
 import java.io.File;
 import java.io.IOException;
 
+import application.Main;
 import cloudinary.CloudinaryUploader;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +20,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import modules.Annonce;
+import modules.User;
 
 public class AnnonceWidgetController {
 
@@ -34,7 +36,7 @@ public class AnnonceWidgetController {
 	@FXML private Button downloadButton;
 	@FXML private Text annonceId;
 	@FXML private Text annonceFilePath;
-	
+	@FXML private ImageView showAnnonceDetailsBtn;
 	
 	 // Setter for the announcement header
     public void setAnnouncementHeaderText(String text) {
@@ -75,6 +77,10 @@ public class AnnonceWidgetController {
         controller.announcementText.setText(contenu);
         controller.announcementDate.setText(date);
         controller.annonceFilePath.setText(filePath);
+        User user = (User) Main.get("connectedUser");
+        if(!user.getRole().equals("Admin")){
+        	controller.showAnnonceDetailsBtn.setVisible(false);
+        }
         if (filePath == null || filePath.trim().isEmpty()) {
             downloadButton.setStyle("-fx-background-color :red;");
         }
@@ -83,8 +89,7 @@ public class AnnonceWidgetController {
         return widget;
     }
     
-    @FXML
-    private ImageView showAnnonceDetailsBtn;
+  
 
     @FXML
     public void handleUpdateAnnonceBtn() {

@@ -11,23 +11,23 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="1371.0" style="-fx-background-color: #334422;" AnchorPane.bottomAnchor="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminController">
+<AnchorPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="1371.0" style="-fx-background-color: WHITE;" AnchorPane.bottomAnchor="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminController">
    <children>
-      <VBox layoutY="76.0" prefHeight="441.0" prefWidth="236.0" style="-fx-background-color: #9865eb;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="74.0">
+      <VBox layoutY="76.0" prefHeight="637.0" prefWidth="236.0" style="-fx-background-color: #001A6E;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="76.0">
          <children>
             <HBox fx:id="chatMenu" onMouseClicked="#chatPaneToFront" prefHeight="40.0" prefWidth="153.0">
                <children>
                   <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../assets/chat.png" />
+                        <Image url="@../../assets/icons8-chat-50.png" />
                      </image>
                      <HBox.margin>
-                        <Insets left="30.0" right="10.0" />
+                        <Insets left="20.0" right="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chat" wrappingWidth="93.654296875">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Chat" wrappingWidth="93.654296875">
                      <font>
-                        <Font name="Segoe UI" size="20.0" />
+                        <Font name="Segoe UI Bold" size="20.0" />
                      </font>
                      <HBox.margin>
                         <Insets top="6.0" />
@@ -35,22 +35,22 @@
                   </Text>
                </children>
                <VBox.margin>
-                  <Insets bottom="15.0" top="10.0" />
+                  <Insets bottom="30.0" top="50.0" />
                </VBox.margin>
             </HBox>
-            <HBox fx:id="annonceMenu" onMouseClicked="#annoncesMenuOnclick" prefHeight="40.0" prefWidth="153.0">
+            <HBox fx:id="annoncesMenu" onMouseClicked="#annoncesMenuOnclick" prefHeight="40.0" prefWidth="153.0">
                <children>
                   <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../assets/annonce.png" />
+                        <Image url="@../../assets/icons8-commercial-50.png" />
                      </image>
                      <HBox.margin>
-                        <Insets left="30.0" right="10.0" />
+                        <Insets left="20.0" right="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Annonces" wrappingWidth="93.654296875">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Annonces" wrappingWidth="93.654296875">
                      <font>
-                        <Font name="Segoe UI" size="20.0" />
+                        <Font name="Segoe UI Bold" size="20.0" />
                      </font>
                      <HBox.margin>
                         <Insets top="6.0" />
@@ -58,43 +58,22 @@
                   </Text>
                </children>
                <VBox.margin>
-                  <Insets bottom="15.0" />
+                  <Insets bottom="30.0" />
                </VBox.margin>
             </HBox>
             <HBox fx:id="coursMenu" onMouseClicked="#CoursMenuOnclick" prefHeight="40.0" prefWidth="153.0">
                <children>
                   <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../assets/courses.png" />
+                        <Image url="@../../assets/icons8-module-50.png" />
                      </image>
                      <HBox.margin>
-                        <Insets left="30.0" right="10.0" />
+                        <Insets left="20.0" right="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cours" wrappingWidth="93.654296875">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Cours" wrappingWidth="93.654296875">
                      <font>
-                        <Font name="Segoe UI" size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="6.0" />
-                     </HBox.margin>
-                  </Text>
-               </children>
-            </HBox>
-            <HBox onMouseClicked="#emploiTempsPaneToFront" prefHeight="40.0" prefWidth="153.0">
-               
-               <children>
-                  <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../assets/timetable.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="30.0" right="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Emploi du temps" wrappingWidth="158.654296875">
-                     <font>
-                        <Font name="Segoe UI" size="20.0" />
+                        <Font name="Segoe UI Bold" size="20.0" />
                      </font>
                      <HBox.margin>
                         <Insets top="6.0" />
@@ -102,23 +81,47 @@
                   </Text>
                </children>
                <VBox.margin>
-                  <Insets bottom="15.0" />
+                  <Insets bottom="30.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox onMouseClicked="#emploiTempsPaneToFront" prefHeight="40.0" prefWidth="153.0">
+               
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../assets/icons8-timeline-64.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="20.0" right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Emploi du temps" wrappingWidth="158.654296875">
+                     <font>
+                        <Font name="Segoe UI Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="6.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="30.0" />
                </VBox.margin>
             </HBox>
          </children>
       </VBox>
-      <AnchorPane style="-fx-background-color: #FFDD33;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane style="-fx-background-color: WHITE;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fitHeight="76.0" fitWidth="97.0" layoutX="33.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="0.0">
+            <ImageView fitHeight="51.0" fitWidth="281.0" layoutX="23.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="12.040000915527344" AnchorPane.leftAnchor="23.0" AnchorPane.topAnchor="12.0">
                <image>
-                  <Image url="@../../../assets/logoibnzohr.png" />
+                  <Image url="@../../assets/LOGO-ENSIASD-TAROUDANTE-1-450x72.png" />
                </image>
             </ImageView>
             <AnchorPane layoutX="563.0" layoutY="9.0">
                <children>
                   <ImageView fx:id="viewImageProfile" fitHeight="59.0" fitWidth="67.0" layoutX="221.0" pickOnBounds="true" preserveRatio="true" style="-fx-fit-width: 60; -fx-fit-height: 60;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <image>
-                        <Image url="@../../../assets/profile.jpg" />
+                        <Image url="@../../assets/me2.jpeg" />
                      </image>
                   </ImageView>
                   <Text fx:id="loggedInUserEmail" layoutY="24.4208984375" strokeType="OUTSIDE" strokeWidth="0.0" text="amarjaneelmahdi@uiz.uac.ma" AnchorPane.bottomAnchor="32.2421875" AnchorPane.rightAnchor="67.12548828125" AnchorPane.topAnchor="10.841796875">
@@ -133,7 +136,7 @@
                   </Text>
                </children>
             </AnchorPane>
-            <FontAwesomeIconView fx:id="btnSignOut" accessibleRole="BUTTON" fill="WHITE" glyphName="SIGN_OUT" layoutX="1305.0" layoutY="47.0" onMouseClicked="#signOutBtnClicked" size="25" />
+            <FontAwesomeIconView fx:id="btnSignOut" accessibleRole="BUTTON" glyphName="SIGN_OUT" layoutX="1305.0" layoutY="47.0" onMouseClicked="#signOutBtnClicked" selectionFill="BLACK" size="25" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="chatPane" layoutX="236.0" layoutY="76.0" prefHeight="441.0" prefWidth="517.0" style="-fx-background-color: #EE11AA;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="236.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="76.0">
@@ -167,6 +170,7 @@
   <fx:include fx:id="annoncesMainPane" source="studentAnnonces.fxml" /> 
    
  <fx:include fx:id="coursMainPane" source="studentCours.fxml" /> 
+     <fx:include fx:id="chatPane" source="../chat4.fxml" /> 
   <!-- <fx:include fx:id="emploiTempsPane" source="studentEmploiTemps.fxml" /> -->
 
    

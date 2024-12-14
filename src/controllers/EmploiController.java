@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import config.AppFunctions;
 import dao.ElementDao;
 import dao.EmploiDao;
 import dao.FilierDao;
@@ -28,7 +29,7 @@ public class EmploiController {
 	ProfesseurDao professeurDao=new ProfesseurDao();
 	SalleDao salleDao=new SalleDao();
 	EmploiDao emploiDao=new EmploiDao();
-	EmploiDao emploi=new EmploiDao();
+	Emploi emploi=new Emploi();
 	FilierDao filierDao=new FilierDao();
 	
 	List<Element> elements;
@@ -54,6 +55,41 @@ public class EmploiController {
 	 
 	 @FXML
 	 private ComboBox<String> filier_titel;
+	 
+	 //LUNDI
+	 @FXML 
+	 private ComboBox<String> Lundi_matiere_8_10_L1, Lundi_matiere_8_10_L2, Mardi_matiere_8_10_L1,Mardi_matiere_8_10_L2,Mercredi_matiere_8_10_L1,Mercredi_matiere_8_10_L2,Jeudi_matiere_8_10_L1,Jeudi_matiere_8_10_L2,Vendredi_matiere_8_10_L1,Vendredi_matiere_8_10_L2;
+	 @FXML 
+	 private ComboBox<String> Lundi_prof_8_10_L1, Lundi_prof_8_10_L2, Mardi_prof_8_10_L1,Mardi_prof_8_10_L2,Mercredi_prof_8_10_L1,Mercredi_prof_8_10_L2,Jeudi_prof_8_10_L1,Jeudi_prof_8_10_L2,Vendredi_prof_8_10_L1,Vendredi_prof_8_10_L2;
+	 @FXML 
+	 private ComboBox<String> Lundi_salle_8_10_L1, Lundi_salle_8_10_L2, Mardi_salle_8_10_L1,Mardi_salle_8_10_L2,Mercredi_salle_8_10_L1,Mercredi_salle_8_10_L2,Jeudi_salle_8_10_L1,Jeudi_salle_8_10_L2,Vendredi_salle_8_10_L1,Vendredi_salle_8_10_L2;
+
+	 @FXML 
+	 private ComboBox<String> Lundi_matiere_10_12_L1, Lundi_matiere_10_12_L2, Mardi_matiere_10_12_L1,Mardi_matiere_10_12_L2,Mercredi_matiere_10_12_L1,Mercredi_matiere_10_12_L2,Jeudi_matiere_10_12_L1,Jeudi_matiere_10_12_L2,Vendredi_matiere_10_12_L1,Vendredi_matiere_10_12_L2;
+	 @FXML 
+	 private ComboBox<String> Lundi_prof_10_12_L1, Lundi_prof_10_12_L2, Mardi_prof_10_12_L1,Mardi_prof_10_12_L2,Mercredi_prof_10_12_L1,Mercredi_prof_10_12_L2,Jeudi_prof_10_12_L1,Jeudi_prof_10_12_L2,Vendredi_prof_10_12_L1,Vendredi_prof_10_12_L2;
+	 @FXML 
+	 private ComboBox<String> Lundi_salle_10_12_L1, Lundi_salle_10_12_L2, Mardi_salle_10_12_L1,Mardi_salle_10_12_L2,Mercredi_salle_10_12_L1,Mercredi_salle_10_12_L2,Jeudi_salle_10_12_L1,Jeudi_salle_10_12_L2,Vendredi_salle_10_12_L1,Vendredi_salle_10_12_L2;
+
+	 @FXML 
+	 private ComboBox<String> Lundi_matiere_2_4_L1, Lundi_matiere_2_4_L2, Mardi_matiere_2_4_L1,Mardi_matiere_2_4_L2,Mercredi_matiere_2_4_L1,Mercredi_matiere_2_4_L2,Jeudi_matiere_2_4_L1,Jeudi_matiere_2_4_L2,Vendredi_matiere_2_4_L1,Vendredi_matiere_2_4_L2;
+	 @FXML 
+	 private ComboBox<String> Lundi_prof_2_4_L1, Lundi_prof_2_4_L2, Mardi_prof_2_4_L1,Mardi_prof_2_4_L2,Mercredi_prof_2_4_L1,Mercredi_prof_2_4_L2,Jeudi_prof_2_4_L1,Jeudi_prof_2_4_L2,Vendredi_prof_2_4_L1,Vendredi_prof_2_4_L2;
+	 @FXML 
+	 private ComboBox<String> Lundi_salle_2_4_L1, Lundi_salle_2_4_L2, Mardi_salle_2_4_L1,Mardi_salle_2_4_L2,Mercredi_salle_2_4_L1,Mercredi_salle_2_4_L2,Jeudi_salle_2_4_L1,Jeudi_salle_2_4_L2,Vendredi_salle_2_4_L1,Vendredi_salle_2_4_L2;
+	 
+	 @FXML 
+	 private ComboBox<String> Lundi_matiere_4_6_L1, Lundi_matiere_4_6_L2, Mardi_matiere_4_6_L1,Mardi_matiere_4_6_L2,Mercredi_matiere_4_6_L1,Mercredi_matiere_4_6_L2,Jeudi_matiere_4_6_L1,Jeudi_matiere_4_6_L2,Vendredi_matiere_4_6_L1,Vendredi_matiere_4_6_L2;
+	 @FXML 
+	 private ComboBox<String> Lundi_prof_4_6_L1, Lundi_prof_4_6_L2, Mardi_prof_4_6_L1,Mardi_prof_4_6_L2,Mercredi_prof_4_6_L1,Mercredi_prof_4_6_L2,Jeudi_prof_4_6_L1,Jeudi_prof_4_6_L2,Vendredi_prof_4_6_L1,Vendredi_prof_4_6_L2;
+	 @FXML 
+	 private ComboBox<String> Lundi_salle_4_6_L1, Lundi_salle_4_6_L2, Mardi_salle_4_6_L1,Mardi_salle_4_6_L2,Mercredi_salle_4_6_L1,Mercredi_salle_4_6_L2,Jeudi_salle_4_6_L1,Jeudi_salle_4_6_L2,Vendredi_salle_4_6_L1,Vendredi_salle_4_6_L2;
+	 
+
+	 
+	 @FXML
+	 ComboBox <String> list_profs;
+	 
 	 
 	 //LUNDI
 	 @FXML 
@@ -105,18 +141,16 @@ public class EmploiController {
 	 @FXML 
 	 private ComboBox<String> Vendredi_16_18_element,Vendredi_16_18_salle,Vendredi_16_18_type;
 	 
-	 @FXML
-	 ComboBox <String> list_profs;
-	 
 	 
 	 public void initialize() {
-		 initializeComboBox();
+		 initializeComboBoxProf();
+		 initializeComboBoxFilier();
 	 }
 	 
 	 @FXML
 	public void saveEmploiFilier() {
 		
-		 /*
+		 
 		// Lundi (Monday)
 		 List<String> H_8_10_element_lundi = Arrays.asList(Lundi_matiere_8_10_L1.getValue(), Lundi_matiere_8_10_L2.getValue());
 		 List<String> H_10_12_element_lundi = Arrays.asList(Lundi_matiere_10_12_L1.getValue(), Lundi_matiere_10_12_L2.getValue());
@@ -281,13 +315,143 @@ public class EmploiController {
          
 		 emploi.setDate(localDate);
 		 emploi.setCni_user("Test");
+		 //emploi.setFilier_titel(filier_titel.getValue());
+		 
+		 if(emploiDao.insertEmploi(emploi)) {
+			 AppFunctions.showAlertInformation("Succès","Emploi ajouter avec succès !");
+		 }else {
+			 AppFunctions.showAlertInformation("Erreur","Échec de l'ajoute de L'emploi.");
+		 } 
+			
+		 
+	}
+	 
+	 public void saveEmploiProf() {
+		 
+		 //LUNDI
+		 List<String> H_8_10_element_lundi = Arrays.asList(Lundi_8_10_element.getValue()+" ( "+Lundi_8_10_type.getValue()+" )");
+		 List<String> H_10_12_element_lundi = Arrays.asList(Lundi_10_12_element.getValue()+" ( "+Lundi_10_12_type.getValue()+" )");
+		 List<String> H_2_4_element_lundi = Arrays.asList(Lundi_14_16_element.getValue()+" ( "+Lundi_14_16_type.getValue()+" )");
+		 List<String> H_4_6_element_lundi = Arrays.asList(Lundi_16_18_element.getValue()+" ( "+Lundi_16_18_type.getValue()+" )");
+		 
+		 List<String> H_8_10_salle_lundi = Arrays.asList(Lundi_8_10_salle.getValue());
+		 List<String> H_10_12_salle_lundi = Arrays.asList(Lundi_10_12_salle.getValue());
+		 List<String> H_2_4_salle_lundi = Arrays.asList(Lundi_14_16_salle.getValue());
+		 List<String> H_4_6_salle_lundi = Arrays.asList(Lundi_16_18_salle.getValue());
+		 
+		//MARDI
+		 List<String> H_8_10_element_mardi = Arrays.asList(Mardi_8_10_element.getValue()+" ( "+Mardi_8_10_type.getValue()+" )");
+		 List<String> H_10_12_element_mardi = Arrays.asList(Mardi_10_12_element.getValue()+" ( "+Mardi_10_12_type.getValue()+" )");
+		 List<String> H_2_4_element_mardi = Arrays.asList(Mardi_14_16_element.getValue()+" ( "+Mardi_14_16_type.getValue()+" )");
+		 List<String> H_4_6_element_mardi = Arrays.asList(Mardi_16_18_element.getValue()+" ( "+Mardi_16_18_type.getValue()+" )");
+		 
+		 List<String> H_8_10_salle_mardi = Arrays.asList(Mardi_8_10_salle.getValue());
+		 List<String> H_10_12_salle_mardi = Arrays.asList(Mardi_10_12_salle.getValue());
+		 List<String> H_2_4_salle_mardi = Arrays.asList(Mardi_14_16_salle.getValue());
+		 List<String> H_4_6_salle_mardi = Arrays.asList(Mardi_16_18_salle.getValue());
+		 
+		//MERCREDI
+		 List<String> H_8_10_element_mercredi = Arrays.asList(Mercredi_8_10_element.getValue()+" ( "+Mercredi_8_10_type.getValue()+" )");
+		 List<String> H_10_12_element_mercredi = Arrays.asList(Mercredi_10_12_element.getValue()+" ( "+Mercredi_10_12_type.getValue()+" )");
+		 List<String> H_2_4_element_mercredi = Arrays.asList(Mercredi_14_16_element.getValue()+" ( "+Mercredi_14_16_type.getValue()+" )");
+		 List<String> H_4_6_element_mercredi = Arrays.asList(Mercredi_16_18_element.getValue()+" ( "+Mercredi_16_18_type.getValue()+" )");
+		 
+		 List<String> H_8_10_salle_mercredi = Arrays.asList(Mercredi_8_10_salle.getValue());
+		 List<String> H_10_12_salle_mercredi = Arrays.asList(Mercredi_10_12_salle.getValue());
+		 List<String> H_2_4_salle_mercredi = Arrays.asList(Mercredi_14_16_salle.getValue());
+		 List<String> H_4_6_salle_mercredi = Arrays.asList(Mercredi_16_18_salle.getValue());
+		 
+		//JEUDI
+		 List<String> H_8_10_element_jeudi = Arrays.asList(Jeudi_8_10_element.getValue()+" ( "+Lundi_8_10_type.getValue()+" )");
+		 List<String> H_10_12_element_jeudi = Arrays.asList(Jeudi_10_12_element.getValue()+" ( "+Lundi_10_12_type.getValue()+" )");
+		 List<String> H_2_4_element_jeudi = Arrays.asList(Jeudi_14_16_element.getValue()+" ( "+Lundi_14_16_type.getValue()+" )");
+		 List<String> H_4_6_element_jeudi = Arrays.asList(Jeudi_16_18_element.getValue()+" ( "+Lundi_16_18_type.getValue()+" )");
+		 
+		 List<String> H_8_10_salle_jeudi = Arrays.asList(Jeudi_8_10_salle.getValue());
+		 List<String> H_10_12_salle_jeudi = Arrays.asList(Jeudi_10_12_salle.getValue());
+		 List<String> H_2_4_salle_jeudi = Arrays.asList(Jeudi_14_16_salle.getValue());
+		 List<String> H_4_6_salle_jeudi = Arrays.asList(Jeudi_16_18_salle.getValue());
+		 
+		//VENDREDI
+		 List<String> H_8_10_element_vendredi = Arrays.asList(Vendredi_8_10_element.getValue()+" ( "+Lundi_8_10_type.getValue()+" )");
+		 List<String> H_10_12_element_vendredi = Arrays.asList(Vendredi_10_12_element.getValue()+" ( "+Lundi_10_12_type.getValue()+" )");
+		 List<String> H_2_4_element_vendredi = Arrays.asList(Vendredi_14_16_element.getValue()+" ( "+Lundi_14_16_type.getValue()+" )");
+		 List<String> H_4_6_element_vendredi = Arrays.asList(Vendredi_16_18_element.getValue()+" ( "+Lundi_16_18_type.getValue()+" )");
+		 
+		 List<String> H_8_10_salle_vendredi = Arrays.asList(Vendredi_8_10_salle.getValue());
+		 List<String> H_10_12_salle_vendredi = Arrays.asList(Vendredi_10_12_salle.getValue());
+		 List<String> H_2_4_salle_vendredi = Arrays.asList(Vendredi_14_16_salle.getValue());
+		 List<String> H_4_6_salle_vendredi = Arrays.asList(Vendredi_16_18_salle.getValue());
+		 
+		 
+		 emploi.setDate(localDate);
+		 emploi.setCni_user(list_profs.getValue());
 		 emploi.setFilier_titel(filier_titel.getValue());
 		 
-		 emploiDao.insertEmploi(emploi);
+		 //LUNDI
+		 emploi.setH_8_10_element_lundi(H_8_10_element_lundi);
+		 emploi.setH_10_12_element_lundi(H_10_12_element_lundi);
+		 emploi.setH_2_4_element_lundi(H_2_4_element_lundi);
+		 emploi.setH_4_6_element_lundi(H_4_6_element_lundi);
 		 
-		 */
-			
-	}
+		 emploi.setH_8_10_salle_lundi(H_8_10_salle_lundi);
+		 emploi.setH_10_12_salle_lundi(H_10_12_salle_lundi);
+		 emploi.setH_2_4_salle_lundi(H_2_4_salle_lundi);
+		 emploi.setH_4_6_salle_lundi(H_4_6_salle_lundi);
+		 
+		 //MARDI
+		 emploi.setH_8_10_element_mardi(H_8_10_element_mardi);
+		 emploi.setH_10_12_element_mardi(H_10_12_element_mardi);
+		 emploi.setH_2_4_element_mardi(H_2_4_element_mardi);
+		 emploi.setH_4_6_element_mardi(H_4_6_element_mardi);
+		 
+		 emploi.setH_8_10_salle_mardi(H_8_10_salle_mardi);
+		 emploi.setH_10_12_salle_mardi(H_10_12_salle_mardi);
+		 emploi.setH_2_4_salle_mardi(H_2_4_salle_mardi);
+		 emploi.setH_4_6_salle_mardi(H_4_6_salle_mardi);
+		 
+		//MECREDI
+		 emploi.setH_8_10_element_mercredi(H_8_10_element_mercredi);
+		 emploi.setH_10_12_element_mercredi(H_10_12_element_mercredi);
+		 emploi.setH_2_4_element_mercredi(H_2_4_element_mercredi);
+		 emploi.setH_4_6_element_mercredi(H_4_6_element_mercredi);
+		 
+		 emploi.setH_8_10_salle_mercredi(H_8_10_salle_mercredi);
+		 emploi.setH_10_12_salle_mercredi(H_10_12_salle_mercredi);
+		 emploi.setH_2_4_salle_mercredi(H_2_4_salle_mercredi);
+		 emploi.setH_4_6_salle_mercredi(H_4_6_salle_mercredi);
+		 
+		//JEUDI
+		 emploi.setH_8_10_element_jeudi(H_8_10_element_jeudi);
+		 emploi.setH_10_12_element_jeudi(H_10_12_element_jeudi);
+		 emploi.setH_2_4_element_jeudi(H_2_4_element_jeudi);
+		 emploi.setH_4_6_element_jeudi(H_4_6_element_jeudi);
+		 
+		 emploi.setH_8_10_salle_jeudi(H_8_10_salle_jeudi);
+		 emploi.setH_10_12_salle_jeudi(H_10_12_salle_jeudi);
+		 emploi.setH_2_4_salle_jeudi(H_2_4_salle_jeudi);
+		 emploi.setH_4_6_salle_jeudi(H_4_6_salle_jeudi);
+		 
+		//VENDREDI
+		 emploi.setH_8_10_element_vendredi(H_8_10_element_vendredi);
+		 emploi.setH_10_12_element_vendredi(H_10_12_element_vendredi);
+		 emploi.setH_2_4_element_vendredi(H_2_4_element_vendredi);
+		 emploi.setH_4_6_element_vendredi(H_4_6_element_vendredi);
+		 
+		 emploi.setH_8_10_salle_vendredi(H_8_10_salle_vendredi);
+		 emploi.setH_10_12_salle_vendredi(H_10_12_salle_vendredi);
+		 emploi.setH_2_4_salle_vendredi(H_2_4_salle_vendredi);
+		 emploi.setH_4_6_salle_vendredi(H_4_6_salle_vendredi);
+		 
+		 
+		 if(emploiDao.insertEmploi(emploi)) {
+			 AppFunctions.showAlertInformation("Succès","Emploi Prof ajouter avec succès !");
+		 }else {
+			 AppFunctions.showAlertInformation("Erreur","Échec de l'ajoute de L'emploi Prof.");
+		 } 
+		 
+		 
+	 }
 	
 	public void emploiTempsProfGridToFront(){
 		emploiTempsProfGrid.toFront();
@@ -298,7 +462,6 @@ public class EmploiController {
 	
 	public void emploiTempsFilliereGridToFront() {
 		emploiTempsFilliereGrid.toFront();
-		
 		goBackToMainEmploiTempsBtn.setVisible(true);
 	}
 	
@@ -309,7 +472,7 @@ public class EmploiController {
 		goBackToMainEmploiTempsBtn.setVisible(false);
 	}
 	
-	public void initializeComboBox() {
+	public void initializeComboBoxProf() {
 		
 		//Les Professeurs
 		try {
@@ -322,6 +485,7 @@ public class EmploiController {
 			System.out.print(e);
 		}
 		
+		
 		try {
 			filiers=filierDao.selectAllFilier();
 			for(Filier filier:filiers) {
@@ -331,6 +495,8 @@ public class EmploiController {
 		}catch(Exception e) {
 			System.out.print(e);
 		}
+		
+		
 		 try {
 			 elements=elementDao.selectAllElemnt();			 
 			 //MATIER
@@ -447,6 +613,204 @@ public class EmploiController {
 			 System.out.print(e);
 		 }
 	 }
+	
+	public void initializeComboBoxFilier() {
+	    List<Salle> salles;
+	    List<Element> matiers;
+	    List<Professeur> professeurs;
+
+
+	    try {
+	        salles = salleDao.selectSalle();
+
+	        for (Salle salle : salles) {
+	            // LUNDI
+	            Lundi_salle_8_10_L1.getItems().addAll(salle.getTitel());
+	            Lundi_salle_8_10_L2.getItems().addAll(salle.getTitel());
+	            Lundi_salle_10_12_L1.getItems().addAll(salle.getTitel());
+	            Lundi_salle_10_12_L2.getItems().addAll(salle.getTitel());
+	            Lundi_salle_2_4_L1.getItems().addAll(salle.getTitel());
+	            Lundi_salle_2_4_L2.getItems().addAll(salle.getTitel());
+	            Lundi_salle_4_6_L1.getItems().addAll(salle.getTitel());
+	            Lundi_salle_4_6_L2.getItems().addAll(salle.getTitel());
+
+	            // MARDI
+	            Mardi_salle_8_10_L1.getItems().addAll(salle.getTitel());
+	            Mardi_salle_8_10_L2.getItems().addAll(salle.getTitel());
+	            Mardi_salle_10_12_L1.getItems().addAll(salle.getTitel());
+	            Mardi_salle_10_12_L2.getItems().addAll(salle.getTitel());
+	            Mardi_salle_2_4_L1.getItems().addAll(salle.getTitel());
+	            Mardi_salle_2_4_L2.getItems().addAll(salle.getTitel());
+	            Mardi_salle_4_6_L1.getItems().addAll(salle.getTitel());
+	            Mardi_salle_4_6_L2.getItems().addAll(salle.getTitel());
+
+	            // MERCREDI
+	            Mercredi_salle_8_10_L1.getItems().addAll(salle.getTitel());
+	            Mercredi_salle_8_10_L2.getItems().addAll(salle.getTitel());
+	            Mercredi_salle_10_12_L1.getItems().addAll(salle.getTitel());
+	            Mercredi_salle_10_12_L2.getItems().addAll(salle.getTitel());
+	            Mercredi_salle_2_4_L1.getItems().addAll(salle.getTitel());
+	            Mercredi_salle_2_4_L2.getItems().addAll(salle.getTitel());
+	            Mercredi_salle_4_6_L1.getItems().addAll(salle.getTitel());
+	            Mercredi_salle_4_6_L2.getItems().addAll(salle.getTitel());
+
+	            // JEUDI
+	            Jeudi_salle_8_10_L1.getItems().addAll(salle.getTitel());
+	            Jeudi_salle_8_10_L2.getItems().addAll(salle.getTitel());
+	            Jeudi_salle_10_12_L1.getItems().addAll(salle.getTitel());
+	            Jeudi_salle_10_12_L2.getItems().addAll(salle.getTitel());
+	            Jeudi_salle_2_4_L1.getItems().addAll(salle.getTitel());
+	            Jeudi_salle_2_4_L2.getItems().addAll(salle.getTitel());
+	            Jeudi_salle_4_6_L1.getItems().addAll(salle.getTitel());
+	            Jeudi_salle_4_6_L2.getItems().addAll(salle.getTitel());
+
+	            // VENDREDI
+	            Vendredi_salle_8_10_L1.getItems().addAll(salle.getTitel());
+	            Vendredi_salle_8_10_L2.getItems().addAll(salle.getTitel());
+	            Vendredi_salle_10_12_L1.getItems().addAll(salle.getTitel());
+	            Vendredi_salle_10_12_L2.getItems().addAll(salle.getTitel());
+	            Vendredi_salle_2_4_L1.getItems().addAll(salle.getTitel());
+	            Vendredi_salle_2_4_L2.getItems().addAll(salle.getTitel());
+	            Vendredi_salle_4_6_L1.getItems().addAll(salle.getTitel());
+	            Vendredi_salle_4_6_L2.getItems().addAll(salle.getTitel());
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    
+	    //MATIER
+	    
+	    try {
+	        matiers = elementDao.selectAllElemnt();
+
+	        // Lundi
+	        for (Element matiere : matiers) {
+	        	
+	        	//LUNDI
+	            Lundi_matiere_8_10_L1.getItems().add(matiere.getNom());
+	            Lundi_matiere_8_10_L2.getItems().add(matiere.getNom());
+	            Lundi_matiere_10_12_L1.getItems().add(matiere.getNom());
+	            Lundi_matiere_10_12_L2.getItems().add(matiere.getNom());
+	            Lundi_matiere_2_4_L1.getItems().add(matiere.getNom());
+	            Lundi_matiere_2_4_L2.getItems().add(matiere.getNom());
+	            Lundi_matiere_4_6_L1.getItems().add(matiere.getNom());
+	            Lundi_matiere_4_6_L2.getItems().add(matiere.getNom());
+	            
+	            //MARDI
+	            Mardi_matiere_8_10_L1.getItems().add(matiere.getNom());
+	            Mardi_matiere_8_10_L2.getItems().add(matiere.getNom());
+	            Mardi_matiere_10_12_L1.getItems().add(matiere.getNom());
+	            Mardi_matiere_10_12_L2.getItems().add(matiere.getNom());
+	            Mardi_matiere_2_4_L1.getItems().add(matiere.getNom());
+	            Mardi_matiere_2_4_L2.getItems().add(matiere.getNom());
+	            Mardi_matiere_4_6_L1.getItems().add(matiere.getNom());
+	            Mardi_matiere_4_6_L2.getItems().add(matiere.getNom());
+	            
+	            //Mercredi
+	            Mercredi_matiere_8_10_L1.getItems().add(matiere.getNom());
+	            Mercredi_matiere_8_10_L2.getItems().add(matiere.getNom());
+	            Mercredi_matiere_10_12_L1.getItems().add(matiere.getNom());
+	            Mercredi_matiere_10_12_L2.getItems().add(matiere.getNom());
+	            Mercredi_matiere_2_4_L1.getItems().add(matiere.getNom());
+	            Mercredi_matiere_2_4_L2.getItems().add(matiere.getNom());
+	            Mercredi_matiere_4_6_L1.getItems().add(matiere.getNom());
+	            Mercredi_matiere_4_6_L2.getItems().add(matiere.getNom());
+	            
+	            //MARDI
+	            Jeudi_matiere_8_10_L1.getItems().add(matiere.getNom());
+	            Jeudi_matiere_8_10_L2.getItems().add(matiere.getNom());
+	            Jeudi_matiere_10_12_L1.getItems().add(matiere.getNom());
+	            Jeudi_matiere_10_12_L2.getItems().add(matiere.getNom());
+	            Jeudi_matiere_2_4_L1.getItems().add(matiere.getNom());
+	            Jeudi_matiere_2_4_L2.getItems().add(matiere.getNom());
+	            Jeudi_matiere_4_6_L1.getItems().add(matiere.getNom());
+	            Jeudi_matiere_4_6_L2.getItems().add(matiere.getNom());
+	            
+	            //MARDI
+	            Vendredi_matiere_8_10_L1.getItems().add(matiere.getNom());
+	            Vendredi_matiere_8_10_L2.getItems().add(matiere.getNom());
+	            Vendredi_matiere_10_12_L1.getItems().add(matiere.getNom());
+	            Vendredi_matiere_10_12_L2.getItems().add(matiere.getNom());
+	            Vendredi_matiere_2_4_L1.getItems().add(matiere.getNom());
+	            Vendredi_matiere_2_4_L2.getItems().add(matiere.getNom());
+	            Vendredi_matiere_4_6_L1.getItems().add(matiere.getNom());
+	            Vendredi_matiere_4_6_L2.getItems().add(matiere.getNom());
+	            
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    
+	    //PROESSEUrs
+	    try {
+	        professeurs = professeurDao.selectAllProfesseur();
+
+	        // Lundi
+	        for (Professeur professeur : professeurs) {
+	            Lundi_prof_8_10_L1.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Lundi_prof_8_10_L2.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Lundi_prof_10_12_L1.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Lundi_prof_10_12_L2.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Lundi_prof_2_4_L1.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Lundi_prof_2_4_L2.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Lundi_prof_4_6_L1.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Lundi_prof_4_6_L2.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            
+	            //MARDI
+	            
+	            Mardi_prof_8_10_L1.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Mardi_prof_8_10_L2.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Mardi_prof_10_12_L1.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Mardi_prof_10_12_L2.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Mardi_prof_2_4_L1.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Mardi_prof_2_4_L2.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Mardi_prof_4_6_L1.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Mardi_prof_4_6_L2.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            
+	            //MERCREDI
+	            
+	            Mercredi_prof_8_10_L1.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Mercredi_prof_8_10_L2.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Mercredi_prof_10_12_L1.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Mercredi_prof_10_12_L2.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Mercredi_prof_2_4_L1.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Mercredi_prof_2_4_L2.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Mercredi_prof_4_6_L1.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Mercredi_prof_4_6_L2.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            
+	            //JEUDI
+	            Jeudi_prof_8_10_L1.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Jeudi_prof_8_10_L2.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Jeudi_prof_10_12_L1.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Jeudi_prof_10_12_L2.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Jeudi_prof_2_4_L1.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Jeudi_prof_2_4_L2.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Jeudi_prof_4_6_L1.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Jeudi_prof_4_6_L2.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            
+	            //VENDREDI
+	            
+	            Vendredi_prof_8_10_L1.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Vendredi_prof_8_10_L2.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Vendredi_prof_10_12_L1.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Vendredi_prof_10_12_L2.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Vendredi_prof_2_4_L1.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Vendredi_prof_2_4_L2.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Vendredi_prof_4_6_L1.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            Vendredi_prof_4_6_L2.getItems().add(professeur.getNom()+" "+professeur.getPrenom());
+	            
+	        }
+
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    
+	
+	}
 	 
 	
 }

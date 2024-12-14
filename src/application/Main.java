@@ -17,6 +17,7 @@ import modules.Etudiant;
 import network.ChatServer2;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 
 // TEST
@@ -31,8 +32,9 @@ public class Main extends Application {
         Scene mainScene = new Scene(mainRoot); 
         Stage mainStage = new Stage();
         mainStage.setScene(mainScene);
-        mainStage.setTitle("Main Application");
+        mainStage.setTitle("APP GESTION ENSIASD");
         mainScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+       
 
         // Add your main application logic here
 

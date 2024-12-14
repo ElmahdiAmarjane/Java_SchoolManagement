@@ -66,6 +66,9 @@ public class AnnonceController {
 	@FXML private Button updateAnnonceBtn;
 	//////////////
 	@FXML private Text titleAnnonceToModify;
+	///////////////
+	@FXML private AnchorPane annoncesNavMenu1;
+	@FXML private AnchorPane annoncesNavMenu2;
 	
 	 public void initialize() {
 		 
@@ -170,10 +173,12 @@ public class AnnonceController {
 	 public void setAnnoncesListToFront() {
 		 initialize();
 		 annoncesListAnchorPane.toFront();
+		 annoncesNavMenu1.toFront();
 	 }
 	
 	 public void setAnnonceAddAnchorPaneToFront() {
 		 annoncesAddAnchorPane.toFront();
+		 annoncesNavMenu2.toFront();
 		 
 	 }
 	 
@@ -269,7 +274,7 @@ public class AnnonceController {
 	                   		  annonce.getDateAnnonce().toString(), String.valueOf(annonce.getId()) , annonce.getFile() );
 	                    // Pass the main controller instance to the widget controller
 	                    AnnonceWidgetController.setMainController(this);
-System.out.println("ertyuio");
+
 	                    // Add the widget to the grid
 	                    gridPane.add(widget, col, row++);
 
@@ -332,7 +337,7 @@ System.out.println("ertyuio");
 
 	         
 	        } else {
-	            System.out.println("upate canceled!");
+	            System.out.println("upadte canceled!");
 	        }
 	    }
 	    

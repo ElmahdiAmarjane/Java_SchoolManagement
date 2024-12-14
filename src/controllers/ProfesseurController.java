@@ -115,8 +115,11 @@ public class ProfesseurController {
 		 private ComboBox<String> Matiere_enseigne,sexe,nationalite,type_contrat;
 		 @FXML
 		 private DatePicker date_naissance;
-
-
+////////////////////////
+		 @FXML
+		 private AnchorPane listProfMenu;
+		 @FXML
+		 private AnchorPane addProfMenu;
 		
 		 
 		public void initialisCombpBox() {
@@ -341,10 +344,12 @@ public class ProfesseurController {
 	}
 	public void addProfPaneToFront() {
 		addProfPane.toFront();
+		addProfMenu.toFront();
 	   // studentNavMenu.getChildren().removeLast();
 	}
 	public void listProfPaneToFront() {
 		listProfPane.toFront();
+		listProfMenu.toFront();
 	   // studentNavMenu.getChildren().removeLast();
 	}
 	

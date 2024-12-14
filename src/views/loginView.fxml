@@ -17,7 +17,7 @@
          <children>
             <ImageView fx:id="imgLogo" fitHeight="361.0" fitWidth="364.0" layoutX="70.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../assets/illustration.png" />
+                  <Image url="@../assets/illustration.png" />
                </image>
             </ImageView>
          </children>
@@ -27,17 +27,17 @@
          <children>
             <TextField fx:id="txtUsername" layoutX="70.0" layoutY="249.0" prefHeight="25.0" prefWidth="350.0" promptText="Username" styleClass="custom-text-field" />
             <PasswordField fx:id="txtPassword" layoutX="70.0" layoutY="329.0" prefHeight="25.0" prefWidth="350.0" promptText="Password" styleClass="custom-text-field" />
-            <Label layoutX="142.0" layoutY="129.0" text="Access your account">
+            <Label layoutX="142.0" layoutY="129.0" text="Accédez à votre compte">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label layoutX="163.0" layoutY="64.0" text="Welcome">
+            <Label layoutX="163.0" layoutY="64.0" text="Bienvenue">
                <font>
                   <Font name="System Bold" size="40.0" />
                </font>
             </Label>
-            <Label layoutX="70.0" layoutY="378.0" text="Forgot your password ?" />
+           <!--  <Label layoutX="70.0" layoutY="378.0" text="Forgot your password ?" />  -->
             <JFXButton fx:id="txtButton" buttonType="RAISED" layoutX="182.0" layoutY="434.0" onMouseClicked="#login" prefHeight="46.0" prefWidth="125.0" style="-fx-background-color: #608BC1;" text="Login" textFill="WHITE">
                <font>
                   <Font name="Verdana Bold" size="18.0" />

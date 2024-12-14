@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox fx:id="AnnonceView"  prefHeight="203.0" prefWidth="787.0" spacing="10" style="-fx-padding: 15; -fx-border-color: #dcdcdc; -fx-border-radius: 8; -fx-background-color: #f9f9f9; -fx-background-radius: 8;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AnnonceWidgetController">
+<VBox fx:id="AnnonceView" prefHeight="203.0" prefWidth="1066.0" spacing="10" style="-fx-padding: 15; -fx-border-color: #dcdcdc; -fx-border-radius: 8; -fx-background-color: #f9f9f9; -fx-background-radius: 8;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AnnonceWidgetController">
     <!-- En-tête avec "Administration" -->
     <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="709.0" style="-fx-padding: 5;" VBox.vgrow="ALWAYS">
         <Label fx:id="announcementHeader" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #4CAF50;" text="Administration" />
@@ -17,7 +17,7 @@
          <children>
             <ImageView fx:id="showAnnonceDetailsBtn" fitHeight="22.0" fitWidth="20.0" nodeOrientation="INHERIT" onMouseClicked="#openAnnonceRUDStage" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                <image>
-                  <Image url="@../../assets/updateIcon.png" />
+                  <Image url="@../assets/updateIcon.png" />
                </image>
                <HBox.margin>
                   <Insets />
@@ -32,7 +32,7 @@
         <!-- Icône ou image utilisateur -->
         <VBox alignment="CENTER">
             <ImageView fx:id="announcementIcon" fitHeight="50" fitWidth="50" preserveRatio="true">
-                <Image url="@../../assets/annonce.png" />
+                <Image url="@../assets/annonce.png" />
             </ImageView>
         </VBox>
 

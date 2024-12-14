@@ -1,3 +1,8 @@
+/controllers/
+/dao/
+/db_connect/
+/modules/
 /network/
 /services/
-/controllers/
+/views/
+/application/
