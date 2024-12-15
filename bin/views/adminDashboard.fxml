@@ -74,7 +74,7 @@
                         <Insets left="20.0" right="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Text fill="WHITE" strokeType="OUTSIDE" text="Proffesseurs" wrappingWidth="120.654296875">
+                  <Text fill="WHITE" strokeType="OUTSIDE" text="Professeurs" wrappingWidth="120.654296875">
                      <font>
                         <Font name="Segoe UI Bold" size="20.0" />
                      </font>
@@ -122,7 +122,7 @@
                         <Insets left="20.0" right="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Text fill="WHITE" strokeType="OUTSIDE" text="Filliéres" wrappingWidth="93.654296875">
+                  <Text fill="WHITE" strokeType="OUTSIDE" text="Fillières" wrappingWidth="93.654296875">
                      <font>
                         <Font name="Segoe UI Bold" size="20.0" />
                      </font>

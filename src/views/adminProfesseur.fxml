@@ -47,6 +47,43 @@
                 <Line endX="72.0" endY="7.0" fill="WHITE" layoutX="97.0" layoutY="35.0" startX="-51.0" startY="7.0" stroke="WHITE" strokeWidth="2.0" />
             </children>
         </AnchorPane>
+
+        <AnchorPane fx:id="listProfPane" layoutY="52.0" prefHeight="388.0" prefWidth="517.0" style="-fx-background-color: WHITE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+            <children>
+                
+              <AnchorPane prefHeight="512.0" prefWidth="1109.0" style="-fx-background-color: WHITE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            	<children>
+                <Text layoutX="15.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste Prof" wrappingWidth="170.7734375">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Text>
+                
+                <!-- TableView for displaying student data -->
+                <TableView fx:id="studentsTable" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="53.0">
+                    <columns>
+                        <!-- TableColumn for number (index) -->
+                        <TableColumn fx:id="colNumber" prefWidth="121.0" text="N°" />
+
+                        <TableColumn fx:id="colCIN" prefWidth="112.0" text="CIN" />
+
+                        <TableColumn fx:id="colNom" prefWidth="112.0" text="Nom" />
+
+                        <TableColumn fx:id="colPrenom" prefWidth="103.0" text="Prénom" />                        
+
+                        <TableColumn fx:id="colMatiere_enseigne" prefWidth="130.0" text="Matière enseignée" />
+                        
+                        <TableColumn fx:id="coltype_contrat" prefWidth="130.0" text="type de contrat" />
+                        
+                        <TableColumn fx:id="icons" prefWidth="130.0" text="Action" />
+                    </columns>
+                </TableView>
+                
+            </children>
+        </AnchorPane>
+    
+            </children>
+        </AnchorPane>
    
    		<AnchorPane fx:id="addProfPane" layoutX="-9.0" layoutY="50.0" prefHeight="587.0" prefWidth="1152.0" style="-fx-background-color: WHITE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                <children>
@@ -142,7 +179,7 @@
                      
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="addProfFin" layoutX="11.0" layoutY="48.0" prefHeight="452.0" prefWidth="1115.0" style="-fx-border-color: #FFDDEE; -fx-background-color: #DDFFAA;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                  <AnchorPane fx:id="addProfFin" layoutX="11.0" layoutY="48.0" prefHeight="452.0" prefWidth="1115.0" style="-fx-border-color: #FFDDEE; -fx-background-color: white;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                      <children>
                         <Text layoutX="103.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" />
                         <AnchorPane layoutX="55.0" layoutY="12.0" prefHeight="66.0" prefWidth="1007.0" style="-fx-background-color: #e3e2e1;" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="54.0" AnchorPane.topAnchor="11.0">
@@ -184,7 +221,7 @@
                         </Text>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="addProfInfoPers" layoutX="9.0" layoutY="47.0" prefHeight="260.0" prefWidth="498.0" style="-fx-border-color: #FFDDEE; -fx-background-color: #DDFFAA;" AnchorPane.bottomAnchor="82.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="47.0">
+                  <AnchorPane fx:id="addProfInfoPers" layoutX="9.0" layoutY="47.0" prefHeight="260.0" prefWidth="498.0" style="-fx-border-color: #FFDDEE; -fx-background-color: white;" AnchorPane.bottomAnchor="82.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="47.0">
                      <children>
                         <ComboBox fx:id="nationalite" layoutX="878.0" layoutY="146.0" prefHeight="40.0" prefWidth="209.0" />
                         <TextField fx:id="password" layoutX="878.0" layoutY="213.0" prefHeight="40.0" prefWidth="209.0" />
@@ -251,42 +288,5 @@
                
                 </children>
               </AnchorPane>
-
-        <AnchorPane fx:id="listProfPane" layoutY="52.0" prefHeight="388.0" prefWidth="517.0" style="-fx-background-color: WHITE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
-            <children>
-                
-              <AnchorPane prefHeight="512.0" prefWidth="1109.0" style="-fx-background-color: WHITE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            	<children>
-                <Text layoutX="15.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste Prof" wrappingWidth="170.7734375">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Text>
-                
-                <!-- TableView for displaying student data -->
-                <TableView fx:id="studentsTable" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="53.0">
-                    <columns>
-                        <!-- TableColumn for number (index) -->
-                        <TableColumn fx:id="colNumber" prefWidth="121.0" text="N°" />
-
-                        <TableColumn fx:id="colCIN" prefWidth="112.0" text="CIN" />
-
-                        <TableColumn fx:id="colNom" prefWidth="112.0" text="Nom" />
-
-                        <TableColumn fx:id="colPrenom" prefWidth="103.0" text="Prénom" />                        
-
-                        <TableColumn fx:id="colMatiere_enseigne" prefWidth="130.0" text="Matière enseignée" />
-                        
-                        <TableColumn fx:id="coltype_contrat" prefWidth="130.0" text="type de contrat" />
-                        
-                        <TableColumn fx:id="icons" prefWidth="130.0" text="Action" />
-                    </columns>
-                </TableView>
-                
-            </children>
-        </AnchorPane>
-    
-            </children>
-        </AnchorPane>
     </children>
 </AnchorPane>

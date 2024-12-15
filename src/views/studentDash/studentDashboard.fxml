@@ -15,29 +15,6 @@
    <children>
       <VBox layoutY="76.0" prefHeight="637.0" prefWidth="236.0" style="-fx-background-color: #001A6E;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="76.0">
          <children>
-            <HBox fx:id="chatMenu" onMouseClicked="#chatPaneToFront" prefHeight="40.0" prefWidth="153.0">
-               <children>
-                  <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../assets/icons8-chat-50.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="20.0" right="10.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Chat" wrappingWidth="93.654296875">
-                     <font>
-                        <Font name="Segoe UI Bold" size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="6.0" />
-                     </HBox.margin>
-                  </Text>
-               </children>
-               <VBox.margin>
-                  <Insets bottom="30.0" top="50.0" />
-               </VBox.margin>
-            </HBox>
             <HBox fx:id="annoncesMenu" onMouseClicked="#annoncesMenuOnclick" prefHeight="40.0" prefWidth="153.0">
                <children>
                   <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
@@ -58,7 +35,7 @@
                   </Text>
                </children>
                <VBox.margin>
-                  <Insets bottom="30.0" />
+                  <Insets bottom="30.0" top="40.0" />
                </VBox.margin>
             </HBox>
             <HBox fx:id="coursMenu" onMouseClicked="#CoursMenuOnclick" prefHeight="40.0" prefWidth="153.0">
@@ -108,6 +85,26 @@
                   <Insets bottom="30.0" />
                </VBox.margin>
             </HBox>
+            <HBox onMouseClicked="#resetpassword" prefHeight="40.0" prefWidth="153.0">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../assets/icons8-reset-password-66.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="20.0" right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Reset Password" wrappingWidth="158.654296875">
+                     <font>
+                        <Font name="Segoe UI Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="6.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
          </children>
       </VBox>
       <AnchorPane style="-fx-background-color: WHITE;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -141,7 +138,7 @@
       </AnchorPane>
       <AnchorPane fx:id="chatPane" layoutX="236.0" layoutY="76.0" prefHeight="441.0" prefWidth="517.0" style="-fx-background-color: #EE11AA;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="236.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="76.0">
          <children>
-            <AnchorPane prefHeight="51.0" prefWidth="517.0" style="-fx-background-color: #112277;" AnchorPane.bottomAnchor="388.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane layoutX="-10.0" prefHeight="51.0" prefWidth="1145.0" style="-fx-background-color: #112277;" AnchorPane.bottomAnchor="388.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Text fill="WHITE" layoutX="53.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chat">
                      <font>
@@ -151,7 +148,7 @@
                   <Line endX="1.0" endY="7.0" fill="WHITE" layoutX="95.0" layoutY="35.0" startX="-51.0" startY="7.0" stroke="WHITE" strokeWidth="2.0" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="chatChildPane" layoutY="51.0" prefHeight="389.0" prefWidth="517.0" style="-fx-background-color: #11FF99;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+            <AnchorPane fx:id="chatChildPane" layoutY="51.0" prefHeight="587.0" prefWidth="1135.0" style="-fx-background-color: #11FF99;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                <children>
                   <Text layoutX="167.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHAT" wrappingWidth="215.7734375">
                      <font>

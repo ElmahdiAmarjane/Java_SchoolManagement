@@ -5,8 +5,12 @@ import java.io.IOException;
 import java.util.Optional;
 import java.util.function.Predicate;
 
+import config.AppFunctions;
+import dao.UserDao;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
@@ -15,10 +19,13 @@ import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
@@ -568,6 +575,100 @@ public void switchToFrontBetweenAddProfPane() {
  	  }
  	
    }
+   
+   
+   public void resetPassword() {
+   	UserDao userDao = new UserDao();
+	    Stage resetPasswordStage = new Stage();
+	    resetPasswordStage.setTitle("Reset Password");
+
+	    Label oldPasswordLabel = new Label("Old Password:");
+	    PasswordField oldPasswordField = new PasswordField();
+
+	    Label newPasswordLabel = new Label("New Password:");
+	    PasswordField newPasswordField = new PasswordField();
+
+	    Label confirmPasswordLabel = new Label("Confirm New Password:");
+	    PasswordField confirmPasswordField = new PasswordField();
+
+	    Button envoyerButton = new Button("Envoyer");
+
+	    Button annulerButton = new Button("Annuler");
+
+	    GridPane gridPane = new GridPane();
+	    gridPane.setVgap(15);
+	    gridPane.setHgap(10);
+	    gridPane.setPadding(new Insets(30));
+	    
+	    gridPane.setStyle("-fx-background-color: white;");
+	    
+	    gridPane.setAlignment(Pos.CENTER);
+
+	    oldPasswordLabel.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
+	    newPasswordLabel.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
+	    confirmPasswordLabel.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
+	    
+	    oldPasswordField.setPrefWidth(250);
+	    newPasswordField.setPrefWidth(250);
+	    confirmPasswordField.setPrefWidth(250);
+
+	    envoyerButton.setStyle("-fx-background-color: green; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10px 20px;");
+	    annulerButton.setStyle("-fx-background-color: red; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10px 20px;");
+	    
+	    gridPane.add(oldPasswordLabel, 0, 0);
+	    gridPane.add(oldPasswordField, 1, 0);
+	    
+	    gridPane.add(newPasswordLabel, 0, 1);
+	    gridPane.add(newPasswordField, 1, 1);
+	    
+	    gridPane.add(confirmPasswordLabel, 0, 2);
+	    gridPane.add(confirmPasswordField, 1, 2);
+	    
+	    gridPane.add(envoyerButton, 0, 3);
+	    gridPane.add(annulerButton, 1, 3);
+
+	    envoyerButton.setOnAction(new EventHandler<ActionEvent>() {
+	        public void handle(ActionEvent event) {
+	            String oldPassword = oldPasswordField.getText();
+	            String newPassword = newPasswordField.getText();
+	            String confirmPassword = confirmPasswordField.getText();
+
+	            if (newPassword.equals(confirmPassword)) {
+	            	
+	            	boolean isupdated=userDao.resetPassword("bb", oldPassword, newPassword);
+	            	
+	            	if(isupdated) {
+	            		AppFunctions.showAlertSuccess("Succès", "Mot de passe mis à jour avec succès.");
+	            	}else {
+	            		AppFunctions.showAlertSuccess("Échec", "Échec de la mise à jour du mot de passe.");
+	            	}
+	                
+	                resetPasswordStage.close();
+	            } else {
+	                System.out.println("Passwords do not match!");
+	                Alert alert = new Alert(Alert.AlertType.ERROR);
+	                alert.setTitle("Error");
+	                alert.setHeaderText("Password Mismatch");
+	                alert.setContentText("The new password and confirm password do not match.");
+	                alert.showAndWait();
+	            }
+	        }
+	    });
+
+	    // Handle Annuler button click (cancel)
+	    annulerButton.setOnAction(new EventHandler<ActionEvent>() {
+	        @Override
+	        public void handle(ActionEvent event) {
+	            resetPasswordStage.close(); // Close the reset password stage
+	        }
+	    });
+
+	    // Create the scene for the reset password form
+	    Scene resetPasswordScene = new Scene(gridPane, 500, 400);
+	    resetPasswordStage.setScene(resetPasswordScene);
+	    resetPasswordStage.show();
+	}
+
    
 	
 }
