@@ -1,7 +1,5 @@
-/controllers/
-/dao/
-/db_connect/
-/modules/
-/services/
 /application/
+/dao/
+/services/
+/controllers/
 /views/

@@ -366,6 +366,116 @@ public class EmploiDao implements IEmploiServices{
 	    return emploi;
 	}
 
+	@Override
+	public Emploi selectEmploiEtudiant(String filier_titel) {
+		String query = "SELECT * FROM emploi WHERE filier_titel = ?";
+	    Emploi emploi = null;
+
+	    try (Connection connection = JDBC.getConnection();
+	         PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+	        preparedStatement.setString(1, filier_titel);
+
+	        try (ResultSet resultSet = preparedStatement.executeQuery()) {
+	        	
+	            if (resultSet.next()) {
+	                emploi = new Emploi();
+
+
+	                //LUNDI
+	                emploi.setH_8_10_element_lundi(parseJsonArray(resultSet.getString("8-10-element-lundi")));
+	                emploi.setH_10_12_element_lundi(parseJsonArray(resultSet.getString("10-12-element-lundi")));
+	                emploi.setH_2_4_element_lundi(parseJsonArray(resultSet.getString("2-4-element-lundi")));
+	                emploi.setH_4_6_element_lundi(parseJsonArray(resultSet.getString("4-6-element-lundi")));
+
+	                emploi.setH_8_10_prof_lundi(parseJsonArray(resultSet.getString("8-10-prof-lundi")));
+	                emploi.setH_10_12_prof_lundi(parseJsonArray(resultSet.getString("10-12-prof-lundi")));
+	                emploi.setH_2_4_prof_lundi(parseJsonArray(resultSet.getString("2-4-prof-lundi")));
+	                emploi.setH_4_6_prof_lundi(parseJsonArray(resultSet.getString("4-6-prof-lundi")));
+
+	                emploi.setH_8_10_salle_lundi(parseJsonArray(resultSet.getString("8-10-salle-lundi")));
+	                emploi.setH_10_12_salle_lundi(parseJsonArray(resultSet.getString("10-12-salle-lundi")));
+	                emploi.setH_2_4_salle_lundi(parseJsonArray(resultSet.getString("2-4-salle-lundi")));
+	                emploi.setH_4_6_salle_lundi(parseJsonArray(resultSet.getString("4-6-salle-lundi")));
+	                
+	                //MARDI
+	                emploi.setH_8_10_element_mardi(parseJsonArray(resultSet.getString("8-10-element-mardi")));
+	                emploi.setH_10_12_element_mardi(parseJsonArray(resultSet.getString("10-12-element-mardi")));
+	                emploi.setH_2_4_element_mardi(parseJsonArray(resultSet.getString("2-4-element-mardi")));
+	                emploi.setH_4_6_element_mardi(parseJsonArray(resultSet.getString("4-6-element-mardi")));
+
+	                emploi.setH_8_10_prof_mardi(parseJsonArray(resultSet.getString("8-10-prof-mardi")));
+	                emploi.setH_10_12_prof_mardi(parseJsonArray(resultSet.getString("10-12-prof-mardi")));
+	                emploi.setH_2_4_prof_mardi(parseJsonArray(resultSet.getString("2-4-prof-mardi")));
+	                emploi.setH_4_6_prof_mardi(parseJsonArray(resultSet.getString("4-6-prof-mardi")));
+
+	                emploi.setH_8_10_salle_mardi(parseJsonArray(resultSet.getString("8-10-salle-mardi")));
+	                emploi.setH_10_12_salle_mardi(parseJsonArray(resultSet.getString("10-12-salle-mardi")));
+	                emploi.setH_2_4_salle_mardi(parseJsonArray(resultSet.getString("2-4-salle-mardi")));
+	                emploi.setH_4_6_salle_mardi(parseJsonArray(resultSet.getString("4-6-salle-mardi")));
+	                
+	                //MERCREDI
+	                emploi.setH_8_10_element_mercredi(parseJsonArray(resultSet.getString("8-10-element-mercredi")));
+	                emploi.setH_10_12_element_mercredi(parseJsonArray(resultSet.getString("10-12-element-mercredi")));
+	                emploi.setH_2_4_element_mercredi(parseJsonArray(resultSet.getString("2-4-element-mercredi")));
+	                emploi.setH_4_6_element_mercredi(parseJsonArray(resultSet.getString("4-6-element-mercredi")));
+
+	                emploi.setH_8_10_prof_mercredi(parseJsonArray(resultSet.getString("8-10-prof-mercredi")));
+	                emploi.setH_10_12_prof_mercredi(parseJsonArray(resultSet.getString("10-12-prof-mercredi")));
+	                emploi.setH_2_4_prof_mercredi(parseJsonArray(resultSet.getString("2-4-prof-mercredi")));
+	                emploi.setH_4_6_prof_mercredi(parseJsonArray(resultSet.getString("4-6-prof-mercredi")));
+
+	                emploi.setH_8_10_salle_mercredi(parseJsonArray(resultSet.getString("8-10-salle-mercredi")));
+	                emploi.setH_10_12_salle_mercredi(parseJsonArray(resultSet.getString("10-12-salle-mercredi")));
+	                emploi.setH_2_4_salle_mercredi(parseJsonArray(resultSet.getString("2-4-salle-mercredi")));
+	                emploi.setH_4_6_salle_mercredi(parseJsonArray(resultSet.getString("4-6-salle-mercredi")));
+	                
+	                //JEUDI
+	                emploi.setH_8_10_element_jeudi(parseJsonArray(resultSet.getString("8-10-element-jeudi")));
+	                emploi.setH_10_12_element_jeudi(parseJsonArray(resultSet.getString("10-12-element-jeudi")));
+	                emploi.setH_2_4_element_jeudi(parseJsonArray(resultSet.getString("2-4-element-jeudi")));
+	                emploi.setH_4_6_element_jeudi(parseJsonArray(resultSet.getString("4-6-element-jeudi")));
+
+	                emploi.setH_8_10_prof_jeudi(parseJsonArray(resultSet.getString("8-10-prof-jeudi")));
+	                emploi.setH_10_12_prof_jeudi(parseJsonArray(resultSet.getString("10-12-prof-jeudi")));
+	                emploi.setH_2_4_prof_jeudi(parseJsonArray(resultSet.getString("2-4-prof-jeudi")));
+	                emploi.setH_4_6_prof_jeudi(parseJsonArray(resultSet.getString("4-6-prof-jeudi")));
+
+	                emploi.setH_8_10_salle_jeudi(parseJsonArray(resultSet.getString("8-10-salle-jeudi")));
+	                emploi.setH_10_12_salle_jeudi(parseJsonArray(resultSet.getString("10-12-salle-jeudi")));
+	                emploi.setH_2_4_salle_jeudi(parseJsonArray(resultSet.getString("2-4-salle-jeudi")));
+	                emploi.setH_4_6_salle_jeudi(parseJsonArray(resultSet.getString("4-6-salle-jeudi")));
+	                
+	                //VENDREDI
+	                emploi.setH_8_10_element_vendredi(parseJsonArray(resultSet.getString("8-10-element-vendredi")));
+	                emploi.setH_10_12_element_vendredi(parseJsonArray(resultSet.getString("10-12-element-vendredi")));
+	                emploi.setH_2_4_element_vendredi(parseJsonArray(resultSet.getString("2-4-element-vendredi")));
+	                emploi.setH_4_6_element_vendredi(parseJsonArray(resultSet.getString("4-6-element-vendredi")));
+
+	                emploi.setH_8_10_prof_vendredi(parseJsonArray(resultSet.getString("8-10-prof-vendredi")));
+	                emploi.setH_10_12_prof_vendredi(parseJsonArray(resultSet.getString("10-12-prof-vendredi")));
+	                emploi.setH_2_4_prof_vendredi(parseJsonArray(resultSet.getString("2-4-prof-vendredi")));
+	                emploi.setH_4_6_prof_vendredi(parseJsonArray(resultSet.getString("4-6-prof-vendredi")));
+
+	                emploi.setH_8_10_salle_vendredi(parseJsonArray(resultSet.getString("8-10-salle-vendredi")));
+	                emploi.setH_10_12_salle_vendredi(parseJsonArray(resultSet.getString("10-12-salle-vendredi")));
+	                emploi.setH_2_4_salle_vendredi(parseJsonArray(resultSet.getString("2-4-salle-vendredi")));
+	                emploi.setH_4_6_salle_vendredi(parseJsonArray(resultSet.getString("4-6-salle-vendredi")));
+
+
+	                emploi.setId(resultSet.getInt("id"));
+	                emploi.setDate(resultSet.getDate("date").toLocalDate());
+	                emploi.setCni_user(resultSet.getString("cni_user"));;
+	                emploi.setFilier_titel(resultSet.getString("filier_titel"));
+	            }
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return emploi;
+	}
+
 
 
 }

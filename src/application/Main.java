@@ -1,10 +1,11 @@
 package application;
 
 
+import dao.EmploiDao;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
-
+import modules.Emploi;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
@@ -14,7 +15,7 @@ public class Main extends Application {
 	private void showMainApplication() throws Exception {
 		
         // Load your main application FXML and show the main window
-        FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("/views/professeurDashboard.fxml"));
+        FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("/views/etudiantEmploi.fxml"));
         Parent mainRoot = mainLoader.load();
         Scene mainScene = new Scene(mainRoot,990,550);
         Stage mainStage = new Stage();
@@ -32,6 +33,17 @@ public class Main extends Application {
 			primaryStage.show();*/
 			
 			showMainApplication();
+			
+			
+			/*EmploiDao emploiDao=new EmploiDao();
+			
+			try {
+				Emploi emploi=emploiDao.selectEmploiEtudiant("Ingoniere Logiciele");
+				
+				System.out.print(emploi.getFilier_titel());
+			}catch(Exception e) {
+				e.printStackTrace();
+			}*/
 
 
 		} catch(Exception e) {

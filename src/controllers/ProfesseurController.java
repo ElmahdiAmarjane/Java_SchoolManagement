@@ -11,6 +11,7 @@ import dao.ProfesseurDao;
 import dao.UserDao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
@@ -239,7 +240,8 @@ public class ProfesseurController {
 
 
 		    private void downloadAction(int index) {
-		        System.out.println("Download action triggered for row: " + index);
+		    
+		    	 	
 		    }
 		    
 		    public void fetchProfesseur() {

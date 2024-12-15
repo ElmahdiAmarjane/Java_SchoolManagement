@@ -315,7 +315,7 @@ public class EmploiController {
          
 		 emploi.setDate(localDate);
 		 emploi.setCni_user("Test");
-		 //emploi.setFilier_titel(filier_titel.getValue());
+		 emploi.setFilier_titel(filier_titel.getValue());
 		 
 		 if(emploiDao.insertEmploi(emploi)) {
 			 AppFunctions.showAlertInformation("Succès","Emploi ajouter avec succès !");
@@ -442,6 +442,7 @@ public class EmploiController {
 		 emploi.setH_10_12_salle_vendredi(H_10_12_salle_vendredi);
 		 emploi.setH_2_4_salle_vendredi(H_2_4_salle_vendredi);
 		 emploi.setH_4_6_salle_vendredi(H_4_6_salle_vendredi);
+		 
 		 
 		 
 		 if(emploiDao.insertEmploi(emploi)) {
