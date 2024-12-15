@@ -9,7 +9,7 @@ public interface IUserServices {
 	User login(User user);
 	boolean deleteUser(String cni);
 	boolean updateUser(User user);
-	
+	boolean resetPassword(String cni, String oldPassword, String newPassword);
 	
 	
 }

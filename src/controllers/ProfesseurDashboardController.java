@@ -91,8 +91,7 @@ public class ProfesseurDashboardController {
 	@FXML 
 	 private Text listProfBtn;
 	
-	@FXML 
-	 private HBox  emploiTempsMenu;
+
 	
 	@FXML
 	  private AnchorPane emploiTempsPane;
@@ -277,9 +276,9 @@ public class ProfesseurDashboardController {
 	
 	@FXML
 	  public void emploiTempsPaneToFront() {
-		//emploiTempsPane.toFront();
-		//otherMenusDisableFocused("profMenu");
-		// emploiTemps.setStyle("-fx-background-color :  #29408a;");
+		emploiTempsPane.toFront();
+		otherMenusDisableFocused("emploiTempMenu");
+		emploiTempMenu.setStyle("-fx-background-color :  #29408a;");
 	}
 	
 	

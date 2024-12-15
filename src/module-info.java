@@ -12,6 +12,7 @@ module schoolManagement {
     requires de.jensd.fx.glyphs.fontawesome;
 
     requires com.fasterxml.jackson.databind;
+	requires javafx.base;
   
    // requires controlsfx;
 	

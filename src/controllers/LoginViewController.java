@@ -92,13 +92,6 @@ public class LoginViewController {
      	           ///////////////////////////
      	           
        			 
-     	           if (adminController != null && adminController.getChatController() != null) {
-         	            // Pass the logged-in user to the chat controller
-     	        	  adminController.getChatController().setLoggedInUser(niveauxUser);
-         	        } else {
-         	            System.out.println("ChatController is not initialized!");
-         	        }
-         	        
        			 ////////////////////////////
        			 
        			 

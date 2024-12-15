@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import config.AppFunctions;
 import db_connect.JDBC;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -192,5 +193,50 @@ public class UserDao implements IUserServices {
         return false;
     }*/
     
+	
+	@Override
+	public boolean resetPassword(String cni, String oldPassword, String newPassword) {
+	    // Step 1: Verify the old password
+	    String selectQuery = "SELECT password FROM user WHERE cni = ?";
+	    String updateQuery = "UPDATE user SET password = ? WHERE cni = ?";
+
+	    try (Connection connection = JDBC.getConnection();
+	         PreparedStatement selectStatement = connection.prepareStatement(selectQuery)) {
+
+	        // Step 2: Check if the old password matches
+	        selectStatement.setString(1, cni); // Set user CNI
+	        ResultSet resultSet = selectStatement.executeQuery();
+
+	        if (resultSet.next()) {
+	            String storedPassword = resultSet.getString("password");
+
+	            // Step 3: Compare old password with stored password
+	            if (storedPassword.equals(oldPassword)) {
+	                // Step 4: Update the password with the new one
+	                try (PreparedStatement updateStatement = connection.prepareStatement(updateQuery)) {
+	                    updateStatement.setString(1, newPassword); // Set the new password
+	                    updateStatement.setString(2, cni); // Set user CNI for the WHERE clause
+	                    int rowsAffected = updateStatement.executeUpdate();
+
+	                    if (rowsAffected > 0) {
+	                        System.out.println("Password updated successfully.");
+	                        return true;
+	                    } else {
+	                        System.out.println("Failed to update the password.");
+	                    }
+	                }
+	            } else {
+	                System.out.println("Old password is incorrect.");
+	            }
+	        } else {
+        		AppFunctions.showAlertSuccess("Échec", "L'ancien mot de passe est incorrect.");
+	        }
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return false;
+	}
     
 }

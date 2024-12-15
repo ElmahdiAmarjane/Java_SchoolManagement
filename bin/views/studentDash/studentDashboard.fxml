@@ -84,7 +84,7 @@
                   <Insets bottom="30.0" />
                </VBox.margin>
             </HBox>
-            <HBox onMouseClicked="#emploiTempsPaneToFront" prefHeight="40.0" prefWidth="153.0">
+            <HBox fx:id="emploiTempMenu" onMouseClicked="#emploiTempsPaneToFront" prefHeight="40.0" prefWidth="153.0">
                
                <children>
                   <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
@@ -171,7 +171,7 @@
    
  <fx:include fx:id="coursMainPane" source="studentCours.fxml" /> 
      <fx:include fx:id="chatPane" source="../chat4.fxml" /> 
-  <!-- <fx:include fx:id="emploiTempsPane" source="studentEmploiTemps.fxml" /> -->
+   <fx:include fx:id="emploiTempsPane" source="studentEmploiTemps.fxml" />
 
    
    </children>
