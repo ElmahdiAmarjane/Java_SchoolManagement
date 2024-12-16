@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="absencePane" style="-fx-background-color: #EE11EE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="236.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="76.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="controllers.ProfesseurPresenceController">
+    
+    <children>
+        <!-- Top Bar -->
+        <AnchorPane prefHeight="51.0" style="-fx-background-color: #112277;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <!-- Button for listing students -->
+                <Text fx:id="listStudentBtn" fill="WHITE" layoutX="20.0" layoutY="30.0" text="Liste Etudiant">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Text>
+                
+                <!-- ComboBox for selecting filière -->
+                <ComboBox fx:id="comboBoxFiliere" layoutX="150.0" layoutY="10.0" prefWidth="150.0" promptText="Select Filière" />
+                          
+                          
+                <!-- DatePicker for selecting the date -->
+                <DatePicker fx:id="datePicker" layoutX="320.0" layoutY="10.0" prefWidth="150.0" promptText="Select Date" />
+                            
+                            
+                 <ComboBox fx:id="comboBoxElement" layoutX="490.0" layoutY="10.0" prefWidth="150.0" promptText="Select Element" />
+                          
+                <!-- TextField/ComboBox for selecting time -->
+                <ComboBox fx:id="comboBoxTimeRange" layoutX="660.0" layoutY="10.0" prefWidth="150.0" promptText="Select Time Range" />
+                
+            </children>
+        </AnchorPane>
+        
+        <!-- Main Pane -->
+        <AnchorPane fx:id="listStudentPane" style="-fx-background-color: #11FFDD;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="51.0">
+            <children>
+                <!-- Nested Pane for student list -->
+                <AnchorPane style="-fx-background-color: White;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    
+                    <children>
+                        <!-- Title Text -->
+                        <Text layoutX="15.0" layoutY="20.0" text="Liste Etudiant">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Text>
+                        
+                        <!-- TableView for displaying student data -->
+                        <TableView fx:id="tableView" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="50.0">
+                            <columns>
+                                <TableColumn fx:id="idColumn" prefWidth="121.0" text="ID" />
+                                <TableColumn fx:id="cneColumn" prefWidth="150.0" text="CNE" />
+                                <TableColumn fx:id="nomColumn" prefWidth="150.0" text="Nom" />
+                                <TableColumn fx:id="prenomColumn" prefWidth="150.0" text="Prenom" />
+                                <TableColumn fx:id="attendanceColumn" prefWidth="200.0" text="Attendance" />
+                            </columns>
+                        </TableView>
+                        
+                        <!-- Save Attendance Button -->
+                        <Button layoutX="737.0" layoutY="469.0" onAction="#handleSaveAttendance" style="-fx-background-color: WHITE; -fx-border-color: green;" text="Envoyer" AnchorPane.bottomAnchor="16.0" AnchorPane.rightAnchor="15.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+                                
+                         <Button layoutX="655.0" layoutY="467.0" style="-fx-background-color: WHITE; -fx-border-color: blue;" text="Modifier" AnchorPane.bottomAnchor="16.0" AnchorPane.rightAnchor="92.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+                    </children>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

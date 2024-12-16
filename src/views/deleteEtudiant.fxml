@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane fx:id="deletinterface" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DeleteProfesseur">
+   <children>
+      <Button fx:id="btn_delete" layoutX="231.0" layoutY="105.0" mnemonicParsing="false" onAction="#deleteProfesseur" prefHeight="108.0" prefWidth="140.0" text="delete etudiant" />
+   </children>
+</Pane>

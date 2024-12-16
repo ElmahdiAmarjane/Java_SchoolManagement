@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox fx:id="AnnonceView" prefHeight="203.0" prefWidth="1066.0" spacing="10" style="-fx-padding: 15; -fx-border-color: #dcdcdc; -fx-border-radius: 8; -fx-background-color: #f9f9f9; -fx-background-radius: 8;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AnnonceWidgetController">
+    <!-- En-tête avec "Administration" -->
+    <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="709.0" style="-fx-padding: 5;" VBox.vgrow="ALWAYS">
+        <Label fx:id="announcementHeader" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #4CAF50;" text="Administration" />
+      <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+         <children>
+            <ImageView fx:id="showAnnonceDetailsBtn" fitHeight="22.0" fitWidth="20.0" nodeOrientation="INHERIT" onMouseClicked="#openAnnonceRUDStage" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+               <image>
+                  <Image url="@../assets/updateIcon.png" />
+               </image>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </ImageView>
+         </children>
+      </HBox>
+    </HBox>
+
+    <!-- Contenu principal -->
+    <HBox spacing="15">
+        <!-- Icône ou image utilisateur -->
+        <VBox alignment="CENTER">
+            <ImageView fx:id="announcementIcon" fitHeight="50" fitWidth="50" preserveRatio="true">
+                <Image url="@../assets/annonce.png" />
+            </ImageView>
+        </VBox>
+
+        <!-- Contenu de l'annonce -->
+        <VBox alignment="TOP_LEFT" spacing="10" style="-fx-padding: 5;">
+            <!-- Titre de l'annonce -->
+            <Text fx:id="announcementTitle" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Titre de l'annonce" />
+
+            <!-- Texte de l'annonce -->
+            <Label fx:id="announcementText" style="-fx-text-fill: #333;" text="Voici un exemple de texte pour une annonce. Ce texte peut être long ou court en fonction du contenu." wrapText="true" />
+
+            <!-- Fichier joint -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label style="-fx-font-weight: bold;" text="Fichier joint :" />
+                <Button fx:id="downloadButton" onAction="#downloadAnnonceFile" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="Télécharger" />
+            <Text fx:id="annonceFilePath" strokeType="OUTSIDE" strokeWidth="0.0" />
+            </HBox>
+        </VBox>
+    </HBox>
+
+    <!-- Pied de page avec la date de l'annonce -->
+    <HBox alignment="CENTER_RIGHT" style="-fx-padding: 5;">
+      <Text fx:id="annonceId" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" />
+        <Label fx:id="announcementDate" style="-fx-font-size: 12px; -fx-text-fill: #888;" text="Publié le : 29/11/2024" />
+    </HBox>
+</VBox>

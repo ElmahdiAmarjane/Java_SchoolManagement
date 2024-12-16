@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="AbsenceViews" layoutX="236.0" layoutY="76.0" prefHeight="441.0" prefWidth="517.0" style="-fx-background-color: #EE11EE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="236.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="76.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="controllers.AdminAbsenceController">
+    <children>
+        <AnchorPane prefHeight="51.0" prefWidth="517.0" style="-fx-background-color: #112277;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Text fx:id="listStudentBtn" fill="WHITE" layoutX="15.0" layoutY="30.0" onMouseClicked="#listStudentPaneToFront" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste Etudiant">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Text>
+
+                <!-- ComboBox for selecting a filier -->
+                <ComboBox fx:id="filierComboBox" layoutX="150.0" layoutY="12.0" prefWidth="150.0" promptText="Sélectionnez un filière" />
+
+                <!-- DatePicker for selecting a date -->
+                <DatePicker fx:id="date" layoutX="320.0" layoutY="12.0" prefWidth="150.0" />
+            </children>
+        </AnchorPane>
+
+        <AnchorPane fx:id="listStudentPane" layoutY="52.0" prefHeight="388.0" prefWidth="517.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+            <children>
+                <AnchorPane layoutY="51.0" prefHeight="388.0" prefWidth="517.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <children>
+                        <Text layoutX="15.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste Etudiant" wrappingWidth="170.7734375">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Text>
+
+                        <!-- TableView for displaying student data -->
+                        <TableView fx:id="studentsTable" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="53.0">
+                            <columns>
+                                <!-- TableColumn for number (index) -->
+                                <TableColumn fx:id="colNumber" prefWidth="121.0" text="N°" />
+                                <TableColumn fx:id="colCNI" prefWidth="112.0" text="CIN" />
+                                <TableColumn fx:id="colCNE" prefWidth="130.0" text="CNE" />
+                                <TableColumn fx:id="colNom" prefWidth="112.0" text="Nom" />
+                                <TableColumn fx:id="colPrenom" prefWidth="103.0" text="Prénom" />
+                                <TableColumn fx:id="colFilliere" prefWidth="130.0" text="Filliére" />
+                                <TableColumn fx:id="icons" prefWidth="130.0" text="Action" />
+                            </columns>
+                        </TableView>
+                    </children>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
